@@ -32,8 +32,62 @@
             <img src="https://static.uq.net.au/v11/logos/corporate/uq-lockup-landscape--reversed.svg" class="m-3" />
         </div>
     </div>
+    <div class="container-fluid">
     <h1>UQ LearnX Custom HTML</h1>
 <p>This page contains a number of customisations built over time for use in LearnX. Click the link in the header of the content type you would like to use to jump to that part of the page, follow the instructions to build your custom component, then click the copy code button and paste it in LearnX where you plan to use the element.</p>
+      <h3>Text: Vertical accordion hide and reveal</h3>
+      <div class="copyDiv">
+        <style>
+          div.section h4 {
+            margin-bottom: 1.416em;
+            font-size: 1em;
+            color: #3c3c3c;
+            line-height: 1.6em !important;
+            margin-top: 20px;
+            font-weight:bold !important;
+            cursor:pointer;
+          }
+          div.section h4 span {
+            float:left !important;
+            margin-top:4px !important;
+          }
+          p.item {
+            margin-bottom: 1.416em; font-size: 1em; color: #3c3c3c; line-height: 1.6em !important; margin-top: 20px;
+          }
+          </style>
+        <div class="wiki-article" style="color: #3c3c3c; font-family: 'Open Sans', Verdana, Arial, Helvetica, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 25.6000003814697px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+          <div class="section">
+            <h4>HEADING 1</h4>
+            <p class="item">TEXT TEXT TEXT OR IMAGES OR WHATEVER</p>
+          </div>
+          <div class="section">
+            <h4>HEADING 2</h4>
+            <p class="item">TEXT TEXT TEXT OR IMAGES OR WHATEVER</p>
+          </div>
+          <div class="section"><h4>HEADING 3</h4>
+            <p class="item">TEXT TEXT TEXT OR IMAGES OR WHATEVER</p>
+          </div>
+        </div>
+        <script>
+          $('document').ready(function() {
+            $('div.section h4').prepend('<span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>');
+            fadeOutAll();
+          });
+          $('div.section h4').click(function() {
+            fadeIn = true; if($(this).parent().find('p').css('display') == 'block') { fadeIn = false; } fadeOutAll();
+            if(fadeIn) {
+              $(this).parent().find('p').fadeIn();
+              $(this).parent().find('h4 span').addClass('ui-icon-triangle-1-s');
+            }
+          });
+          function fadeOutAll() {
+            $('div.section p').fadeOut(0);
+            $('div.section h4 span').addClass('ui-icon-triangle-1-e');
+            $('div.section h4 span').removeClass('ui-icon-triangle-1-s');
+          }
+        </script>
+      </div>
+    </div>
     <footer class="footer">
     <ul>
         <li>© The University of Queensland</li>
