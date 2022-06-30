@@ -46,7 +46,7 @@
             <img src="https://static.uq.net.au/v11/logos/corporate/uq-lockup-landscape--reversed.svg" class="m-3" />
         </div>
         <div class="col-8">
-          <h1 style="color:white;">UQ LearnX Custom HTML Home</h1>
+          <h1 style="color:white;">Text Accordion</h1>
         </div>
       </div>
     </div>
@@ -82,11 +82,73 @@
       </div>
     </nav>
     <div class="container-fluid mt-2">
-<h2 id="topOfPage">Welcome to the LearnX Customisations Builder</h2>      
-<p>This page contains a number of customisations built over time for use in LearnX. Click the link in the header of the content type you would like to use to jump to that part of the page, follow the instructions to build your custom component, then click the copy code button and paste it in LearnX where you plan to use the element.</p>
+<h2 id="topOfPage">Text Accordions</h2>      
+<p>Use this page to build an accordion where text is hidden/revealed based on clicking the heading elements.</p>
+      <div class="row">
+        <div class="col-lg-6">
+          <h4>Options for design</h4>
+          <div class="row">
+            <div class="col-lg-4">Heading 1</div>
+            <div class="col-lg-8">
+              <input class="rounded p-2 w-100" rows="1" name="accHeading1" type="text" id="accHeading1" placeholder="Type your first heading here">
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-lg-4">Heading 2</div>
+            <div class="col-lg-8">
+              <input class="rounded p-2 w-100" rows="1" name="accHeading2" type="text" id="accHeading2" placeholder="Type your second heading here"></div>
+          </div>
+        </div>
+        <div class="col-lg-6 ml-2">
+          <h4>Preview</h4>
+            <style>
+          div.section h4 {
+              margin-bottom: 1.416em; font-size: 1em; color: #3c3c3c; line-height: 1.6em !important; margin-top: 20px; font-weight:bold !important; cursor:pointer;
+            }
+           div.section h4 span {
+             float:left !important;
+             margin-top:4px !important;
+           }
+          p.item {
+              margin-bottom: 1.416em; font-size: 1em; color: #3c3c3c; line-height: 1.6em !important; margin-top: 20px;
+           }
+          </style>
+          <div class="wiki-article" style="color: #3c3c3c; font-family: 'Open Sans', Verdana, Arial, Helvetica, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 25.6000003814697px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+          <div class="section">
+          <h4>HEADING 1</h4>
+          <p class="item">TEXT TEXT TEXT OR IMAGES OR WHATEVER</p>
+          </div>
+          <div class="section">
+          <h4>HEADING 2</h4>
+          <p class="item">TEXT TEXT TEXT OR IMAGES OR WHATEVER</p>
+          </div>
+          </div>
+          <script>
+          $('document').ready(function() {
+             $('div.section h4').prepend('<span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>');
+             fadeOutAll();
+           });
+          $('div.section h4').click(function() {
+           fadeIn = true;
+           if($(this).parent().find('p').css('display') == 'block') {
+            fadeIn = false;
+           }
+           fadeOutAll();
+           if(fadeIn) {
+             $(this).parent().find('p').fadeIn();
+              $(this).parent().find('h4 span').addClass('ui-icon-triangle-1-s');
+           }
+           });
+           function fadeOutAll() {
+            $('div.section p').fadeOut(0);
+            $('div.section h4 span').addClass('ui-icon-triangle-1-e');
+            $('div.section h4 span').removeClass('ui-icon-triangle-1-s');
+           }
+          </script>
     </div>
-    <footer class="footer fixed-bottom">
-    <ul>
+    </div>
+    <footer class="footer">
+    <ul class="fixed-bottom">
         <li>© The University of Queensland</li>
         <li><abbr title="Australian Business Number">ABN</abbr>: 63 942 912 684</li>
         <li><abbr title="Commonwealth Register of Institutions and Courses for Overseas Students">CRICOS</abbr>&nbsp;Provider No: <a href="https://www.uq.edu.au/about/cricos-link" rel="external" data-gtm-label="CRICOS 00025B">00025B</a></li>
