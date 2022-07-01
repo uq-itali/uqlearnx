@@ -1,7 +1,7 @@
 window.addEventListener("load", function(){
         $('button.copybutton').on('click', function(event) {
         var btn = $(this);
-        var snippet = btn.next('div.copyThis').html();
+        var snippet = btn.prev('div.copyThis').html();
         console.log("@GB: snippet = ", snippet);
         copyTextToClipboard(snippet);
         var originalBtn = $('button.copybutton').clone().html()  
