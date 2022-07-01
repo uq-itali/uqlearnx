@@ -1,10 +1,10 @@
 window.addEventListener("load", function(){
-        $('a.copybutton').on('click', function(event) {
+        $('button.copybutton').on('click', function(event) {
         var btn = $(this);
         var snippet = btn.next('div').html();
         console.log("@GB: snippet = ", snippet);
         copyTextToClipboard(snippet);
-        var originalBtn = $('.copybutton').clone().html()  
+        var originalBtn = $('button.copybutton').clone().html()  
         btn.toggleClass('btn-primary btn-success')
         btn.html('<i class="fa fa-check" aria-hidden="true"></i> Code copied');
         window.setTimeout(function() {
