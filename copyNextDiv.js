@@ -1,4 +1,4 @@
-window.addEventListener("load", function(){
+function copyCode(){
         $('button.copybutton').on('click', function(event) {
         var btn = $(this);
         var snippet = btn.prev('div.copyThis').html();
@@ -13,7 +13,7 @@ window.addEventListener("load", function(){
         }, 1500);
         /* Act on the event */
     });
-});
+}
 
 function fallbackCopyTextToClipboard(text) {
     var textArea = document.createElement("textarea");
