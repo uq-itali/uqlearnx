@@ -40,3 +40,7 @@ background-image: none !important;
   background: #f9fafb !important;
 
 }
+div.accordion h2{
+  margin: 0px;
+
+}
