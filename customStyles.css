@@ -41,6 +41,6 @@ background-image: none !important;
 
 }
 div.accordion h2{
-  margin: 0px;
+  margin: 0px !important;
 
 }
