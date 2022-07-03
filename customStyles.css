@@ -1,7 +1,7 @@
 .bg-img-none{
 background-image: none !important;
 }
-.btn:hover{
+.btn:hover, btn:focus, btn:active{
   box-shadow: none !important;
 }
 .btn-primary:hover{
