@@ -1,27 +1,30 @@
-function copyCode(){
-        $('button.copybutton').on('click', function(event) {
+$(function() {
+    $('.copythis').after('<button type="button" class="btn btn-primary btn-block w-75 mx-auto copybutton bg-img-none mt-2 d-block"><span class="fa fa-clipboard" aria-hidden="true"></span> Copy code</button>');
+    $('.copybutton').on('click', function(event) {
         var btn = $(this);
-        var snippet = btn.prev('div.copyThis').html();
+        var snippet = btn.prev().html();
         console.log("@GB: snippet = ", snippet);
-        copyTextToClipboard(snippet);
-        var originalBtn = $('button.copybutton').clone().html()  
-        btn.toggleClass('btn-primary btn-success')
-        btn.html('<i class="fa fa-check" aria-hidden="true"></i> Code copied');
+        fallbackCopyTextToClipboard(snippet);
+        // btn.addClass('btn-danger');
+        btn.toggleClass('btn-success btn-primary');
+        btn.html('<span class="fa fa-check" aria-hidden="true"></span> Done! Code snippet has been copied to clipboard');
         window.setTimeout(function() {
-                btn.html(originalBtn);
-           btn.toggleClass('btn-success btn-primary');
-        }, 1500);
+            btn.html('<span class="fa fa-clipboard" aria-hidden="true"></span> Copy code');
+            // btn.removeClass('btn-danger');
+            btn.toggleClass('btn-success btn-primary');
+        }, 3000);
         /* Act on the event */
     });
-}
+});
 
 function fallbackCopyTextToClipboard(text) {
+ 			var btn = $('.copybutton');
     var textArea = document.createElement("textarea");
     textArea.value = text;
-    document.body.appendChild(textArea);
+    $(btn).after(textArea);
     textArea.focus();
     textArea.select();
- 
+
     try {
         var successful = document.execCommand('copy');
         var msg = successful ? 'successful' : 'unsuccessful';
@@ -30,7 +33,8 @@ function fallbackCopyTextToClipboard(text) {
 
     }
 
-    document.body.removeChild(textArea);
+    textArea.remove(); 
+ window.scrollTo(0, 0);
 }
 
 function copyTextToClipboard(text) {
