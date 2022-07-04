@@ -32,7 +32,7 @@ function fallbackCopyTextToClipboard(text) {
     } catch (err) {
         console.error('Fallback: Oops, unable to copy', err);
     }
-    textArea.remove();
+    document.body.removeChild(textArea);
     window.scrollTo(0, 0);
 }
 
