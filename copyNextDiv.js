@@ -18,23 +18,20 @@ $(function() {
 });
 
 function fallbackCopyTextToClipboard(text) {
- 			var btn = $('.copybutton');
+    var btn = $('.copybutton');
     var textArea = document.createElement("textarea");
     textArea.value = text;
     $(btn).after(textArea);
     textArea.focus();
     textArea.select();
-
+    
     try {
         var successful = document.execCommand('copy');
         var msg = successful ? 'successful' : 'unsuccessful';
-
     } catch (err) {
-
     }
-
     textArea.remove();
-     window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
 }
 
 function copyTextToClipboard(text) {
