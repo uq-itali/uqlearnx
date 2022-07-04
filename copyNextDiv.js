@@ -21,7 +21,7 @@ function fallbackCopyTextToClipboard(text) {
     var btn = $('.copybutton');
     var textArea = document.createElement("textarea");
     textArea.value = text;
-    document.body.appendChild(textArea);
+    document.btn.appendChild(textArea);
     textArea.focus();
     textArea.select();
     
@@ -32,8 +32,8 @@ function fallbackCopyTextToClipboard(text) {
     } catch (err) {
         console.error('Fallback: Oops, unable to copy', err);
     }
-    document.body.removeChild(textArea);
-    window.scrollTo(0, 0);
+    document.btn.removeChild(textArea);
+    btn.scrollIntoView();
 }
 
 function copyTextToClipboard(text) {
