@@ -5,7 +5,6 @@ $(function() {
         var snippet = btn.prev().html();
         console.log("@GB: snippet = ", snippet);
         fallbackCopyTextToClipboard(snippet);
-        btn.scrollIntoView();
         // btn.addClass('btn-danger');
         btn.toggleClass('btn-success btn-primary');
         btn.html('<span class="fa fa-check" aria-hidden="true"></span> Done! Code snippet has been copied to clipboard');
@@ -34,7 +33,7 @@ function fallbackCopyTextToClipboard(text) {
         console.error('Fallback: Oops, unable to copy', err);
     }
     document.body.removeChild(textArea);
-    
+        
 }
 
 function copyTextToClipboard(text) {
