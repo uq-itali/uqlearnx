@@ -44,3 +44,9 @@ div.accordion h2{
   margin: 0px !important;
 
 }
+.tooltip::after{
+content: none !important;
+}
+.tooltip{
+border-style: none !important;
+}
