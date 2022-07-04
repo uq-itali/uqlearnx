@@ -21,18 +21,19 @@ function fallbackCopyTextToClipboard(text) {
     var btn = $('.copybutton');
     var textArea = document.createElement("textarea");
     textArea.value = text;
-    $(btn).after(textArea);
+    document.body.appendChild(textArea);
     textArea.focus();
     textArea.select();
     
     try {
         var successful = document.execCommand('copy');
         var msg = successful ? 'successful' : 'unsuccessful';
-        textArea.remove();
-        window.scrollTo(0, 0);
+        console.log('Fallback: Copying text command was ' + msg);        
     } catch (err) {
+        console.error('Fallback: Oops, unable to copy', err);
     }
-    
+    textArea.remove();
+    window.scrollTo(0, 0);
 }
 
 function copyTextToClipboard(text) {
