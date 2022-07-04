@@ -33,7 +33,8 @@ function fallbackCopyTextToClipboard(text) {
 
     }
 
-    textArea.remove(); 
+    textArea.remove();
+     window.scrollTo(0, 0);
 }
 
 function copyTextToClipboard(text) {
