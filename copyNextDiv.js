@@ -23,6 +23,7 @@ $(function() {
     });
 });
 
+
 function fallbackCopyTextToClipboard(text) {
     var btn = $('.copybutton');
     var textArea = document.createElement("textarea");

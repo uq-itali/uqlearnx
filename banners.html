@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UQ LearnX Custom HTML Components</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!--UQ icon set-->
+    <link href="https://studio.edge.edx.org/static/studio/edx.org-next/css/cms-style-vendor.0bb1c51e34bf.css" rel="stylesheet" type="text/css">
+    <!--jQuery version 3.6.0-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://kit.fontawesome.com/5db3c94720.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        var finalCodeBox = document.getElementById('txtAreaBannerCode')
+        var headingText = "";
+        var imgURL = document.getElementById('imgURL').value
+        var bgColor = document.getElementbyId('bgColor').value;
+        var bannerHeadingText = document.getElementById('bannerHeading')
+
+        
+        bannerHeadingText.addEventListener("input", function getHeadingText() {
+            $(headingText).text(bannerHeadingText.value);
+        });
+        
+        var headSizeSelect = document.getElementById('headSize');
+        headSizeSelect.addEventListener("click", function () {
+        var headSize = $('input[name="headSize"]:checked').val();
+        switch (headSize) {
+            case "noH":
+                examPeriodSelectedSpan.html("<strong>Mid-Semester</strong> exam");
+                break;
+            case "endOfSem":
+                examPeriodSelectedSpan.html("<strong>End-of-Semester</strong> exam");
+                break;
+            case "bothExamPeriods":
+                examPeriodSelectedSpan.html("<strong>Mid-Semester and End-of-Semester</strong> exams");
+                break;
+        }
+    });
+        
+        var heading1 = "<"+headSize+" style=\"background-image: url('"+imgURL+"'); background-size: 40px; background-position: left center; background-repeat: no-repeat; background-color: "+bgColor+"; border: 8px inset transparent; padding-left: 60px; padding-top: 10px; padding-bottom: 8px; height: 30px; vertical-align: middle;\"><span style=\"color: "+textColor+";\">"+headingText+"</span></"+headSize+">";
+        finalCodeBox.value=heading1
+
+        function copyCode(){
+        document.getElementById('txtAreaBannerCode').select();
+        document.execCommand('copy');
+        }
+        
+    </script>
+  
+    <style>
+        .page-header,
+        .footer {
+            background: linear-gradient(90deg, #51247a 0%, #56247a 60%, #61257d 80%, #962a8b 100%);
+        }
+        .footer ul{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: start;
+            flex-direction: row;
+            margin: 0;
+            padding: 0;
+        }
+
+       .footer li{
+            color: #d4c8de;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            list-style-type: none;
+            margin: 0;
+            padding: 10px;
+            font-size: .875rem;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="page-header">
+      <div class="row w-100">
+        <div class="col-4">
+            <img src="https://static.uq.net.au/v11/logos/corporate/uq-lockup-landscape--reversed.svg" class="m-3" />
+        </div>
+        <div class="col-8">
+          <h1 style="color:white;">UQ LearnX Custom HTML Home</h1>
+        </div>
+      </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="home.html">Elements</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="accordions.html">Text Accordion</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://uq-itali.github.io/uqlearnx/"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="textLayoutsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Text Layouts</a>
+              <ul class="dropdown-menu" aria-labelledby="textLayoutsDropdown">
+                <li><a class="dropdown-item" href="accordions.html">Horizontal tabs</a></li>
+                <li><a class="dropdown-item" href="#">Add a mouseover/tooltip</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+   
+<h2 class="text-center" id="topOfPage">Banners <span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" title="This page contains a custom banner builder for UQ's LearnX platform."><i class="fa fa-question-circle" aria-hidden="true"></i></span></h2>   
+<div class="container-fluid mt-2">   
+<div class="row w-100">
+    <div class="col-lg-6">
+        <div class="row w-100">
+        <div class="col-lg-3">
+            <h5 class="font-weight-bold" data-original-title="" title="">Heading<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Type a heading for this banner. 50 character maximum. If you want an icon to display you must also type a heading.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+        </div>
+        <div class="col-lg">
+            <textarea maxlength="75" class="rounded p-2 w-100" rows="1" name="bannerHeading" type="text" id="bannerHeading" placeholder="Type your banner heading here" onchange="generateCode()"></textarea>
+        </div>
+    </div>
+    <hr />
+    <div class="row w-100">
+       <div class="col-lg-3">
+        <h5 class="font-weight-bold" data-original-title="" title="">Heading size<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Choose the size of your heading. Will default to small on entering a heading above">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+       </div> 
+       <div class="col-lg my-auto">
+        <!--<select class="custom-select w-100 border border-dark" id="headSize" name="headSize" size="1" onchange=generateCode()>
+        <option selected value="h5">Small (heading 5)</option>
+        <option value="h4">Medium (heading 4)</option>
+        <option value="h3">Large (heading 3)</option>
+      </select>-->
+      <div class="form-check form-check-inline" id="headSize" onchange="generateCode()">
+        <input class="form-check-input" name="headSize" id="headSizeNone" type="radio" value="noH" checked>
+        <label class="form-check-label" for="headSizeNone">None</label>
+      </div>
+      <div class="form-check form-check-inline" id="headSize" onchange="generateCode()">
+        <input class="form-check-input" name="headSize" id="headSize1" type="radio" value="h5">
+        <label class="form-check-label" for="headSize1"><h5 data-original-title="" title="">Small</h5></label>
+      </div>
+      <div class="form-check form-check-inline" id="headSize" onchange="generateCode()">
+      <input class="form-check-input" name="headSize" id="headSize2" type="radio" value="h4">
+      <label class="form-check-label" for="headSize2"><h4>Medium</h4></label>
+      </div>
+      <div class="form-check form-check-inline" id="headSize" onchange="generateCode()">
+      <input class="form-check-input" name="headSize" id="headSize3" type="radio" value="h3">
+      <label class="form-check-label" for="headSize3"><h3>Large</h3></label>
+    </div>
+  </div>
+    </div>
+    <div class="row w-100">
+        <div class="col-lg-3">
+         <h5 class="font-weight-bold" data-original-title="" title="">Banner background colour/font colour<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Choose the size of your heading. Will default to small on entering a heading above">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+        </div> 
+        <div class="col-lg my-auto">
+         <!--<select class="custom-select w-100 border border-dark" id="headSize" name="headSize" size="1" onchange=generateCode()>
+         <option selected value="h5">Small (heading 5)</option>
+         <option value="h4">Medium (heading 4)</option>
+         <option value="h3">Large (heading 3)</option>
+       </select>-->
+       <div class="form-check form-check-inline" id="bgColorCombo1" onchange="generateCode()">
+         <input class="form-check-input" name="bgColorCombo" id="bgColorCombo1" type="radio" value="purpleWhite" checked>
+         <label class="form-check-label" for="bgColorCombo" style="background:#51247a;color:#fff; border-radius:5px;padding:5px;">Purple | White</label>
+       </div>
+       <div class="form-check form-check-inline" id="bgColorCombo1" onchange="generateCode()">
+       <input class="form-check-input" name="bgColorCombo" id="bgColorCombo2" type="radio" value="greyBlack">
+       <label class="form-check-label" for="bgColorCombo2" style="background:#f8f8ff;color:#000;padding:5px; border-radius:5px;">Grey | Black</label>
+       </div>
+       <!--<div class="form-check form-check-inline" id="bgColorCombo3" onchange="generateCode()">
+       <input class="form-check-input" name="bgColorCombo" id="bgColorCombo3" type="radio" value="">
+       <label class="form-check-label" for="bgColorCombo3">Large</label>
+     </div>-->
+   </div>
+     </div>
+     <div class="row w-100">
+        <div class="col-lg-3">
+         <h5 class="font-weight-bold" data-original-title="" title="">Icon/Image<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Choose the size of your heading. Will default to small on entering a heading above">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+        </div> 
+        <div class="col-lg my-auto">
+         <!--<select class="custom-select w-100 border border-dark" id="headSize" name="headSize" size="1" onchange=generateCode()>
+         <option selected value="h5">Small (heading 5)</option>
+         <option value="h4">Medium (heading 4)</option>
+         <option value="h3">Large (heading 3)</option>
+       </select>-->
+       <div class="form-check form-check-inline" id="imgicon1" onchange="generateCode()">
+         <input class="form-check-input" name="imageIcon" id="imageIcon1" type="radio" value="1" checked>
+         <label class="form-check-label" for="imageIcon1">Img1</label>
+       </div>
+       <div class="form-check form-check-inline" id="imgicon2" onchange="generateCode()">
+       <input class="form-check-input" name="imageIcon" id="imageIcon2" type="radio" value="2">
+       <label class="form-check-label" for="imageIcon2">Img2</label>
+       </div>
+       <div class="form-check form-check-inline" id="imgicon3" onchange="generateCode()">
+        <input class="form-check-input" name="imageIcon" id="imageIcon3" type="radio" value="3">
+        <label class="form-check-label" for="imageIcon3">Img3</label>
+        </div>
+        <div class="form-check form-check-inline" id="imgicon4" onchange="generateCode()">
+            <input class="form-check-input" name="imageIcon" id="imageIcon4" type="radio" value="4">
+            <label class="form-check-label" for="imageIcon4">Img4</label>
+            </div>
+   </div>
+     </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="sticky-top" style="top:100px;">
+          <div class="row w-100">
+            <div class="col-lg-2">
+            <h5 class="font-weight-bold" data-original-title="" title="">Preview</h5>
+            <div class="text-center mb-2 previewButton"> 
+            <button type="button" class="btn btn-outline-dark" style="padding: .5rem .7rem;" id="togglePreviewFS" data-toggle="tooltip" data-placement="top" data-trigger="hover focus" title="" data-original-title="Click to expand the preview to fullscreen. Click again or press Escape to return here to the editing screen."><i class="fa fa-fw fa-expand" aria-hidden="true"></i></button>
+             </div>
+          </div>
+            <div class="col-lg bg-white" id="previewFS">
+            <div id="demo">
+            </div>
+          </div>
+       <hr>
+        <h5 class="font-weight-bold" data-original-title="" title="">Copy code<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Click the copy code button below once you have finished building your video element, ready to paste into Moodle.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>  
+          <textarea readonly="" class="rounded p-2 w-100 mt-2" id="txtAreaBannerCode" cols="70" rows="6" name="Result" placeholder="Code for your element will appear here"></textarea>  
+               <input data-toggle="tooltip" data-placement="bottom" data-trigger="click" title="" type="button" class="btn btn-success btn-block btn-lg my-2" id="copyCodeBtn" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()" data-original-title="Your code has been copied">
+        </div>
+              </div>
+    </div>
+</div>
+    </div>
+    <footer class="footer fixed-bottom">
+    <ul>
+        <li>© The University of Queensland</li>
+        <li><abbr title="Australian Business Number">ABN</abbr>: 63 942 912 684</li>
+        <li><abbr title="Commonwealth Register of Institutions and Courses for Overseas Students">CRICOS</abbr>&nbsp;Provider No: <a href="https://www.uq.edu.au/about/cricos-link" rel="external" data-gtm-label="CRICOS 00025B">00025B</a></li>
+    </ul>
+</footer>
+    
+    <!--Bootstrap JS + Popper for tooltips and popovers-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(function() {
+    /*Initialise all tooltips*/
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    });
+    </script>
+  </body>
+</html>
+
