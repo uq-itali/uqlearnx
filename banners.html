@@ -13,29 +13,65 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/5db3c94720.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
+      function generateCode(){
         var finalCodeBox = document.getElementById('txtAreaBannerCode')
         var headingText = "";
-        var imgURL = document.getElementById('imgURL').value
-        var bgColor = document.getElementbyId('bgColor').value;
-        var bannerHeadingText = document.getElementById('bannerHeading')
-
-        
+        var imgURL = "";
+        var headSize = "";
+        var bgColor = "";
+        var textColor = "";
+        var bgColorComboSelect = document.getElementById('bgColorCombo');
+        var bannerHeadingText = document.getElementById('bannerHeading');
+        var headSizeSelect = document.getElementById('headSize');
+        var imageIconSelect = document.getElementById('imageIcon');
         bannerHeadingText.addEventListener("input", function getHeadingText() {
             $(headingText).text(bannerHeadingText.value);
         });
         
-        var headSizeSelect = document.getElementById('headSize');
-        headSizeSelect.addEventListener("click", function () {
+        headSizeSelect.addEventListener("click", function () {;
         var headSize = $('input[name="headSize"]:checked').val();
         switch (headSize) {
             case "noH":
-                examPeriodSelectedSpan.html("<strong>Mid-Semester</strong> exam");
+            headSize = "p"
                 break;
-            case "endOfSem":
-                examPeriodSelectedSpan.html("<strong>End-of-Semester</strong> exam");
+            case "h5":
+            headSize = "h5"
                 break;
-            case "bothExamPeriods":
-                examPeriodSelectedSpan.html("<strong>Mid-Semester and End-of-Semester</strong> exams");
+            case "h4":
+            headSize = "h4"
+                break;
+            case "h3":
+            headSize = "h3"
+            break;
+        }
+    });
+    bgColorComboSelect.addEventListener("click", function () {;
+        var bgColorSelected = $('input[name="bgColorCombo"]:checked').val();
+        switch (bgColorSelected) {
+            case "purpleWhite":
+            bgColor = "#51247A"
+            textColor = "#fff"
+                break;
+            case "greyBlack":
+            bgColor = "#f8f8ff"
+            textColor = "#000"
+                break;
+        }
+    });
+    imageIconSelect.addEventListener("click", function () {
+        var imageIconSelected = $('input[name="iconSelect"]:checked').val();
+        switch (imageIconSelected) {
+            case "1":
+                imgURL="/static/activities-black.jpeg"
+                break;                
+            case "2":
+                imgURL="/static/book-black.jpeg"
+                break;
+            case "3":
+                imgURL="/static/explore-black.jpeg"
+                break;
+            case "4":
+                imgURL="/static/quiz-black.jpeg"
                 break;
         }
     });
@@ -47,7 +83,7 @@
         document.getElementById('txtAreaBannerCode').select();
         document.execCommand('copy');
         }
-        
+      }
     </script>
   
     <style>
@@ -192,22 +228,24 @@
          <option value="h4">Medium (heading 4)</option>
          <option value="h3">Large (heading 3)</option>
        </select>-->
-       <div class="form-check form-check-inline w-25" id="imgicon1" onchange="generateCode()">
+       <div class="row w-100">
+       <div class="form-check form-check-inline col-lg" id="imgicon1" onchange="generateCode()">
          <input class="form-check-input" name="imageIcon" id="imageIcon1" type="radio" value="1" checked>
          <label class="form-check-label" for="imageIcon1"><img class="img-fluid" src="img/activities-black.jpeg"></label>
        </div>
-       <div class="form-check form-check-inline" id="imgicon2" onchange="generateCode()">
+       <div class="form-check form-check-inline col-lg" id="imgicon2" onchange="generateCode()">
        <input class="form-check-input" name="imageIcon" id="imageIcon2" type="radio" value="2">
-       <label class="form-check-label" for="imageIcon2"><img class="img-fluid" src="img/book-black.jpeg"></label>
+       <label class="form-check-label" for="imageIcon2"><img class="img-fluid" src="img/book-black.png"></label>
        </div>
-       <div class="form-check form-check-inline" id="imgicon3" onchange="generateCode()">
+       <div class="form-check form-check-inline col-lg" id="imgicon3" onchange="generateCode()">
         <input class="form-check-input" name="imageIcon" id="imageIcon3" type="radio" value="3">
         <label class="form-check-label" for="imageIcon3"><img class="img-fluid" src="img/explore-black.jpeg"></label>
         </div>
-        <div class="form-check form-check-inline" id="imgicon4" onchange="generateCode()">
+        <div class="form-check form-check-inline col-lg" id="imgicon4" onchange="generateCode()">
             <input class="form-check-input" name="imageIcon" id="imageIcon4" type="radio" value="4">
             <label class="form-check-label" for="imageIcon4"><img class="img-fluid" src="img/quiz-black.jpeg"></label>
             </div>
+        </div>
    </div>
      </div>
     </div>
