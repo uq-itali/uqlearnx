@@ -14,34 +14,38 @@
     <script src="https://kit.fontawesome.com/5db3c94720.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       function generateCode(){
-        var finalCodeBox = document.getElementById('txtAreaBannerCode')
-        var headingText = "";
-        var imgURL = "";
-        var headSize = "";
-        var bgColor = "";
-        var textColor = "";
+      var finalCodeBox = document.getElementById('txtAreaBannerCode')
+        // var headingText = "";
+        // var imgURL = ""
+        // var headSize = "";
+        // var bgColor = "" 
+        // var textColor = "";
         var bgColorComboSelect = document.getElementById('bgColorCombo');
         var bannerHeadingText = document.getElementById('bannerHeading');
         var headSizeSelect = document.getElementById('headSize');
         var imageIconSelect = document.getElementById('imageIcon');
+        var headSizeSelected = $('input[name="headSize"]:checked').val();
+        var bgColorSelected = $('input[name="bgColorCombo"]:checked').val();
+        var imageIconSelected = $('input[name="imageIcon"]:checked').val();
+        var headingText= bannerHeadingText.value
         bannerHeadingText.addEventListener("input", function getHeadingText() {
-            $(headingText).text(bannerHeadingText.value);
+            headingText= bannerHeadingText.value
         });
-        
-        headSizeSelect.addEventListener("click", function () {;
-        var headSize = $('input[name="headSize"]:checked').val();
-        switch (headSize) {
-            case "noH":
-            headSize = "p"
-                break;
+     
+        headSizeSelect.addEventListener("click", function () {
+        var headSizeSelected = $('input[name="headSize"]:checked').val();
+        switch (headSizeSelected) {
+            /*case "noH":
+            headSize = "p";
+                break;*/
             case "h5":
-            headSize = "h5"
+            headSize = "h5";
                 break;
             case "h4":
-            headSize = "h4"
+            headSize = "h4";
                 break;
             case "h3":
-            headSize = "h3"
+            headSize = "h3";
             break;
         }
     });
@@ -49,41 +53,52 @@
         var bgColorSelected = $('input[name="bgColorCombo"]:checked').val();
         switch (bgColorSelected) {
             case "purpleWhite":
-            bgColor = "#51247A"
-            textColor = "#fff"
+            bgColor = "#51247A";
+            textColor = "#fff";
                 break;
             case "greyBlack":
-            bgColor = "#f8f8ff"
-            textColor = "#000"
+            bgColor = "#f8f8ff";
+            textColor = "#000";
                 break;
         }
     });
     imageIconSelect.addEventListener("click", function () {
-        var imageIconSelected = $('input[name="iconSelect"]:checked').val();
+        var imageIconSelected = $('input[name="imageIcon"]:checked').val();
         switch (imageIconSelected) {
             case "1":
-                imgURL="/static/activities-black.jpeg"
+                imgURL="/static/activities-black.jpeg";
                 break;                
             case "2":
-                imgURL="/static/book-black.jpeg"
+                imgURL="/static/book-black.jpeg";
                 break;
             case "3":
-                imgURL="/static/explore-black.jpeg"
+                imgURL="/static/explore-black.jpeg";
                 break;
             case "4":
-                imgURL="/static/quiz-black.jpeg"
+                imgURL="/static/quiz-black.jpeg";
                 break;
         }
     });
-        
         var heading1 = "<"+headSize+" style=\"background-image: url('"+imgURL+"'); background-size: 40px; background-position: left center; background-repeat: no-repeat; background-color: "+bgColor+"; border: 8px inset transparent; padding-left: 60px; padding-top: 10px; padding-bottom: 8px; height: 30px; vertical-align: middle;\"><span style=\"color: "+textColor+";\">"+headingText+"</span></"+headSize+">";
-        finalCodeBox.value=heading1
-
+        finalCodeBox.value=heading1;
+  }
         function copyCode(){
         document.getElementById('txtAreaBannerCode').select();
         document.execCommand('copy');
         }
-      }
+  
+    window.addEventListener("load", function(){
+      var imgURL = "img/activities-white.png"
+      var bgColor = "#51247A";
+      var textColor = "#fff";
+      var headingText = "Placeholder Heading";
+      var headSize = "h5";
+      var previewOnLoad = "<"+headSize+" style=\"background-image: url('"+imgURL+"'); background-size: 40px; background-position: left center; background-repeat: no-repeat; background-color: "+bgColor+"; border: 8px inset transparent; padding-left: 60px; padding-top: 10px; padding-bottom: 8px; height: 30px; vertical-align: middle;\"><span style=\"color: "+textColor+";\">"+headingText+"</span></"+headSize+">";
+      //generateCode()
+      var demoDiv = $('#demo')
+      demoDiv.html(previewOnLoad);
+    });
+    
     </script>
   
     <style>
@@ -152,144 +167,127 @@
         </div>
       </div>
     </nav>
-   
 <h2 class="text-center" id="topOfPage">Banners <span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" title="This page contains a custom banner builder for UQ's LearnX platform."><i class="fa fa-question-circle" aria-hidden="true"></i></span></h2>   
-<div class="container-fluid mt-2">   
-<div class="row w-100">
+<div class="container-fluid mt-2">
+  <div class="row w-100">
     <div class="col-lg-6">
-        <div class="row w-100">
+      <div class="row w-100">
         <div class="col-lg-3">
-            <h5 class="font-weight-bold" data-original-title="" title="">Heading<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Type a heading for this banner. 50 character maximum. If you want an icon to display you must also type a heading.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+          <h5 class="font-weight-bold" data-original-title="" title="">Heading<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Type a heading for this banner. 50 character maximum. If you want an icon to display you must also type a heading.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
         </div>
         <div class="col-lg">
-            <textarea maxlength="75" class="rounded p-2 w-100" rows="1" name="bannerHeading" type="text" id="bannerHeading" placeholder="Type your banner heading here" onchange="generateCode()"></textarea>
+          <textarea maxlength="75" class="rounded p-2 w-100" rows="1" name="bannerHeading" type="text" id="bannerHeading" placeholder="Type your banner heading here" onchange="generateCode()"></textarea>
         </div>
-    </div>
-    <hr />
-    <div class="row w-100">
-       <div class="col-lg-3">
-        <h5 class="font-weight-bold" data-original-title="" title="">Heading size<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Choose the size of your heading. Will default to small on entering a heading above">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-       </div> 
-       <div class="col-lg my-auto">
-        <!--<select class="custom-select w-100 border border-dark" id="headSize" name="headSize" size="1" onchange=generateCode()>
-        <option selected value="h5">Small (heading 5)</option>
-        <option value="h4">Medium (heading 4)</option>
-        <option value="h3">Large (heading 3)</option>
-      </select>-->
-      <div class="form-check form-check-inline" id="headSize" onchange="generateCode()">
-        <input class="form-check-input" name="headSize" id="headSizeNone" type="radio" value="noH" checked>
-        <label class="form-check-label" for="headSizeNone">None</label>
       </div>
-      <div class="form-check form-check-inline" id="headSize" onchange="generateCode()">
-        <input class="form-check-input" name="headSize" id="headSize1" type="radio" value="h5">
-        <label class="form-check-label" for="headSize1"><h5 data-original-title="" title="">Small</h5></label>
-      </div>
-      <div class="form-check form-check-inline" id="headSize" onchange="generateCode()">
-      <input class="form-check-input" name="headSize" id="headSize2" type="radio" value="h4">
-      <label class="form-check-label" for="headSize2"><h4>Medium</h4></label>
-      </div>
-      <div class="form-check form-check-inline" id="headSize" onchange="generateCode()">
-      <input class="form-check-input" name="headSize" id="headSize3" type="radio" value="h3">
-      <label class="form-check-label" for="headSize3"><h3>Large</h3></label>
-    </div>
-  </div>
-    </div>
-    <div class="row w-100">
+      <hr />
+      <div class="row w-100">
         <div class="col-lg-3">
-         <h5 class="font-weight-bold" data-original-title="" title="">Banner background colour/font colour<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Choose the size of your heading. Will default to small on entering a heading above">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-        </div> 
-        <div class="col-lg my-auto">
-         <!--<select class="custom-select w-100 border border-dark" id="headSize" name="headSize" size="1" onchange=generateCode()>
-         <option selected value="h5">Small (heading 5)</option>
-         <option value="h4">Medium (heading 4)</option>
-         <option value="h3">Large (heading 3)</option>
-       </select>-->
-       <div class="form-check form-check-inline" id="bgColorCombo1" onchange="generateCode()">
-         <input class="form-check-input" name="bgColorCombo" id="bgColorCombo1" type="radio" value="purpleWhite" checked>
-         <label class="form-check-label" for="bgColorCombo" style="background:#51247a;color:#fff; border-radius:5px;padding:5px;">Purple | White</label>
-       </div>
-       <div class="form-check form-check-inline" id="bgColorCombo1" onchange="generateCode()">
-       <input class="form-check-input" name="bgColorCombo" id="bgColorCombo2" type="radio" value="greyBlack">
-       <label class="form-check-label" for="bgColorCombo2" style="background:#f8f8ff;color:#000;padding:5px; border-radius:5px;">Grey | Black</label>
-       </div>
-       <!--<div class="form-check form-check-inline" id="bgColorCombo3" onchange="generateCode()">
-       <input class="form-check-input" name="bgColorCombo" id="bgColorCombo3" type="radio" value="">
-       <label class="form-check-label" for="bgColorCombo3">Large</label>
-     </div>-->
-   </div>
-     </div>
-     <div class="row w-100">
-        <div class="col-lg-3">
-         <h5 class="font-weight-bold" data-original-title="" title="">Icon/Image<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Choose the size of your heading. Will default to small on entering a heading above">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-        </div> 
-        <div class="col-lg my-auto">
-         <!--<select class="custom-select w-100 border border-dark" id="headSize" name="headSize" size="1" onchange=generateCode()>
-         <option selected value="h5">Small (heading 5)</option>
-         <option value="h4">Medium (heading 4)</option>
-         <option value="h3">Large (heading 3)</option>
-       </select>-->
-       <div class="row w-100">
-       <div class="form-check form-check-inline col-lg" id="imgicon1" onchange="generateCode()">
-         <input class="form-check-input" name="imageIcon" id="imageIcon1" type="radio" value="1" checked>
-         <label class="form-check-label" for="imageIcon1"><img class="img-fluid" src="img/activities-black.jpeg"></label>
-       </div>
-       <div class="form-check form-check-inline col-lg" id="imgicon2" onchange="generateCode()">
-       <input class="form-check-input" name="imageIcon" id="imageIcon2" type="radio" value="2">
-       <label class="form-check-label" for="imageIcon2"><img class="img-fluid" src="img/book-black.png"></label>
-       </div>
-       <div class="form-check form-check-inline col-lg" id="imgicon3" onchange="generateCode()">
-        <input class="form-check-input" name="imageIcon" id="imageIcon3" type="radio" value="3">
-        <label class="form-check-label" for="imageIcon3"><img class="img-fluid" src="img/explore-black.jpeg"></label>
+          <h5 class="font-weight-bold" data-original-title="" title="">Heading size<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Choose the size of your heading. Will default to small on entering a heading above">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
         </div>
-        <div class="form-check form-check-inline col-lg" id="imgicon4" onchange="generateCode()">
-            <input class="form-check-input" name="imageIcon" id="imageIcon4" type="radio" value="4">
-            <label class="form-check-label" for="imageIcon4"><img class="img-fluid" src="img/quiz-black.jpeg"></label>
+        <div class="col-lg my-auto">
+          <div id="headSize">
+           <!-- <div class="form-check form-check-inline" onchange="generateCode()">
+              <input class="form-check-input" name="headSize" id="headSizeNone" type="radio" value="noH" checked>
+              <label class="form-check-label" for="headSizeNone">None</label>
+            </div>-->
+            <div class="form-check form-check-inline" onchange="generateCode()">
+              <input class="form-check-input" name="headSize" id="headSize1" type="radio" value="h5">
+              <label class="form-check-label" for="headSize1"><h5 data-original-title="" title="">Small</h5></label>
             </div>
-        </div>
-   </div>
-     </div>
-    </div>
-    <div class="col-lg-6">
-        <div class="sticky-top" style="top:100px;">
-          <div class="row w-100">
-            <div class="col-lg-2">
-            <h5 class="font-weight-bold" data-original-title="" title="">Preview</h5>
-            <div class="text-center mb-2 previewButton"> 
-            <button type="button" class="btn btn-outline-dark" style="padding: .5rem .7rem;" id="togglePreviewFS" data-toggle="tooltip" data-placement="top" data-trigger="hover focus" title="" data-original-title="Click to expand the preview to fullscreen. Click again or press Escape to return here to the editing screen."><i class="fa fa-fw fa-expand" aria-hidden="true"></i></button>
-             </div>
-          </div>
-            <div class="col-lg bg-white" id="previewFS">
-            <div id="demo">
+            <div class="form-check form-check-inline" onchange="generateCode()">
+              <input class="form-check-input" name="headSize" id="headSize2" type="radio" value="h4">
+              <label class="form-check-label" for="headSize2"><h4>Medium</h4></label>
+            </div>
+            <div class="form-check form-check-inline" onchange="generateCode()">
+              <input class="form-check-input" name="headSize" id="headSize3" type="radio" value="h3">
+              <label class="form-check-label" for="headSize3"><h3>Large</h3></label>
             </div>
           </div>
-       <hr>
-        <h5 class="font-weight-bold" data-original-title="" title="">Copy code<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Click the copy code button below once you have finished building your video element, ready to paste into Moodle.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>  
-          <textarea readonly="" class="rounded p-2 w-100 mt-2" id="txtAreaBannerCode" cols="70" rows="6" name="Result" placeholder="Code for your element will appear here"></textarea>  
-               <input data-toggle="tooltip" data-placement="bottom" data-trigger="click" title="" type="button" class="btn btn-success btn-block btn-lg my-2" id="copyCodeBtn" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()" data-original-title="Your code has been copied">
         </div>
+      </div>
+      <div class="row w-100">
+        <div class="col-lg-3">
+          <h5 class="font-weight-bold" data-original-title="" title="">Banner background colour/font colour<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Choose the size of your heading. Will default to small on entering a heading above">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+        </div>
+        <div class="col-lg my-auto">
+          <div id="bgColorCombo">
+            <div class="form-check form-check-inline" onchange="generateCode()">
+              <input class="form-check-input" name="bgColorCombo" id="bgColorCombo1" type="radio" value="purpleWhite" checked>
+              <label class="form-check-label" for="bgColorCombo" style="background:#51247a;color:#fff; border-radius:5px;padding:5px;">Purple | White</label>
+            </div>
+            <div class="form-check form-check-inline" onchange="generateCode()">
+              <input class="form-check-input" name="bgColorCombo" id="bgColorCombo2" type="radio" value="greyBlack">
+              <label class="form-check-label" for="bgColorCombo2" style="background:#f8f8ff;color:#000;padding:5px; border-radius:5px;">Grey | Black</label>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="row w-100">
+          <div class="col-lg-3">
+            <h5 class="font-weight-bold" data-original-title="" title="">Icon/Image<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Choose the size of your heading. Will default to small on entering a heading above">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+          </div>
+          <div class="col-lg my-auto">
+            <div class="row w-100" id="imageIcon">
+              <div class="form-check form-check-inline col-lg" onchange="generateCode()">
+                <input class="form-check-input" name="imageIcon" id="imageIcon1" type="radio" value="1" checked>
+                <label class="form-check-label" for="imageIcon1"><img class="img-fluid" src="img/activities-black.jpeg"></label>
               </div>
-    </div>
-</div>
+              <div class="form-check form-check-inline col-lg" onchange="generateCode()">
+                <input class="form-check-input" name="imageIcon" id="imageIcon2" type="radio" value="2">
+                <label class="form-check-label" for="imageIcon2"><img class="img-fluid" src="img/book-black.png"></label>
+              </div>
+              <div class="form-check form-check-inline col-lg" onchange="generateCode()">
+                <input class="form-check-input" name="imageIcon" id="imageIcon3" type="radio" value="3">
+                <label class="form-check-label" for="imageIcon3"><img class="img-fluid" src="img/explore-black.jpeg"></label>
+              </div>
+              <div class="form-check form-check-inline col-lg" onchange="generateCode()">
+                <input class="form-check-input" name="imageIcon" id="imageIcon4" type="radio" value="4">
+                <label class="form-check-label" for="imageIcon4"><img class="img-fluid" src="img/quiz-black.jpeg"></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="col-lg-6">
+          <div class="sticky-top" style="top:100px;">
+            <div class="row w-100">
+              <div class="col-lg-2">
+                <h5 class="font-weight-bold" data-original-title="" title="">Preview</h5>
+                <div class="text-center mb-2 previewButton">
+                  <button type="button" class="btn btn-outline-dark" style="padding: .5rem .7rem;" id="togglePreviewFS" data-toggle="tooltip" data-placement="top" data-trigger="hover focus" title="" data-original-title="Click to expand the preview to fullscreen. Click again or press Escape to return here to the editing screen."><i class="fa fa-fw fa-expand" aria-hidden="true"></i></button>
+                </div>
+              </div>
+              <div class="col-lg bg-white" id="previewFS">
+                <div id="demo">
+
+                </div>
+              </div>
+              <hr>
+              <h5 class="font-weight-bold" data-original-title="" title="">Copy code<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Click the copy code button below once you have finished building your video element, ready to paste into Moodle.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+              <textarea readonly="" class="rounded p-2 w-100 mt-2" id="txtAreaBannerCode" cols="70" rows="6" name="Result" placeholder="Code for your element will appear here"></textarea>
+              <input data-toggle="tooltip" data-placement="bottom" data-trigger="click" title="" type="button" class="btn btn-success btn-block btn-lg my-2" id="copyCodeBtn" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()" data-original-title="Your code has been copied">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <footer class="footer fixed-bottom">
-    <ul>
+      <ul>
         <li>© The University of Queensland</li>
         <li><abbr title="Australian Business Number">ABN</abbr>: 63 942 912 684</li>
         <li><abbr title="Commonwealth Register of Institutions and Courses for Overseas Students">CRICOS</abbr>&nbsp;Provider No: <a href="https://www.uq.edu.au/about/cricos-link" rel="external" data-gtm-label="CRICOS 00025B">00025B</a></li>
-    </ul>
-</footer>
-    
+      </ul>
+    </footer>    
     <!--Bootstrap JS + Popper for tooltips and popovers-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script type="text/javascript">
-      $(function() {
-    /*Initialise all tooltips*/
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    $(function() {
+      /*Initialise all tooltips*/
+      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
-        })
+      })
     });
     </script>
-  </body>
-</html>
-
+    </body>
+    </html>
