@@ -13,13 +13,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/5db3c94720.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
-      function generateCode(){
       var finalCodeBox = document.getElementById('txtAreaBannerCode')
-        // var headingText = "";
-        // var imgURL = ""
-        // var headSize = "";
-        // var bgColor = "" 
-        // var textColor = "";
+      var imgURL="/static/activities-white.png";
+      var previewURL="img/activities-white.png";
+      var bgColor = "#51247A";
+      var textColor = "#fff"
+      function generateCode(){
+        var finalCodeBox = document.getElementById('txtAreaBannerCode')
         var bgColorComboSelect = document.getElementById('bgColorCombo');
         var bannerHeadingText = document.getElementById('bannerHeading');
         var headSizeSelect = document.getElementById('headSize');
@@ -28,59 +28,100 @@
         var bgColorSelected = $('input[name="bgColorCombo"]:checked').val();
         var imageIconSelected = $('input[name="imageIcon"]:checked').val();
         var headingText= bannerHeadingText.value
-        bannerHeadingText.addEventListener("input", function getHeadingText() {
-            headingText= bannerHeadingText.value
-        });
-     
-        headSizeSelect.addEventListener("click", function () {
-        var headSizeSelected = $('input[name="headSize"]:checked').val();
-        switch (headSizeSelected) {
-            /*case "noH":
-            headSize = "p";
-                break;*/
-            case "h5":
-            headSize = "h5";
-                break;
-            case "h4":
-            headSize = "h4";
-                break;
-            case "h3":
-            headSize = "h3";
-            break;
+        /*if (headSizeSelected != ''){
+          var headSizeSelected = $('input[name="headSize"]:checked').val();
         }
-    });
-    bgColorComboSelect.addEventListener("click", function () {;
-        var bgColorSelected = $('input[name="bgColorCombo"]:checked').val();
+        else {
+          var headSize = 'h5';
+        }*/
+
+        if (headingText != ''){
+          var headingText= bannerHeadingText.value
+        }
+        else {
+          var headingText = "Placeholder Heading";
+        }
+        
+        bannerHeadingText.addEventListener("input", function(){
+          getHeadingText();
+          headSizeChecked();
+          checkIconsAndBG();
+        })
+        headSizeSelect.addEventListener("click", function(){
+          headSizeChecked();
+          getHeadingText();
+          checkIconsAndBG();
+        }) 
+        $('#bgColorCombo, #imageIcon').on("click", function() {
+          checkIconsAndBG();
+          headSizeChecked();
+          getHeadingText();
+        });
+        function getHeadingText() {
+        var headingText = bannerHeadingText.value
+        }       
+        function headSizeChecked() {
+        var headSizeSelected = $('input[name="headSize"]:checked').val();
+       }
+   
+      function checkIconsAndBG(){
+      var imageIconSelected = $('input[name="imageIcon"]:checked').val();
+      var bgColorSelected = $('input[name="bgColorCombo"]:checked').val();
         switch (bgColorSelected) {
             case "purpleWhite":
             bgColor = "#51247A";
             textColor = "#fff";
+            switch (imageIconSelected) {
+            case "1":
+                imgURL="/static/activities-white.png";
+                previewURL="img/activities-white.png";
+                break;                
+            case "2":
+                imgURL="/static/book-white.jpeg";
+                previewURL="img/book-white.jpeg";
+                break;
+            case "3":
+                imgURL="/static/explore-white.jpeg";
+                previewURL="img/explore-white.jpeg";
+                break;
+            case "4":
+                imgURL="/static/quiz-white.jpeg";
+                previewURL="img/quiz-white.jpeg";
+                break;
+        }
                 break;
             case "greyBlack":
             bgColor = "#f8f8ff";
             textColor = "#000";
-                break;
-        }
-    });
-    imageIconSelect.addEventListener("click", function () {
-        var imageIconSelected = $('input[name="imageIcon"]:checked').val();
-        switch (imageIconSelected) {
+            switch (imageIconSelected) {
             case "1":
-                imgURL="/static/activities-black.jpeg";
+                imgURL="/static/activities-black.png";
+                previewURL="img/activities-black.png";
                 break;                
             case "2":
-                imgURL="/static/book-black.jpeg";
+                imgURL="/static/book-black.png";
+                previewURL="img/book-black.png";
                 break;
             case "3":
                 imgURL="/static/explore-black.jpeg";
+                previewURL="img/explore-black.jpeg";
                 break;
             case "4":
                 imgURL="/static/quiz-black.jpeg";
+                previewURL="img/quiz-black.jpeg";
                 break;
         }
-    });
-        var heading1 = "<"+headSize+" style=\"background-image: url('"+imgURL+"'); background-size: 40px; background-position: left center; background-repeat: no-repeat; background-color: "+bgColor+"; border: 8px inset transparent; padding-left: 60px; padding-top: 10px; padding-bottom: 8px; height: 30px; vertical-align: middle;\"><span style=\"color: "+textColor+";\">"+headingText+"</span></"+headSize+">";
+                break;
+        }
+       
+      }
+
+  
+        var heading1 = "<"+headSizeSelected+" style=\"background-image: url('"+imgURL+"'); background-size: 40px; background-position: left center; background-repeat: no-repeat; background-color: "+bgColor+"; border: 8px inset transparent; padding-left: 60px; padding-top: 10px; padding-bottom: 8px; height: 30px; vertical-align: middle;\"><span style=\"color: "+textColor+";\">"+headingText+"</span></"+headSizeSelected+">";
+        var preview1 = "<"+headSizeSelected+" style=\"background-image: url('"+previewURL+"'); background-size: 40px; background-position: left center; background-repeat: no-repeat; background-color: "+bgColor+"; border: 8px inset transparent; padding-left: 60px; padding-top: 10px; padding-bottom: 8px; vertical-align: middle;\"><span style=\"color: "+textColor+";\">"+headingText+"</span></"+headSizeSelected+">";
         finalCodeBox.value=heading1;
+        var demoDiv = $('#demo');
+        demoDiv.html(preview1);
   }
         function copyCode(){
         document.getElementById('txtAreaBannerCode').select();
@@ -88,15 +129,18 @@
         }
   
     window.addEventListener("load", function(){
+      var finalCodeBox = document.getElementById('txtAreaBannerCode')
       var imgURL = "img/activities-white.png"
       var bgColor = "#51247A";
       var textColor = "#fff";
       var headingText = "Placeholder Heading";
       var headSize = "h5";
-      var previewOnLoad = "<"+headSize+" style=\"background-image: url('"+imgURL+"'); background-size: 40px; background-position: left center; background-repeat: no-repeat; background-color: "+bgColor+"; border: 8px inset transparent; padding-left: 60px; padding-top: 10px; padding-bottom: 8px; height: 30px; vertical-align: middle;\"><span style=\"color: "+textColor+";\">"+headingText+"</span></"+headSize+">";
+      var previewOnLoad = "<"+headSize+" style=\"background-image: url('"+imgURL+"'); background-size: 40px; background-position: left center; background-repeat: no-repeat; background-color: "+bgColor+"; border: 8px inset transparent; padding-left: 60px; padding-top: 10px; padding-bottom: 8px; vertical-align: middle;\"><span style=\"color: "+textColor+";\">"+headingText+"</span></"+headSize+">";
       //generateCode()
       var demoDiv = $('#demo')
       demoDiv.html(previewOnLoad);
+     
+      finalCodeBox.value=previewOnLoad;
     });
     
     </script>
@@ -127,7 +171,7 @@
         }
     </style>
   </head>
-  <body>
+  <body onchange="generateCode()">
     <div class="page-header">
       <div class="row w-100">
         <div class="col-4">
@@ -190,17 +234,21 @@
               <input class="form-check-input" name="headSize" id="headSizeNone" type="radio" value="noH" checked>
               <label class="form-check-label" for="headSizeNone">None</label>
             </div>-->
-            <div class="form-check form-check-inline" onchange="generateCode()">
-              <input class="form-check-input" name="headSize" id="headSize1" type="radio" value="h5">
-              <label class="form-check-label" for="headSize1"><h5 data-original-title="" title="">Small</h5></label>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" name="headSize" id="headSize1" type="radio" value="h5" onchange="generateCode()" checked>
+              <label class="form-check-label" for="headSize1"><h5 data-original-title="" title="">Small (h5)</h5></label>
             </div>
-            <div class="form-check form-check-inline" onchange="generateCode()">
-              <input class="form-check-input" name="headSize" id="headSize2" type="radio" value="h4">
-              <label class="form-check-label" for="headSize2"><h4>Medium</h4></label>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" name="headSize" id="headSize2" type="radio" value="h4"  onchange="generateCode()">
+              <label class="form-check-label" for="headSize2"><h4>Medium (h4)</h4></label>
             </div>
-            <div class="form-check form-check-inline" onchange="generateCode()">
-              <input class="form-check-input" name="headSize" id="headSize3" type="radio" value="h3">
-              <label class="form-check-label" for="headSize3"><h3>Large</h3></label>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" name="headSize" id="headSize3" type="radio" value="h3"  onchange="generateCode()">
+              <label class="form-check-label" for="headSize3"><h3>Large (h3)</h3></label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" name="headSize" id="headSize4" type="radio" value="h2"  onchange="generateCode()">
+              <label class="form-check-label" for="headSize4"><h2>X-Large (h2)</h2></label>
             </div>
           </div>
         </div>
@@ -211,12 +259,12 @@
         </div>
         <div class="col-lg my-auto">
           <div id="bgColorCombo">
-            <div class="form-check form-check-inline" onchange="generateCode()">
-              <input class="form-check-input" name="bgColorCombo" id="bgColorCombo1" type="radio" value="purpleWhite" checked>
-              <label class="form-check-label" for="bgColorCombo" style="background:#51247a;color:#fff; border-radius:5px;padding:5px;">Purple | White</label>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" name="bgColorCombo" id="bgColorCombo1" type="radio" value="purpleWhite"  onchange="generateCode()" checked>
+              <label class="form-check-label" for="bgColorCombo1" style="background:#51247a;color:#fff; border-radius:5px;padding:5px;">Purple | White</label>
             </div>
-            <div class="form-check form-check-inline" onchange="generateCode()">
-              <input class="form-check-input" name="bgColorCombo" id="bgColorCombo2" type="radio" value="greyBlack">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" name="bgColorCombo" id="bgColorCombo2" type="radio" value="greyBlack"  onchange="generateCode()">
               <label class="form-check-label" for="bgColorCombo2" style="background:#f8f8ff;color:#000;padding:5px; border-radius:5px;">Grey | Black</label>
             </div>
           </div>
@@ -229,19 +277,19 @@
           <div class="col-lg my-auto">
             <div class="row w-100" id="imageIcon">
               <div class="form-check form-check-inline col-lg" onchange="generateCode()">
-                <input class="form-check-input" name="imageIcon" id="imageIcon1" type="radio" value="1" checked>
-                <label class="form-check-label" for="imageIcon1"><img class="img-fluid" src="img/activities-black.jpeg"></label>
+                <input class="form-check-input" name="imageIcon" id="imageIcon1" type="radio" value="1"  onchange="generateCode()" checked>
+                <label class="form-check-label" for="imageIcon1"><img class="img-fluid" src="img/activities-black.png"></label>
               </div>
               <div class="form-check form-check-inline col-lg" onchange="generateCode()">
-                <input class="form-check-input" name="imageIcon" id="imageIcon2" type="radio" value="2">
+                <input class="form-check-input" name="imageIcon" id="imageIcon2" type="radio" value="2"  onchange="generateCode()">
                 <label class="form-check-label" for="imageIcon2"><img class="img-fluid" src="img/book-black.png"></label>
               </div>
               <div class="form-check form-check-inline col-lg" onchange="generateCode()">
-                <input class="form-check-input" name="imageIcon" id="imageIcon3" type="radio" value="3">
+                <input class="form-check-input" name="imageIcon" id="imageIcon3" type="radio" value="3"  onchange="generateCode()">
                 <label class="form-check-label" for="imageIcon3"><img class="img-fluid" src="img/explore-black.jpeg"></label>
               </div>
               <div class="form-check form-check-inline col-lg" onchange="generateCode()">
-                <input class="form-check-input" name="imageIcon" id="imageIcon4" type="radio" value="4">
+                <input class="form-check-input" name="imageIcon" id="imageIcon4" type="radio" value="4"  onchange="generateCode()">
                 <label class="form-check-label" for="imageIcon4"><img class="img-fluid" src="img/quiz-black.jpeg"></label>
               </div>
             </div>
