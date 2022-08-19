@@ -15,7 +15,7 @@ $(function() {
         btn.toggleClass('btn-success btn-primary');
         btn.html('<span class="fa fa-check text-white" aria-hidden="true"></span> Done! Code snippet has been copied to clipboard');
         window.setTimeout(function() {
-            btn.html('<span class="fa fa-clipboard" aria-hidden="true"></span> Copy code for above element');
+            btn.html('<span class="fa fa-clipboard text-white" aria-hidden="true"></span> Copy code for above element');
             // btn.removeClass('btn-danger');
             btn.toggleClass('btn-success btn-primary');
         }, 3000);
