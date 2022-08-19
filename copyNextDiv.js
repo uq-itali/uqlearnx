@@ -13,7 +13,7 @@ $(function() {
         fallbackCopyTextToClipboard(snippet);
         // btn.addClass('btn-danger');
         btn.toggleClass('btn-success btn-primary');
-        btn.html('<span class="fa fa-check text-white" aria-hidden="true"></span> Done! Code snippet has been copied to clipboard');
+        btn.html('<span class="fa fa-check text-white" aria-hidden="true"></span><span class="text-white" style="text-decoration: none !important;">Done! Code snippet has been copied to clipboard</span>');
         window.setTimeout(function() {
             btn.html('<span class="fa fa-clipboard text-white" aria-hidden="true"></span> Copy code for above element');
             // btn.removeClass('btn-danger');
