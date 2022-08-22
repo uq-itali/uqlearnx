@@ -17,7 +17,7 @@ $(function() {
                     btn.html('<span class="fa fa-clipboard text-white" aria-hidden="true"></span> Copy code for above element');
                     btn.toggleClass('btn-success btn-primary');
                 }, 3000);
-                /* Act on the event */
+                /* Act on the event 
             });*/
     });
 
