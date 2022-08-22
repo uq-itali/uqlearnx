@@ -4,7 +4,7 @@ $(function() {
             var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
                 return new bootstrap.Tooltip(tooltipTriggerEl)
             })
-            /*Copy code function*/
+            /*Copy code function
             $('.copythis').after('<button type="button" class="btn btn-primary btn-block w-75 mx-auto copybutton bg-img-none mt-2 d-block"><span class="fa fa-clipboard text-white" aria-hidden="true"></span> Copy code for above element</button>');
             $('.copybutton').on('click', function(event) {
                 var btn = $(this);
@@ -18,23 +18,21 @@ $(function() {
                     btn.toggleClass('btn-success btn-primary');
                 }, 3000);
                 /* Act on the event */
-            });
+            });*/
     });
 
 function copyButton(){
             /*Copy code function*/
-            $('.copybutton').on('click', function() {
-                var btn = $(this);
+            /*$('.copybutton').on('click', function() {*/
+                var btn = $('.copybutton');
                 var snippet = btn.prev().html();
                 console.log("@GB: snippet = ", snippet);
                 fallbackCopyTextToClipboard(snippet);
-                // btn.addClass('btn-danger');
                 btn.toggleClass('btn-primary btn-success');
                 btn.html('<span class="fa fa-check text-white" aria-hidden="true"></span>&nbsp;<span class="text-white text-decoration-none">Done! Code snippet has been copied to clipboard</span>');
                 window.setTimeout(function() {
                     btn.html('<span class="fa fa-clipboard text-white" aria-hidden="true"></span> Copy code for above element');
-                    // btn.removeClass('btn-danger');
-                    btn.toggleClass('btn-success btn-primary');
+                    btn.toggleClass('btn-primary btn-success');
                 }, 3000);
                 /* Act on the event */
             });
