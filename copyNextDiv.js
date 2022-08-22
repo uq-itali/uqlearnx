@@ -34,8 +34,8 @@ function copyButton(){
                     btn.html('<span class="fa fa-clipboard text-white" aria-hidden="true"></span> Copy code for above element');
                     btn.toggleClass('btn-primary btn-success');
                 }, 3000);
-                /* Act on the event */
-            });
+                /* Act on the event 
+            });*/
         };
 
 /*Traditional version of copy to clipboard that works on edX*/
