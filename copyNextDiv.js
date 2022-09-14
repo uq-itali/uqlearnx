@@ -28,7 +28,7 @@ function copyButton(){
                 var snippet = btn.prev().html();
                 console.log("@GB: snippet = ", snippet);
                 fallbackCopyTextToClipboard(snippet);
-                btn.toggleClass('btn-primary btn-success');
+                /*btn.toggleClass('btn-primary btn-success');*/
                 btn.html('<span class="fa fa-check text-white" aria-hidden="true"></span>&nbsp;<span class="text-white text-decoration-none">Done! Code snippet has been copied to clipboard</span>');
                 window.setTimeout(function() {
                     btn.html('<span class="fa fa-clipboard text-white" aria-hidden="true"></span> Copy code for above element');
