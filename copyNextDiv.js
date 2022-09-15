@@ -1,9 +1,9 @@
 $(function() {
-            /*Initialise all tooltips*/
+            /*Initialise all tooltips
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
             var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
                 return new bootstrap.Tooltip(tooltipTriggerEl)
-            })
+            })*/
             /*Copy code function
             $('.copythis').after('<button type="button" class="btn btn-primary btn-block w-75 mx-auto copybutton bg-img-none mt-2 d-block"><span class="fa fa-clipboard text-white" aria-hidden="true"></span> Copy code for above element</button>');
             $('.copybutton').on('click', function(event) {
@@ -40,7 +40,7 @@ function copyButton(){
 
 /*Traditional version of copy to clipboard that works on edX*/
 function fallbackCopyTextToClipboard(text) {
-    var btn = $('.copybutton');
+    /*var btn = $('.copybutton');*/
     var textArea = document.createElement("textarea");
     textArea.value = text;
     document.body.appendChild(textArea);
@@ -53,8 +53,7 @@ function fallbackCopyTextToClipboard(text) {
     } catch (err) {
         console.error('Fallback: Oops, unable to copy', err);
     }
-    document.body.removeChild(textArea);
-        
+/*    document.body.removeChild(textArea);*/
 }
 /*Newer version of copy to clipboard which doesn't currently work on edX. Review in the future*/
 function copyTextToClipboard(text) {
