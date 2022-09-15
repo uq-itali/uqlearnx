@@ -35,7 +35,7 @@ function copyTextToClipboard(text) {
     }, function(err) {
     });
 }
-*/$(function() {
+/*$(function() {
             Initialise all tooltips
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
             var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
