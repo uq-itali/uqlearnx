@@ -1,5 +1,5 @@
 function copyButton(){
-            /*Copy code function*/
+            /*Copy code function. Button in the HTML has an onclick trigger that runs this. Only way I got it to work in LearnX.*/
                 var btn = $('.copybutton');
                 var snippet = btn.prev().html();
                 console.log("@GB: snippet = ", snippet);
@@ -10,7 +10,7 @@ function copyButton(){
                 }, 3000);
         };
 
-/*Traditional version of copy to clipboard that works on edX*/
+/*Traditional version of copy to clipboard that works on LearnX*/
 function fallbackCopyTextToClipboard(text) {
     var textArea = document.createElement("textarea");
     textArea.value = text;
@@ -25,7 +25,7 @@ function fallbackCopyTextToClipboard(text) {
     }
  document.body.removeChild(textArea);
 }
-/*Newer version of copy to clipboard which doesn't currently work on edX. Review in the future*/
+/*Newer version of copy to clipboard which doesn't currently work on LearnX. Review in the future*/
 function copyTextToClipboard(text) {
     if (!navigator.clipboard) {
         fallbackCopyTextToClipboard(text);
