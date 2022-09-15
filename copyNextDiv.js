@@ -23,7 +23,6 @@ $(function() {
 
 function copyButton(){
             /*Copy code function*/
-            /*$('.copybutton').on('click', function() {*/
                 var btn = $('.copybutton');
                 var snippet = btn.prev().html();
                 console.log("@GB: snippet = ", snippet);
@@ -34,8 +33,7 @@ function copyButton(){
                     btn.html('<span class="fa fa-clipboard" aria-hidden="true"></span> Copy code for above element');
                     /*btn.toggleClass('btn-primary btn-success');*/
                 }, 3000);
-                /* Act on the event 
-            });*/
+            var snippet = ""
         };
 
 /*Traditional version of copy to clipboard that works on edX*/
