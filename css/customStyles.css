@@ -6,7 +6,7 @@ $custom-colors: (
 // Merge the maps
 $theme-colors: map-merge($theme-colors, $custom-colors);
 
-.alert:not(.pattern-library-shim){
+.alert{
 color: var(--bs-alert-color) !important;
 margin-bottom: var(--bs-alert-margin-bottom) !important;  
 }
@@ -25,4 +25,4 @@ content: none !important;
 .tooltip{
 border-style: none !important;
 }
-/*@import "bootstrap";*/
+@import "bootstrap";
