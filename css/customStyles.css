@@ -43,7 +43,7 @@ background-image: none !important;
 $theme-colors: (
   purple: $purple
 );
-.xmodule_display.xmodule_HtmlBlock .table th {
+.xmodule_display.xmodule_HtmlBlock table.table th {
  background: var(--bs-table-bg);
 }
 div.accordion h2{
