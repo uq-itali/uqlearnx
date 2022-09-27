@@ -1,4 +1,4 @@
-.bg-img-none{
+/*.bg-img-none{
 background-image: none !important;
 }
 .btn, .btn:hover, btn:focus, btn:active{
@@ -39,6 +39,9 @@ background-image: none !important;
   color: #000 !important;
   background: #f9fafb !important;
 
+}*/
+:root {
+ --bs-purple: #51247A;
 }
 div.accordion h2{
   margin: 0px !important;
