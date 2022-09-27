@@ -41,10 +41,13 @@ background-image: none !important;
 
 }*/
 $theme-colors: (
-  purple: $purple
+  purple: $purple;
 );
-.xmodule_display.xmodule_HtmlBlock table.table th {
- background: var(--bs-table-bg);
+table.table {
+ background: var(--bs-table-bg) !important;
+}
+.xmodule_display.xmodule_HtmlBlock th{
+ background: var(--bs-table-bg) !important
 }
 div.accordion h2{
   margin: 0px !important;
