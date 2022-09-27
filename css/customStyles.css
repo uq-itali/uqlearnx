@@ -40,8 +40,11 @@ background-image: none !important;
   background: #f9fafb !important;
 
 }*/
+$theme-colors: (
+  purple: $purple
+);
 :root {
- --bs-purple: #51247A;
+ --bs-purple: #51247A !important;
 }
 div.accordion h2{
   margin: 0px !important;
@@ -53,3 +56,4 @@ content: none !important;
 .tooltip{
 border-style: none !important;
 }
+@import "bootstrap";
