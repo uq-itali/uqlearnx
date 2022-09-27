@@ -6,7 +6,7 @@ $custom-colors: (
 // Merge the maps
 $theme-colors: map-merge($theme-colors, $custom-colors);
 
-.alert{
+.alert:not(.pattern-library-shim){
 color: var(--bs-alert-color) !important;
 margin-bottom: var(--bs-alert-margin-bottom) !important;  
 }
