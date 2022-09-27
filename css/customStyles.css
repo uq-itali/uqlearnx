@@ -40,9 +40,14 @@ background-image: none !important;
   background: #f9fafb !important;
 
 }*/
-$theme-colors: (
-  purple: $purple;
+// Create your own map
+$custom-colors: (
+  "uqpurple": #51247A;
 );
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
 table.table {
  background: var(--bs-table-bg) !important;
 }
