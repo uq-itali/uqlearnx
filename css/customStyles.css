@@ -46,12 +46,11 @@ $theme-colors: (
 table.table {
  background: var(--bs-table-bg) !important;
 }
-.xmodule_display.xmodule_HtmlBlock th{
- background: var(--bs-table-bg) !important
+.xmodule_display.xmodule_HtmlBlock .table th{
+ background: var(--bs-table-bg) !important;
 }
 div.accordion h2{
   margin: 0px !important;
-
 }
 .tooltip::after{
 content: none !important;
@@ -59,4 +58,4 @@ content: none !important;
 .tooltip{
 border-style: none !important;
 }
-@import "bootstrap";
+/*@import "bootstrap";*/
