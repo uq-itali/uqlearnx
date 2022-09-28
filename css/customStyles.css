@@ -1,7 +1,7 @@
 :root {
   --uqpurple: #51247A;
   --uqpurplehover: #962A8B;
-  --uqpurplealert: rgba(81, 36, 122, 0.2);
+  --uqpurplealert: {background-color:rgba(81, 36, 122, 0.2);}
 }
 
 .alert:not(.pattern-library-shim){
