@@ -51,9 +51,9 @@ border-style: none !important;
 }
 
 .alert-uq {
-    --bs-alert-color: var(--uqpurple);
-    --bs-alert-bg: {background-color:var(--uqpurplealert);}
-    --bs-alert-border-color: 1px solid var(--uqpurple);
+  background-color: rgba(81,36,122,0.2);
+  border: 1px solid var(--uqpurple);
+  color: var(--uqpurple) !important;
 }
 
 .text-uq {
