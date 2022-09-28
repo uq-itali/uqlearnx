@@ -53,7 +53,7 @@ border-style: none !important;
 .alert-uq {
     --bs-alert-color: var(--uqpurple);
     --bs-alert-bg: var(--uqpurplealert);
-    --bs-alert-border-color: var(--uqpurple);
+    --bs-alert-border-color: 1px solid var(--uqpurple);
 }
 
 .text-uq {
