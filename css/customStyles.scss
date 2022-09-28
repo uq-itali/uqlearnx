@@ -1,6 +1,6 @@
-@import "functions";
-@import "variables";
-@import "mixins";
+@import "/Users/uqtscho3/node_modules/bootstrap/scss/_functions.scss";
+@import "/Users/uqtscho3/node_modules/bootstrap/scss/_variables.scss";
+@import "/Users/uqtscho3/node_modules/bootstrap/scss/_mixins.scss";
 
 $uqpurple: #51247A;
 
@@ -14,4 +14,4 @@ $utilities-colors: map-merge($utilities-colors, $theme-colors-rgb);
 $utilities-text-colors: map-loop($utilities-colors, rgba-css-var, "$key", "text");
 $utilities-bg-colors: map-loop($utilities-colors, rgba-css-var, "$key", "bg");
 
-@import "bootstrap";
+@import "/Users/uqtscho3/node_modules/bootstrap";
