@@ -1,6 +1,7 @@
 languageCode:           "en"
 title:                  "Bootstrap"
 baseURL:                "https://getbootstrap.com"
+theme: minima
 
 security:
   enableInlineShortcodes: true
