@@ -23,7 +23,7 @@ content: none !important;
 border-style: none !important;
 }
 
-.uqpurple, .uqpurple a {
+/*.uqpurple, .uqpurple a {
   color: #fff !important;
   background-color: var(--uqpurple) !important;
   border-color: var(--uqpurple) !important;
@@ -32,4 +32,35 @@ border-style: none !important;
   color: #fff !important;
   background-color: var(--uqpurplehover) !important;
   border-color: var(--uqpurple) !important;
+}*/
+
+.btn-uq {
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--uqpurple);
+  --bs-btn-border-color: var(--uqpurple);
+  --bs-btn-border-radius: .5rem;
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #{shade-color(--uqpurple, 10%)};
+  --bs-btn-hover-border-color: #{shade-color(--uqpurple, 10%)};
+  --bs-btn-focus-shadow-rgb: var(--uqpurple);
+  --bs-btn-active-color: var(--uqpurplehover);
+  --bs-btn-active-bg: #{shade-color(--uqpurple, 20%)};
+  --bs-btn-active-border-color: #{shade-color(--uqpurple, 20%)};
+}
+
+.alert-uq {
+    --bs-alert-color: var(--bs-white);
+    --bs-alert-bg: var(--uqpurplehover);
+    --bs-alert-border-color: var(--uqpurple);
+}
+
+.text-uq {
+  color: var(--uqpurple);
+}
+
+.bg-uq {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--uqpurple),var(--bs-bg-opacity))!important;
+  color: #fff;
 }
