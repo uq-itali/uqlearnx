@@ -1,6 +1,7 @@
 :root {
   --uqpurple: #51247A;
   --uqpurplehover: #962A8B;
+  --uqpurplealert: rgba(81, 36, 122, 0.2);
 }
 
 .alert:not(.pattern-library-shim){
@@ -50,8 +51,8 @@ border-style: none !important;
 }
 
 .alert-uq {
-    --bs-alert-color: var(--bs-white);
-    --bs-alert-bg: var(--uqpurplehover);
+    --bs-alert-color: var(--uqpurple);
+    --bs-alert-bg: var(--uqpurplealert);
     --bs-alert-border-color: var(--uqpurple);
 }
 
