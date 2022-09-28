@@ -1,10 +1,7 @@
-// Create your own map
-$custom-colors: (
-  "uqpurple": #51247A;
-);
-
-// Merge the maps
-$theme-colors: map-merge($theme-colors, $custom-colors);
+:root {
+  --uqpurple: #51247A;
+  --uqpurplehover: #962A8B;
+}
 
 .alert:not(.pattern-library-shim){
 color: var(--bs-alert-color) !important;
@@ -25,4 +22,14 @@ content: none !important;
 .tooltip{
 border-style: none !important;
 }
-@import "bootstrap";
+
+.uqpurple, .uqpurple a {
+  color: #fff !important;
+  background-color: var(--uqpurple) !important;
+  border-color: var(--uqpurple) !important;
+}
+.uqpurple:active, .uqpurple.active, .uqpurple:focus, .uqpurple.focus, .uqpurple:hover, .uqpurple a:hover {
+  color: #fff !important;
+  background-color: var(--uqpurplehover) !important;
+  border-color: var(--uqpurple) !important;
+}
