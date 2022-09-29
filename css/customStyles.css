@@ -37,7 +37,7 @@ border-style: none !important;
 
 .btn-uq {
   --bs-btn-font-weight: 600;
-  --bs-btn-color: var(--bs-white);
+  color: #fff;
   --bs-btn-bg: var(--uqpurple);
   --bs-btn-border-color: var(--uqpurple);
   --bs-btn-border-radius: .5rem;
