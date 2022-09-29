@@ -50,7 +50,7 @@ border-style: none !important;
   --bs-btn-active-border-color: var(--uqpurple);
 }
 
-.alert-uq {
+.alert.alert-uq {
   background-color: rgba(81,36,122,0.2);
   border: 1px solid var(--uqpurple);
   color: var(--uqpurple) !important;
