@@ -5660,6 +5660,7 @@ textarea.form-control-lg {
   font-size: var(--bs-tooltip-font-size);
   word-wrap: break-word;
   opacity: 0;
+  background: transparent;
 }
 .tooltip.show {
   opacity: var(--bs-tooltip-opacity);
