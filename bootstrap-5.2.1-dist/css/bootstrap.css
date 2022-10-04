@@ -102,7 +102,6 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-
 hr {
   margin: 1rem 0;
   color: inherit;
@@ -11000,6 +10999,14 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+
+/*Overwriting existing styles in the platform*/
+.btn-primary:not(:disabled):not(.disabled):focus,.btn-primary:not(:disabled):not(.disabled):active,.btn-primary:not(:disabled):not(.disabled):hover, .btn-secondary:not(:disabled):not(.disabled):focus,.btn-secondary:not(:disabled):not(.disabled):active,.btn-secondary:not(:disabled):not(.disabled):hover,.btn-info:not(:disabled):not(.disabled):focus,.btn-info:not(:disabled):not(.disabled):active,.btn-info:not(:disabled):not(.disabled):hover,.btn-info:not(:disabled):not(.disabled):focus,.btn-info:not(:disabled):not(.disabled):active,.btn-info:not(:disabled):not(.disabled):hover,.btn-danger:not(:disabled):not(.disabled):focus,.btn-danger:not(:disabled):not(.disabled):active,.btn-danger:not(:disabled):not(.disabled):hover,.btn-warning:not(:disabled):not(.disabled):focus,.btn-warning:not(:disabled):not(.disabled):active,.btn-warning:not(:disabled):not(.disabled):hover,.btn-success:not(:disabled):not(.disabled):focus,.btn-success:not(:disabled):not(.disabled):active,.btn-success:not(:disabled):not(.disabled):hover,.btn-dark:not(:disabled):not(.disabled):focus,.btn-dark:not(:disabled):not(.disabled):active,.btn-dark:not(:disabled):not(.disabled):hover,.btn-light:not(:disabled):not(.disabled):focus,.btn-light:not(:disabled):not(.disabled):active,.btn-light:not(:disabled):not(.disabled):hover,.btn-uq:not(:disabled):not(.disabled):focus,.btn-uq:not(:disabled):not(.disabled):active,.btn-uq:not(:disabled):not(.disabled):hover{
+  background: var(--bs-btn-bg) !important;
+}
+.xmodule_display.xmodule_HtmlBlock a:link{
+  color: var(--bs-btn-color);
 }
 
 /*# sourceMappingURL=bootstrap.css.map */
