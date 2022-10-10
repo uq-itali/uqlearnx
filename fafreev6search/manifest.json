@@ -6,6 +6,8 @@
     "author": "Timothy Scholl",
     "action":{
         "default_popup": "index.html",
-        "default_title": "FAv6 free icon search"
+        "default_title": "FAv6 free icon search",
+        "default_icon": "/faflag.png"
+
     }
 }
