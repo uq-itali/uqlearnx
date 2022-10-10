@@ -1,0 +1,11 @@
+{
+    "name": "FontAwesome v6 Free Icon Search",
+    "version": "1.0.0",
+    "description": "Search the FontAwesome v6 free icon library from your browser",
+    "manifest_version": 3,
+    "author": "Timothy Scholl",
+    "action":{
+        "default_popup": "index.html",
+        "default_title": "FAv6 free icon search"
+    }
+}
