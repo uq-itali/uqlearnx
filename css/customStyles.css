@@ -1,16 +1,8 @@
-:root {
-  --uqpurple: #51247A;
-  --uqpurplehover: #962A8B;
-  --uqpurplealert: rgba(81,36,122,0.2);
-}
-
 .alert:not(.pattern-library-shim){
 color: var(--bs-alert-color) !important;
 margin-bottom: var(--bs-alert-margin-bottom) !important;  
 }
-table.table {
- background: var(--bs-table-bg) !important;
-}
+
 .xmodule_display.xmodule_HtmlBlock .table th{
  background: var(--bs-table-bg) !important;
 }
@@ -24,44 +16,16 @@ content: none !important;
 border-style: none !important;
 }
 
-/*.uqpurple, .uqpurple a {
-  color: #fff !important;
-  background-color: var(--uqpurple) !important;
-  border-color: var(--uqpurple) !important;
-}
-.uqpurple:active, .uqpurple.active, .uqpurple:focus, .uqpurple.focus, .uqpurple:hover, .uqpurple a:hover {
-  color: #fff !important;
-  background-color: var(--uqpurplehover) !important;
-  border-color: var(--uqpurple) !important;
-}*/
-
-.btn-uq {
-  --bs-btn-font-weight: 600;
-  color: #fff;
-  --bs-btn-bg: var(--uqpurple);
-  --bs-btn-border-color: var(--uqpurple);
-  --bs-btn-border-radius: .5rem;
-  --bs-btn-hover-color: var(--bs-white);
-  --bs-btn-hover-bg: var(--uqpurplehover);
-  --bs-btn-hover-border-color: var(--uqpurple);
-  --bs-btn-focus-shadow-rgb: var(--uqpurple);
-  --bs-btn-active-color: var(--uqpurplehover);
-  --bs-btn-active-bg: var(--uqpurplehover;
-  --bs-btn-active-border-color: var(--uqpurple);
-}
-
-.alert.alert-uq {
-  background-color: rgba(81,36,122,0.2);
-  border: 1px solid var(--uqpurple);
-  color: var(--uqpurple) !important;
-}
-
-.text-uq {
-  color: var(--uqpurple);
-}
-
-.bg-uq {
-  --bs-bg-opacity: 1;
-  background-color: rgba(var(--uqpurple),var(--bs-bg-opacity))!important;
-  color: #fff;
+.insight-banner-jigsaw{
+background-image: url('/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/activities-white.png');
+background-size: 40px;
+background-position: left center;
+background-repeat: no-repeat;
+background-color: #51247a;
+border: 8px inset transparent;
+padding-left: 60px;
+padding-top: 10px;
+padding-bottom: 8px;
+height: 30px;
+vertical-align: middle;
 }
