@@ -6880,7 +6880,7 @@
   const Default = {
     animation: true,
     autohide: true,
-    delay: 5000
+    delay: 1900
   };
   /**
    * Class definition
