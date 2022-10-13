@@ -5,9 +5,8 @@
     "manifest_version": 3,
     "author": "Timothy Scholl",
     "action":{
-        "default_popup": "index.html",
+        "default_popup": "/fontawesome-6.1.1-free-cheatsheet.html",
         "default_title": "FAv6 free icon search",
         "default_icon": "/faflag.png"
-
     }
 }
