@@ -15,17 +15,72 @@ content: none !important;
 .tooltip{
 border-style: none !important;
 }
-
-.insight-banner-jigsaw{
-background-image: url('/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/activities-white.png');
-background-size: 40px;
-background-position: left center;
-background-repeat: no-repeat;
-background-color: #51247a;
-border: 8px inset transparent;
-padding-left: 60px;
-padding-top: 10px;
-padding-bottom: 8px;
-height: 30px;
-vertical-align: middle;
+.purple-banner{
+  background-size: 40px;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-color: #51247a;
+  border: 8px inset transparent;
+  padding-left: 60px;
+  padding-top: 10px;
+  padding-bottom: 8px;
+  height: 30px;
+  vertical-align: middle;  
+}
+.purple-banner-jigsaw{
+  background-image: url('/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/activities-white.png');
+}
+.purple-banner-checklist-quiz{
+  background-image: url('/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/quiz-white.png');
+}
+.purple-banner-magnifying-glass{
+  background-image: url('/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/explore-white.png');
+}
+.purple-banner-book{
+  background-image: url('/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/book-white.png');
+}   
+.purple-banner-discuss{
+  background-image: url('/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/discuss-white.png');
+} 
+.purple-banner-timer{
+  background-image: url('/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/timer-white.png');
+} 
+.purple-banner-video{
+  background-image: url('/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/video-white.png');
+}
+.purple-banner-thought{
+  background-image: url('/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/think-white.png')
+}
+.purple-banner-pencil{
+  background-image: url('/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/notes-white.png')
+}
+.purple-banner-link{
+  background-image: url('/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/link-white.png')
+}
+.purple-banner-group{
+  background-image: url('/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/group-white.png')
+}
+.purple-banner-podcast{
+  background-image: url('/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/podcast-white.png')
+}
+.purple-banner-arrow-circle{
+  background-image: url('/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/future-white.png')
+}
+.purple-banner-cogs{
+  background-image: url('/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/cogs-white.png')
+}
+.purple-banner-lightbulb{
+  background-image: url('/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/example-white.png')
+}
+.purple-banner-list{
+  background-image: url('/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/summary-white.png')
+}
+.purple-banner-alert-circle{
+  background-image: url('/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/alert-white.png')
+}
+.purple-banner-alert-triangle{
+  background-image: url('/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/important-white.png')
+}
+.purple-banner-globe{
+  background-image: url('/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/world-white.png')
 }
