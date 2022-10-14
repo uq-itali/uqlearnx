@@ -26,6 +26,23 @@ border-style: none !important;
   background-color: #51247a;
   padding: 10px 5px;
 }
+.purple-banner span{
+  color: #fff;
+}
+.grey-banner{
+  background-color: #f8f8ff;
+  padding: 10px 5px; 
+}
+.grey-banner span{
+  color: #000
+}
+.blue-banner{
+  background-color:#3C7B9A;
+  padding: 10px 5px; 
+}
+.blue-banner span{
+  color: #fff;
+}
 .purple-banner-jigsaw{
   background-image: url('/uqlearnx/img/activities-white.png');
 }
@@ -82,16 +99,6 @@ border-style: none !important;
 }
 .purple-banner-globe{
   background-image: url('/uqlearnx/img/world-white.png')
-}
-.purple-banner span{
-  color: #fff;
-}
-.grey-banner{
-  background-color: #f8f8ff;
-  padding: 10px 5px; 
-}
-.grey-banner span{
-  color: #000
 }
 .grey-banner-jigsaw{
   background-image: url('/uqlearnx/img/activities-black.png');
