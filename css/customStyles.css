@@ -16,10 +16,10 @@ content: none !important;
 border-style: none !important;
 }
 .uq-icon{
-  background-size: 25px;
+  background-size: 30px;
   background-position: left center;
   background-repeat: no-repeat;
-  padding-left: 60px;
+  padding-left: 45px;
   margin-left: 5px; 
 }
 .purple-banner{
@@ -86,7 +86,8 @@ border-style: none !important;
   background-image: url('/uqlearnx/img/cogs-white.png')
 }
 .icon-lightbulb-white{
-  background-image: url('/uqlearnx/img/example-white.png')
+  background-image: url('/uqlearnx/img/example-white.png');
+  background-size: 25px;
 }
 .icon-list-white{
   background-image: url('/uqlearnx/img/summary-white.png')
@@ -143,7 +144,8 @@ border-style: none !important;
   background-image: url('/uqlearnx/img/cogs-black.png')
 }
 .icon-lightbulb-black{
-  background-image: url('/uqlearnx/img/example-black.png')
+  background-image: url('/uqlearnx/img/example-black.png');
+  background-size: 25px;
 }
 .icon-list-black{
   background-image: url('/uqlearnx/img/summary-black.png')
