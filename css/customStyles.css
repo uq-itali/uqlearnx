@@ -15,17 +15,15 @@ content: none !important;
 .tooltip{
 border-style: none !important;
 }
-.purple-banner{
+.uq-icon{
   background-size: 40px;
   background-position: left center;
   background-repeat: no-repeat;
-  background-color: #51247a;
   padding-left: 60px; 
-/*  border: 8px inset transparent;
-  padding-top: 10px;
-  padding-bottom: 8px;
-  height: 30px;*/
-  vertical-align: middle;  
+}
+.purple-banner{
+  background-color: #51247a;
+  padding: 10px 5px;
 }
 .purple-banner-jigsaw{
   background-image: url('/uqlearnx/img/activities-white.png');
@@ -88,16 +86,8 @@ border-style: none !important;
   color: #fff;
 }
 .grey-banner{
-  background-size: 40px;
-  background-position: left center;
-  background-repeat: no-repeat;
-  background-color: #f8f8ff;;
-  padding-left: 60px;
-  /*border: 8px inset transparent;
-  padding-top: 10px;
-  padding-bottom: 8px;
-  height: 30px;*/
-  vertical-align: middle;  
+  background-color: #f8f8ff;
+  padding: 10px 5px; 
 }
 .grey-banner span{
   color: #000
