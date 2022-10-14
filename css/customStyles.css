@@ -16,10 +16,11 @@ content: none !important;
 border-style: none !important;
 }
 .uq-icon{
-  background-size: 40px;
+  background-size: 25px;
   background-position: left center;
   background-repeat: no-repeat;
-  padding-left: 60px; 
+  padding-left: 60px;
+  margin-left: 5px; 
 }
 .purple-banner{
   background-color: #51247a;
