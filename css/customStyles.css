@@ -28,61 +28,61 @@ border-style: none !important;
   vertical-align: middle;  
 }
 .purple-banner-jigsaw{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/activities-white.png');
+  background-image: url('https://studio.edge.edx.org/static/activities-white.png');
 }
 .purple-banner-checklist-quiz{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/quiz-white.png');
+  background-image: url('https://studio.edge.edx.org/static/quiz-white.png');
 }
 .purple-banner-magnifying-glass{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/explore-white.png');
+  background-image: url('https://studio.edge.edx.org/static/explore-white.png');
 }
 .purple-banner-book{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/book-white.png');
+  background-image: url('https://studio.edge.edx.org/static/book-white.png');
 }   
 .purple-banner-discuss{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/discuss-white.png');
+  background-image: url('https://studio.edge.edx.org/static/discuss-white.png');
 } 
 .purple-banner-timer{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/timer-white.png');
+  background-image: url('https://studio.edge.edx.org/static/timer-white.png');
 } 
 .purple-banner-video{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/video-white.png');
+  background-image: url('https://studio.edge.edx.org/static/video-white.png');
 }
 .purple-banner-thought{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/think-white.png')
+  background-image: url('https://studio.edge.edx.org/static/think-white.png')
 }
 .purple-banner-pencil{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/notes-white.png')
+  background-image: url('https://studio.edge.edx.org/static/notes-white.png')
 }
 .purple-banner-link{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/link-white.png')
+  background-image: url('https://studio.edge.edx.org/static/link-white.png')
 }
 .purple-banner-group{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/group-white.png')
+  background-image: url('https://studio.edge.edx.org/static/group-white.png')
 }
 .purple-banner-podcast{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/podcast-white.png')
+  background-image: url('https://studio.edge.edx.org/static/podcast-white.png')
 }
 .purple-banner-arrow-circle{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/future-white.png')
+  background-image: url('https://studio.edge.edx.org/static/future-white.png')
 }
 .purple-banner-cogs{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/cogs-white.png')
+  background-image: url('https://studio.edge.edx.org/static/cogs-white.png')
 }
 .purple-banner-lightbulb{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/example-white.png')
+  background-image: url('https://studio.edge.edx.org/static/example-white.png')
 }
 .purple-banner-list{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/summary-white.png')
+  background-image: url('https://studio.edge.edx.org/static/summary-white.png')
 }
 .purple-banner-alert-circle{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/alert-white.png')
+  background-image: url('https://studio.edge.edx.org/static/alert-white.png')
 }
 .purple-banner-alert-triangle{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/important-white.png')
+  background-image: url('https://studio.edge.edx.org/static/important-white.png')
 }
 .purple-banner-globe{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/world-white.png')
+  background-image: url('https://studio.edge.edx.org/static/world-white.png')
 }
 .purple-banner span{
   color: #fff;
@@ -103,59 +103,59 @@ border-style: none !important;
   color: #000
 }
 .grey-banner-jigsaw{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/activities-black.png');
+  background-image: url('https://studio.edge.edx.org/static/activities-black.png');
 }
 .grey-banner-checklist-quiz{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/quiz-black.png');
+  background-image: url('https://studio.edge.edx.org/static/quiz-black.png');
 }
 .grey-banner-magnifying-glass{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/explore-black.png');
+  background-image: url('https://studio.edge.edx.org/static/explore-black.png');
 }
 .grey-banner-book{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/book-black.png');
+  background-image: url('https://studio.edge.edx.org/static/book-black.png');
 }   
 .grey-banner-discuss{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/discuss-black.png');
+  background-image: url('https://studio.edge.edx.org/static/discuss-black.png');
 } 
 .grey-banner-timer{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/timer-black.png');
+  background-image: url('https://studio.edge.edx.org/static/timer-black.png');
 } 
 .grey-banner-video{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/video-black.png');
+  background-image: url('https://studio.edge.edx.org/static/video-black.png');
 }
 .grey-banner-thought{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/think-black.png')
+  background-image: url('https://studio.edge.edx.org/static/think-black.png')
 }
 .grey-banner-pencil{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/notes-black.png')
+  background-image: url('https://studio.edge.edx.org/static/notes-black.png')
 }
 .grey-banner-link{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/link-black.png')
+  background-image: url('https://studio.edge.edx.org/static/link-black.png')
 }
 .grey-banner-group{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/group-black.png')
+  background-image: url('https://studio.edge.edx.org/static/group-black.png')
 }
 .grey-banner-podcast{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/podcast-black.png')
+  background-image: url('https://studio.edge.edx.org/static/podcast-black.png')
 }
 .grey-banner-arrow-circle{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/future-black.png')
+  background-image: url('https://studio.edge.edx.org/static/future-black.png')
 }
 .grey-banner-cogs{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/cogs-black.png')
+  background-image: url('https://studio.edge.edx.org/static/cogs-black.png')
 }
 .grey-banner-lightbulb{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/example-black.png')
+  background-image: url('https://studio.edge.edx.org/static/example-black.png')
 }
 .grey-banner-list{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/summary-black.png')
+  background-image: url('https://studio.edge.edx.org/static/summary-black.png')
 }
 .grey-banner-alert-circle{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/alert-black.png')
+  background-image: url('https://studio.edge.edx.org/static/alert-black.png')
 }
 .grey-banner-alert-triangle{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/important-black.png')
+  background-image: url('https://studio.edge.edx.org/static/important-black.png')
 }
 .grey-banner-globe{
-  background-image: url('https://studio.edge.edx.org/assets/courseware/v1/165e369d65857808b22af6b77f3e970e/asset-v1:UQx+TEST101+2022+type@asset+block/world-black.png')
+  background-image: url('https://studio.edge.edx.org/static/world-black.png')
 }
