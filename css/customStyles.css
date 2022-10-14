@@ -28,61 +28,61 @@ border-style: none !important;
   vertical-align: middle;  
 }
 .purple-banner-jigsaw{
-  background-image: url('https://studio.edge.edx.org/static/activities-white.png');
+  background-image: url('/uqlearnx/img/activities-white.png');
 }
 .purple-banner-checklist-quiz{
-  background-image: url('https://studio.edge.edx.org/static/quiz-white.png');
+  background-image: url('/uqlearnx/img/quiz-white.png');
 }
 .purple-banner-magnifying-glass{
-  background-image: url('https://studio.edge.edx.org/static/explore-white.png');
+  background-image: url('/uqlearnx/img/explore-white.png');
 }
 .purple-banner-book{
-  background-image: url('https://studio.edge.edx.org/static/book-white.png');
+  background-image: url('/uqlearnx/img/book-white.png');
 }   
 .purple-banner-discuss{
-  background-image: url('https://studio.edge.edx.org/static/discuss-white.png');
+  background-image: url('/uqlearnx/img/discuss-white.png');
 } 
 .purple-banner-timer{
-  background-image: url('https://studio.edge.edx.org/static/timer-white.png');
+  background-image: url('/uqlearnx/img/timer-white.png');
 } 
 .purple-banner-video{
-  background-image: url('https://studio.edge.edx.org/static/video-white.png');
+  background-image: url('/uqlearnx/img/video-white.png');
 }
 .purple-banner-thought{
-  background-image: url('https://studio.edge.edx.org/static/think-white.png')
+  background-image: url('/uqlearnx/img/think-white.png')
 }
 .purple-banner-pencil{
-  background-image: url('https://studio.edge.edx.org/static/notes-white.png')
+  background-image: url('/uqlearnx/img/notes-white.png')
 }
 .purple-banner-link{
-  background-image: url('https://studio.edge.edx.org/static/link-white.png')
+  background-image: url('/uqlearnx/img/link-white.png')
 }
 .purple-banner-group{
-  background-image: url('https://studio.edge.edx.org/static/group-white.png')
+  background-image: url('/uqlearnx/img/group-white.png')
 }
 .purple-banner-podcast{
-  background-image: url('https://studio.edge.edx.org/static/podcast-white.png')
+  background-image: url('/uqlearnx/img/podcast-white.png')
 }
 .purple-banner-arrow-circle{
-  background-image: url('https://studio.edge.edx.org/static/future-white.png')
+  background-image: url('/uqlearnx/img/future-white.png')
 }
 .purple-banner-cogs{
-  background-image: url('https://studio.edge.edx.org/static/cogs-white.png')
+  background-image: url('/uqlearnx/img/cogs-white.png')
 }
 .purple-banner-lightbulb{
-  background-image: url('https://studio.edge.edx.org/static/example-white.png')
+  background-image: url('/uqlearnx/img/example-white.png')
 }
 .purple-banner-list{
-  background-image: url('https://studio.edge.edx.org/static/summary-white.png')
+  background-image: url('/uqlearnx/img/summary-white.png')
 }
 .purple-banner-alert-circle{
-  background-image: url('https://studio.edge.edx.org/static/alert-white.png')
+  background-image: url('/uqlearnx/img/alert-white.png')
 }
 .purple-banner-alert-triangle{
-  background-image: url('https://studio.edge.edx.org/static/important-white.png')
+  background-image: url('/uqlearnx/img/important-white.png')
 }
 .purple-banner-globe{
-  background-image: url('https://studio.edge.edx.org/static/world-white.png')
+  background-image: url('/uqlearnx/img/world-white.png')
 }
 .purple-banner span{
   color: #fff;
@@ -103,59 +103,59 @@ border-style: none !important;
   color: #000
 }
 .grey-banner-jigsaw{
-  background-image: url('https://studio.edge.edx.org/static/activities-black.png');
+  background-image: url('/uqlearnx/img/activities-black.png');
 }
 .grey-banner-checklist-quiz{
-  background-image: url('https://studio.edge.edx.org/static/quiz-black.png');
+  background-image: url('/uqlearnx/img/quiz-black.png');
 }
 .grey-banner-magnifying-glass{
-  background-image: url('https://studio.edge.edx.org/static/explore-black.png');
+  background-image: url('/uqlearnx/img/explore-black.png');
 }
 .grey-banner-book{
-  background-image: url('https://studio.edge.edx.org/static/book-black.png');
+  background-image: url('/uqlearnx/img/book-black.png');
 }   
 .grey-banner-discuss{
-  background-image: url('https://studio.edge.edx.org/static/discuss-black.png');
+  background-image: url('/uqlearnx/img/discuss-black.png');
 } 
 .grey-banner-timer{
-  background-image: url('https://studio.edge.edx.org/static/timer-black.png');
+  background-image: url('/uqlearnx/img/timer-black.png');
 } 
 .grey-banner-video{
-  background-image: url('https://studio.edge.edx.org/static/video-black.png');
+  background-image: url('/uqlearnx/img/video-black.png');
 }
 .grey-banner-thought{
-  background-image: url('https://studio.edge.edx.org/static/think-black.png')
+  background-image: url('/uqlearnx/img/think-black.png')
 }
 .grey-banner-pencil{
-  background-image: url('https://studio.edge.edx.org/static/notes-black.png')
+  background-image: url('/uqlearnx/img/notes-black.png')
 }
 .grey-banner-link{
-  background-image: url('https://studio.edge.edx.org/static/link-black.png')
+  background-image: url('/uqlearnx/img/link-black.png')
 }
 .grey-banner-group{
-  background-image: url('https://studio.edge.edx.org/static/group-black.png')
+  background-image: url('/uqlearnx/img/group-black.png')
 }
 .grey-banner-podcast{
-  background-image: url('https://studio.edge.edx.org/static/podcast-black.png')
+  background-image: url('/uqlearnx/img/podcast-black.png')
 }
 .grey-banner-arrow-circle{
-  background-image: url('https://studio.edge.edx.org/static/future-black.png')
+  background-image: url('/uqlearnx/img/future-black.png')
 }
 .grey-banner-cogs{
-  background-image: url('https://studio.edge.edx.org/static/cogs-black.png')
+  background-image: url('/uqlearnx/img/cogs-black.png')
 }
 .grey-banner-lightbulb{
-  background-image: url('https://studio.edge.edx.org/static/example-black.png')
+  background-image: url('/uqlearnx/img/example-black.png')
 }
 .grey-banner-list{
-  background-image: url('https://studio.edge.edx.org/static/summary-black.png')
+  background-image: url('/uqlearnx/img/summary-black.png')
 }
 .grey-banner-alert-circle{
-  background-image: url('https://studio.edge.edx.org/static/alert-black.png')
+  background-image: url('/uqlearnx/img/alert-black.png')
 }
 .grey-banner-alert-triangle{
-  background-image: url('https://studio.edge.edx.org/static/important-black.png')
+  background-image: url('/uqlearnx/img/important-black.png')
 }
 .grey-banner-globe{
-  background-image: url('https://studio.edge.edx.org/static/world-black.png')
+  background-image: url('/uqlearnx/img/world-black.png')
 }
