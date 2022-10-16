@@ -3034,19 +3034,19 @@ textarea.form-control-lg {
 
 .btn-uq {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #51247A;
-  --bs-btn-border-color: #51247A;
+  --bs-btn-bg: #51247A !important;
+  --bs-btn-border-color: #51247A !important;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #962A8B;
-  --bs-btn-hover-border-color: #51247A;
-  --bs-btn-focus-shadow-rgb: 66, 70, 73;
+  --bs-btn-hover-bg: #962A8B !important;
+  --bs-btn-hover-border-color: #51247A!important;
+  --bs-btn-focus-shadow-rgb: 66, 70, 73 ;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #962A8B;
-  --bs-btn-active-border-color: #51247A;
+  --bs-btn-active-bg: #962A8B !important;
+  --bs-btn-active-border-color: #51247A !important;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #51247A;
-  --bs-btn-disabled-border-color: #51247A;  
+  --bs-btn-disabled-bg: #51247A !important;
+  --bs-btn-disabled-border-color: #51247A !important;  
 }
 
 .btn-outline-primary {
@@ -11007,7 +11007,7 @@ textarea.form-control-lg {
 }
 
 /*Overwriting existing styles in the platform*/
-.btn-primary:not(:disabled):not(.disabled):active,.btn-secondary:not(:disabled):not(.disabled):active,.btn-info:not(:disabled):not(.disabled):active,.btn-danger:not(:disabled):not(.disabled):active,.btn-warning:not(:disabled):not(.disabled):active,.btn-success:not(:disabled):not(.disabled):active,.btn-dark:not(:disabled):not(.disabled):active,.btn-light:not(:disabled):not(.disabled):active,.btn-uq:not(:disabled):not(.disabled):active{
+/*.btn-primary:not(:disabled):not(.disabled):active,.btn-secondary:not(:disabled):not(.disabled):active,.btn-info:not(:disabled):not(.disabled):active,.btn-danger:not(:disabled):not(.disabled):active,.btn-warning:not(:disabled):not(.disabled):active,.btn-success:not(:disabled):not(.disabled):active,.btn-dark:not(:disabled):not(.disabled):active,.btn-light:not(:disabled):not(.disabled):active,.btn-uq:not(:disabled):not(.disabled):active{
   background: var(--bs-btn-active-bg) !important;
 }
 .btn-primary:not(:disabled):not(.disabled):focus,.btn-secondary:not(:disabled):not(.disabled):focus,.btn-info:not(:disabled):not(.disabled):focus,.btn-danger:not(:disabled):not(.disabled):focus,.btn-warning:not(:disabled):not(.disabled):focus,.btn-success:not(:disabled):not(.disabled):focus,.btn-dark:not(:disabled):not(.disabled):focus,.btn-light:not(:disabled):not(.disabled):focus,.btn-uq:not(:disabled):not(.disabled):focus{
@@ -11015,7 +11015,7 @@ textarea.form-control-lg {
 }
 .btn-primary:not(:disabled):not(.disabled):hover,.btn-secondary:not(:disabled):not(.disabled):hover,.btn-info:not(:disabled):not(.disabled):hover,.btn-danger:not(:disabled):not(.disabled):hover,.btn-warning:not(:disabled):not(.disabled):hover,.btn-success:not(:disabled):not(.disabled):hover,.btn-dark:not(:disabled):not(.disabled):hover,.btn-light:not(:disabled):not(.disabled):hover,.btn-uq:not(:disabled):not(.disabled):hover{
   background: var(--bs-btn-hover-bg) !important;
-}
+}*/
 .xmodule_display.xmodule_HtmlBlock a:link{
   color: var(--bs-btn-color);
 }
