@@ -11016,7 +11016,7 @@ textarea.form-control-lg {
 }
 
 /*Overwriting existing styles in the platform*/
-/*.btn-primary:not(:disabled):not(.disabled):active,.btn-secondary:not(:disabled):not(.disabled):active,.btn-info:not(:disabled):not(.disabled):active,.btn-danger:not(:disabled):not(.disabled):active,.btn-warning:not(:disabled):not(.disabled):active,.btn-success:not(:disabled):not(.disabled):active,.btn-dark:not(:disabled):not(.disabled):active,.btn-light:not(:disabled):not(.disabled):active,.btn-uq:not(:disabled):not(.disabled):active{
+.btn-primary:not(:disabled):not(.disabled):active,.btn-secondary:not(:disabled):not(.disabled):active,.btn-info:not(:disabled):not(.disabled):active,.btn-danger:not(:disabled):not(.disabled):active,.btn-warning:not(:disabled):not(.disabled):active,.btn-success:not(:disabled):not(.disabled):active,.btn-dark:not(:disabled):not(.disabled):active,.btn-light:not(:disabled):not(.disabled):active,.btn-uq:not(:disabled):not(.disabled):active{
   background: var(--bs-btn-active-bg) !important;
 }
 .btn-primary:not(:disabled):not(.disabled):focus,.btn-secondary:not(:disabled):not(.disabled):focus,.btn-info:not(:disabled):not(.disabled):focus,.btn-danger:not(:disabled):not(.disabled):focus,.btn-warning:not(:disabled):not(.disabled):focus,.btn-success:not(:disabled):not(.disabled):focus,.btn-dark:not(:disabled):not(.disabled):focus,.btn-light:not(:disabled):not(.disabled):focus,.btn-uq:not(:disabled):not(.disabled):focus{
@@ -11024,7 +11024,7 @@ textarea.form-control-lg {
 }
 .btn-primary:not(:disabled):not(.disabled):hover,.btn-secondary:not(:disabled):not(.disabled):hover,.btn-info:not(:disabled):not(.disabled):hover,.btn-danger:not(:disabled):not(.disabled):hover,.btn-warning:not(:disabled):not(.disabled):hover,.btn-success:not(:disabled):not(.disabled):hover,.btn-dark:not(:disabled):not(.disabled):hover,.btn-light:not(:disabled):not(.disabled):hover,.btn-uq:not(:disabled):not(.disabled):hover{
   background: var(--bs-btn-hover-bg) !important;
-}*/
+}
 .xmodule_display.xmodule_HtmlBlock a:link{
   color: var(--bs-btn-color);
 }
