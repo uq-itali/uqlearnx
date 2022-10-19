@@ -53,10 +53,10 @@ window.addEventListener('load',function(){
                         coll[i].addEventListener("click", function() {
                             $(this).toggleClass("coll-active");
                             var content = $(this).parent().next();
-                            if (content.css('max-height')){
+                            if (content.css('max-height') != '0px'){
                                 content.css('max-height', '0px');
                             } else {
-                                content.css('max-height') = content.css('max-height', content.scrollHeight + "px");
+                                content.css('max-height') = content.css('max-height', '100%');
                             }
                         });
                     };
