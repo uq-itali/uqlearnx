@@ -7,7 +7,7 @@ window.addEventListener('load',function(){
             var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
                 return new bootstrap.Tooltip(tooltipTriggerEl)
             });
-            $('.htmlToCopy').after('<button type="button" class="btn btn-primary copybutton"><span style="color: var(--bs-bg-color) !important" class="fa fa-clipboard" aria-hidden="true"></span>&nbsp;Copy code</button>');
+            $('.htmlToCopy').after('<button type="button" class="btn btn-primary copybutton mt-3"><span style="color: var(--bs-bg-color) !important" class="fa fa-clipboard" aria-hidden="true"></span>&nbsp;Copy code</button>');
             $('.copybutton').on('click', function(event) {
                 var btn = $(this);
                 var btnHtml = $(this).html();
@@ -37,6 +37,7 @@ window.addEventListener('load',function(){
                     for (i = 0; i < coll.length; i++) {
                         coll[i].addEventListener("click", function(){
                             $(this).toggleClass("coll-active");
+                            $(this).children().toggleClass('fa-angle-down fa-angle-up');
                             var content = $(this).parent().next();
                             if (content.css('max-height') != '0px'){
                                 content.css('max-height', '0px');
@@ -79,6 +80,7 @@ window.addEventListener('load',function(){
                     for (i = 0; i < coll.length; i++) {
                         coll[i].addEventListener("click", function() {
                             $(this).toggleClass("coll-active");
+                            $(this).children().toggleClass('fa-angle-down fa-angle-up');
                             var content = $(this).parent().next();
                             if (content.css('max-height') != '0px'){
                                 content.css('max-height', '0px');
