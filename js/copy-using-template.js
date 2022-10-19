@@ -9,8 +9,8 @@ window.addEventListener('load',function(){
             });
             $('.htmlToCopy').after('<button type="button" class="btn btn-primary copybutton"><span style="color: var(--bs-bg-color) !important" class="fa fa-clipboard" aria-hidden="true"></span>&nbsp;Copy code</button>');
             $('.copybutton').on('click', function(event) {
-                var btn = $('.copybutton');
-                var btnHtml = $('.copybutton').html();
+                var btn = $(this);
+                var btnHtml = $(this).html();
                 var snippet = btn.prev().html().slice(12,-12); //this removes the outer div and whitespace the html is wrapped in to leave just the relevant html.
                 console.log("@GB: snippet = ", snippet); 
                 copyTextToClipboard(snippet);
@@ -22,8 +22,8 @@ window.addEventListener('load',function(){
             $('button.seq_other').on('click', function(event){
                 $('.htmlToCopy').after('<button type="button" class="btn btn-primary copybutton"><span style="color: var(--bs-bg-color) !important" class="fa fa-clipboard" aria-hidden="true"></span>&nbsp;Copy code</button>');
                     $('.copybutton').on('click', function(event) {
-                        var btn = $('.copybutton');
-                        var btnHtml = $('.copybutton').html();
+                        var btn = $(this);
+                        var btnHtml = $(this).html();
                         var snippet = btn.prev().html().slice(12,-12); //this removes the outer div and whitespace the html is wrapped in to leave just the relevant html.
                         console.log("@GB: snippet = ", snippet); 
                         copyTextToClipboard(snippet);
