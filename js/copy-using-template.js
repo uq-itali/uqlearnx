@@ -32,6 +32,19 @@ window.addEventListener('load',function(){
                             btn.html(btnHtml);
                         }, 3000);
                     });
+                    var coll = $('.coll-btn');
+                    var i;
+                    for (i = 0; i < coll.length; i++) {
+                        coll[i].addEventListener("click", function(){
+                            $(this).toggleClass("coll-active");
+                            var content = $(this).parent().next();
+                            if (content.css('max-height') != '0px'){
+                                content.css('max-height', '0px');
+                            } else {
+                                content.css({'max-height': '100%','transition' : 'max-height 1s ease-in-out'});
+                            }
+                        });
+                    };
                 });
                     /*Newer version of copy to clipboard*/
                     function copyTextToClipboard(text) {
@@ -60,19 +73,6 @@ window.addEventListener('load',function(){
                         }
                         document.body.removeChild(textArea);
                     }
-                    var coll = $('.coll-btn');
-                    var i;
-                    for (i = 0; i < coll.length; i++) {
-                        coll[i].addEventListener("click", function() {
-                            $(this).toggleClass("coll-active");
-                            var content = $(this).parent().next();
-                            if (content.css('max-height') != '0px'){
-                                content.css('max-height', '0px');
-                            } else {
-                                content.css({'max-height': '100%','transition' : 'max-height 1s ease-in-out'});
-                            }
-                        });
-                    };
                     /*Copy code function. Button in the HTML has an onclick trigger that runs this. Only way I got it to work in LearnX.*/
                     var coll = $('.coll-btn');
                     var i;
