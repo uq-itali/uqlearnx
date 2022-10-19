@@ -9,8 +9,9 @@ window.addEventListener('load',function(){
             });
                     /*Copy code function. Button in the HTML has an onclick trigger that runs this. Only way I got it to work in LearnX.*/
                     function copyCode(){
-                    var btn = $(this);
-                    var btnHtml = $(this).html();
+
+                    var btn = $('.copybutton');
+                    var btnHtml = $('.copybutton').html();
                     var snippet = btn.prev().html().slice(12,-12); //this removes the outer div and whitespace the html is wrapped in to leave just the relevant html.
                     console.log("@GB: snippet = ", snippet); 
                     copyTextToClipboard(snippet);
