@@ -51,8 +51,8 @@ window.addEventListener('load',function(){
                    var i;
                    for (i = 0; i < coll.length; i++) {
                         coll[i].addEventListener("click", function() {
-                            this.classList.toggle("coll-active");
-                            var content = this.next();
+                            $(this).classList.toggle("coll-active");
+                            var content = $(this).next();
                             if (content.style.maxHeight){
                                 content.style.maxHeight = null;
                             } else {
