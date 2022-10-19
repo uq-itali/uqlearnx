@@ -1,3 +1,18 @@
+document.addEventListener("DOMContentLoaded", function(event) { /*JS required for the collapsible items*/
+var coll = document.getElementsByClassName("coll-btn");
+var i;
+for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+        this.classList.toggle("coll-active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight){
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+    });
+};
+});
 window.addEventListener('load',function(){
  /*Initialise all tooltips*/
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -44,18 +59,4 @@ window.addEventListener('load',function(){
                        }
                        document.body.removeChild(textArea);
                    }
-                   /*JS required for the collapsible items*/
-                   var coll = document.getElementsByClassName("coll-btn");
-                   var i;
-                   for (i = 0; i < coll.length; i++) {
-                    coll[i].addEventListener("click", function() {
-                        this.classList.toggle("coll-active");
-                        var content = this.nextElementSibling;
-                        if (content.style.maxHeight){
-                            content.style.maxHeight = null;
-                        } else {
-                            content.style.maxHeight = content.scrollHeight + "px";
-                        }
-                    });
-                }
-            });
+                });
