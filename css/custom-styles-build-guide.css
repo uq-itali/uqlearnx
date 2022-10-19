@@ -1,5 +1,5 @@
 /*CSS for collapsible items*/
-.collapsible {
+.coll-btn {
     background-color: #777;
     color: white;
     cursor: pointer;
@@ -11,11 +11,11 @@
     font-size: 15px;
   }
   
-  .active, .collapsible:hover {
+  .coll-active, .coll-btn:hover {
     background-color: #555;
   }
   
-  .content {
+  .coll-content {
     padding: 0 18px;
     max-height: 0;
     overflow: hidden;
