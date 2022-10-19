@@ -32,6 +32,7 @@ window.addEventListener('load',function(){
                             btn.html(btnHtml);
                         }, 3000);
                     });
+                });
                     /*Newer version of copy to clipboard*/
                     function copyTextToClipboard(text) {
                         if (!navigator.clipboard) {
@@ -72,7 +73,6 @@ window.addEventListener('load',function(){
                             }
                         });
                     };
-            })
                     /*Copy code function. Button in the HTML has an onclick trigger that runs this. Only way I got it to work in LearnX.*/
                     var coll = $('.coll-btn');
                     var i;
