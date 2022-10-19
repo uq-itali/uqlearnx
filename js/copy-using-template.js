@@ -51,12 +51,12 @@ window.addEventListener('load',function(){
                    var i;
                    for (i = 0; i < coll.length; i++) {
                         coll[i].addEventListener("click", function() {
-                            $(this).classList.toggle("coll-active");
-                            var content = $(this).next();
-                            if (content.style.maxHeight){
-                                content.style.maxHeight = null;
+                            $(this).toggleClass("coll-active");
+                            var content = $(this).parent().next();
+                            if (content.css('max-height')){
+                                content.css('max-height', '0px');
                             } else {
-                                content.style.maxHeight = content.scrollHeight + "px";
+                                content.css('max-height') = content.css('max-height', content.scrollHeight + "px");
                             }
                         });
                     };
