@@ -56,7 +56,7 @@ window.addEventListener('load',function(){
                             if (content.css('max-height') != '0px'){
                                 content.css('max-height', '0px');
                             } else {
-                                content.css('max-height') = content.css('max-height', '100%');
+                                content.css({'max-height': '100%','transition' : 'max-height 1s ease-in-out'});
                             }
                         });
                     };
