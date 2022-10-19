@@ -42,7 +42,7 @@ window.addEventListener('load',function(){
                             if (content.css('max-height') != '0px'){
                                 content.css('max-height', '0px');
                             } else {
-                                content.css({'max-height': '100%'});
+                                content.css('max-height', '100%');
                             }
                         });
                     };
@@ -85,7 +85,7 @@ window.addEventListener('load',function(){
                             if (content.css('max-height') != '0px'){
                                 content.css('max-height', '0px');
                             } else {
-                                content.css({'max-height': '100%'});
+                                content.css('max-height', '100%');
                             }
                         });
                     };
