@@ -7,7 +7,7 @@ window.addEventListener('load',function(){
             var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
                 return new bootstrap.Tooltip(tooltipTriggerEl)
             });
-            $('.htmlToCopy').after('<button type="button" class="btn btn-primary copybutton my-3"><span style="color: var(--bs-bg-color) !important" class="fa fa-clipboard" aria-hidden="true"></span>&nbsp;Copy code</button>');
+            $('.htmlToCopy').after('<button type="button" class="w-75 d-block mx-auto btn btn-primary copybutton my-3"><span style="color: var(--bs-bg-color) !important" class="fa fa-clipboard" aria-hidden="true"></span>&nbsp;Copy code</button>');
             $('.copybutton').on('click', function(event) {
                 var btn = $(this);
                 var btnHtml = $(this).html();
@@ -20,7 +20,7 @@ window.addEventListener('load',function(){
                 }, 3000);
             });
             $('button.seq_other').on('click', function(event){
-                $('.htmlToCopy').after('<button type="button" class="btn btn-primary copybutton my-3"><span style="color: var(--bs-bg-color) !important" class="fa fa-clipboard" aria-hidden="true"></span>&nbsp;Copy code</button>');
+                $('.htmlToCopy').after('<button type="button" class="w-75 d-block mx-auto btn btn-primary copybutton my-3"><span style="color: var(--bs-bg-color) !important" class="fa fa-clipboard" aria-hidden="true"></span>&nbsp;Copy code</button>');
                     $('.copybutton').on('click', function(event) {
                         var btn = $(this);
                         var btnHtml = $(this).html();

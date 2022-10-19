@@ -3,12 +3,14 @@
     background: #51247A !important;
     color: white;
     cursor: pointer;
-    padding: 18px;
-    width: 100%;
+    padding: 9px;
+    width: 75%;
     border: none;
     text-align: center;
     outline: none;
     font-size: 1.2rem;
+    display: block;
+    margin:auto;
   }
   
   .coll-active, .coll-btn:hover {
