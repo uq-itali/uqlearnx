@@ -4,7 +4,7 @@ window.addEventListener('load',function(){
             var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
                 return new bootstrap.Tooltip(tooltipTriggerEl)
             });
-            $('.htmlToCopy').after('<button type="button" class="btn btn-primary copybutton"><span style="color: var(--bs-bg-color) !important" class="fa fa-clipboard" aria-hidden="true"></span>&nbsp;Copy code</button>');
+            $('.htmlToCopy').after('<button type="button" class="btn btn-primary copybutton mt-3"><span style="color: var(--bs-bg-color) !important" class="fa fa-clipboard" aria-hidden="true"></span>&nbsp;Copy code</button>');
             $('.copybutton').on('click', function(event) {
                     /*Copy code function. Button in the HTML has an onclick trigger that runs this. Only way I got it to work in LearnX.*/
                     var btn = $(this);
