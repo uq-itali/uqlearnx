@@ -89,4 +89,10 @@ window.addEventListener('load',function(){
                             }
                         });
                     };
+                    /*Code to alternate icons on collapse buttons on click*/
+                    $('button[data-bs-toggle="collapse"]').on('click', function(){
+                        $(this).children().toggleClass('fa-plus fa-minus');
+                        $(this).children().toggleClass('fa-angle-down fa-angle-up');
+                        $(this).children().toggleClass('fa-caret-down fa-caret-up');
+                    })
                 });
