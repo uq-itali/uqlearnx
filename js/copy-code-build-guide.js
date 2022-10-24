@@ -11,7 +11,7 @@ window.addEventListener('load',function(){
             $('.copybutton').on('click', function(event) {
                 var btn = $(this);
                 var btnHtml = $(this).html();
-                var snippet = btn.prev().html().slice(11,-12); //this removes the outer div and whitespace the html is wrapped in to leave just the relevant html.
+                var snippet = btn.prev().html().slice(12,-12); //this removes the outer div and whitespace the html is wrapped in to leave just the relevant html.
                 console.log("@GB: snippet = ", snippet); 
                 copyTextToClipboard(snippet);
                 btn.html('<span style="color: var(--bs-bg-color) !important" class="fa fa-check"></span> Code copied');
@@ -24,7 +24,7 @@ window.addEventListener('load',function(){
                     $('.copybutton').on('click', function(event) {
                         var btn = $(this);
                         var btnHtml = $(this).html();
-                        var snippet = btn.prev().html().slice(11,-12); //this removes the outer div and whitespace the html is wrapped in to leave just the relevant html.
+                        var snippet = btn.prev().html().slice(12,-12); //this removes the outer div and whitespace the html is wrapped in to leave just the relevant html.
                         console.log("@GB: snippet = ", snippet); 
                         copyTextToClipboard(snippet);
                         btn.html('<span style="color: var(--bs-bg-color) !important" class="fa fa-check"></span> Code copied');
@@ -89,10 +89,4 @@ window.addEventListener('load',function(){
                             }
                         });
                     };
-                    /*Code to alternate icons on collapse buttons on click*/
-                    $('button[data-bs-toggle="collapse"]').on('click', function(){
-                        $(this).children().toggleClass('fa-plus fa-minus');
-                        $(this).children().toggleClass('fa-angle-down fa-angle-up');
-                        $(this).children().toggleClass('fa-caret-down fa-caret-up');
-                    })
                 });
