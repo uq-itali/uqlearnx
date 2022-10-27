@@ -94,5 +94,14 @@ window.addEventListener('load',function(){
                         $(this).children().toggleClass('fa-plus fa-minus');
                         $(this).children().toggleClass('fa-angle-down fa-angle-up');
                         $(this).children().toggleClass('fa-caret-down fa-caret-up');
-                    })
+                    });
+                    /*Code to close offcanvas jump to menu once a link is clicked*/
+                    $('.offcanvas-body a').on('click', function() {
+                        setTimeout(function(){
+                          $(".offcanvas").removeClass("show");
+                          setTimeout(function () {
+                            $("button#openJumpToMenu").trigger("click");
+                          }, 300);
+                        },500);
+                      });
                 });
