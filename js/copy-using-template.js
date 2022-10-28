@@ -101,7 +101,7 @@ window.addEventListener('load',function(){
                           $(".offcanvas").removeClass("show");
                           setTimeout(function () {
                             $("button#openJumpToMenu").trigger("click");
-                          }, 300);
-                        },500);
+                          }, 500);
+                        },800);
                       });
                 });
