@@ -1,0 +1,26 @@
+/*CSS for collapsible items*/
+.coll-btn {
+    background: #51247A !important;
+    color: white;
+    cursor: pointer;
+    padding: 9px;
+    width: 75%;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 1.2rem;
+    display: block;
+    margin:auto;
+  }
+  
+  .coll-active, .coll-btn:hover {
+    background: #962A8B !important;
+  }
+  
+  .coll-content {
+    padding: 0 18px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+  }
