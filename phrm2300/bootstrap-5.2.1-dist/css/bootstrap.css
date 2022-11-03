@@ -5641,7 +5641,7 @@ textarea.form-control-lg {
 }
 .tooltip {
   --bs-tooltip-zindex: 1080;
-  --bs-tooltip-max-width: 300px;
+  --bs-tooltip-max-width: 300px !important;
   --bs-tooltip-padding-x: 0.75rem;
   --bs-tooltip-padding-y: 0.5rem;
   --bs-tooltip-margin: ;
