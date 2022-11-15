@@ -49,6 +49,42 @@ border-style: none !important;
 .icon-jigsaw-alt-white{
   background-image: url('/uqlearnx/img/white_activity.png');
 }
+.icon-clinical-comms-white{
+  background-image: url('/uqlearnx/img/clinical-comms-white.png');
+}
+.icon-diff-diagnosis-white{
+  background-image: url('/uqlearnx/img/differential-diagnosis-white.png');
+}
+.icon-examination-white{
+  background-image: url('/uqlearnx/img/examination-white.png');
+}
+.icon-follow-up-white{
+  background-image: url('/uqlearnx/img/follow-up-white.png');
+}
+.icon-group-activity-white{
+  background-image: url('/uqlearnx/img/group-activity-white.png');
+}
+.icon-herston-white{
+  background-image: url('/uqlearnx/img/herston-white.png');
+}
+.icon-initial-mgmt-1-white{
+  background-image: url('/uqlearnx/img/initial-mgmt-1-white.png');
+}
+.icon-initial-mgmt-2-white{
+  background-image: url('/uqlearnx/img/initial-mgmt-2-white.png');
+}
+.icon-initial-mgmt-3-white{
+  background-image: url('/uqlearnx/img/initial-mgmt-3-white.png');
+}
+.icon-initial-mgmt-4-white{
+  background-image: url('/uqlearnx/img/initial-mgmt-4-white.png');
+}
+.icon-investigations-white{
+  background-image: url('/uqlearnx/img/investigations-white.png');
+}
+.icon--white{
+  background-image: url('/uqlearnx/img/');
+}
 .icon-anatomy-white{
   background-image: url('/uqlearnx/img/white_anatomy.png');
 }
@@ -197,4 +233,10 @@ background-image: url('/uqlearnx/img/white_report.png');
 }
 .icon-globe-black{
   background-image: url('/uqlearnx/img/world-black.png')
+}
+.icon-herston-black{
+ background-image: url('/uqlearnx/img/herston-black.png')
+}
+.icon-herston-purple{
+ background-image: url('/uqlearnx/img/herston-purple.png')
 }
