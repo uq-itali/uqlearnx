@@ -56,34 +56,34 @@ border-style: none !important;
   background-image: url('/uqlearnx/img/differential-diagnosis-white.png');
 }
 .icon-examination-white{
-  background-image: url('/uqlearnx/img/examination-white.png');
+  background-image: url('/uqlearnx/img/examination-white.png');
 }
-.icon-follow-up-white{
-  background-image: url('/uqlearnx/img/follow-up-white.png');
+.icon-follow-up-white{ 
+  background-image: url('/uqlearnx/img/follow-up-white.png');
 }
 .icon-group-activity-white{
-  background-image: url('/uqlearnx/img/group-activity-white.png');
+  background-image: url('/uqlearnx/img/group-activity-white.png');
 }
-.icon-herston-white{
-  background-image: url('/uqlearnx/img/herston-white.png');
+.icon-herston-white{ 
+  background-image: url('/uqlearnx/img/herston-white.png');
 }
 .icon-initial-mgmt-1-white{
-  background-image: url('/uqlearnx/img/initial-mgmt-1-white.png');
+  background-image: url('/uqlearnx/img/initial-mgmt-1-white.png');
 }
 .icon-initial-mgmt-2-white{
-  background-image: url('/uqlearnx/img/initial-mgmt-2-white.png');
+  background-image: url('/uqlearnx/img/initial-mgmt-2-white.png');
 }
 .icon-initial-mgmt-3-white{
-  background-image: url('/uqlearnx/img/initial-mgmt-3-white.png');
+  background-image: url('/uqlearnx/img/initial-mgmt-3-white.png');
 }
 .icon-initial-mgmt-4-white{
-  background-image: url('/uqlearnx/img/initial-mgmt-4-white.png');
+  background-image: url('/uqlearnx/img/initial-mgmt-4-white.png');
 }
 .icon-investigations-white{
-  background-image: url('/uqlearnx/img/investigations-white.png');
+  background-image: url('/uqlearnx/img/investigations-white.png');
 }
 .icon--white{
-  background-image: url('/uqlearnx/img/');
+  background-image: url('/uqlearnx/img/');
 }
 .icon-anatomy-white{
   background-image: url('/uqlearnx/img/white_anatomy.png');
@@ -157,6 +157,9 @@ background-image: url('/uqlearnx/img/white_report.png');
 }
 .icon-globe-white{
   background-image: url('/uqlearnx/img/world-white.png')
+}
+.icon-video-camera-white{
+  background-image: url('/uqlearnx/img/video_camera_white.png')
 }
 .icon-jigsaw-black{
   background-image: url('/uqlearnx/img/activities-black.png');
