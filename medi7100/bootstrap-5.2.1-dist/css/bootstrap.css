@@ -4457,7 +4457,7 @@ textarea.form-control-lg {
   align-items: center;
   width: 100%;
   padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
-  font-size: 1rem;
+  font-size: calc(1.275rem + 0.3vw) !important;
   color: var(--bs-white) !important;
   text-align: left;
   background: var(--bs-uqpurple) !important;
