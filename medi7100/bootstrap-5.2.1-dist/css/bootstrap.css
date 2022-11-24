@@ -4544,6 +4544,9 @@ textarea.form-control-lg {
 .accordion-body {
   padding: var(--bs-accordion-body-padding-y) var(--bs-accordion-body-padding-x);
 }
+.accordion-body p:last-of-type {
+  margin-bottom: 0px;
+}
 
 .accordion-flush .accordion-collapse {
   border-width: 0;
