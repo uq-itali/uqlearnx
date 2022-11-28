@@ -20,7 +20,7 @@ window.addEventListener('load',function(){
                 var currentLocation = window.location.href;
                 var bookmarkSlice = currentLocation.slice(32,65);
                 var bookmarkURL = '/courses'+bookmarkSlice+'/bookmarks/';
-                $('.bookmark-button-wrapper').append('<a class="btn btn-link gotobookmarksbtn" href="" target="_blank">Go to bookmarks <span class="fa-solid fa-external-link-square"></span></a>')
+                $('.bookmark-button-wrapper').append('<a class="btn btn-link help-link gotobookmarksbtn" href="" target="_blank">Go to bookmarks <span class="fa-solid fa-external-link-square"></span></a>')
                 $('.gotobookmarksbtn').attr('href',bookmarkURL);
             });
         });
