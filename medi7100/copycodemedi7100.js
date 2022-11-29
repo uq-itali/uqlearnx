@@ -7,6 +7,20 @@ window.addEventListener('load',function(){
             var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
                 return new bootstrap.Tooltip(tooltipTriggerEl)
             });
+            var $temp = $('<input>');
+            $('.copyBadge').on('click', function () {
+                var $copyBadge = $(this);
+                var $url = $(this).prev().attr('href');
+                var $copyBadgeHTML = $(this).html();
+                $('body').append($temp);
+                $temp.val($url).select();
+                document.execCommand('copy');
+                $temp.remove();
+                $copyBadge.html('<span style="color: var(--bs-bg-color) !important" class="fa fa-check"></span> Email copied');
+                window.setTimeout(function () {
+                    $copyBadge.html($copyBadgeHTML);
+                }, 2000);
+            });
             $('.htmlToCopy').after('<button type="button" class="w-75 d-block mx-auto btn btn-primary copybutton my-3"><span style="color: var(--bs-bg-color) !important" class="fa fa-clipboard" aria-hidden="true"></span>&nbsp;Copy code</button>');
             $('.copybutton').on('click', function(event) {
                 var btn = $(this);
@@ -46,6 +60,20 @@ window.addEventListener('load',function(){
                             }
                         });
                     };
+                    var $temp = $('<input>');
+                    $('.copyBadge').on('click', function () {
+                        var $copyBadge = $(this);
+                        var $url = $(this).prev().attr('href');
+                        var $copyBadgeHTML = $(this).html();
+                        $('body').append($temp);
+                        $temp.val($url).select();
+                        document.execCommand('copy');
+                        $temp.remove();
+                        $copyBadge.html('<span style="color: var(--bs-bg-color) !important" class="fa fa-check"></span> Email copied');
+                        window.setTimeout(function () {
+                            $copyBadge.html($copyBadgeHTML);
+                        }, 2000);
+                    });
                 });
                     /*Newer version of copy to clipboard*/
                     function copyTextToClipboard(text) {
@@ -94,6 +122,7 @@ window.addEventListener('load',function(){
                         $(this).children().toggleClass('fa-plus fa-minus');
                         $(this).children().toggleClass('fa-angle-down fa-angle-up');
                         $(this).children().toggleClass('fa-caret-down fa-caret-up');
+                        $(this).children().toggleClass('fa-chevron-down fa-chevron-up');
                     });
                     /*Code to close offcanvas jump to menu once a link is clicked*/
                     $('.offcanvas-body a').on('click', function() {
