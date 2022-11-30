@@ -11035,7 +11035,7 @@ textarea.form-control-lg {
   background: var(--bs-btn-hover-bg) !important;
 }
 .xmodule_display.xmodule_HtmlBlock a:link{
-  color: var(--bs-btn-color);
+  color: var(--bs-btn-color) !important;
 }
 
 /*# sourceMappingURL=bootstrap.css.map */
