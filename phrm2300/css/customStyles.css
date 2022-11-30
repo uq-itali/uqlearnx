@@ -8,6 +8,10 @@ margin-bottom: var(--bs-alert-margin-bottom) !important;
 .xmodule_display.xmodule_HtmlBlock .table th{
  background: var(--bs-table-bg) !important;
 }
+.five-e{
+  background: #e2f3fe;
+  padding: 0.5rem !important;
+}
 div.accordion h2{
   margin: 0px !important;
 }
