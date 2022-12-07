@@ -5642,19 +5642,19 @@ textarea.form-control-lg {
 }
 .tooltip {
   --bs-tooltip-zindex: 1080;
-  --bs-tooltip-max-width: 300px !important;
   --bs-tooltip-padding-x: 0.75rem;
   --bs-tooltip-padding-y: 0.5rem;
   --bs-tooltip-margin: ;
   --bs-tooltip-font-size: 1rem;
   --bs-tooltip-color: #fff;
-  --bs-tooltip-bg: #51247A;
+  --bs-tooltip-bg: rgba(var(--bs-success-rgb), var(--bs-text-opacity)) !important;
   --bs-tooltip-border-radius: 0.375rem;
   --bs-tooltip-opacity: 1;
   --bs-tooltip-arrow-width: 0.8rem;
   --bs-tooltip-arrow-height: 0.4rem;
-  z-index: var(--bs-tooltip-zindex);
+  z-index: var(--bs-tooltip-zindex); 
   display: block;
+  max-width: 350px !important; 
   padding: var(--bs-tooltip-arrow-height);
   margin: var(--bs-tooltip-margin);
   font-family: var(--bs-font-sans-serif);
