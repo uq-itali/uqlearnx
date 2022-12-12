@@ -21,9 +21,9 @@ window.addEventListener('load',function(){
                 if(bookmarkCount <= 1){
                 var currentLocation = window.location.href;
                 var bookmarkSlice = currentLocation.slice(32,65);
-                var bookmarkURL = '/courses'+bookmarkSlice+'/bookmarks/';
-                $('.bookmark-button-wrapper').append('<button class="btn btn-link gotobookmarksbtn" onclick=""><span class="bookmark-text">Go to bookmarks <i class="fa-solid fa-external-link-square"></i></button>')
-                $('.gotobookmarksbtn').attr('href',bookmarkURL);
+                var bookmarkURL = 'window.open(\'/courses'+bookmarkSlice+'/bookmarks/\',\'_blank\')';
+                $('.bookmark-button-wrapper').append('<button class="btn btn-link gotobookmarksbtn" onclick=""><span class="bookmark-text">Go to bookmarks <span class="fa-solid fa-external-link-square"></span></span></button>')
+                $('.gotobookmarksbtn').attr('onclick',bookmarkURL);
                 }
                 else{
                     console.log('Go to bookmarks already present');
