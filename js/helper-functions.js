@@ -7,9 +7,9 @@ window.addEventListener('load',function(){
     //Add a go to bookmarks link next to the bookmark this page link
                 var currentLocation = window.location.href;
                 var bookmarkSlice = currentLocation.slice(32,65);
-                var bookmarkURL = '/courses'+bookmarkSlice+'/bookmarks/';
-                $('.bookmark-button-wrapper').append('<a class="btn btn-link gotobookmarksbtn" href="" target="_blank">Go to bookmarks <span class="fa-solid fa-external-link-square"></span></a>')
-                $('.gotobookmarksbtn').attr('href',bookmarkURL);           
+                var bookmarkURL = 'window.open(\'/courses'+bookmarkSlice+'/bookmarks/\',\'_blank\')';
+                $('.bookmark-button-wrapper').append('<button class="btn btn-link gotobookmarksbtn" onclick=""><span class="bookmark-text">Go to bookmarks <i class="fa-solid fa-external-link-square"></i></button>')
+                $('.gotobookmarksbtn').attr('onclick',bookmarkURL);           
     //Ensure all functions also happen again when a user navigates to the next or previous unit page.
     //Always duplicate any function that needs to happen on loading of a page to be inside the function that follows.
                $('button.seq_other').on('click', function(event){
@@ -17,12 +17,16 @@ window.addEventListener('load',function(){
                 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
                     return new bootstrap.Tooltip(tooltipTriggerEl)
                 });
+                var bookmarkCount = $('.bookmark-text').length
+                if(bookmarkCount <= 1){
                 var currentLocation = window.location.href;
                 var bookmarkSlice = currentLocation.slice(32,65);
                 var bookmarkURL = '/courses'+bookmarkSlice+'/bookmarks/';
-                $('.bookmark-button-wrapper').append('<a class="btn btn-link help-link gotobookmarksbtn" href="" target="_blank">Go to bookmarks <span class="fa-solid fa-external-link-square"></span></a>')
+                $('.bookmark-button-wrapper').append('<button class="btn btn-link gotobookmarksbtn" onclick=""><span class="bookmark-text">Go to bookmarks <i class="fa-solid fa-external-link-square"></i></button>')
                 $('.gotobookmarksbtn').attr('href',bookmarkURL);
+                }
+                else{
+                    console.log('Go to bookmarks already present');
+                }
             });
         });
-            
-            
