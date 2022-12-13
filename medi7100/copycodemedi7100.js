@@ -122,13 +122,14 @@ window.addEventListener('load',function(){
             }
         });
     };
-    /*Code to alternate icons on collapse buttons on click*/
+    /*Code to alternate icons on collapse buttons on click
     $('button[data-bs-toggle="collapse"]').on('click', function(){
         $(this).children().toggleClass('fa-plus fa-minus');
         $(this).children().toggleClass('fa-angle-down fa-angle-up');
         $(this).children().toggleClass('fa-caret-down fa-caret-up');
         $(this).children().toggleClass('fa-chevron-down fa-chevron-up');
     });
+    */
     /*Code to close offcanvas jump to menu once a link is clicked*/
     $('.offcanvas-body a').on('click', function() {
         setTimeout(function(){
