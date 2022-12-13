@@ -11025,8 +11025,8 @@ textarea.form-control-lg {
 .btn-primary:not(:disabled):not(.disabled):hover,.btn-secondary:not(:disabled):not(.disabled):hover,.btn-info:not(:disabled):not(.disabled):hover,.btn-danger:not(:disabled):not(.disabled):hover,.btn-warning:not(:disabled):not(.disabled):hover,.btn-success:not(:disabled):not(.disabled):hover,.btn-dark:not(:disabled):not(.disabled):hover,.btn-light:not(:disabled):not(.disabled):hover,.btn-uq:not(:disabled):not(.disabled):hover{
   background: var(--bs-btn-hover-bg) !important;
 }
-.xmodule_display.xmodule_HtmlBlock a:link{
+/*.xmodule_display.xmodule_HtmlBlock a:link{
   color: var(--bs-btn-color);
-}
+}*/
 
 /*# sourceMappingURL=bootstrap.css.map */
