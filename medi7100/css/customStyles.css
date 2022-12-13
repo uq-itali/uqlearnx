@@ -11,6 +11,9 @@ margin-bottom: var(--bs-alert-margin-bottom) !important;
 div.accordion h2{
   margin: 0px !important;
 }
+a.btn-uq, a.btn-primary, a.btn-dark, a.btn-danger, a.btn-success, a.btn-secondary{
+  color: #fff !important;
+}
 .tooltip::after{
 content: none !important;
 }
