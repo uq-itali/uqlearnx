@@ -9,7 +9,16 @@ window.addEventListener('load',function(){
                 var bookmarkSlice = currentLocation.slice(32,65);
                 var bookmarkURL = 'window.open(\'/courses'+bookmarkSlice+'/bookmarks/\',\'_blank\')';
                 $('.bookmark-button-wrapper').append('<button class="btn btn-link gotobookmarksbtn" onclick=""><span class="bookmark-text">Go to bookmarks <i class="fa-solid fa-external-link-square"></i></button>')
-                $('.gotobookmarksbtn').attr('onclick',bookmarkURL);           
+                $('.gotobookmarksbtn').attr('onclick',bookmarkURL);  
+                var formLinkCount = $('.bugOrSuggestion').length
+                if(formLinkCount <= 0){
+                    var formsLink = 'window.open(\'https://forms.office.com/r/5kNvhxasnB\')';
+                $('.bookmark-button-wrapper').append('<button class="btn btn-link bugOrSuggestion" onclick=""><span class="bookmark-text">Go to bug/suggestion form <span class="fa-solid fa-bug"></span></span></button>')
+                $('.bugOrSuggestion').attr('onclick',formsLink);
+                }
+                else{
+                    console.log('Form link already present')
+                }         
     //Ensure all functions also happen again when a user navigates to the next or previous unit page.
     //Always duplicate any function that needs to happen on loading of a page to be inside the function that follows.
                $('button.seq_other').on('click', function(event){
@@ -18,6 +27,15 @@ window.addEventListener('load',function(){
                     return new bootstrap.Tooltip(tooltipTriggerEl)
                 });
                 var bookmarkCount = $('.bookmark-text').length
+                var formLinkCount = $('.bugOrSuggestion').length
+                if(formLinkCount <= 0){
+                    var formsLink = 'window.open(\'https://forms.office.com/r/5kNvhxasnB\')';
+                $('.bookmark-button-wrapper').append('<button class="btn btn-link bugOrSuggestion" onclick=""><span class="bookmark-text">Go to bug/suggestion form <span class="fa-solid fa-bug"></span></span></button>')
+                $('.bugOrSuggestion').attr('onclick',formsLink);
+                }
+                else{
+                    console.log('Form link already present')
+                }
                 if(bookmarkCount <= 1){
                 var currentLocation = window.location.href;
                 var bookmarkSlice = currentLocation.slice(32,65);

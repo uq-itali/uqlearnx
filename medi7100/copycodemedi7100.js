@@ -7,6 +7,7 @@ window.addEventListener('load',function(){
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     });
+    /*Copy email code. Make a bootstrap badge after an email address and give it the copyBadge class for this to function*/
     var $temp = $('<input>');
     $('.copyBadge').on('click', function () {
         var $copyBadge = $(this);
@@ -21,6 +22,7 @@ window.addEventListener('load',function(){
             copyBadge.html($copyBadgeHTML);
         }, 2000);
     });
+    /*Copy HTML snippets javascript. Requires copying the code you need to copy and putting it in a <template> element after the actual element and giving it the class htmlToCopy in a Text component.*/
     $('.htmlToCopy').after('<button type="button" class="w-75 d-block mx-auto btn btn-primary copybutton my-3"><span style="color: var(--bs-bg-color) !important" class="fa fa-clipboard" aria-hidden="true"></span>&nbsp;Copy code</button>');
     $('.copybutton').on('click', function(event) {
         var btn = $(this);
@@ -33,12 +35,27 @@ window.addEventListener('load',function(){
             btn.html(btnHtml);
         }, 3000);
     });
+    var currentLocation = window.location.href;
+        var bookmarkSlice = currentLocation.slice(32,65);
+        var bookmarkURL = 'window.open(\'/courses'+bookmarkSlice+'/bookmarks/\',\'_blank\')';
+        $('.bookmark-button-wrapper').append('<button class="btn btn-link gotobookmarksbtn" onclick=""><span class="bookmark-text">Go to bookmarks <i class="fa-solid fa-external-link-square"></i></button>')
+        $('.gotobookmarksbtn').attr('onclick',bookmarkURL);
+    var formLinkCount = $('.bugOrSuggestion').length
+        if(formLinkCount <= 0){
+            var formsLink = 'window.open(\'https://forms.office.com/r/5kNvhxasnB\')';
+            $('.bookmark-button-wrapper').append('<button class="btn btn-link bugOrSuggestion" onclick=""><span class="bookmark-text">Go to bug/suggestion form <span class="fa-solid fa-bug"></span></span></button>')
+            $('.bugOrSuggestion').attr('onclick',formsLink);
+        }
+        else{
+            console.log('Form link already present')
+        } 
     $('button.seq_other').on('click', function(event){
-        /*Initialise all tooltips*/
+        /*Initialise all tooltips when person goes to next page*/
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
             return new bootstrap.Tooltip(tooltipTriggerEl)
         });
+        /*Copy HTML snippets javascript. Requires copying the code you need to copy and putting it in a <template> element after the actual element and giving it the class htmlToCopy in a Text component.*/
         $('.htmlToCopy').after('<button type="button" class="w-75 d-block mx-auto btn btn-primary copybutton my-3"><span style="color: var(--bs-bg-color) !important" class="fa fa-clipboard" aria-hidden="true"></span>&nbsp;Copy code</button>');
         $('.copybutton').on('click', function(event) {
             var btn = $(this);
@@ -51,6 +68,7 @@ window.addEventListener('load',function(){
                 btn.html(btnHtml);
             }, 3000);
         });
+        /*Make accordion button work + alternate icons after someone has clicked a unit icon*/
         var coll = $('.coll-btn');
         var i;
         for (i = 0; i < coll.length; i++) {
@@ -65,6 +83,7 @@ window.addEventListener('load',function(){
                 }
             });
         };
+        /*Copy email code. Make a bootstrap badge after an email address and give it the copyBadge class for this to function*/
         var $temp = $('<input>');
         $('.copyBadge').on('click', function () {
             var $copyBadge = $(this);
@@ -79,6 +98,30 @@ window.addEventListener('load',function(){
                 $copyBadge.html($copyBadgeHTML);
             }, 2000);
         });
+        var formLinkCount = $('.bugOrSuggestion').length
+        if(formLinkCount <= 0){
+            var formsLink = 'window.open(\'https://forms.office.com/r/5kNvhxasnB\')';
+            $('.bookmark-button-wrapper').append('<button class="btn btn-link bugOrSuggestion" onclick=""><span class="bookmark-text">Go to bug/suggestion form <span class="fa-solid fa-bug"></span></span></button>')
+            $('.bugOrSuggestion').attr('onclick',formsLink);
+        }
+        else{
+            console.log('Form link already present')
+        } 
+        var currentLocation = window.location.href;
+        var bookmarkSlice = currentLocation.slice(32,65);
+        var bookmarkURL = 'window.open(\'/courses'+bookmarkSlice+'/bookmarks/\',\'_blank\')';
+        $('.bookmark-button-wrapper').append('<button class="btn btn-link gotobookmarksbtn" onclick=""><span class="bookmark-text">Go to bookmarks <i class="fa-solid fa-external-link-square"></i></button>')
+        $('.gotobookmarksbtn').attr('onclick',bookmarkURL);
+        if(bookmarkCount <= 1){
+            var currentLocation = window.location.href;
+            var bookmarkSlice = currentLocation.slice(32,65);
+            var bookmarkURL = 'window.open(\'/courses'+bookmarkSlice+'/bookmarks/\',\'_blank\')';
+            $('.bookmark-button-wrapper').append('<button class="btn btn-link gotobookmarksbtn" onclick=""><span class="bookmark-text">Go to bookmarks <span class="fa-solid fa-external-link-square"></span></span></button>')
+            $('.gotobookmarksbtn').attr('onclick',bookmarkURL);            
+            }
+            else{
+                console.log('Go to bookmarks already present');
+            }  
     });
     /*Newer version of copy to clipboard*/
     function copyTextToClipboard(text) {
@@ -107,7 +150,7 @@ window.addEventListener('load',function(){
         }
         document.body.removeChild(textArea);
     }
-    /*Copy code function. Button in the HTML has an onclick trigger that runs this. Only way I got it to work in LearnX.*/
+    /*Accordion button alternating icons code. Currently not used but useful to keep*/
     var coll = $('.coll-btn');
     var i;
     for (i = 0; i < coll.length; i++) {
@@ -144,4 +187,13 @@ window.addEventListener('load',function(){
                 $('.blownUpImage').attr('src', $(this).find('img').attr('src'));
                 $('#imagemodal').modal('show');   
             });
+            var formLinkCount = $('.bugOrSuggestion').length
+                if(formLinkCount <= 0){
+                    var formsLink = 'window.open(\'https://forms.office.com/r/5kNvhxasnB\')';
+                $('.bookmark-button-wrapper').append('<button class="btn btn-link bugOrSuggestion" onclick=""><span class="bookmark-text">Go to bug/suggestion form <span class="fa-solid fa-bug"></span></span></button>')
+                $('.bugOrSuggestion').attr('onclick',formsLink);
+                }
+                else{
+                    console.log('Form link already present')
+                } 
         });
