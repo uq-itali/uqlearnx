@@ -11037,5 +11037,18 @@ textarea.form-control-lg {
 .xmodule_display.xmodule_HtmlBlock a:link{
   color: var(--bs-btn-color) !important;
 }
+/*creating customr classes to rotate images*/
+.rotate-30{
+  transform: rotate(30deg);
+}
+.rotate-45{
+  transform: rotate(45deg);
+}
+.rotate-90{
+  transform: rotate(90deg);
+}
+.rotate-180{
+  transform: rotate(180deg);
+}
 
 /*# sourceMappingURL=bootstrap.css.map */
