@@ -14,6 +14,9 @@ div.accordion h2{
 a.btn-uq, a.btn-primary, a.btn-dark, a.btn-danger, a.btn-success, a.btn-secondary{
   color: #fff !important;
 }
+body, h1, h2, h3, h4, h5, h6, p, label{
+  text-align: unset !important;
+}
 div.alert p, div.alert h1, div.alert h2, div.alert h3, div.alert h4, div.alert h5, div.alert h6{
   color: inherit !important;
 }
