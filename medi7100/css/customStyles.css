@@ -11,7 +11,7 @@ margin-bottom: var(--bs-alert-margin-bottom) !important;
 div.accordion h2{
   margin: 0px !important;
 }
-a.btn-uq, a.btn-primary, a.btn-dark, a.btn-danger, a.btn-success, a.btn-secondary{
+a.btn-uq, a.btn-primary, a.btn-secondary, a.btn-success, a.btn-warning, a.btn-danger, a.btn-dark, a.btn-light {
   color: #fff !important;
 }
 div.preview-menu div a.btn{
