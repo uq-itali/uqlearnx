@@ -8,16 +8,15 @@ $(function() {
     $('.copythis').after('<button type="button" class="btn btn-primary btn-block w-75 mx-auto copybutton bg-img-none mt-2 d-block"><span class="fa fa-clipboard" aria-hidden="true"></span> Copy code for above element</button>');
     $('.copybutton').on('click', function(event) {
         var btn = $(this);
+        var btnHtml = $(this).html();
         var snippet = btn.prev().html();
         console.log("@GB: snippet = ", snippet);
         fallbackCopyTextToClipboard(snippet);
-        // btn.addClass('btn-danger');
         btn.toggleClass('btn-success btn-primary');
-        btn.html('<span class="fa fa-check" aria-hidden="true"></span> Done! Code snippet has been copied to clipboard');
+        btn.html('<span style="color: var(--bs-bg-color) !important" class="fa fa-check"></span> Code copied');
         window.setTimeout(function() {
-            btn.html('<span class="fa fa-clipboard" aria-hidden="true"></span> Copy code for above element');
-            // btn.removeClass('btn-danger');
             btn.toggleClass('btn-success btn-primary');
+            btn.html(btnHtml);
         }, 3000);
         /* Act on the event */
     });
