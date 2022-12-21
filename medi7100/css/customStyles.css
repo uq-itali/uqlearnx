@@ -5,16 +5,16 @@ margin-bottom: var(--bs-alert-margin-bottom) !important;
 .xmodule_display.xmodule_HtmlBlock i, i{
   font-style: unset !important;
 }
-/*.xmodule_display.xmodule_HtmlBlock .table th{
- background: var(--bs-table-bg) !important;
-}*/
 div.accordion h2{
   margin: 0px !important;
 }
-a.btn-uq, a.btn-primary, a.btn-secondary, a.btn-success, a.btn-warning, a.btn-danger, a.btn-dark, a.btn-light {
+a.btn-uq, a.btn-primary, a.btn-secondary, a.btn-success, a.btn-danger, a.btn-dark {
   color: #fff !important;
 }
-div.preview-menu div a.btn{
+a.btn-light, a.btn-warning, a.info {
+  color: #000 !important;
+}
+div.preview-menu div a.btn {
   color: #fff !important;
 }
 body, h1, h2, h3, h4, h5, h6, p, label{
