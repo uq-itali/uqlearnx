@@ -1932,6 +1932,7 @@ progress {
   --bs-table-hover-color: #fff;
   color: var(--bs-table-color);
   border-color: var(--bs-table-border-color);
+
 }
 
 .table-uq {
@@ -11057,5 +11058,8 @@ ul.referenceList li{
   padding-left: 40px;
   text-indent: -40px;
 }
-
+/*Overwriting table th value to inherit bootstrap value*/
+.xmodule_display.xmodule_HtmlBlock th{
+  background: var(--bs-table-bg) !important;
+}
 /*# sourceMappingURL=bootstrap.css.map */
