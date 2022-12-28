@@ -1,15 +1,16 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>UQ MEDI7100 LearnX Custom HTML Components</title>
+    <link rel="icon" href="img/UQfavicon.png" type="image/gif">
 
     <!--jQuery version 3.6.0-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="https://uq-itali.github.io/uqlearnx/medi7100/css/customStyles.css" />
     <link rel="stylesheet" type="text/css" href="https://uq-itali.github.io/fontawesome-v6.1.1-free/css/all.css" />
@@ -18,24 +19,25 @@
     <script src="copyNextDiv.js" crossorigin="anonymous"></script>
     <!--<script src="https://uq-itali.github.io/uqlearnx/medi7100/bootstrap-5.2.1-dist/js/bootstrap.bundle.js" crossorigin="anonymous"></script>
     <script src="https://uq-itali.github.io/uqlearnx/medi7100/bootstrap-5.2.1-dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.js"></script>
     <style>
-        .dropdown:hover .dropdown-menu{
+        .dropdown:hover .dropdown-menu {
             display: block;
         }
-        .dropdown-menu{
+
+        .dropdown-menu {
             margin-top: 0;
         }
     </style>
     <script>
-    $(document).ready(function(){
-        $(".dropdown").hover(function(){
-            var dropdownMenu = $(this).children(".dropdown-menu");
-            if(dropdownMenu.is(":visible")){
-                dropdownMenu.parent().toggleClass("open");
-            }
-        });
-    });     
+        $(document).ready(function () {
+            $(".dropdown").hover(function () {
+                var dropdownMenu = $(this).children(".dropdown-menu");
+                if (dropdownMenu.is(":visible")) {
+                    dropdownMenu.parent().toggleClass("open");
+                }
+            });
+        });     
     </script>
 </head>
 
@@ -45,11 +47,16 @@
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" href="#home" data-bs-toggle="tab">Home</button>
             </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" href="#textBoxTest" data-bs-toggle="tab">Testing</button>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Image combos</a>
                 <ul class="dropdown-menu">
                     <li><button class="dropdown-item" href="#imgRight" data-bs-toggle="tab">Image right</button></li>
                     <li><button class="dropdown-item" href="#imgLeft" data-bs-toggle="tab">Image left</button></li>
+                    <li><button class="dropdown-item" href="#imgRight33" data-bs-toggle="tab">Image right 33% width</button></li>
+                    <li><button class="dropdown-item" href="#imgLeft33" data-bs-toggle="tab">Image left 33% width</button></li>
                     <li><button class="dropdown-item" href="#imgFloatRight" data-bs-toggle="tab">Image float right</button></li>
                     <li><button class="dropdown-item" href="#twoImgs" data-bs-toggle="tab">Two Images side by side</button></li>
                 </ul>
@@ -69,15 +76,40 @@
         <div class="tab-content mt-3">
             <div class="tab-pane fade show active" id="home" role="tabpanel">
                 <h1 class="text-bg-uq p-2">Welcome to your code centre for MEDI7100</h1>
-                <p>This site is dedicated to the editors of MEDI7100 LearnX sites. These sites have Bootstrap and Font Awesome referenced, and allow for some advanced formatting and icon usage. This can seem tricky and intimidating at first, so this site gives you a range of code snippets used in these sites including headings, use of the grid (aligning images/text/video content side by side), accordions, quotes, buttons and alerts. Use the navigation across the top to find what HTML element you are looking to make. Once you click into a page, you may see 1 or more variations on the element you are creating. Scroll to the one you are looking for, click the button to copy the code underneath the element and follow the below walkthrough on pasting and editing your HTML effectively.</p>
-                <p>Some important things to note:</p>
-                <ul>
-                    <li>All elements here use colours and formatting that align with the style and approach of the MEDI7100 design team. Deviate from them at your own peril! (Only kidding, just get in touch for support and we will likely add your idea to the bunch here if it is a sound idea).</li>
-                    <li>All placeholder images and videos are public links. They will display their content until you delete or replace them.</li>
-                    <li>Currently, we do not have a way of pulling existing content into this site and reformmating it. We are working on it, but it is a complex task.</li>
-                    <li>Elements are only placed here if they are tested and work.</li>
-                    <li>The team have only piloted this in Year 1, 2022. They are still learning about how this all interacts on LearnX, so if you use this code and it goes wrong, and you ask for support, be patient! Perfection takes time, focus and diligence.</li>                                        
-                </ul>
+                <p>This site is dedicated to the editors of MEDI7100 LearnX sites. These sites have Bootstrap and Font
+                    Awesome referenced, and allow for some advanced formatting and icon usage. This can seem tricky and
+                    intimidating at first, so this site gives you a range of code snippets used in these sites including
+                    headings, use of the grid (aligning images/text/video content side by side), accordions, quotes,
+                    buttons and alerts.</p>
+                    <div class="row">
+                        <div class="col-lg">
+                            <p>The format and intended use of this site is as follows:</p>
+                            <ul>
+                                <li>Each page has an example with a copy button located underneath the example. Click the button to copy the HTML required for the element.</li>
+                                <li>Once you paste your code be sure to replace any placeholders for text, images, videos or other elements within the correct HTML tags.</li>
+                                <li>If you encounter issues or have a suggestion for improving this page please hit the button to jump out to the Microsoft Form and log a bug/issue/suggestion in the footer of each page.</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg">
+                            <p>Some important things to note:</p>
+                            <ul>
+                                <li>All elements here use colours and formatting that align with the style and approach of the
+                                    MEDI7100 design team. Deviate from them at your own peril! (Only kidding, just get in touch for
+                                    support and we will likely add your idea to the bunch here if it is a sound idea).</li>
+                                <li>All placeholder images and videos are public links. They will display their content until you
+                                    delete or replace them.</li>
+                                <li>Currently, we do not have a way of pulling existing content into this site and reformmating it.
+                                    We are working on it, but it is a complex task.</li>
+                                <li>Elements are only placed here if they are tested and work.</li>
+                                <li>The team have only piloted this in Year 1, 2022. They are still learning about how this all
+                                    interacts on LearnX, so if you use this code and it goes wrong, and you ask for support, be
+                                    patient! Perfection takes time, focus and diligence.</li>
+                                <li>The format of pages is to show an example with the copy button displayed underneath the example. Click the
+                                    button to copy the code for the element you want</li>
+                            </ul>
+                        </div>
+                    </div>
+                
             </div>
             <div class="tab-pane fade" id="imgRight" role="tabpanel">
                 <h3 class="text-bg-uq p-2">Text left/Image right</h3>
@@ -87,7 +119,36 @@
                             <p>This is placeholder text</p>
                         </div>
                         <div class="col-lg">
-                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png" alt="" />
+                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png"
+                                alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="imgRight33" role="tabpanel">
+                <h3 class="text-bg-uq p-2">Image right 33%</h3>
+                <div class="copythis">
+                    <div class="row">
+                        <div class="col-lg">
+                            <p>This is placeholder text</p>
+                        </div>
+                        <div class="col-lg-4">
+                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png"
+                                alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="imgLeft33" role="tabpanel">
+                <h3 class="text-bg-uq p-2">Image left 33%</h3>
+                <div class="copythis">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png"
+                                alt="" />
+                        </div>
+                        <div class="col-lg">
+                            <p>This is placeholder text</p>
                         </div>
                     </div>
                 </div>
@@ -98,7 +159,8 @@
                 <div class="copythis">
                     <div class="row">
                         <div class="col-lg">
-                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png" alt="" />
+                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png"
+                                alt="" />
                         </div>
                         <div class="col-lg">
                             <p>This is placeholder text</p>
@@ -112,35 +174,42 @@
                     <div class="row">
                         <div class="col-lg">
                             <div class="col-lg-6 float-lg-end">
-                                <img class="img-fluid ms-4" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png" alt="" />
+                                <img class="img-fluid ms-4"
+                                    src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png" alt="" />
                             </div>
                             <p>This is placeholder text to show this image floats. This is placeholder text to show this
-                                image floats. This is placeholder text to show this image floats. This is placeholder text
+                                image floats. This is placeholder text to show this image floats. This is placeholder
+                                text
                                 to show this image floats. This is placeholder text to show this image floats. This is
                                 placeholder text to show this image floats. This is placeholder text to show this image
                                 floats.</p>
                             <p>This is placeholder text to show this image floats. This is placeholder text to show this
-                                image floats. This is placeholder text to show this image floats. This is placeholder text
+                                image floats. This is placeholder text to show this image floats. This is placeholder
+                                text
                                 to show this image floats. This is placeholder text to show this image floats. This is
                                 placeholder text to show this image floats. This is placeholder text to show this image
                                 floats.</p>
                             <p>This is placeholder text to show this image floats. This is placeholder text to show this
-                                image floats. This is placeholder text to show this image floats. This is placeholder text
+                                image floats. This is placeholder text to show this image floats. This is placeholder
+                                text
                                 to show this image floats. This is placeholder text to show this image floats. This is
                                 placeholder text to show this image floats. This is placeholder text to show this image
                                 floats.</p>
                             <p>This is placeholder text to show this image floats. This is placeholder text to show this
-                                image floats. This is placeholder text to show this image floats. This is placeholder text
+                                image floats. This is placeholder text to show this image floats. This is placeholder
+                                text
                                 to show this image floats. This is placeholder text to show this image floats. This is
                                 placeholder text to show this image floats. This is placeholder text to show this image
                                 floats.</p>
                             <p>This is placeholder text to show this image floats. This is placeholder text to show this
-                                image floats. This is placeholder text to show this image floats. This is placeholder text
+                                image floats. This is placeholder text to show this image floats. This is placeholder
+                                text
                                 to show this image floats. This is placeholder text to show this image floats. This is
                                 placeholder text to show this image floats. This is placeholder text to show this image
                                 floats.</p>
                             <p>This is placeholder text to show this image floats. This is placeholder text to show this
-                                image floats. This is placeholder text to show this image floats. This is placeholder text
+                                image floats. This is placeholder text to show this image floats. This is placeholder
+                                text
                                 to show this image floats. This is placeholder text to show this image floats. This is
                                 placeholder text to show this image floats. This is placeholder text to show this image
                                 floats.</p>
@@ -153,28 +222,333 @@
                 <div class="copythis">
                     <div class="row">
                         <div class="col-lg">
-                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png" alt="" />
+                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png"
+                                alt="" />
                         </div>
                         <div class="col-lg">
-                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png" alt="" />
+                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png"
+                                alt="" />
                         </div>
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade" id="purpleh2" role="tabpanel">
                 <div class="copythis">
-                <h2 class="text-bg-uq p-2">Your text here</h2>
+                    <h2 class="text-bg-uq p-2">Your text here</h2>
+                </div>
             </div>
-        </div>
             <div class="tab-pane fade" id="blueh4" role="tabpanel">
                 <div class="copythis">
-                <h4 class="text-bg-info p-2 bg-opacity-25">Your text here</h4>
-            </div>
+                    <h4 class="text-bg-info p-2 bg-opacity-25">Your text here</h4>
+                </div>
             </div>
             <div class="tab-pane fade" id="watchh2" role="tabpanel">
                 <div class="copythis">
-                <h2 class="text-bg-dark p-2"><i class="fa-brands fa-youtube"></i> Watch</h2></div>
+                    <h2 class="text-bg-dark p-2"><i class="fa-brands fa-youtube"></i> Watch</h2>
                 </div>
+            </div>
+            <div class="tab-pane fade" id="textBoxTest" role="tabpanel">
+               <div class="copythis">
+                    <div class="row">
+                        <div class="col-lg">
+                            <p>This is placeholder text</p>
+                        </div>
+                        <div class="col-lg">
+                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png"
+                                alt="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="row w-100 mx-auto">
+                            <div class="col-lg-3">  
+                       <h5 class="font-weight-bold">Write your text<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="Type in the text you would like to appear in your alert." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                            </div>
+                      <div class="col-lg mt-2">
+                      <textarea id="tinyMCEalert" class="border border-dark rounded w-100" rows="3" onchange=generateElementCode()></textarea>
+                    </div>
+                  </div>
+                    </div>
+                <div class="col-lg-6">
+                    <div class="sticky-top" style="top:100px;">
+                    <h5 class="font-weight-bold" data-original-title="" title="">Preview<span data-toggle="tooltip" data-placement="right" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="A preview of your element will appear below as you update your preferences for your button.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                    <div id="demo"></div><div><p><a class="btn btn-mu m-1" role="button" href="" target="_blank">[Placeholder for button text]</a></p><p>(Opens in a new window)</p></div>
+                    <p class="my-3"></p>
+                  <h5 class="font-weight-bold" data-original-title="" title="">Copy code<span data-toggle="tooltip" data-placement="top" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Click the copy code button below to copy your code, ready to paste into Moodle.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                  <textarea readonly="" class="rounded p-2 w-100 border border-dark" id="txtareaBtn" cols="70" rows="2" name="Result" placeholder="Code for your element will appear here"></textarea>
+                  <input data-toggle="tooltip" data-placement="bottom" data-trigger="click" title="" id="copyCodeBtn" class="btn btn-success btn-lg btn-block mt-2" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()" data-original-title="Your code has been copied.">
+                  <div class="text-center h5 mt-4">
+                    <a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into Moodle?</a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <!--<form id="btn">           
+                    <div class="row w-100 mx-auto">
+                    <div class="col-lg-6">
+                      <div class="row w-100 mx-auto">
+                        <div class="col-lg-3">
+                          <h5 class="font-weight-bold" data-original-title="" title="">Recover<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Retrieve your previous button configuration. Only works once you have created at least 1 button. Then the next 20 configurations will be available until you clear your internet browser history or change internet browsers or create more than 20 buttons.">&nbsp;<i class="fa fa-fw fa-question-circle" aria-hidden="true"></i></span></h5>
+                        </div>              
+                          <div class="col-lg">
+                            <div class="row w-100">
+                            <div class="col-lg-11">
+                            <select class="custom-select border border-dark" size="1" id="recoveryDate" onchange="idSelectedRecData()"><option selected="" value="null">no history available</option></select>
+                          </div>
+                      
+                            <div class="col-lg-1 text-center">
+                            <button data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus click" title="" id="delHist" onclick="delHistI()" type="button" class="btn btn-danger" disabled="" style="display: none;" data-original-title="Click this button to delete the item you have selected in the dropdown."><i class="fa fa-fw fa-trash" aria-hidden="true"></i></button>     
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                        <hr>
+                        <div class="row w-100 mx-auto">
+                          <div class="col-lg-3">
+                          <h5 class="font-weight-bold" data-original-title="" title="">Paste code from Moodle<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Paste in the code you previously generated from BEEST and pasted into Moodle to recover and redesign the element.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                          </div>
+                          <div class="col-lg">
+                          <textarea class="rounded p-2 w-100 mt-2" rows="2" name="retrieveCode" type="text" id="retrieveCode" placeholder="Or recover it by pasting existing code from Moodle" onchange="recoverCode()"></textarea>
+                      </div>
+                    </div>
+                    
+                      <hr>
+                      <div class="row w-100 mx-auto">
+                        <div class="col-lg-3">
+                      <h5 class="font-weight-bold" data-original-title="" title="">Destination<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Paste in the link/URL for your button. This is where users will be directed to when clicking the button.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                      
+                        </div>
+                        <div class="col-lg">
+                          <textarea class="border border-dark rounded p-2 w-100" rows="1" id="btn_URL" name="btn_URL" placeholder="Paste your link/URL here" onchange="generateBtnCode()"></textarea>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row w-100 mx-auto">
+                        <div class="col-lg-3">
+                          <h5 class="font-weight-bold" data-original-title="" title="">Button text<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Write the text that will appear on the button. This space is limited to 50 characters.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>     
+                        </div>
+                        <div class="col-lg">
+                          <textarea maxlength="50" class="border border-dark rounded p-2 w-100" cols="70" rows="1" id="btn_text" name="btn_text" placeholder="Insert button text here. 50 character maximum" onchange="generateBtnCode()"></textarea>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row w-100 mx-auto">
+                        <div class="col-lg-3">
+                          <h5 class="font-weight-bold" data-original-title="" title="">Choose icon<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="small hideableinstruct text-success" style="display: inline-block;" data-original-title="If you would like an icon to the right of your button text, choose one from this list.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5> 
+                        </div>
+                        <div class="col-lg-1 my-auto mr-3">
+                        <div class="form-check form-check-inline" id="faCode" onchange="generateBtnCode()">
+                          <input class="form-check-input" name="faCode" id="faCodeNone" type="radio" value="noI" checked="">
+                          <label class="form-check-label" for="faCodeNone">None</label>
+                        </div>
+                      </div>
+                        <div class="col-lg">
+                          <div class="row w-100">
+                            <div class="col-lg d-flex justify-content-between">
+                          <div class="form-check form-check-inline mx-1" id="faCode" onchange="generateBtnCode()">
+                            <input class="form-check-input" name="faCode" id="faCode1" type="radio" value="1">
+                            <label class="form-check-label" for="faCode1"><i class="fa fa-fw fa-arrow-right fa-2x" aria-hidden="true"></i></label>
+                          </div>
+                          <div class="form-check form-check-inline mx-1" id="faCode" onchange="generateBtnCode()">
+                          <input class="form-check-input" name="faCode" id="faCode2" type="radio" value="2">
+                          <label class="form-check-label" for="faCode2"><i class="fa fa-fw fa-arrow-circle-right fa-2x" aria-hidden="true"></i></label>
+                          </div>
+                          <div class="form-check form-check-inline mx-1" id="faCode" onchange="generateBtnCode()">
+                            <input class="form-check-input" name="faCode" id="faCode3" type="radio" value="3">
+                            <label class="form-check-label" for="faCode3"><i class="fa fa-fw fa-arrow-circle-o-right fa-2x" aria-hidden="true"></i></label>
+                            </div>
+                          <div class="form-check form-check-inline mx-1" id="faCode" onchange="generateBtnCode()">
+                          <input class="form-check-input" name="faCode" id="faCode4" type="radio" value="4">
+                          <label class="form-check-label" for="faCode4"><i class="fa fa-fw fa-external-link-square fa-2x" aria-hidden="true"></i></label>
+                        </div>
+                        <div class="form-check form-check-inline mx-1" id="faCode" onchange="generateBtnCode()">
+                          <input class="form-check-input" name="faCode" id="faCode5" type="radio" value="5">
+                          <label class="form-check-label" for="faCode5"><i class="fa fa-fw fa-external-link fa-2x" aria-hidden="true"></i></label>
+                        </div>
+                      </div>
+                    </div>
+                        <div class="row w-100 mt-2">
+                          <div class="col-lg d-flex justify-content-between">
+                        <div class="form-check form-check-inline mx-1" id="faCode" onchange="generateBtnCode()">
+                          <input class="form-check-input" name="faCode" id="faCode6" type="radio" value="6">
+                          <label class="form-check-label" for="faCode6"><i class="fa fa-fw fa-hand-o-right fa-2x" aria-hidden="true"></i></label>
+                        </div>
+                        <div class="form-check form-check-inline mx-1" id="faCode" onchange="generateBtnCode()">
+                          <input class="form-check-input" name="faCode" id="faCode7" type="radio" value="7">
+                          <label class="form-check-label" for="faCode7"><i class="fa fa-fw fa-play fa-2x" aria-hidden="true"></i></label>
+                        </div>
+                        <div class="form-check form-check-inline mx-1" id="faCode" onchange="generateBtnCode()">
+                          <input class="form-check-input" name="faCode" id="faCode8" type="radio" value="8">
+                          <label class="form-check-label" for="faCode8"><i class="fa fa-fw fa-play-circle fa-2x" aria-hidden="true"></i></label>
+                        </div>
+                        <div class="form-check form-check-inline mx-1" id="faCode" onchange="generateBtnCode()">
+                          <input class="form-check-input" name="faCode" id="faCode9" type="radio" value="9">
+                          <label class="form-check-label" for="faCode9"><i class="fa fa-fw fa-play-circle-o fa-2x" aria-hidden="true"></i></label>
+                        </div>
+                        <div class="form-check form-check-inline mx-1" id="faCode" onchange="generateBtnCode()">
+                          <input class="form-check-input" name="faCode" id="faCode10" type="radio" value="10">
+                          <label class="form-check-label" for="faCode10"><i class="fa fa-fw fa-link fa-2x" aria-hidden="true"></i></label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                      <hr>
+                   <div class="row w-100 mx-auto">
+                      <div class="col-lg-3">
+                      <h5 class="font-weight-bold" data-original-title="" title="">Button colour<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Choose the colour of your button. Monash blue is selected by default.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                      
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="row w-100">
+                          <div class="col-lg d-flex justify-content-between">
+                        <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                          <input class="form-check-input" name="btnColour" id="btnColour1" type="radio" value="1" checked="">
+                          <label class="form-check-label" for="btnColour1"><span id="monashBlue" class="btn btn-mu">Monash blue</span></label>
+                        </div>
+                        <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                        <input class="form-check-input" name="btnColour" id="btnColour2" type="radio" value="2">
+                        <label class="form-check-label" for="btnColour2"><span id="red" class="btn btn-danger">Red</span></label>
+                        </div>
+                        <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                          <input class="form-check-input" name="btnColour" id="btnColour3" type="radio" value="3">
+                          <label class="form-check-label" for="btnColour3"><span id="yellow" class="btn btn-warning">Yellow</span></label>
+                          </div>
+                        <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                        <input class="form-check-input" name="btnColour" id="btnColour4" type="radio" value="4">
+                        <label class="form-check-label" for="btnColour4"><span id="green" class="btn btn-success">Green</span></label>
+                      </div>
+                    </div>
+                  </div>
+                    <div class="row w-100 mt-2">
+                      <div class="col-lg d-flex justify-content-between">
+                      <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                        <input class="form-check-input" name="btnColour" id="btnColour5" type="radio" value="5">
+                        <label class="form-check-label" for="btnColour5"><span id="darkBlue" class="btn btn-primary">Dark blue</span></label>
+                      </div>
+                      <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                        <input class="form-check-input" name="btnColour" id="btnColour6" type="radio" value="6">
+                        <label class="form-check-label" for="btnColour6"><span id="lightBlue" class="btn btn-info">Light blue</span></label>
+                      </div>
+                      <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                        <input class="form-check-input" name="btnColour" id="btnColour7" type="radio" value="7">
+                        <label class="form-check-label" for="btnColour7"><span id="black" class="btn btn-dark">Black</span></label>
+                      </div>
+                      <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                        <input class="form-check-input" name="btnColour" id="btnColour8" type="radio" value="8">
+                        <label class="form-check-label" for="btnColour8"><span id="grey" class="btn btn-secondary">Grey</span></label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <hr>
+                <div class="row w-100 mx-auto">
+                <div class="col-lg-3"> 
+                  <h5 class="font-weight-bold" data-original-title="" title="">Invert colours<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Swap the button colour with the text colour">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>      
+                </div>
+                <div class="col-lg">
+                      <div class="form-check form-check-inline" id="invertColour" onchange="generateBtnCode()">
+                        <input class="form-check-input" name="invertColour" id="invertColour2" type="radio" value="n" checked="">
+                        <label class="form-check-label" for="invertColour2">Regular colours</label>
+                        </div>
+                      <div class="form-check form-check-inline" id="invertColour" onchange="generateBtnCode()">
+                        <input class="form-check-input" name="invertColour" id="invertColour1" type="radio" value="y">
+                        <label class="form-check-label" for="invertColour1">Inverted colours</label>
+                      </div>
+                  </div>
+                </div>
+                      <hr>
+                      <div class="row w-100 mx-auto">
+                        <div class="col-lg-3">
+                  <h5 class="font-weight-bold" data-original-title="" title="">Button size<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Choose the size of your button. Regular is chosen by default.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>      
+                  </div>
+                    <div class="col-lg">
+                      <div class="form-check" id="buttonSize" onchange="generateBtnCode()">
+                        <input class="form-check-input" name="buttonSize" id="buttonSize3" type="radio" value="1">
+                        <label class="form-check-label" for="buttonSize3"><span id="btnSmall" class="btn btn-sm btn-dark">Small</span></label>
+                      </div>
+                    <div class="form-check mt-2" id="buttonSize" onchange="generateBtnCode()">
+                      <input class="form-check-input" name="buttonSize" id="buttonSize1" type="radio" value="2" checked="">
+                      <label class="form-check-label" for="buttonSize1"><span id="btnRegular" class="btn btn-dark">Regular</span></label>
+                    </div>
+                    <div class="form-check mt-2" id="buttonSize" onchange="generateBtnCode()">
+                    <input class="form-check-input" name="buttonSize" id="buttonSize2" type="radio" value="3">
+                    <label class="form-check-label" for="buttonSize2"><span id="btnLarge" class="btn btn-lg btn-dark">Large</span></label>
+                    </div>
+                  </div>
+                  </div>
+                  <hr>
+                  <div class="row w-100 mx-auto">
+                  <div class="col-lg-3">
+                    <h5 class="font-weight-bold" data-original-title="" title="">Width<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Toggle whether to increase the button width to full width of screen.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                    
+                  </div>
+                  <div class="col-lg">
+                    <div class="row w-100">
+                      <div class="col-lg">
+                        <div class="form-check form-check-inline" id="fullWidth">
+                          <input class="form-check-input" name="fullWidth" id="fullWidth2" type="checkbox" onchange="generateBtnCode()">
+                          <label class="form-check-label" for="fullWidth2">Full width</label>
+                          </div>            
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+                  <hr>
+                      <div class="row w-100 mx-auto">
+                    <div class="col-lg-3">
+                      <h5 class="font-weight-bold" data-original-title="" title="">Open link in<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Choose whether to open link in a new window, or the same window users are on. New window is chosen by default.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                  </div>
+                  <div class="col-lg">
+                      <div class="form-check form-check-inline" id="buttonTarget" onchange="generateBtnCode()">
+                        <input class="form-check-input" name="buttonTarget" id="buttonTarget1" type="radio" value="newWin" checked="">
+                        <label class="form-check-label" for="buttonTarget1">New window</label>
+                      </div>
+                      <div class="form-check form-check-inline" id="buttonTarget" onchange="generateBtnCode()">
+                        <input class="form-check-input" name="buttonTarget" id="buttonTarget2" type="radio" value="sameWin">
+                        <label class="form-check-label" for="buttonTarget2">Same window</label>
+                      </div>
+                        </div>
+                      </div>  
+                      <hr>  
+                      <div id="alignment" class="row w-100 mx-auto">
+                        <div class="col-lg-3">
+                          <h5 class="font-weight-bold" data-original-title="" title="">Alignment<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Choose whether the button is left or centre-aligned. Left-align is chosen by default.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                          
+                          </div>
+                          <div class="col-lg">
+                          <div class="form-check form-check-inline" id="buttonAlign" onchange="generateBtnCode()">
+                            <input class="form-check-input" name="buttonAlign" id="buttonAlign1" type="radio" value="leftAlign" checked="">
+                            <label class="form-check-label" for="buttonAlign1">Left</label>
+                          </div>
+                          <div class="form-check form-check-inline" id="buttonAlign" onchange="generateBtnCode()">
+                            <input class="form-check-input" name="buttonAlign" id="buttonAlign2" type="radio" value="centerAlign">
+                            <label class="form-check-label" for="buttonAlign2">Centre</label>
+                          </div>
+                            </div>           
+                           </div> 
+                           </div>
+                           <hr>
+                            <div class="col-lg-6">
+                              <div class="sticky-top" style="top:100px;">
+                              <h5 class="font-weight-bold" data-original-title="" title="">Preview<span data-toggle="tooltip" data-placement="right" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="A preview of your element will appear below as you update your preferences for your button.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                              <div id="demo"></div><div><p><a class="btn btn-mu m-1" role="button" href="" target="_blank">[Placeholder for button text]</a></p><p>(Opens in a new window)</p></div>
+                              <p class="my-3"></p>
+                            <h5 class="font-weight-bold" data-original-title="" title="">Copy code<span data-toggle="tooltip" data-placement="top" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Click the copy code button below to copy your code, ready to paste into Moodle.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                            <textarea readonly="" class="rounded p-2 w-100 border border-dark" id="txtareaBtn" cols="70" rows="2" name="Result" placeholder="Code for your element will appear here"></textarea>
+                            <input data-toggle="tooltip" data-placement="bottom" data-trigger="click" title="" id="copyCodeBtn" class="btn btn-success btn-lg btn-block mt-2" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()" data-original-title="Your code has been copied.">
+                            <div class="text-center h5 mt-4">
+                              <a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into Moodle?</a>
+                              </div>
+                              </div>
+                            </div>
+                          </div>
+                    </form>-->
+            </div>
         </div>
     </div>
 </body>
