@@ -1,5 +1,6 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -7,16 +8,20 @@
     <title>UQ MEDI7100 LearnX Custom HTML Components</title>
     <link rel="icon" href="img/UQfavicon.png" type="image/gif">
 
+    <!-- TinyMCE WYSIWYG editor -->
+    <script src="https://cdn.tiny.cloud/1/uo446edaov069auf1b4nxjto1611byt76bdeabca3oo866lh/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
     <!--jQuery version 3.6.0-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="https://uq-itali.github.io/uqlearnx/medi7100/css/customStyles.css" />
     <link rel="stylesheet" type="text/css" href="https://uq-itali.github.io/fontawesome-v6.1.1-free/css/all.css" />
     <link rel="stylesheet" type="text/css" href="https://uq-itali.github.io/uqlearnx/medi7100/bootstrap-5.2.1-dist/css/bootstrap.css" />
+
     <!-- Bootstrap JS -->
     <script src="copyNextDiv.js" crossorigin="anonymous"></script>
+
     <!--<script src="https://uq-itali.github.io/uqlearnx/medi7100/bootstrap-5.2.1-dist/js/bootstrap.bundle.js" crossorigin="anonymous"></script>
     <script src="https://uq-itali.github.io/uqlearnx/medi7100/bootstrap-5.2.1-dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.js"></script>
@@ -39,6 +44,152 @@
             });
         });     
     </script>
+    <script type="text/javascript">
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+
+        tinymce.init({
+            selector: '#tinyMCEtext',
+            menubar: false,
+            height: "350",
+            plugins: [
+                'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                'insertdatetime', 'media', 'table', 'help', 'wordcount'
+            ],
+            toolbar: 'undo redo blocks bold italic alignleft aligncenter alignright bullist numlist table link code charmap removeformat fullscreen',
+            table_header_type: 'sectionCells',
+            table_default_attributes: { class: 'table table-bordered table-striped table-hover table-responsive' },
+            table_use_colgroups: false,
+            table_default_styles: {},
+            invalid_styles: {
+                'table': 'width height',
+                'tr': 'width height',
+                'th': 'width height',
+                'td': 'width height'
+            },
+            setup: function (ed) {
+                ed.on('keyup', function (e) {
+                    var tinyText = tinymce.activeEditor.getContent();
+                    console.log('Editor contents was modified. Contents: ' + ed.getContent());
+                    generateElementCode();
+                });
+            }
+        });
+        var rowOpen = '<div class="row">\n';
+        var colOpen = '<div class="col-lg">\n';
+        var col3Open = '<div class="col-lg-3">\n'
+        var col4Open = '<div class="col-lg-4">\n'        
+        var divClose = '\n</div>\n';
+        var rowClose = '\n</div>\n</div>';
+        var uqh2="text-bg-uq p-2";
+        var resizedHead = "";
+        var textPlaceholder = '<p>This is placeholder text that will update once you input your own text</p>';
+        var imgPlaceholder = '<figure>\n<img class="img-fluid d-block mx-auto" alt="This is alt text" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png" />\n<figcaption class="text-center mt-2">This is the placeholder image caption</figcaption>\n</figure>';
+        var placeholderCode = rowOpen + colOpen + textPlaceholder + divClose + colOpen + imgPlaceholder + rowClose;
+        window.addEventListener('load', function () {
+            $('#finalCode').val(placeholderCode);
+            $('div#demo').html(placeholderCode);
+            fullScreenToggle();
+        })
+        function generateElementCode() {
+            var imgPosition = $('input[name="imagePosition"]:checked').val();
+            var imgWidth = $('input[name="imageWidth"]:checked').val();
+            var tinyText = tinymce.activeEditor.getContent();
+            var headingText = $('#headingText').val();
+            var headSize = $('input[name="headSize"]:checked').val();
+            var imgLink = $('#imgLink').val();
+            var altText = $('#altText').val();
+            var captionText = $('#captionText').val();
+            var imgCode = '<figure>\n<img class="img-fluid d-block mx-auto" src="' + imgLink + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>';
+            if(headSize !== "noH"){
+                //Resizing the heading text
+                var sizes = {
+                    "noH": "",
+                    "h2": "<h2 class=\"text-bg-uq p-2\">" + headingText + "</h2>\n",
+                    "h4": "<h4 class=\"text-bg-info bg-opacity-25 p-2\">" + headingText + "</h4>\n"
+                }
+                resizedHead = sizes[headSize]
+            }
+            else{
+                headingText.value = "";
+                resizedHead = "";
+            }
+            
+            if(imgPosition == "left" && imgWidth=="50"){
+                var finalCode = resizedHead + rowOpen + colOpen + imgCode + divClose + colOpen + tinyText  + rowClose;
+                $('#finalCode').val(finalCode);
+                $('div#demo').html(finalCode);
+            }
+            else if(imgPosition == "right" && imgWidth=="50"){
+                var finalCode = resizedHead + rowOpen + colOpen + tinyText + divClose + colOpen + imgCode + rowClose;
+                $('#finalCode').val(finalCode);
+                $('div#demo').html(finalCode);
+            }
+            
+            else if(imgPosition == "left" && imgWidth=="33"){
+                var finalCode = resizedHead + rowOpen + col4Open + imgCode + divClose + colOpen + tinyText  + rowClose;
+                $('#finalCode').val(finalCode);
+                $('div#demo').html(finalCode);                
+            }
+            else if(imgPosition == "left" && imgWidth=="25"){
+                var finalCode = resizedHead + rowOpen + col3Open + imgCode + divClose + colOpen + tinyText  + rowClose;
+                $('#finalCode').val(finalCode);
+                $('div#demo').html(finalCode);
+            }
+            else if(imgPosition == "right" && imgWidth=="33"){
+                var finalCode = resizedHead + rowOpen + colOpen + tinyText + divClose + col4Open + imgCode + rowClose;
+                $('#finalCode').val(finalCode);
+                $('div#demo').html(finalCode);
+            }
+            else if(imgPosition == "right" && imgWidth=="25"){
+                var finalCode = resizedHead + rowOpen + colOpen + tinyText + divClose + col3Open + imgCode + rowClose;
+                $('#finalCode').val(finalCode);
+                $('div#demo').html(finalCode);
+            }
+        }
+        function copyCode() {
+            var selectedCode = $('#finalCode').select();
+            try {
+                var successful = document.execCommand('copy');
+                var msg = successful ? 'successful' : 'unsuccessful';
+                console.log('Fallback: Copying text command was ' + msg);
+                console.log("@GB: snippet = ", selectedCode.val());
+            } catch (err) {
+                console.error('Fallback: Oops, unable to copy', err);
+            }
+        }
+        function fullScreenToggle() {
+                if (document.fullscreenEnabled) {
+                    var togglePreviewFS = document.getElementById("togglePreviewFS");
+                    togglePreviewFS.addEventListener("click", function (event) {
+                        if (!document.fullscreenElement) {
+                            document.querySelector("#demo").requestFullscreen();
+                        } else {
+                            document.exitFullscreen();
+                        }
+                    }, false);
+                    document.addEventListener("fullscreenchange", function (event) {
+                        console.log(event);
+                        if (!document.fullscreenElement) {
+                            togglePreviewFS.innerHTML = "<i class=\"fa fa-expand-arrows-alt fa-lg\"></i>";
+                            $('#demo').removeClass('pt-5 bg-white');
+                            $(togglePreviewFS).appendTo('.previewButton');
+                        } else {
+                            togglePreviewFS.innerHTML = "<i class=\"fa fa-compress-arrows-alt fa-lg\"></i>";
+                            $(togglePreviewFS).appendTo('#demo');
+                            $(togglePreviewFS).addClass('d-block mx-auto mt-3')
+                            $('#demo').addClass('pt-5 bg-white');
+                        }
+                    });
+                    document.addEventListener("fullscreenerror", function (event) {
+                        console.log(event);
+                    });
+                }
+            }
+            
+
+    </script>
 </head>
 
 <body>
@@ -48,68 +199,63 @@
                 <button class="nav-link active" href="#home" data-bs-toggle="tab">Home</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" href="#textBoxTest" data-bs-toggle="tab">Testing</button>
+                <button class="nav-link" href="#buildImgText" data-bs-toggle="tab">Image/text builder</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" href="#headings" data-bs-toggle="tab">Headings</button>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Image combos</a>
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Image snippets</a>
                 <ul class="dropdown-menu">
                     <li><button class="dropdown-item" href="#imgRight" data-bs-toggle="tab">Image right</button></li>
                     <li><button class="dropdown-item" href="#imgLeft" data-bs-toggle="tab">Image left</button></li>
-                    <li><button class="dropdown-item" href="#imgRight33" data-bs-toggle="tab">Image right 33% width</button></li>
-                    <li><button class="dropdown-item" href="#imgLeft33" data-bs-toggle="tab">Image left 33% width</button></li>
-                    <li><button class="dropdown-item" href="#imgFloatRight" data-bs-toggle="tab">Image float right</button></li>
-                    <li><button class="dropdown-item" href="#twoImgs" data-bs-toggle="tab">Two Images side by side</button></li>
+                    <li><button class="dropdown-item" href="#imgRight33" data-bs-toggle="tab">Image right 33%
+                            width</button></li>
+                    <li><button class="dropdown-item" href="#imgLeft33" data-bs-toggle="tab">Image left 33%
+                            width</button></li>
+                    <li><button class="dropdown-item" href="#imgFloatRight" data-bs-toggle="tab">Image float
+                            right</button></li>
+                    <li><button class="dropdown-item" href="#twoImgs" data-bs-toggle="tab">Two Images side by
+                            side</button></li>
                 </ul>
             </li>
             <!--<li class="nav-item" role="presentation">
                 <button class="nav-link" href="#headings" data-bs-toggle="tab">Headings</button>
             </li>-->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Heading combos</a>
-                <ul class="dropdown-menu">
-                    <li><button class="dropdown-item" href="#purpleh2" data-bs-toggle="tab">Purple H2</button></li>
-                    <li><button class="dropdown-item" href="#blueh4" data-bs-toggle="tab">Blue H4</button></li>
-                    <li><button class="dropdown-item" href="#watchh2" data-bs-toggle="tab">Watch H2</button></li>
-                </ul>
-            </li>
         </ul>
         <div class="tab-content mt-3">
             <div class="tab-pane fade show active" id="home" role="tabpanel">
                 <h1 class="text-bg-uq p-2">Welcome to your code centre for MEDI7100</h1>
-                <p>This site is dedicated to the editors of MEDI7100 LearnX sites. These sites have Bootstrap and Font
-                    Awesome referenced, and allow for some advanced formatting and icon usage. This can seem tricky and
-                    intimidating at first, so this site gives you a range of code snippets used in these sites including
-                    headings, use of the grid (aligning images/text/video content side by side), accordions, quotes,
-                    buttons and alerts.</p>
-                    <div class="row">
-                        <div class="col-lg">
-                            <p>The format and intended use of this site is as follows:</p>
-                            <ul>
-                                <li>Each page has an example with a copy button located underneath the example. Click the button to copy the HTML required for the element.</li>
-                                <li>Once you paste your code be sure to replace any placeholders for text, images, videos or other elements within the correct HTML tags.</li>
-                                <li>If you encounter issues or have a suggestion for improving this page please hit the button to jump out to the Microsoft Form and log a bug/issue/suggestion in the footer of each page.</li>
-                            </ul>
-                        </div>
-                        <div class="col-lg">
-                            <p>Some important things to note:</p>
-                            <ul>
-                                <li>All elements here use colours and formatting that align with the style and approach of the
-                                    MEDI7100 design team. Deviate from them at your own peril! (Only kidding, just get in touch for
-                                    support and we will likely add your idea to the bunch here if it is a sound idea).</li>
-                                <li>All placeholder images and videos are public links. They will display their content until you
-                                    delete or replace them.</li>
-                                <li>Currently, we do not have a way of pulling existing content into this site and reformmating it.
-                                    We are working on it, but it is a complex task.</li>
-                                <li>Elements are only placed here if they are tested and work.</li>
-                                <li>The team have only piloted this in Year 1, 2022. They are still learning about how this all
-                                    interacts on LearnX, so if you use this code and it goes wrong, and you ask for support, be
-                                    patient! Perfection takes time, focus and diligence.</li>
-                                <li>The format of pages is to show an example with the copy button displayed underneath the example. Click the
-                                    button to copy the code for the element you want</li>
-                            </ul>
-                        </div>
+                <p>This site is dedicated to the editors of MEDI7100 LearnX sites. These sites have Bootstrap (CSS and JS library) and Font Awesome (icons) referenced, and allow for some advanced formatting and icon usage. This can seem tricky and intimidating at first, so this site gives you</p>
+                <ul>
+                    <li>an easy to navigate menu at the top of screen to go to the element snippet or builder you require.</li>
+                    <li>a range of <strong>code snippets</strong> (headings, image/text combinations, accordions, quotes, buttons, alerts.</li>
+                    <li><strong>code builders</strong> - these are powerful web applications that allow you to input plain text, rich text and links to achieve your format rather than copying and pasting code and then editing, you build your element, then copy the code created and paste it into LearnX</li>
+                    <li>Help - if you see green question mark icons like this - <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="I have hidden help you can see when you hover on me" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span> - you can hover over them fo quick guidance on what information is required.</li>
+                </ul>
+                <hr>
+                <div class="row">
+                    <div class="col-lg">
+                        <p>The format and intended use of this site is as follows:</p>
+                        <ul>
+                            <li>Each page has an example with a copy button located underneath the example. Click the button to copy the HTML required for the element.</li>
+                            <li>Once you paste your code be sure to replace any placeholders for text, images, videos or other elements within the correct HTML tags.</li>
+                            <li>If you encounter issues or have a suggestion for improving this page please hit the button to jump out to the Microsoft Form and log a bug/issue/suggestion in the footer of each page.</li>
+                        </ul>
                     </div>
-                
+                    <div class="col-lg">
+                        <p>Some important things to note:</p>
+                        <ul>
+                            <li>All elements here use colours and formatting that align with the style and approach of the MEDI7100 design team. Deviate from them at your own peril! (Only kidding, just get in touch for support and we will likely add your idea to the bunch here if it is a sound idea).</li>
+                            <li>All placeholder images and videos are public links. They will display their content until you delete or replace them.</li>
+                            <li>Currently, we do not have a way of pulling existing content into this site and reformmating it. We are working on it, but it is a complex task.</li>
+                            <li>Elements are only placed here if they are tested and work.</li>
+                            <li>The team have only piloted this in Year 1, 2022. They are still learning about how this all interacts on LearnX, so if you use this code and it goes wrong, and you ask for support, be patient! Perfection takes time, focus and diligence.</li>
+                            <li>The format of pages is to show an example with the copy button displayed underneath the example. Click the button to copy the code for the element you want</li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
             <div class="tab-pane fade" id="imgRight" role="tabpanel">
                 <h3 class="text-bg-uq p-2">Text left/Image right</h3>
@@ -119,8 +265,7 @@
                             <p>This is placeholder text</p>
                         </div>
                         <div class="col-lg">
-                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png"
-                                alt="" />
+                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png" alt="" />
                         </div>
                     </div>
                 </div>
@@ -133,8 +278,7 @@
                             <p>This is placeholder text</p>
                         </div>
                         <div class="col-lg-4">
-                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png"
-                                alt="" />
+                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png" alt="" />
                         </div>
                     </div>
                 </div>
@@ -144,8 +288,7 @@
                 <div class="copythis">
                     <div class="row">
                         <div class="col-lg-4">
-                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png"
-                                alt="" />
+                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png" alt="" />
                         </div>
                         <div class="col-lg">
                             <p>This is placeholder text</p>
@@ -159,8 +302,7 @@
                 <div class="copythis">
                     <div class="row">
                         <div class="col-lg">
-                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png"
-                                alt="" />
+                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png" alt="" />
                         </div>
                         <div class="col-lg">
                             <p>This is placeholder text</p>
@@ -174,45 +316,14 @@
                     <div class="row">
                         <div class="col-lg">
                             <div class="col-lg-6 float-lg-end">
-                                <img class="img-fluid ms-4"
-                                    src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png" alt="" />
+                                <img class="img-fluid ms-4" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png" alt="" />
                             </div>
-                            <p>This is placeholder text to show this image floats. This is placeholder text to show this
-                                image floats. This is placeholder text to show this image floats. This is placeholder
-                                text
-                                to show this image floats. This is placeholder text to show this image floats. This is
-                                placeholder text to show this image floats. This is placeholder text to show this image
-                                floats.</p>
-                            <p>This is placeholder text to show this image floats. This is placeholder text to show this
-                                image floats. This is placeholder text to show this image floats. This is placeholder
-                                text
-                                to show this image floats. This is placeholder text to show this image floats. This is
-                                placeholder text to show this image floats. This is placeholder text to show this image
-                                floats.</p>
-                            <p>This is placeholder text to show this image floats. This is placeholder text to show this
-                                image floats. This is placeholder text to show this image floats. This is placeholder
-                                text
-                                to show this image floats. This is placeholder text to show this image floats. This is
-                                placeholder text to show this image floats. This is placeholder text to show this image
-                                floats.</p>
-                            <p>This is placeholder text to show this image floats. This is placeholder text to show this
-                                image floats. This is placeholder text to show this image floats. This is placeholder
-                                text
-                                to show this image floats. This is placeholder text to show this image floats. This is
-                                placeholder text to show this image floats. This is placeholder text to show this image
-                                floats.</p>
-                            <p>This is placeholder text to show this image floats. This is placeholder text to show this
-                                image floats. This is placeholder text to show this image floats. This is placeholder
-                                text
-                                to show this image floats. This is placeholder text to show this image floats. This is
-                                placeholder text to show this image floats. This is placeholder text to show this image
-                                floats.</p>
-                            <p>This is placeholder text to show this image floats. This is placeholder text to show this
-                                image floats. This is placeholder text to show this image floats. This is placeholder
-                                text
-                                to show this image floats. This is placeholder text to show this image floats. This is
-                                placeholder text to show this image floats. This is placeholder text to show this image
-                                floats.</p>
+                            <p>This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats.</p>
+                            <p>This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats.</p>
+                            <p>This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats.</p>
+                            <p>This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats.</p>
+                            <p>This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats.</p>
+                            <p>This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats. This is placeholder text to show this image floats.</p>
                         </div>
                     </div>
                 </div>
@@ -222,69 +333,97 @@
                 <div class="copythis">
                     <div class="row">
                         <div class="col-lg">
-                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png"
-                                alt="" />
+                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png" alt="" />
                         </div>
                         <div class="col-lg">
-                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png"
-                                alt="" />
+                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png" alt="" />
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="purpleh2" role="tabpanel">
+            <div class="tab-pane fade" id="headings" role="tabpanel">
                 <div class="copythis">
-                    <h2 class="text-bg-uq p-2">Your text here</h2>
+                    <h2 class="text-bg-uq p-2">Purple main heading - Your text here</h2>
                 </div>
-            </div>
-            <div class="tab-pane fade" id="blueh4" role="tabpanel">
-                <div class="copythis">
-                    <h4 class="text-bg-info p-2 bg-opacity-25">Your text here</h4>
+                <hr>
+                <div class="copythis mt-3">
+                    <h4 class="text-bg-info p-2 bg-opacity-25">Light blue subheading - Your text here</h4>
                 </div>
-            </div>
-            <div class="tab-pane fade" id="watchh2" role="tabpanel">
-                <div class="copythis">
+                <hr>
+                <div class="copythis mt-3">
                     <h2 class="text-bg-dark p-2"><i class="fa-brands fa-youtube"></i> Watch</h2>
                 </div>
             </div>
-            <div class="tab-pane fade" id="textBoxTest" role="tabpanel">
-               <div class="copythis">
-                    <div class="row">
-                        <div class="col-lg">
-                            <p>This is placeholder text</p>
-                        </div>
-                        <div class="col-lg">
-                            <img class="img-fluid" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png"
-                                alt="" />
-                        </div>
-                    </div>
-                </div>
+            <div class="tab-pane fade" id="buildImgText" role="tabpanel">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="row w-100 mx-auto">
-                            <div class="col-lg-3">  
-                       <h5 class="font-weight-bold">Write your text<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="Type in the text you would like to appear in your alert." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                            <div class="col-lg">
+                                <h5 class="font-weight-bold">Image position<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your image on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="form-check form-check-inline" id="imagePosition" onchange="generateElementCode()">
+                                    <input class="form-check-input" name="imagePosition" id="imagePosition2" type="radio" value="left">
+                                    <label class="form-check-label" for="imagePosition2">Left</label>
+                                  </div>
+                                  <div class="form-check form-check-inline" id="imagePosition" onchange="generateElementCode()">
+                                    <input class="form-check-input" name="imagePosition" id="imagePosition1" type="radio" value="right" checked>
+                                    <label class="form-check-label" for="imagePosition1">Right</label>
+                                  </div>
+                                  <h5 class="font-weight-bold mt-3">Image width<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether the image is half (1/2) the width of the screen or a quarter the size (1/4)" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                  <div class="form-check form-check-inline" id="imageWidth" onchange="generateElementCode()">
+                                    <input class="form-check-input" name="imageWidth" id="imageWidth1" type="radio" value="50" checked="">
+                                    <label class="form-check-label" for="imageWidth1">50% (1/2)</label>
+                                  </div>
+                                  <div class="form-check form-check-inline" id="imageWidth" onchange="generateElementCode()">
+                                    <input class="form-check-input" name="imageWidth" id="imageWidth2" type="radio" value="33">
+                                    <label class="form-check-label" for="imageWidth2">33.3% (1/3)</label>
+                                  </div>
+                                  <div class="form-check form-check-inline" id="imageWidth" onchange="generateElementCode()">
+                                    <input class="form-check-input" name="imageWidth" id="imageWidth3" type="radio" value="25">
+                                    <label class="form-check-label" for="imageWidth3">25% (1/4)</label>
+                                  </div>
+                                <h5 class="font-weight-bold mt-3">Heading - Max 75 Characters<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Optional heading above content. Max 75 characters" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <textarea onchange="generateElementCode()" id="headingText" maxlength="75" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Optional heading above content. Max 75 characters"></textarea>
+                                <h5 class="font-weight-bold mt-3">Heading size<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the size of your heading." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                   <div class="form-check form-check-inline" id="headSize" onchange="generateElementCode()">
+                                     <input class="form-check-input" name="headSize" id="headSizeNone" type="radio" value="noH" checked>
+                                     <label class="form-check-label" for="headSizeNone">No heading</label>
+                                   </div>
+                                     <div class="form-check form-check-inline" id="headSize" onchange="generateElementCode()">
+                                     <input class="form-check-input" name="headSize" id="headSize2" type="radio" value="h4">
+                                     <label class="form-check-label" for="headSize2"><h4 class="text-bg-info p-2 bg-opacity-25">Sub heading</h4></label>
+                                     </div>
+                                     <div class="form-check form-check-inline" id="headSize" onchange="generateElementCode()">
+                                     <input class="form-check-input" name="headSize" id="headSize3" type="radio" value="h2">
+                                     <label class="form-check-label" for="headSize3"><h2 class="text-bg-uq p-2">Main heading</h2></label>
+                                   </div>
+                                <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear in your alert." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea id="tinyMCEtext" class="border border-dark rounded w-100" onkeyup=generateElementCode()></textarea>
+                                <h5 class="font-weight-bold mt-3">Paste your image link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The web link from LearnX to the image you would like to appear in your selected element." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea onchange="generateElementCode()" id="imgLink" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Paste your LearnX web link to your image link here."></textarea>
+                                <h5 class="font-weight-bold mt-3">Type your alt text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The description of your image you would like to appear when a user hovers over the image or uses a screen reader" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea onkeyup="generateElementCode()" id="altText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your alt text here."></textarea>
+                                <h5 class="font-weight-bold mt-3">Type your caption text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the caption you would like to appear underneath your image." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea onkeyup="generateElementCode()" id="captionText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your alt text here."></textarea>
                             </div>
-                      <div class="col-lg mt-2">
-                      <textarea id="tinyMCEalert" class="border border-dark rounded w-100" rows="3" onchange=generateElementCode()></textarea>
+                        </div>
                     </div>
-                  </div>
+                    <div class="col-lg-6">
+                        <div class="sticky-top" style="top:1rem;">
+                            <h5 class="font-weight-bold">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                            <div id="demo"></div>
+                            <button type="button" class="btn btn-outline-dark border border-dark rounded d-block mx-auto" id="togglePreviewFS" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click to expand the preview to fullscreen. Click again or press Escape to return here to the editing screen."><i class="fa fa-expand-arrows-alt fa-lg" aria-hidden="true"></i></button>
+                            <h5 class="font-weight-bold">Copy code<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click the copy code button below to copy your code, ready to paste into LearnX.">&nbsp;<i class="fa fa-question-circle text-success small" aria-hidden="true"></i></span></h5>
+                            <textarea readonly class="rounded p-2 w-100 border border-dark" id="finalCode" cols="70" rows="5" name="Result" placeholder="Code for your element will appear here"></textarea>
+                            <input id="copyCodeBtn" class="btn btn-success btn-lg d-block w-100 mt-2" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()">
+                            <div class="text-center h5 mt-4">
+                            <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into
+                                LearnX?</a>-->
+                            </div>
+                        </div>
                     </div>
-                <div class="col-lg-6">
-                    <div class="sticky-top" style="top:100px;">
-                    <h5 class="font-weight-bold" data-original-title="" title="">Preview<span data-toggle="tooltip" data-placement="right" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="A preview of your element will appear below as you update your preferences for your button.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                    <div id="demo"></div><div><p><a class="btn btn-mu m-1" role="button" href="" target="_blank">[Placeholder for button text]</a></p><p>(Opens in a new window)</p></div>
-                    <p class="my-3"></p>
-                  <h5 class="font-weight-bold" data-original-title="" title="">Copy code<span data-toggle="tooltip" data-placement="top" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Click the copy code button below to copy your code, ready to paste into Moodle.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                  <textarea readonly="" class="rounded p-2 w-100 border border-dark" id="txtareaBtn" cols="70" rows="2" name="Result" placeholder="Code for your element will appear here"></textarea>
-                  <input data-toggle="tooltip" data-placement="bottom" data-trigger="click" title="" id="copyCodeBtn" class="btn btn-success btn-lg btn-block mt-2" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()" data-original-title="Your code has been copied.">
-                  <div class="text-center h5 mt-4">
-                    <a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into Moodle?</a>
-                    </div>
-                    </div>
-                  </div>
                 </div>
-                <!--<form id="btn">           
+            </div>
+            <!--<form id="btn">           
                     <div class="row w-100 mx-auto">
                     <div class="col-lg-6">
                       <div class="row w-100 mx-auto">
@@ -548,9 +687,12 @@
                             </div>
                           </div>
                     </form>-->
-            </div>
         </div>
     </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
 </body>
 
 </html>
