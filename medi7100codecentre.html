@@ -76,32 +76,53 @@
                 });
             }
         });
-        var rowOpen = '<div class="row">\n';
-        var colOpen = '<div class="col-lg">\n';
-        var col3Open = '<div class="col-lg-3">\n'
-        var col4Open = '<div class="col-lg-4">\n'        
-        var divClose = '\n</div>\n';
-        var rowClose = '\n</div>\n</div>';
-        var uqh2="text-bg-uq p-2";
-        var resizedHead = "";
-        var textPlaceholder = '<p>This is placeholder text that will update once you input your own text</p>';
-        var imgPlaceholder = '<figure>\n<img class="img-fluid d-block mx-auto" alt="This is alt text" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png" />\n<figcaption class="text-center mt-2">This is the placeholder image caption</figcaption>\n</figure>';
-        var placeholderCode = rowOpen + colOpen + textPlaceholder + divClose + colOpen + imgPlaceholder + rowClose;
-        window.addEventListener('load', function () {
-            $('#finalCode').val(placeholderCode);
-            $('div#demo').html(placeholderCode);
-            fullScreenToggle();
-        })
+        //Variables required to construct code output
+            var rowOpen = '<div class="row">\n';
+            var colOpen = '<div class="col-lg">\n';
+            var col3Open = '<div class="col-lg-3">\n';
+            var col4Open = '<div class="col-lg-4">\n';
+            var colFloatOpen = '<div class="col-lg">\n<div class="col-lg-6 float-lg-end m-2">\n';
+            var col3FloatOpen = '<div class="col-lg">\n<div class="col-lg-3 float-lg-end m-2">\n';
+            var col4FloatOpen = '<div class="col-lg">\n<div class="col-lg-4 float-lg-end m-2">\n'
+            var divClose = '</div>\n';
+            var rowClose = '</div>\n</div>\n';
+            var uqh2 = "text-bg-uq p-2";
+            var resizedHead = "";
+            //Placeholder variables so there is a placeholder preview for the user to see initially
+            var textPlaceholder = '<p>This is placeholder text that will update once you input your own text</p>\n';
+            var imgPlaceholder = '<figure>\n<img class="img-fluid d-block mx-auto" alt="This is alt text" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png" />\n<figcaption class="text-center mt-2">This is the placeholder image caption</figcaption>\n</figure>\n';
+            var imgPlaceholderLink = 'https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png'
+            var placeholderCode = rowOpen + colOpen + textPlaceholder + divClose + colOpen + imgPlaceholder + rowClose;
+            window.addEventListener('load', function () {
+                $('#finalCode').val(placeholderCode);
+                $('div#demo').html(placeholderCode);
+                fullScreenToggle();
+            })
+        //Function that changes code as user makes selections on the page and inputs text
         function generateElementCode() {
+            //Retrive values and text from the user's input
             var imgPosition = $('input[name="imagePosition"]:checked').val();
             var imgWidth = $('input[name="imageWidth"]:checked').val();
-            var tinyText = tinymce.activeEditor.getContent();
+            //var tinyText = tinymce.activeEditor.getContent() + '\n';
+            if(tinymce.activeEditor.getContent() !==''){
+                tinyText = tinymce.activeEditor.getContent() + '\n';
+            }
+            else{
+                tinyText = textPlaceholder
+            }
             var headingText = $('#headingText').val();
             var headSize = $('input[name="headSize"]:checked').val();
             var imgLink = $('#imgLink').val();
+            if(imgLink !== ''){
+                imgLink = imgLink;
+            }
+            else(
+                imgLink = imgPlaceholderLink
+                )
             var altText = $('#altText').val();
             var captionText = $('#captionText').val();
-            var imgCode = '<figure>\n<img class="img-fluid d-block mx-auto" src="' + imgLink + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>';
+            var imgCode = '<figure>\n<img class="img-fluid d-block mx-auto" src="' + imgLink + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>\n';
+            var imgFloat = '<figure>\n<img class="img-fluid" src="' + imgLink + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>\n';
             if(headSize !== "noH"){
                 //Resizing the heading text
                 var sizes = {
@@ -109,45 +130,59 @@
                     "h2": "<h2 class=\"text-bg-uq p-2\">" + headingText + "</h2>\n",
                     "h4": "<h4 class=\"text-bg-info bg-opacity-25 p-2\">" + headingText + "</h4>\n"
                 }
-                resizedHead = sizes[headSize]
+                resizedHead = sizes[headSize];
             }
-            else{
-                headingText.value = "";
+            else {
                 resizedHead = "";
-            }
-            
+            } 
+            //Changing code order depending on selections
             if(imgPosition == "left" && imgWidth=="50"){
                 var finalCode = resizedHead + rowOpen + colOpen + imgCode + divClose + colOpen + tinyText  + rowClose;
                 $('#finalCode').val(finalCode);
                 $('div#demo').html(finalCode);
             }
-            else if(imgPosition == "right" && imgWidth=="50"){
+            else if(imgPosition == "right" && imgWidth == "50"){
                 var finalCode = resizedHead + rowOpen + colOpen + tinyText + divClose + colOpen + imgCode + rowClose;
                 $('#finalCode').val(finalCode);
                 $('div#demo').html(finalCode);
             }
-            
-            else if(imgPosition == "left" && imgWidth=="33"){
+            else if(imgPosition == "left" && imgWidth == "33"){
                 var finalCode = resizedHead + rowOpen + col4Open + imgCode + divClose + colOpen + tinyText  + rowClose;
                 $('#finalCode').val(finalCode);
                 $('div#demo').html(finalCode);                
             }
-            else if(imgPosition == "left" && imgWidth=="25"){
+            else if(imgPosition == "left" && imgWidth == "25"){
                 var finalCode = resizedHead + rowOpen + col3Open + imgCode + divClose + colOpen + tinyText  + rowClose;
                 $('#finalCode').val(finalCode);
                 $('div#demo').html(finalCode);
             }
-            else if(imgPosition == "right" && imgWidth=="33"){
+            else if(imgPosition == "right" && imgWidth == "33"){
                 var finalCode = resizedHead + rowOpen + colOpen + tinyText + divClose + col4Open + imgCode + rowClose;
                 $('#finalCode').val(finalCode);
                 $('div#demo').html(finalCode);
             }
-            else if(imgPosition == "right" && imgWidth=="25"){
+            else if(imgPosition == "right" && imgWidth == "25"){
                 var finalCode = resizedHead + rowOpen + colOpen + tinyText + divClose + col3Open + imgCode + rowClose;
                 $('#finalCode').val(finalCode);
                 $('div#demo').html(finalCode);
             }
+            else if(imgPosition == "floatRight" && imgWidth =="50"){
+                var finalCode = resizedHead + rowOpen + colFloatOpen + imgFloat + divClose + tinyText + rowClose;
+                $('#finalCode').val(finalCode);
+                $('div#demo').html(finalCode);
+            }
+            else if(imgPosition == "floatRight" && imgWidth == "33"){
+                var finalCode = resizedHead + rowOpen + col4FloatOpen + imgFloat + divClose + tinyText + rowClose;
+                $('#finalCode').val(finalCode);
+                $('div#demo').html(finalCode);
+            }
+            else if(imgPosition == "floatRight" && imgWidth == "25"){
+                var finalCode = resizedHead + rowOpen + col3FloatOpen + imgFloat + divClose + tinyText + rowClose;
+                $('#finalCode').val(finalCode);
+                $('div#demo').html(finalCode);
+            }
         }
+        //Copy code when copy code button is clicked and log it to the console
         function copyCode() {
             var selectedCode = $('#finalCode').select();
             try {
@@ -159,6 +194,7 @@
                 console.error('Fallback: Oops, unable to copy', err);
             }
         }
+        //Toggle the preview fullscreen so user can see a realistic view
         function fullScreenToggle() {
                 if (document.fullscreenEnabled) {
                     var togglePreviewFS = document.getElementById("togglePreviewFS");
@@ -191,7 +227,6 @@
 
     </script>
 </head>
-
 <body>
     <div class="m-4">
         <ul class="nav nav-pills" id="myTab" role="tablist">
@@ -367,6 +402,10 @@
                                   <div class="form-check form-check-inline" id="imagePosition" onchange="generateElementCode()">
                                     <input class="form-check-input" name="imagePosition" id="imagePosition1" type="radio" value="right" checked>
                                     <label class="form-check-label" for="imagePosition1">Right</label>
+                                  </div>
+                                  <div class="form-check form-check-inline" id="imagePosition" onchange="generateElementCode()">
+                                    <input class="form-check-input" name="imagePosition" id="imagePosition3" type="radio" value="floatRight">
+                                    <label class="form-check-label" for="imagePosition3">Float right/text wrap</label>
                                   </div>
                                   <h5 class="font-weight-bold mt-3">Image width<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether the image is half (1/2) the width of the screen or a quarter the size (1/4)" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                   <div class="form-check form-check-inline" id="imageWidth" onchange="generateElementCode()">
