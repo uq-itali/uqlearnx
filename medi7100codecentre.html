@@ -19,8 +19,9 @@
     <link rel="stylesheet" type="text/css" href="https://uq-itali.github.io/fontawesome-v6.1.1-free/css/all.css" />
     <link rel="stylesheet" type="text/css" href="https://uq-itali.github.io/uqlearnx/medi7100/bootstrap-5.2.1-dist/css/bootstrap.css" />
 
-    <!-- Bootstrap JS -->
+    <!-- Custom JS for copying code + generating elements -->
     <script src="copyNextDiv.js" crossorigin="anonymous"></script>
+    <script src="medi7100/js/generateElementCode.js" crossorigin="anonymous"></script>
 
     <!--<script src="https://uq-itali.github.io/uqlearnx/medi7100/bootstrap-5.2.1-dist/js/bootstrap.bundle.js" crossorigin="anonymous"></script>
     <script src="https://uq-itali.github.io/uqlearnx/medi7100/bootstrap-5.2.1-dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>-->
@@ -44,12 +45,12 @@
             });
         });     
     </script>
+    <!--Setup tooltips + TinyMCE-->
     <script type="text/javascript">
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
-
         tinymce.init({
-            selector: '#tinyMCEtext',
+            selector: '.tinyMCEtext',
             menubar: false,
             height: "350",
             plugins: [
@@ -71,11 +72,20 @@
             setup: function (ed) {
                 ed.on('keyup', function (e) {
                     var tinyText = tinymce.activeEditor.getContent();
+                    var activeBtn = $('button.active').attr('id')
                     console.log('Editor contents was modified. Contents: ' + ed.getContent());
-                    generateElementCode();
+                    if(activeBtn == 'imgBuilderBtn'){
+                    generateImgTextCode();
+                    }
+                    else if(activeBtn == 'vidBuilderBtn'){
+                    generateVidTextCode();
+                    }
                 });
             }
         });
+        </script>
+        <!--Setup page variables-->
+        <script type="text/javascript">
         //Variables required to construct code output
             var rowOpen = '<div class="row">\n';
             var colOpen = '<div class="col-lg">\n';
@@ -83,105 +93,25 @@
             var col4Open = '<div class="col-lg-4">\n';
             var colFloatOpen = '<div class="col-lg">\n<div class="col-lg-6 float-lg-end m-2">\n';
             var col3FloatOpen = '<div class="col-lg">\n<div class="col-lg-3 float-lg-end m-2">\n';
-            var col4FloatOpen = '<div class="col-lg">\n<div class="col-lg-4 float-lg-end m-2">\n'
+            var col4FloatOpen = '<div class="col-lg">\n<div class="col-lg-4 float-lg-end m-2">\n';    
+            var respVidOpen = '<div class="ratio ratio-16x9">\n';       
             var divClose = '</div>\n';
-            var rowClose = '</div>\n</div>\n';
+            var rowClose = '</div>\n</div>';
             var uqh2 = "text-bg-uq p-2";
             var resizedHead = "";
+            var vidResizedHead = "";
             //Placeholder variables so there is a placeholder preview for the user to see initially
             var textPlaceholder = '<p>This is placeholder text that will update once you input your own text</p>\n';
             var imgPlaceholder = '<figure>\n<img class="img-fluid d-block mx-auto" alt="This is alt text" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png" />\n<figcaption class="text-center mt-2">This is the placeholder image caption</figcaption>\n</figure>\n';
-            var imgPlaceholderLink = 'https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png'
+            var imgPlaceholderLink = 'https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png';
             var placeholderCode = rowOpen + colOpen + textPlaceholder + divClose + colOpen + imgPlaceholder + rowClose;
-            window.addEventListener('load', function () {
-                $('#finalCode').val(placeholderCode);
-                $('div#demo').html(placeholderCode);
-                fullScreenToggle();
-            })
-        //Function that changes code as user makes selections on the page and inputs text
-        function generateElementCode() {
-            //Retrive values and text from the user's input
-            var imgPosition = $('input[name="imagePosition"]:checked').val();
-            var imgWidth = $('input[name="imageWidth"]:checked').val();
-            //var tinyText = tinymce.activeEditor.getContent() + '\n';
-            if(tinymce.activeEditor.getContent() !==''){
-                tinyText = tinymce.activeEditor.getContent() + '\n';
-            }
-            else{
-                tinyText = textPlaceholder
-            }
-            var headingText = $('#headingText').val();
-            var headSize = $('input[name="headSize"]:checked').val();
-            var imgLink = $('#imgLink').val();
-            if(imgLink !== ''){
-                imgLink = imgLink;
-            }
-            else(
-                imgLink = imgPlaceholderLink
-                )
-            var altText = $('#altText').val();
-            var captionText = $('#captionText').val();
-            var imgCode = '<figure>\n<img class="img-fluid d-block mx-auto" src="' + imgLink + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>\n';
-            var imgFloat = '<figure>\n<img class="img-fluid" src="' + imgLink + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>\n';
-            if(headSize !== "noH"){
-                //Resizing the heading text
-                var sizes = {
-                    "noH": "",
-                    "h2": "<h2 class=\"text-bg-uq p-2\">" + headingText + "</h2>\n",
-                    "h4": "<h4 class=\"text-bg-info bg-opacity-25 p-2\">" + headingText + "</h4>\n"
-                }
-                resizedHead = sizes[headSize];
-            }
-            else {
-                resizedHead = "";
-            } 
-            //Changing code order depending on selections
-            if(imgPosition == "left" && imgWidth=="50"){
-                var finalCode = resizedHead + rowOpen + colOpen + imgCode + divClose + colOpen + tinyText  + rowClose;
-                $('#finalCode').val(finalCode);
-                $('div#demo').html(finalCode);
-            }
-            else if(imgPosition == "right" && imgWidth == "50"){
-                var finalCode = resizedHead + rowOpen + colOpen + tinyText + divClose + colOpen + imgCode + rowClose;
-                $('#finalCode').val(finalCode);
-                $('div#demo').html(finalCode);
-            }
-            else if(imgPosition == "left" && imgWidth == "33"){
-                var finalCode = resizedHead + rowOpen + col4Open + imgCode + divClose + colOpen + tinyText  + rowClose;
-                $('#finalCode').val(finalCode);
-                $('div#demo').html(finalCode);                
-            }
-            else if(imgPosition == "left" && imgWidth == "25"){
-                var finalCode = resizedHead + rowOpen + col3Open + imgCode + divClose + colOpen + tinyText  + rowClose;
-                $('#finalCode').val(finalCode);
-                $('div#demo').html(finalCode);
-            }
-            else if(imgPosition == "right" && imgWidth == "33"){
-                var finalCode = resizedHead + rowOpen + colOpen + tinyText + divClose + col4Open + imgCode + rowClose;
-                $('#finalCode').val(finalCode);
-                $('div#demo').html(finalCode);
-            }
-            else if(imgPosition == "right" && imgWidth == "25"){
-                var finalCode = resizedHead + rowOpen + colOpen + tinyText + divClose + col3Open + imgCode + rowClose;
-                $('#finalCode').val(finalCode);
-                $('div#demo').html(finalCode);
-            }
-            else if(imgPosition == "floatRight" && imgWidth =="50"){
-                var finalCode = resizedHead + rowOpen + colFloatOpen + imgFloat + divClose + tinyText + rowClose;
-                $('#finalCode').val(finalCode);
-                $('div#demo').html(finalCode);
-            }
-            else if(imgPosition == "floatRight" && imgWidth == "33"){
-                var finalCode = resizedHead + rowOpen + col4FloatOpen + imgFloat + divClose + tinyText + rowClose;
-                $('#finalCode').val(finalCode);
-                $('div#demo').html(finalCode);
-            }
-            else if(imgPosition == "floatRight" && imgWidth == "25"){
-                var finalCode = resizedHead + rowOpen + col3FloatOpen + imgFloat + divClose + tinyText + rowClose;
-                $('#finalCode').val(finalCode);
-                $('div#demo').html(finalCode);
-            }
-        }
+            var vidPlaceholder = '<iframe src="https://www.youtube.com/embed/NpEaa2P7qZI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+            var vidPlaceholderLink = 'https://www.youtube.com/embed/NpEaa2P7qZI';
+            var vidPlaceholderCode = rowOpen + colOpen + textPlaceholder + divClose + colOpen + respVidOpen + vidPlaceholder + rowClose;
+            </script>
+            <!--Function that changes code as user makes selections on the page and inputs text-->
+        <!--Code that copies snippets when button is clicked-->
+        <script type="text/javascript">
         //Copy code when copy code button is clicked and log it to the console
         function copyCode() {
             var selectedCode = $('#finalCode').select();
@@ -198,9 +128,10 @@
         function fullScreenToggle() {
                 if (document.fullscreenEnabled) {
                     var togglePreviewFS = document.getElementById("togglePreviewFS");
+                    var demoDiv = $(togglePreviewFS).prev();
                     togglePreviewFS.addEventListener("click", function (event) {
                         if (!document.fullscreenElement) {
-                            document.querySelector("#demo").requestFullscreen();
+                            demoDiv.requestFullscreen();
                         } else {
                             document.exitFullscreen();
                         }
@@ -209,13 +140,13 @@
                         console.log(event);
                         if (!document.fullscreenElement) {
                             togglePreviewFS.innerHTML = "<i class=\"fa fa-expand-arrows-alt fa-lg\"></i>";
-                            $('#demo').removeClass('pt-5 bg-white');
+                            $(demoDiv).removeClass('pt-5 bg-white');
                             $(togglePreviewFS).appendTo('.previewButton');
                         } else {
                             togglePreviewFS.innerHTML = "<i class=\"fa fa-compress-arrows-alt fa-lg\"></i>";
                             $(togglePreviewFS).appendTo('#demo');
                             $(togglePreviewFS).addClass('d-block mx-auto mt-3')
-                            $('#demo').addClass('pt-5 bg-white');
+                            $(demoDiv).addClass('pt-5 bg-white');
                         }
                     });
                     document.addEventListener("fullscreenerror", function (event) {
@@ -223,40 +154,53 @@
                     });
                 }
             }
-            
-
+    </script>
+    <!--On page load run functions + build placeholder-->
+    <script type="text/javascript">
+         window.addEventListener('load', function () {
+                generateImgTextCode();
+                generateVidTextCode();
+                $('#finalCode').val(placeholderCode);
+                $('div#demo').html(placeholderCode);
+                $('#vidFinalCode').val(vidPlaceholderCode);
+                $('div#vidDemo').html(vidPlaceholderCode);
+                fullScreenToggle();
+            });
     </script>
 </head>
 <body>
     <div class="m-4">
         <ul class="nav nav-pills" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" href="#home" data-bs-toggle="tab">Home</button>
+                <button id="homeBtn" class="nav-link active" href="#home" data-bs-toggle="tab">Home</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" href="#buildImgText" data-bs-toggle="tab">Image/text builder</button>
+                <button id="imgBuilderBtn" class="nav-link" href="#buildImgText" data-bs-toggle="tab">Image/text builder</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" href="#headings" data-bs-toggle="tab">Headings</button>
+                <button id="vidBuilderBtn" class="nav-link" href="#buildVidText" data-bs-toggle="tab">Video/text builder</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button id="headingsBtn" class="nav-link" href="#headings" data-bs-toggle="tab">Headings</button>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Image snippets</a>
                 <ul class="dropdown-menu">
-                    <li><button class="dropdown-item" href="#imgRight" data-bs-toggle="tab">Image right</button></li>
-                    <li><button class="dropdown-item" href="#imgLeft" data-bs-toggle="tab">Image left</button></li>
-                    <li><button class="dropdown-item" href="#imgRight33" data-bs-toggle="tab">Image right 33%
+                    <li><button id="imgRightBtn" class="dropdown-item" href="#imgRight" data-bs-toggle="tab">Image right</button></li>
+                    <li><button id="imgLeftBtn" class="dropdown-item" href="#imgLeft" data-bs-toggle="tab">Image left</button></li>
+                    <li><button id="imgRight33Btn" class="dropdown-item" href="#imgRight33" data-bs-toggle="tab">Image right 33%
                             width</button></li>
-                    <li><button class="dropdown-item" href="#imgLeft33" data-bs-toggle="tab">Image left 33%
+                    <li><button id="imgLeft33Btn" class="dropdown-item" href="#imgLeft33" data-bs-toggle="tab">Image left 33%
                             width</button></li>
-                    <li><button class="dropdown-item" href="#imgFloatRight" data-bs-toggle="tab">Image float
+                    <li><button id="imgFloatRightBtn" class="dropdown-item" href="#imgFloatRight" data-bs-toggle="tab">Image float
                             right</button></li>
-                    <li><button class="dropdown-item" href="#twoImgs" data-bs-toggle="tab">Two Images side by
+                    <li><button id="twoImgBtn" class="dropdown-item" href="#twoImgs" data-bs-toggle="tab">Two Images side by
                             side</button></li>
                 </ul>
             </li>
-            <!--<li class="nav-item" role="presentation">
-                <button class="nav-link" href="#headings" data-bs-toggle="tab">Headings</button>
-            </li>-->
+            <li class="nav-item" role="presentation">
+                <button id="bugOrImprovementFormBtn" class="nav-link" href="#bugOrImprovementForm" data-bs-toggle="tab">Log Bug or Improvement</button>
+            </li>
         </ul>
         <div class="tab-content mt-3">
             <div class="tab-pane fade show active" id="home" role="tabpanel">
@@ -395,54 +339,54 @@
                         <div class="row w-100 mx-auto">
                             <div class="col-lg">
                                 <h5 class="font-weight-bold">Image position<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your image on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                                <div class="form-check form-check-inline" id="imagePosition" onchange="generateElementCode()">
+                                <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="imagePosition" id="imagePosition2" type="radio" value="left">
                                     <label class="form-check-label" for="imagePosition2">Left</label>
                                   </div>
-                                  <div class="form-check form-check-inline" id="imagePosition" onchange="generateElementCode()">
+                                  <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="imagePosition" id="imagePosition1" type="radio" value="right" checked>
                                     <label class="form-check-label" for="imagePosition1">Right</label>
                                   </div>
-                                  <div class="form-check form-check-inline" id="imagePosition" onchange="generateElementCode()">
+                                  <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="imagePosition" id="imagePosition3" type="radio" value="floatRight">
                                     <label class="form-check-label" for="imagePosition3">Float right/text wrap</label>
                                   </div>
                                   <h5 class="font-weight-bold mt-3">Image width<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether the image is half (1/2) the width of the screen or a quarter the size (1/4)" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                                  <div class="form-check form-check-inline" id="imageWidth" onchange="generateElementCode()">
+                                  <div class="form-check form-check-inline" id="imageWidth" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="imageWidth" id="imageWidth1" type="radio" value="50" checked="">
                                     <label class="form-check-label" for="imageWidth1">50% (1/2)</label>
                                   </div>
-                                  <div class="form-check form-check-inline" id="imageWidth" onchange="generateElementCode()">
+                                  <div class="form-check form-check-inline" id="imageWidth" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="imageWidth" id="imageWidth2" type="radio" value="33">
                                     <label class="form-check-label" for="imageWidth2">33.3% (1/3)</label>
                                   </div>
-                                  <div class="form-check form-check-inline" id="imageWidth" onchange="generateElementCode()">
+                                  <div class="form-check form-check-inline" id="imageWidth" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="imageWidth" id="imageWidth3" type="radio" value="25">
                                     <label class="form-check-label" for="imageWidth3">25% (1/4)</label>
                                   </div>
                                 <h5 class="font-weight-bold mt-3">Heading - Max 75 Characters<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Optional heading above content. Max 75 characters" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                                <textarea onchange="generateElementCode()" id="headingText" maxlength="75" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Optional heading above content. Max 75 characters"></textarea>
+                                <textarea onchange="generateImgTextCode()" id="headingText" maxlength="75" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Optional heading above content. Max 75 characters"></textarea>
                                 <h5 class="font-weight-bold mt-3">Heading size<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the size of your heading." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                                   <div class="form-check form-check-inline" id="headSize" onchange="generateElementCode()">
+                                   <div class="form-check form-check-inline" id="headSize" onchange="generateImgTextCode()">
                                      <input class="form-check-input" name="headSize" id="headSizeNone" type="radio" value="noH" checked>
                                      <label class="form-check-label" for="headSizeNone">No heading</label>
                                    </div>
-                                     <div class="form-check form-check-inline" id="headSize" onchange="generateElementCode()">
+                                     <div class="form-check form-check-inline" id="headSize" onchange="generateImgTextCode()">
                                      <input class="form-check-input" name="headSize" id="headSize2" type="radio" value="h4">
                                      <label class="form-check-label" for="headSize2"><h4 class="text-bg-info p-2 bg-opacity-25">Sub heading</h4></label>
                                      </div>
-                                     <div class="form-check form-check-inline" id="headSize" onchange="generateElementCode()">
+                                     <div class="form-check form-check-inline" id="headSize" onchange="generateImgTextCode()">
                                      <input class="form-check-input" name="headSize" id="headSize3" type="radio" value="h2">
                                      <label class="form-check-label" for="headSize3"><h2 class="text-bg-uq p-2">Main heading</h2></label>
                                    </div>
-                                <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear in your alert." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
-                                <textarea id="tinyMCEtext" class="border border-dark rounded w-100" onkeyup=generateElementCode()></textarea>
+                                <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your image." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea class="border border-dark rounded w-100 tinyMCEtext" onkeyup=generateImgTextCode()></textarea>
                                 <h5 class="font-weight-bold mt-3">Paste your image link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The web link from LearnX to the image you would like to appear in your selected element." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
-                                <textarea onchange="generateElementCode()" id="imgLink" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Paste your LearnX web link to your image link here."></textarea>
+                                <textarea onchange="generateImgTextCode()" id="imgLink" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Paste your LearnX web link to your image link here."></textarea>
                                 <h5 class="font-weight-bold mt-3">Type your alt text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The description of your image you would like to appear when a user hovers over the image or uses a screen reader" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
-                                <textarea onkeyup="generateElementCode()" id="altText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your alt text here."></textarea>
+                                <textarea onkeyup="generateImgTextCode()" id="altText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your alt text here."></textarea>
                                 <h5 class="font-weight-bold mt-3">Type your caption text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the caption you would like to appear underneath your image." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
-                                <textarea onkeyup="generateElementCode()" id="captionText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your alt text here."></textarea>
+                                <textarea onkeyup="generateImgTextCode()" id="captionText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your alt text here."></textarea>
                             </div>
                         </div>
                     </div>
@@ -462,270 +406,85 @@
                     </div>
                 </div>
             </div>
-            <!--<form id="btn">           
-                    <div class="row w-100 mx-auto">
+            <div class="tab-pane fade" id="buildVidText" role="tabpanel">
+                <div class="row">
                     <div class="col-lg-6">
-                      <div class="row w-100 mx-auto">
-                        <div class="col-lg-3">
-                          <h5 class="font-weight-bold" data-original-title="" title="">Recover<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Retrieve your previous button configuration. Only works once you have created at least 1 button. Then the next 20 configurations will be available until you clear your internet browser history or change internet browsers or create more than 20 buttons.">&nbsp;<i class="fa fa-fw fa-question-circle" aria-hidden="true"></i></span></h5>
-                        </div>              
-                          <div class="col-lg">
-                            <div class="row w-100">
-                            <div class="col-lg-11">
-                            <select class="custom-select border border-dark" size="1" id="recoveryDate" onchange="idSelectedRecData()"><option selected="" value="null">no history available</option></select>
-                          </div>
-                      
-                            <div class="col-lg-1 text-center">
-                            <button data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus click" title="" id="delHist" onclick="delHistI()" type="button" class="btn btn-danger" disabled="" style="display: none;" data-original-title="Click this button to delete the item you have selected in the dropdown."><i class="fa fa-fw fa-trash" aria-hidden="true"></i></button>     
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      
-                        <hr>
                         <div class="row w-100 mx-auto">
-                          <div class="col-lg-3">
-                          <h5 class="font-weight-bold" data-original-title="" title="">Paste code from Moodle<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Paste in the code you previously generated from BEEST and pasted into Moodle to recover and redesign the element.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                          </div>
-                          <div class="col-lg">
-                          <textarea class="rounded p-2 w-100 mt-2" rows="2" name="retrieveCode" type="text" id="retrieveCode" placeholder="Or recover it by pasting existing code from Moodle" onchange="recoverCode()"></textarea>
-                      </div>
-                    </div>
-                    
-                      <hr>
-                      <div class="row w-100 mx-auto">
-                        <div class="col-lg-3">
-                      <h5 class="font-weight-bold" data-original-title="" title="">Destination<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Paste in the link/URL for your button. This is where users will be directed to when clicking the button.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                      
-                        </div>
-                        <div class="col-lg">
-                          <textarea class="border border-dark rounded p-2 w-100" rows="1" id="btn_URL" name="btn_URL" placeholder="Paste your link/URL here" onchange="generateBtnCode()"></textarea>
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row w-100 mx-auto">
-                        <div class="col-lg-3">
-                          <h5 class="font-weight-bold" data-original-title="" title="">Button text<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Write the text that will appear on the button. This space is limited to 50 characters.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>     
-                        </div>
-                        <div class="col-lg">
-                          <textarea maxlength="50" class="border border-dark rounded p-2 w-100" cols="70" rows="1" id="btn_text" name="btn_text" placeholder="Insert button text here. 50 character maximum" onchange="generateBtnCode()"></textarea>
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row w-100 mx-auto">
-                        <div class="col-lg-3">
-                          <h5 class="font-weight-bold" data-original-title="" title="">Choose icon<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="small hideableinstruct text-success" style="display: inline-block;" data-original-title="If you would like an icon to the right of your button text, choose one from this list.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5> 
-                        </div>
-                        <div class="col-lg-1 my-auto mr-3">
-                        <div class="form-check form-check-inline" id="faCode" onchange="generateBtnCode()">
-                          <input class="form-check-input" name="faCode" id="faCodeNone" type="radio" value="noI" checked="">
-                          <label class="form-check-label" for="faCodeNone">None</label>
-                        </div>
-                      </div>
-                        <div class="col-lg">
-                          <div class="row w-100">
-                            <div class="col-lg d-flex justify-content-between">
-                          <div class="form-check form-check-inline mx-1" id="faCode" onchange="generateBtnCode()">
-                            <input class="form-check-input" name="faCode" id="faCode1" type="radio" value="1">
-                            <label class="form-check-label" for="faCode1"><i class="fa fa-fw fa-arrow-right fa-2x" aria-hidden="true"></i></label>
-                          </div>
-                          <div class="form-check form-check-inline mx-1" id="faCode" onchange="generateBtnCode()">
-                          <input class="form-check-input" name="faCode" id="faCode2" type="radio" value="2">
-                          <label class="form-check-label" for="faCode2"><i class="fa fa-fw fa-arrow-circle-right fa-2x" aria-hidden="true"></i></label>
-                          </div>
-                          <div class="form-check form-check-inline mx-1" id="faCode" onchange="generateBtnCode()">
-                            <input class="form-check-input" name="faCode" id="faCode3" type="radio" value="3">
-                            <label class="form-check-label" for="faCode3"><i class="fa fa-fw fa-arrow-circle-o-right fa-2x" aria-hidden="true"></i></label>
+                            <div class="col-lg">
+                                <h5 class="font-weight-bold">Video position<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your video on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="form-check form-check-inline" id="videoPosition" onchange="generateVidTextCode()">
+                                    <input class="form-check-input" name="videoPosition" id="videoPosition2" type="radio" value="left">
+                                    <label class="form-check-label" for="videoPosition2">Left</label>
+                                  </div>
+                                  <div class="form-check form-check-inline" id="videoPosition" onchange="generateVidTextCode()">
+                                    <input class="form-check-input" name="videoPosition" id="videoPosition1" type="radio" value="right" checked>
+                                    <label class="form-check-label" for="videoPosition1">Right</label>
+                                  </div>
+                                  <div class="form-check form-check-inline" id="videoPosition" onchange="generateVidTextCode()">
+                                    <input class="form-check-input" name="videoPosition" id="videoPosition3" type="radio" value="floatRight">
+                                    <label class="form-check-label" for="videoPosition3">Float right/text wrap</label>
+                                  </div>
+                                  <h5 class="font-weight-bold mt-3">Video width<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether the video is half (1/2) the width of the screen or a quarter the size (1/4)" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                  <div class="form-check form-check-inline" id="videoWidth" onchange="generateVidTextCode()">
+                                    <input class="form-check-input" name="videoWidth" id="videoWidth1" type="radio" value="50" checked="">
+                                    <label class="form-check-label" for="videoWidth1">50% (1/2)</label>
+                                  </div>
+                                  <div class="form-check form-check-inline" id="videoWidth" onchange="generateVidTextCode()">
+                                    <input class="form-check-input" name="videoWidth" id="videoWidth2" type="radio" value="33">
+                                    <label class="form-check-label" for="videoWidth2">33.3% (1/3)</label>
+                                  </div>
+                                  <div class="form-check form-check-inline" id="videoWidth" onchange="generateVidTextCode()">
+                                    <input class="form-check-input" name="videoWidth" id="videoWidth3" type="radio" value="25">
+                                    <label class="form-check-label" for="videoWidth3">25% (1/4)</label>
+                                  </div>
+                                <h5 class="font-weight-bold mt-3">Heading - Max 75 Characters<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Optional heading above content. Max 75 characters" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <textarea onchange="generateVidTextCode()" id="vidHeadingText" maxlength="75" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Optional heading above content. Max 75 characters"></textarea>
+                                <h5 class="font-weight-bold mt-3">Heading size<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the size of your heading." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                   <div class="form-check form-check-inline" id="vidHeadSize" onchange="generateVidTextCode()">
+                                     <input class="form-check-input" name="vidHeadSize" id="vidHeadSizeNone" type="radio" value="noH" checked>
+                                     <label class="form-check-label" for="vidHeadSizeNone">No heading</label>
+                                   </div>
+                                     <div class="form-check form-check-inline" id="vidHeadSize" onchange="generateVidTextCode()">
+                                     <input class="form-check-input" name="vidHeadSize" id="vidHeadSize2" type="radio" value="h4">
+                                     <label class="form-check-label" for="vidHeadSize2"><h4 class="text-bg-info p-2 bg-opacity-25">Sub heading</h4></label>
+                                     </div>
+                                     <div class="form-check form-check-inline" id="vidHeadSize" onchange="generateVidTextCode()">
+                                     <input class="form-check-input" name="vidHeadSize" id="vidHeadSize3" type="radio" value="h2">
+                                     <label class="form-check-label" for="vidHeadSize3"><h2 class="text-bg-uq p-2">Main heading</h2></label>
+                                   </div>
+                                <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your video." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea class="border border-dark rounded w-100 tinyMCEtext" onkeyup=generateVidTextCode()></textarea>
+                                <h5 class="font-weight-bold mt-3">Paste your video link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The web link from the Kaltura/YouTube/Vimeo/mp4 web link from LearnX video you would like to appear in your selected element." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea onchange="generateVidTextCode()" id="vidLink" class="border border-dark rounded w-100 p-2" rows="1" placeholder="This space accepts Kaltura iframes, YouTube, Vimeo, and mp4 web links from LearnX."></textarea>
+                                <!--<h5 class="font-weight-bold mt-3">Type your alt text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The description of your video you would like to appear when a user hovers over the video or uses a screen reader" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea onkeyup="generateVidTextCode()" id="altText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your alt text here."></textarea>
+                                -->
+                                <h5 class="font-weight-bold mt-3">Type your video title text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the title you would like to appear above your video." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea onkeyup="generateVidTextCode()" id="vidTitleText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your video title text here."></textarea>
                             </div>
-                          <div class="form-check form-check-inline mx-1" id="faCode" onchange="generateBtnCode()">
-                          <input class="form-check-input" name="faCode" id="faCode4" type="radio" value="4">
-                          <label class="form-check-label" for="faCode4"><i class="fa fa-fw fa-external-link-square fa-2x" aria-hidden="true"></i></label>
                         </div>
-                        <div class="form-check form-check-inline mx-1" id="faCode" onchange="generateBtnCode()">
-                          <input class="form-check-input" name="faCode" id="faCode5" type="radio" value="5">
-                          <label class="form-check-label" for="faCode5"><i class="fa fa-fw fa-external-link fa-2x" aria-hidden="true"></i></label>
-                        </div>
-                      </div>
                     </div>
-                        <div class="row w-100 mt-2">
-                          <div class="col-lg d-flex justify-content-between">
-                        <div class="form-check form-check-inline mx-1" id="faCode" onchange="generateBtnCode()">
-                          <input class="form-check-input" name="faCode" id="faCode6" type="radio" value="6">
-                          <label class="form-check-label" for="faCode6"><i class="fa fa-fw fa-hand-o-right fa-2x" aria-hidden="true"></i></label>
-                        </div>
-                        <div class="form-check form-check-inline mx-1" id="faCode" onchange="generateBtnCode()">
-                          <input class="form-check-input" name="faCode" id="faCode7" type="radio" value="7">
-                          <label class="form-check-label" for="faCode7"><i class="fa fa-fw fa-play fa-2x" aria-hidden="true"></i></label>
-                        </div>
-                        <div class="form-check form-check-inline mx-1" id="faCode" onchange="generateBtnCode()">
-                          <input class="form-check-input" name="faCode" id="faCode8" type="radio" value="8">
-                          <label class="form-check-label" for="faCode8"><i class="fa fa-fw fa-play-circle fa-2x" aria-hidden="true"></i></label>
-                        </div>
-                        <div class="form-check form-check-inline mx-1" id="faCode" onchange="generateBtnCode()">
-                          <input class="form-check-input" name="faCode" id="faCode9" type="radio" value="9">
-                          <label class="form-check-label" for="faCode9"><i class="fa fa-fw fa-play-circle-o fa-2x" aria-hidden="true"></i></label>
-                        </div>
-                        <div class="form-check form-check-inline mx-1" id="faCode" onchange="generateBtnCode()">
-                          <input class="form-check-input" name="faCode" id="faCode10" type="radio" value="10">
-                          <label class="form-check-label" for="faCode10"><i class="fa fa-fw fa-link fa-2x" aria-hidden="true"></i></label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                      <hr>
-                   <div class="row w-100 mx-auto">
-                      <div class="col-lg-3">
-                      <h5 class="font-weight-bold" data-original-title="" title="">Button colour<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Choose the colour of your button. Monash blue is selected by default.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                      
-                    </div>
-                    <div class="col-lg-9">
-                        <div class="row w-100">
-                          <div class="col-lg d-flex justify-content-between">
-                        <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
-                          <input class="form-check-input" name="btnColour" id="btnColour1" type="radio" value="1" checked="">
-                          <label class="form-check-label" for="btnColour1"><span id="monashBlue" class="btn btn-mu">Monash blue</span></label>
-                        </div>
-                        <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
-                        <input class="form-check-input" name="btnColour" id="btnColour2" type="radio" value="2">
-                        <label class="form-check-label" for="btnColour2"><span id="red" class="btn btn-danger">Red</span></label>
-                        </div>
-                        <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
-                          <input class="form-check-input" name="btnColour" id="btnColour3" type="radio" value="3">
-                          <label class="form-check-label" for="btnColour3"><span id="yellow" class="btn btn-warning">Yellow</span></label>
-                          </div>
-                        <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
-                        <input class="form-check-input" name="btnColour" id="btnColour4" type="radio" value="4">
-                        <label class="form-check-label" for="btnColour4"><span id="green" class="btn btn-success">Green</span></label>
-                      </div>
-                    </div>
-                  </div>
-                    <div class="row w-100 mt-2">
-                      <div class="col-lg d-flex justify-content-between">
-                      <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
-                        <input class="form-check-input" name="btnColour" id="btnColour5" type="radio" value="5">
-                        <label class="form-check-label" for="btnColour5"><span id="darkBlue" class="btn btn-primary">Dark blue</span></label>
-                      </div>
-                      <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
-                        <input class="form-check-input" name="btnColour" id="btnColour6" type="radio" value="6">
-                        <label class="form-check-label" for="btnColour6"><span id="lightBlue" class="btn btn-info">Light blue</span></label>
-                      </div>
-                      <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
-                        <input class="form-check-input" name="btnColour" id="btnColour7" type="radio" value="7">
-                        <label class="form-check-label" for="btnColour7"><span id="black" class="btn btn-dark">Black</span></label>
-                      </div>
-                      <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
-                        <input class="form-check-input" name="btnColour" id="btnColour8" type="radio" value="8">
-                        <label class="form-check-label" for="btnColour8"><span id="grey" class="btn btn-secondary">Grey</span></label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-                <hr>
-                <div class="row w-100 mx-auto">
-                <div class="col-lg-3"> 
-                  <h5 class="font-weight-bold" data-original-title="" title="">Invert colours<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Swap the button colour with the text colour">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>      
-                </div>
-                <div class="col-lg">
-                      <div class="form-check form-check-inline" id="invertColour" onchange="generateBtnCode()">
-                        <input class="form-check-input" name="invertColour" id="invertColour2" type="radio" value="n" checked="">
-                        <label class="form-check-label" for="invertColour2">Regular colours</label>
-                        </div>
-                      <div class="form-check form-check-inline" id="invertColour" onchange="generateBtnCode()">
-                        <input class="form-check-input" name="invertColour" id="invertColour1" type="radio" value="y">
-                        <label class="form-check-label" for="invertColour1">Inverted colours</label>
-                      </div>
-                  </div>
-                </div>
-                      <hr>
-                      <div class="row w-100 mx-auto">
-                        <div class="col-lg-3">
-                  <h5 class="font-weight-bold" data-original-title="" title="">Button size<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Choose the size of your button. Regular is chosen by default.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>      
-                  </div>
-                    <div class="col-lg">
-                      <div class="form-check" id="buttonSize" onchange="generateBtnCode()">
-                        <input class="form-check-input" name="buttonSize" id="buttonSize3" type="radio" value="1">
-                        <label class="form-check-label" for="buttonSize3"><span id="btnSmall" class="btn btn-sm btn-dark">Small</span></label>
-                      </div>
-                    <div class="form-check mt-2" id="buttonSize" onchange="generateBtnCode()">
-                      <input class="form-check-input" name="buttonSize" id="buttonSize1" type="radio" value="2" checked="">
-                      <label class="form-check-label" for="buttonSize1"><span id="btnRegular" class="btn btn-dark">Regular</span></label>
-                    </div>
-                    <div class="form-check mt-2" id="buttonSize" onchange="generateBtnCode()">
-                    <input class="form-check-input" name="buttonSize" id="buttonSize2" type="radio" value="3">
-                    <label class="form-check-label" for="buttonSize2"><span id="btnLarge" class="btn btn-lg btn-dark">Large</span></label>
-                    </div>
-                  </div>
-                  </div>
-                  <hr>
-                  <div class="row w-100 mx-auto">
-                  <div class="col-lg-3">
-                    <h5 class="font-weight-bold" data-original-title="" title="">Width<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Toggle whether to increase the button width to full width of screen.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                    
-                  </div>
-                  <div class="col-lg">
-                    <div class="row w-100">
-                      <div class="col-lg">
-                        <div class="form-check form-check-inline" id="fullWidth">
-                          <input class="form-check-input" name="fullWidth" id="fullWidth2" type="checkbox" onchange="generateBtnCode()">
-                          <label class="form-check-label" for="fullWidth2">Full width</label>
-                          </div>            
-                    </div>
-                  </div>
-                </div>
-              </div>
-            
-                  <hr>
-                      <div class="row w-100 mx-auto">
-                    <div class="col-lg-3">
-                      <h5 class="font-weight-bold" data-original-title="" title="">Open link in<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Choose whether to open link in a new window, or the same window users are on. New window is chosen by default.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                  </div>
-                  <div class="col-lg">
-                      <div class="form-check form-check-inline" id="buttonTarget" onchange="generateBtnCode()">
-                        <input class="form-check-input" name="buttonTarget" id="buttonTarget1" type="radio" value="newWin" checked="">
-                        <label class="form-check-label" for="buttonTarget1">New window</label>
-                      </div>
-                      <div class="form-check form-check-inline" id="buttonTarget" onchange="generateBtnCode()">
-                        <input class="form-check-input" name="buttonTarget" id="buttonTarget2" type="radio" value="sameWin">
-                        <label class="form-check-label" for="buttonTarget2">Same window</label>
-                      </div>
-                        </div>
-                      </div>  
-                      <hr>  
-                      <div id="alignment" class="row w-100 mx-auto">
-                        <div class="col-lg-3">
-                          <h5 class="font-weight-bold" data-original-title="" title="">Alignment<span data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Choose whether the button is left or centre-aligned. Left-align is chosen by default.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                          
-                          </div>
-                          <div class="col-lg">
-                          <div class="form-check form-check-inline" id="buttonAlign" onchange="generateBtnCode()">
-                            <input class="form-check-input" name="buttonAlign" id="buttonAlign1" type="radio" value="leftAlign" checked="">
-                            <label class="form-check-label" for="buttonAlign1">Left</label>
-                          </div>
-                          <div class="form-check form-check-inline" id="buttonAlign" onchange="generateBtnCode()">
-                            <input class="form-check-input" name="buttonAlign" id="buttonAlign2" type="radio" value="centerAlign">
-                            <label class="form-check-label" for="buttonAlign2">Centre</label>
-                          </div>
-                            </div>           
-                           </div> 
-                           </div>
-                           <hr>
-                            <div class="col-lg-6">
-                              <div class="sticky-top" style="top:100px;">
-                              <h5 class="font-weight-bold" data-original-title="" title="">Preview<span data-toggle="tooltip" data-placement="right" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="A preview of your element will appear below as you update your preferences for your button.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                              <div id="demo"></div><div><p><a class="btn btn-mu m-1" role="button" href="" target="_blank">[Placeholder for button text]</a></p><p>(Opens in a new window)</p></div>
-                              <p class="my-3"></p>
-                            <h5 class="font-weight-bold" data-original-title="" title="">Copy code<span data-toggle="tooltip" data-placement="top" data-trigger="hover focus" title="" class="hideableinstruct text-success small" style="display: inline-block;" data-original-title="Click the copy code button below to copy your code, ready to paste into Moodle.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                            <textarea readonly="" class="rounded p-2 w-100 border border-dark" id="txtareaBtn" cols="70" rows="2" name="Result" placeholder="Code for your element will appear here"></textarea>
-                            <input data-toggle="tooltip" data-placement="bottom" data-trigger="click" title="" id="copyCodeBtn" class="btn btn-success btn-lg btn-block mt-2" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()" data-original-title="Your code has been copied.">
+                    <div class="col-lg-6">
+                        <div class="sticky-top" style="top:1rem;">
+                            <h5 class="font-weight-bold">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                            <div id="vidDemo"></div>
+                            <button type="button" class="btn btn-outline-dark border border-dark rounded d-block mx-auto mt-3" id="togglePreviewFS" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click to expand the preview to fullscreen. Click again or press Escape to return here to the editing screen."><i class="fa fa-expand-arrows-alt fa-lg" aria-hidden="true"></i></button>
+                            <h5 class="font-weight-bold">Copy code<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click the copy code button below to copy your code, ready to paste into LearnX.">&nbsp;<i class="fa fa-question-circle text-success small" aria-hidden="true"></i></span></h5>
+                            <textarea readonly class="rounded p-2 w-100 border border-dark" id="vidFinalCode" cols="70" rows="5" name="Result" placeholder="Code for your element will appear here"></textarea>
+                            <input id="copyCodeBtn" class="btn btn-success btn-lg d-block w-100 mt-2" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()">
                             <div class="text-center h5 mt-4">
-                              <a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into Moodle?</a>
-                              </div>
-                              </div>
+                            <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into
+                                LearnX?</a>-->
                             </div>
-                          </div>
-                    </form>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="bugOrImprovementForm" role="tabpanel">
+                <div class="ratio ratio-16x9">
+                    <iframe src="https://forms.office.com/r/G6NMM65Yxu?embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
+                    </div>
+            </div>
         </div>
     </div>
     </div>
