@@ -35,6 +35,18 @@
         .dropdown-menu {
             margin-top: 0;
         }
+        div.form-check-inline{
+            line-height: 1.5rem;
+            display: inline-flex;
+        }
+        label{ 
+            line-height: 1.5rem;
+            margin-left: 5px;
+        }
+        input[type='radio'] { 
+            line-height: 1.5rem;
+            margin: auto;
+        }
     </style>
     <script>
         $(document).ready(function () {
@@ -350,13 +362,13 @@
                                 <div class="form-check form-check-inline" id="headSize" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="headSize" id="headSize2" type="radio" value="h4">
                                     <label class="form-check-label" for="headSize2">
-                                        <h4 class="text-bg-info p-2 bg-opacity-25">Sub heading</h4>
+                                        <h4 class="text-bg-info p-2 bg-opacity-25 m-0">Sub heading</h4>
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline" id="headSize" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="headSize" id="headSize3" type="radio" value="h2">
                                     <label class="form-check-label" for="headSize3">
-                                        <h2 class="text-bg-uq p-2">Main heading</h2>
+                                        <h2 class="text-bg-uq p-2 m-0">Main heading</h2>
                                     </label>
                                 </div>
                                 <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your image." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
@@ -431,13 +443,13 @@
                                 <div class="form-check form-check-inline" id="vidHeadSize" onchange="generateVidTextCode()">
                                     <input class="form-check-input" name="vidHeadSize" id="vidHeadSize2" type="radio" value="h4">
                                     <label class="form-check-label" for="vidHeadSize2">
-                                        <h4 class="text-bg-info p-2 bg-opacity-25">Sub heading</h4>
+                                        <h4 class="text-bg-info p-2 bg-opacity-25 m-0">Sub heading</h4>
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline" id="vidHeadSize" onchange="generateVidTextCode()">
                                     <input class="form-check-input" name="vidHeadSize" id="vidHeadSize3" type="radio" value="h2">
                                     <label class="form-check-label" for="vidHeadSize3">
-                                        <h2 class="text-bg-uq p-2">Main heading</h2>
+                                        <h2 class="text-bg-uq p-2 m-0">Main heading</h2>
                                     </label>
                                 </div>
                                 <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your video." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
