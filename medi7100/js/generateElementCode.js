@@ -103,7 +103,7 @@ function generateVidTextCode() {
         )
     
         var YTCode = '<iframe src="' + vidLink.replace('watch?v=','embed/') + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>\n</div>';
-        var KalturaCode = vidLink
+        var KalturaCode = vidLink + '\n</div>'
         var VimeoCode = '<iframe src="' + vidLink.replace('vimeo.com','player.vimeo.com/video') + '" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>\n</iframe></div>\n<p class="text-center"><a href="' + vidLink + '" target="_blank" title="Watch this video on Vimeo">Watch this video on Vimeo</a></p>\n';
     
     if(vidLink.includes('youtu')== true){
@@ -143,46 +143,287 @@ function generateVidTextCode() {
     if(vidPosition == "left" && vidWidth=="50"){
         var vidFinalCode = vidResizedHead + rowOpen + colOpen + vidTitleText + respVidOpen + vidCode + divClose + colOpen + tinyText  + rowClose;
         $('#vidFinalCode').val(vidFinalCode);
-        $('div#vidDemo').html(vidFinalCode);
+        $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "right" && vidWidth == "50"){
         var vidFinalCode = vidResizedHead + rowOpen + colOpen + tinyText + divClose + colOpen + vidTitleText + respVidOpen + vidCode + divClose + rowClose;
         $('#vidFinalCode').val(vidFinalCode);
-        $('div#vidDemo').html(vidFinalCode);
+        $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "left" && vidWidth == "33"){
         var vidFinalCode = vidResizedHead + rowOpen + col4Open + vidTitleText + respVidOpen + vidCode + divClose + colOpen + tinyText  + rowClose;
         $('#vidFinalCode').val(vidFinalCode);
-        $('div#vidDemo').html(vidFinalCode);                
+        $('div#demo').html(vidFinalCode);                
     }
     else if(vidPosition == "left" && vidWidth == "25"){
         var vidFinalCode = vidResizedHead + rowOpen + col3Open + vidTitleText + respVidOpen + vidCode + divClose + colOpen + tinyText  + rowClose;
         $('#vidFinalCode').val(vidFinalCode);
-        $('div#vidDemo').html(vidFinalCode);
+        $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "right" && vidWidth == "33"){
         var vidFinalCode = vidResizedHead + rowOpen + colOpen + tinyText + divClose + col4Open + vidTitleText + respVidOpen + vidCode + divClose + rowClose;
         $('#vidFinalCode').val(vidFinalCode);
-        $('div#vidDemo').html(vidFinalCode);
+        $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "right" && vidWidth == "25"){
         var vidFinalCode = vidResizedHead + rowOpen + colOpen + tinyText + divClose + col3Open + vidTitleText + respVidOpen + vidCode + divClose + rowClose;
         $('#vidFinalCode').val(vidFinalCode);
-        $('div#vidDemo').html(vidFinalCode);
+        $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "floatRight" && vidWidth =="50"){
         var vidFinalCode = vidResizedHead + rowOpen + colFloatOpen + vidTitleText + respVidOpen + vidCode + divClose + tinyText + rowClose;
         $('#vidFinalCode').val(vidFinalCode);
-        $('div#vidDemo').html(vidFinalCode);
+        $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "floatRight" && vidWidth == "33"){
         var vidFinalCode = vidResizedHead + rowOpen + col4FloatOpen + vidTitleText + respVidOpen + vidCode + divClose + tinyText + rowClose;
         $('#vidFinalCode').val(vidFinalCode);
-        $('div#vidDemo').html(vidFinalCode);
+        $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "floatRight" && vidWidth == "25"){
         var vidFinalCode = vidResizedHead + rowOpen + col3FloatOpen + vidTitleText + respVidOpen + vidCode + divClose + tinyText + rowClose;
         $('#vidFinalCode').val(vidFinalCode);
-        $('div#vidDemo').html(vidFinalCode);
+        $('div#demo').html(vidFinalCode);
     }
 }
+function generateBtnCode() {
+    //Retrive values and text from the user's input
+    var btnNumber = $('input[name="btnNumber"]:checked').val();
+    var btnOneIcon = $('input[name="btnOneIcon"]:checked').val();
+    var btnTwoIcon = $('input[name="btnTwoIcon"]:checked').val();
+    var btnThreeIcon = $('input[name="btnThreeIcon"]:checked').val();
+    var btnThreeText
+    var sameOrNew = $('input[name="sameOrNew"]:checked').val();
+    var btnWidth = $('input[name="btnWidth"]:checked').val();
+    var btnColor = $('input[name="btnColour"]:checked').val();
+    var btnTwoColor = $('input[name="btn2Colour"]:checked').val();
+    var btnThreeColor = $('input[name="btn3Colour"]:checked').val();
+    function hideBothDivs(){
+        $('#btnTwoDiv, #btnThreeDiv').addClass('d-none');
+    };
+    function hideDivThree(){
+        $('#btnThreeDiv').addClass('d-none');
+    }
+    function showBothDivs(){
+        $('#btnTwoDiv, #btnThreeDiv').addClass('show');
+    }
+    function showDivTwo(){
+        $('#btnTwoDiv').addClass('show');
+    }
+    function hideBtnWidth(){
+        $('#btnWidthDiv').removeClass('show');
+        setTimeout(function(){
+            $('#btnWidthDiv').addClass('d-none'); 
+        },200)
+    }
+    function showBtnWidth(){
+        $('#btnWidthDiv').removeClass('d-none');
+        setTimeout(function(){
+            $('#btnWidthDiv').addClass('show'); 
+        },200)
+    }
+    if(btnNumber == '1'){
+        $('#btnTwoDiv, #btnThreeDiv').removeClass('show');
+        setTimeout(hideBothDivs, 200);
+        showBtnWidth()       
+    }
+    else if(btnNumber == '2'){
+        $("#btnTwoDiv").removeClass("d-none");
+        setTimeout(showDivTwo, 200);
+        $("#btnThreeDiv").removeClass("show");
+        setTimeout(hideDivThree, 200);
+        hideBtnWidth();
+    }
+    else if(btnNumber == '3'){
+        $("#btnTwoDiv, #btnThreeDiv").removeClass("d-none");
+        setTimeout(showBothDivs, 200);
+        hideBtnWidth();
+    }
+        var btnPosition = $('input[name="btnPosition"]:checked').val()
+        var btnSize = $('input[name="btnSize"]:checked').val();
+        if($('#btnOneText').val() !== ''){
+            var btnOneText = $('#btnOneText').val();
+        }
+        else{
+            var btnOneText = 'Placeholder button text';
+        }
+        if($('#btn2Text').val() !== ''){
+            var btnTwoText = $('#btn2Text').val();
+        }
+        else{
+            var btnTwoText = 'Placeholder button text';
+        }
+        if($('#btn3Text').val() !== ''){
+            var btnThreeText = $('#btn3Text').val();
+        }
+        else{
+            var btnThreeText = 'Placeholder button text';
+        }
+        
+    if(btnOneIcon !=="noI"){
+        //change out values for font-awesome classes
+    var iconNames = {
+        "noI": "",
+        "1": " <span class=\"fa fa-external-link-alt\"></span>",
+        "2": " <span class=\"fa fa-file-arrow-down\"></span>",
+        "3": " <span class=\"fa-regular fa-hand-point-right\"></span>",
+        "4": " <span class=\"fa-regular fa-circle-right\"></span>",
+        "5": " <span class=\"fa-solid fa-arrow-right\"></span>"
+    }
+    btnOneFinalIcon = iconNames[btnOneIcon];
+}
+else{
+    btnOneFinalIcon = "";
+}
+if(btnTwoIcon !=="noI2"){
+    var icon2Names = {
+        "noI2": "",
+        "1": " <span class=\"fa fa-external-link-alt\"></span>",
+        "2": " <span class=\"fa fa-file-arrow-down\"></span>",
+        "3": " <span class=\"fa-regular fa-hand-point-right\"></span>",
+        "4": " <span class=\"fa-regular fa-circle-right\"></span>",
+        "5": " <span class=\"fa-solid fa-arrow-right\"></span>"
+    }
+    btnTwoFinalIcon = icon2Names[btnTwoIcon];
+}
+else{
+    btnTwoFinalIcon = "";
+}
+if(btnThreeIcon !=="noI3"){
+    var icon3Names = {
+        "noI3": "",
+        "1": " <span class=\"fa fa-external-link-alt\"></span>",
+        "2": " <span class=\"fa fa-file-arrow-down\"></span>",
+        "3": " <span class=\"fa-regular fa-hand-point-right\"></span>",
+        "4": " <span class=\"fa-regular fa-circle-right\"></span>",
+        "5": " <span class=\"fa-solid fa-arrow-right\"></span>"
+    }
+    btnThreeFinalIcon = icon3Names[btnThreeIcon];
+}
+else{
+    btnThreeFinalIcon = "";
+}
+    
+    if($('#btnLink').val() !== ''){
+        btnLink = $('#btnLink').val();;
+    }
+    else(
+        btnLink = btnPlaceholderLink
+        )   
+        if($('#btn2Link').val() !== ''){
+            btnTwoLink = $('#btn2Link').val();;
+        }
+        else(
+            btnTwoLink = btnPlaceholderLink
+            ) 
+            if($('#btn3Link').val() !== ''){
+                btnThreeLink = $('#btn3Link').val();;
+            }
+            else(
+                btnThreeLink = btnPlaceholderLink
+                )  
+    if ($('#btnTitleText').val() !== ''){
+        var btnTitleText =  $('#btnTitleText').val();
+    }
+    else{
+        var btnTitleText = btnOneText;
+    }
+    if ($('#btn2TitleText').val() !== ''){
+        var btnTwoTitleText =  $('#btn2TitleText').val();
+    }
+    else{
+        var btnTwoTitleText = btnTwoText;
+    }
+    if ($('#btn3TitleText').val() !== ''){
+        var btnThreeTitleText =  $('#btn3TitleText').val();
+    }
+    else{
+        var btnThreeTitleText = btnThreeText;
+    }
+    
+    //Changing code order depending on selections
+    if(btnPosition == "left" && btnWidth == "Nat"){
+        var btnOneFinal = '<a src="' + btnLink + '" class="btn btn-' + btnColor + btnSize + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
+        var btnFinalCode = btnOneFinal
+        $('#btnFinalCode').val(btnFinalCode);
+        $('div#demo').html(btnFinalCode);
+    }
+    else if(btnPosition == "left" && btnWidth == "25"){
+        var btnOneFinal = '<a src="' + btnLink + '" class="btn btn-' + btnColor + btnSize + w25 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
+        var btnFinalCode = btnOneFinal
+        $('#btnFinalCode').val(btnFinalCode);
+        $('div#demo').html(btnFinalCode);
+    }
+    else if(btnPosition == "left" && btnWidth == "50"){
+        var btnOneFinal = '<a src="' + btnLink + '" class="btn btn-' + btnColor + btnSize + w50 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
+        var btnFinalCode = btnOneFinal
+        $('#btnFinalCode').val(btnFinalCode);
+        $('div#demo').html(btnFinalCode);
+    }
+    else if(btnPosition == "left" && btnWidth == "75"){
+        var btnOneFinal = '<a src="' + btnLink + '" class="btn btn-' + btnColor + btnSize + w75 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
+        var btnFinalCode = btnOneFinal
+        $('#btnFinalCode').val(btnFinalCode);
+        $('div#demo').html(btnFinalCode);
+    }
+    else if(btnPosition == "left" && btnWidth == "100"){
+        var btnOneFinal = '<a src="' + btnLink + '" class="btn btn-' + btnColor + btnSize + w100 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">'+ btnOneText + btnOneFinalIcon + '</a>';
+        var btnFinalCode = btnOneFinal
+        $('#btnFinalCode').val(btnFinalCode);
+        $('div#demo').html(btnFinalCode);
+    }
+    else if(btnPosition == "centred" && btnWidth == "Nat"){
+        var btnOneFinal = '<p class="text-center"><a src="' + btnLink + '" class="btn btn-' + btnColor + btnSize + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a></p>';
+        var btnFinalCode = btnOneFinal
+        $('#btnFinalCode').val(btnFinalCode);
+        $('div#demo').html(btnFinalCode);
+    }
+    else if(btnPosition == "centred" && btnWidth == "25"){
+        var btnOneFinal = '<a src="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + w25 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
+        var btnFinalCode = btnOneFinal
+        $('#btnFinalCode').val(btnFinalCode);
+        $('div#demo').html(btnFinalCode);
+    }
+    else if(btnPosition == "centred" && btnWidth == "50"){
+        var btnOneFinal = '<a src="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + w50 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
+        var btnFinalCode = btnOneFinal
+        $('#btnFinalCode').val(btnFinalCode);
+        $('div#demo').html(btnFinalCode);
+    }
+    else if(btnPosition == "centred" && btnWidth == "75"){
+        var btnOneFinal = '<a src="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + w75 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
+        var btnFinalCode = btnOneFinal
+        $('#btnFinalCode').val(btnFinalCode);
+        $('div#demo').html(btnFinalCode);
+    }
+    else if(btnPosition == "centred" && btnWidth == "100"){
+        var btnOneFinal = '<a src="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
+        var btnFinalCode = btnOneFinal
+        $('#btnFinalCode').val(btnFinalCode);
+        $('div#demo').html(btnFinalCode);
+    }
+    if(btnNumber == '2'){
+        var btnGroupOpen = '<div class="row">\n<div class="col-lg">\n'
+        var btnColOpen = '<div class="col-lg">\n'
+        var btnColClose = '</div>\n'
+        var btnGroupClose = '</div>\n</div>\n'
+        var btnOneFinal = '<a src="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="'+ btnTitleText + '">' + btnOneText + btnOneFinalIcon + '</a>\n';
+        var btnTwoFinal = '<a src="' + btnTwoLink + '" class="btn btn-' + btnTwoColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="' + btnTwoTitleText + '">' + btnTwoText + btnTwoFinalIcon + '</a>\n';
+        var btnFinalCode = btnGroupOpen + btnOneFinal + btnColClose + btnColOpen + btnTwoFinal + btnGroupClose;
+        $('#btnFinalCode').val(btnFinalCode);
+        $('div#demo').html(btnFinalCode);
+    }
+    if(btnNumber == '3'){
+            var btnGroupOpen = '<div class="row gap-2 p-2">\n<div class="col-lg">\n'
+            var btnColOpen = '<div class="col-lg">\n'
+            var btnColClose = '</div>\n'
+            var btnGroupClose = '</div>\n</div>\n'
+            var btnOneFinal = '<a src="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="'+ btnTitleText + '">' + btnOneText + btnOneFinalIcon + '</a>\n';
+            var btnTwoFinal = '<a src="' + btnTwoLink + '" class="btn btn-' + btnTwoColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="' + btnTwoTitleText + '">' + btnTwoText + btnTwoFinalIcon + '</a>\n';
+            var btnThreeFinal = '<a src="' + btnThreeLink + '" class="btn btn-' + btnThreeColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="' + btnThreeTitleText + '">' + btnThreeText + btnThreeFinalIcon + '</a>\n';
+            console.log(btnThreeText)
+            var btnFinalCode = btnGroupOpen + btnOneFinal + btnColClose + btnColOpen + btnTwoFinal + btnColClose + btnColOpen + btnThreeFinal + btnGroupClose;
+            $('#btnFinalCode').val(btnFinalCode);
+            $('div#demo').html(btnFinalCode);
+        }
+    }

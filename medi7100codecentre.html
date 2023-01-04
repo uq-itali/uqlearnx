@@ -22,6 +22,7 @@
     <!-- Custom JS for copying code + generating elements -->
     <script src="copyNextDiv.js" crossorigin="anonymous"></script>
     <script src="medi7100/js/generateElementCode.js" crossorigin="anonymous"></script>
+    <script src="medi7100/js/fullScreenToggle.js" crossorigin="anonymous"></script>
 
     <!--<script src="https://uq-itali.github.io/uqlearnx/medi7100/bootstrap-5.2.1-dist/js/bootstrap.bundle.js" crossorigin="anonymous"></script>
     <script src="https://uq-itali.github.io/uqlearnx/medi7100/bootstrap-5.2.1-dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>-->
@@ -74,98 +75,70 @@
                     var tinyText = tinymce.activeEditor.getContent();
                     var activeBtn = $('button.active').attr('id')
                     console.log('Editor contents was modified. Contents: ' + ed.getContent());
-                    if(activeBtn == 'imgBuilderBtn'){
-                    generateImgTextCode();
+                    if (activeBtn == 'imgBuilderBtn') {
+                        generateImgTextCode();
                     }
-                    else if(activeBtn == 'vidBuilderBtn'){
-                    generateVidTextCode();
+                    else if (activeBtn == 'vidBuilderBtn') {
+                        generateVidTextCode();
+                    }
+                    else if (activeBtn == 'btnBuilderBtn') {
+                        generateBtnCode();
                     }
                 });
             }
         });
-        </script>
-        <!--Setup page variables-->
-        <script type="text/javascript">
+    </script>
+    <!--Setup page variables-->
+    <script type="text/javascript">
         //Variables required to construct code output
-            var rowOpen = '<div class="row">\n';
-            var colOpen = '<div class="col-lg">\n';
-            var col3Open = '<div class="col-lg-3">\n';
-            var col4Open = '<div class="col-lg-4">\n';
-            var colFloatOpen = '<div class="col-lg">\n<div class="col-lg-6 float-lg-end m-2">\n';
-            var col3FloatOpen = '<div class="col-lg">\n<div class="col-lg-3 float-lg-end m-2">\n';
-            var col4FloatOpen = '<div class="col-lg">\n<div class="col-lg-4 float-lg-end m-2">\n';    
-            var respVidOpen = '<div class="ratio ratio-16x9">\n';       
-            var divClose = '</div>\n';
-            var rowClose = '</div>\n</div>';
-            var uqh2 = "text-bg-uq p-2";
-            var resizedHead = "";
-            var vidResizedHead = "";
-            //Placeholder variables so there is a placeholder preview for the user to see initially
-            var textPlaceholder = '<p>This is placeholder text that will update once you input your own text</p>\n';
-            var imgPlaceholder = '<figure>\n<img class="img-fluid d-block mx-auto" alt="This is alt text" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png" />\n<figcaption class="text-center mt-2">This is the placeholder image caption</figcaption>\n</figure>\n';
-            var imgPlaceholderLink = 'https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png';
-            var placeholderCode = rowOpen + colOpen + textPlaceholder + divClose + colOpen + imgPlaceholder + rowClose;
-            var vidPlaceholder = '<iframe src="https://www.youtube.com/embed/NpEaa2P7qZI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-            var vidPlaceholderLink = 'https://www.youtube.com/embed/NpEaa2P7qZI';
-            var vidPlaceholderCode = rowOpen + colOpen + textPlaceholder + divClose + colOpen + respVidOpen + vidPlaceholder + rowClose;
-            </script>
-            <!--Function that changes code as user makes selections on the page and inputs text-->
-        <!--Code that copies snippets when button is clicked-->
-        <script type="text/javascript">
-        //Copy code when copy code button is clicked and log it to the console
-        function copyCode() {
-            var selectedCode = $('#finalCode').select();
-            try {
-                var successful = document.execCommand('copy');
-                var msg = successful ? 'successful' : 'unsuccessful';
-                console.log('Fallback: Copying text command was ' + msg);
-                console.log("@GB: snippet = ", selectedCode.val());
-            } catch (err) {
-                console.error('Fallback: Oops, unable to copy', err);
-            }
-        }
-        //Toggle the preview fullscreen so user can see a realistic view
-        function fullScreenToggle() {
-                if (document.fullscreenEnabled) {
-                    var togglePreviewFS = document.getElementById("togglePreviewFS");
-                    var demoDiv = $(togglePreviewFS).prev();
-                    togglePreviewFS.addEventListener("click", function (event) {
-                        if (!document.fullscreenElement) {
-                            demoDiv.requestFullscreen();
-                        } else {
-                            document.exitFullscreen();
-                        }
-                    }, false);
-                    document.addEventListener("fullscreenchange", function (event) {
-                        console.log(event);
-                        if (!document.fullscreenElement) {
-                            togglePreviewFS.innerHTML = "<i class=\"fa fa-expand-arrows-alt fa-lg\"></i>";
-                            $(demoDiv).removeClass('pt-5 bg-white');
-                            $(togglePreviewFS).appendTo('.previewButton');
-                        } else {
-                            togglePreviewFS.innerHTML = "<i class=\"fa fa-compress-arrows-alt fa-lg\"></i>";
-                            $(togglePreviewFS).appendTo('#demo');
-                            $(togglePreviewFS).addClass('d-block mx-auto mt-3')
-                            $(demoDiv).addClass('pt-5 bg-white');
-                        }
-                    });
-                    document.addEventListener("fullscreenerror", function (event) {
-                        console.log(event);
-                    });
-                }
-            }
+        var rowOpen = '<div class="row">\n';
+        var colOpen = '<div class="col-lg">\n';
+        var col3Open = '<div class="col-lg-3">\n';
+        var col4Open = '<div class="col-lg-4">\n';
+        var colFloatOpen = '<div class="col-lg">\n<div class="col-lg-6 float-lg-end m-2">\n';
+        var col3FloatOpen = '<div class="col-lg">\n<div class="col-lg-3 float-lg-end m-2">\n';
+        var col4FloatOpen = '<div class="col-lg">\n<div class="col-lg-4 float-lg-end m-2">\n';
+        var respVidOpen = '<div class="ratio ratio-16x9">\n';
+        var pOpen = '<p>';  
+        var ctrBtn = ' d-block mx-auto';
+        var w25 = ' w-25';
+        var w50 = ' w-50';
+        var w75 = ' w-75';
+        var w100 = ' w-100';
+        var btnPlaceholder = '<a src="'   
+        var divClose = '</div>\n';
+        var rowClose = '</div>\n</div>';
+        var pClose='</p>'
+        var uqh2 = "text-bg-uq p-2";
+        var resizedHead = "";
+        var vidResizedHead = "";
+        //Placeholder variables so there is a placeholder preview for the user to see initially
+        var textPlaceholder = '<p>This is placeholder text that will update once you input your own text</p>\n';
+        var imgPlaceholder = '<figure>\n<img class="img-fluid d-block mx-auto" alt="This is alt text" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png" />\n<figcaption class="text-center mt-2">This is the placeholder image caption</figcaption>\n</figure>\n';
+        var imgPlaceholderLink = 'https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png';
+        var placeholderCode = rowOpen + colOpen + textPlaceholder + divClose + colOpen + imgPlaceholder + rowClose;
+        var vidPlaceholder = '<iframe src="https://www.youtube.com/embed/NpEaa2P7qZI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        var vidPlaceholderLink = 'https://www.youtube.com/embed/NpEaa2P7qZI';
+        var vidPlaceholderCode = rowOpen + colOpen + textPlaceholder + divClose + colOpen + respVidOpen + vidPlaceholder + rowClose;
+        var btnPlaceholderLink = 'https://learnx.uq.edu.au/dashboard';
+        var btnPlaceholderCode = pOpen + pClose
     </script>
     <!--On page load run functions + build placeholder-->
     <script type="text/javascript">
-         window.addEventListener('load', function () {
-                generateImgTextCode();
-                generateVidTextCode();
-                $('#finalCode').val(placeholderCode);
-                $('div#demo').html(placeholderCode);
-                $('#vidFinalCode').val(vidPlaceholderCode);
-                $('div#vidDemo').html(vidPlaceholderCode);
-                fullScreenToggle();
-            });
+        window.addEventListener('load', function () {
+            generateImgTextCode();
+            generateVidTextCode();
+            $('#finalCode').val(placeholderCode);
+            $('div#demo').html(placeholderCode);
+            $('#vidFinalCode').val(vidPlaceholderCode);
+            $('div#vidDemo').html(vidPlaceholderCode);
+            fullScreenImgToggle();
+            fullScreenVidToggle();
+            fullScreenBtnToggle();
+            setInterval(function () {
+                $('[data-bs-toggle="tooltip"]').tooltip('hide'); 
+            }, 5000);
+        });
     </script>
 </head>
 <body>
@@ -175,10 +148,13 @@
                 <button id="homeBtn" class="nav-link active" href="#home" data-bs-toggle="tab">Home</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button id="imgBuilderBtn" class="nav-link" href="#buildImgText" data-bs-toggle="tab">Image/text builder</button>
+                <button onclick="generateImgTextCode()" id="imgBuilderBtn" class="nav-link" href="#buildImgText" data-bs-toggle="tab">Image/text builder</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button id="vidBuilderBtn" class="nav-link" href="#buildVidText" data-bs-toggle="tab">Video/text builder</button>
+                <button onclick="generateVidTextCode()" id="vidBuilderBtn" class="nav-link" href="#buildVidText" data-bs-toggle="tab">Video/text builder</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button onclick="generateBtnCode()" id="btnBuilderBtn" class="nav-link" href="#buildBtnText" data-bs-toggle="tab">Button builder</button>
             </li>
             <li class="nav-item" role="presentation">
                 <button id="headingsBtn" class="nav-link" href="#headings" data-bs-toggle="tab">Headings</button>
@@ -342,43 +318,47 @@
                                 <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="imagePosition" id="imagePosition2" type="radio" value="left">
                                     <label class="form-check-label" for="imagePosition2">Left</label>
-                                  </div>
-                                  <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
+                                </div>
+                                <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="imagePosition" id="imagePosition1" type="radio" value="right" checked>
                                     <label class="form-check-label" for="imagePosition1">Right</label>
-                                  </div>
-                                  <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
+                                </div>
+                                <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="imagePosition" id="imagePosition3" type="radio" value="floatRight">
                                     <label class="form-check-label" for="imagePosition3">Float right/text wrap</label>
-                                  </div>
-                                  <h5 class="font-weight-bold mt-3">Image width<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether the image is half (1/2) the width of the screen or a quarter the size (1/4)" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                                  <div class="form-check form-check-inline" id="imageWidth" onchange="generateImgTextCode()">
+                                </div>
+                                <h5 class="font-weight-bold mt-3">Image width<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether the image is half (1/2) the width of the screen or a quarter the size (1/4)" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="form-check form-check-inline" id="imageWidth" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="imageWidth" id="imageWidth1" type="radio" value="50" checked="">
                                     <label class="form-check-label" for="imageWidth1">50% (1/2)</label>
-                                  </div>
-                                  <div class="form-check form-check-inline" id="imageWidth" onchange="generateImgTextCode()">
+                                </div>
+                                <div class="form-check form-check-inline" id="imageWidth" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="imageWidth" id="imageWidth2" type="radio" value="33">
                                     <label class="form-check-label" for="imageWidth2">33.3% (1/3)</label>
-                                  </div>
-                                  <div class="form-check form-check-inline" id="imageWidth" onchange="generateImgTextCode()">
+                                </div>
+                                <div class="form-check form-check-inline" id="imageWidth" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="imageWidth" id="imageWidth3" type="radio" value="25">
                                     <label class="form-check-label" for="imageWidth3">25% (1/4)</label>
-                                  </div>
+                                </div>
                                 <h5 class="font-weight-bold mt-3">Heading - Max 75 Characters<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Optional heading above content. Max 75 characters" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <textarea onchange="generateImgTextCode()" id="headingText" maxlength="75" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Optional heading above content. Max 75 characters"></textarea>
                                 <h5 class="font-weight-bold mt-3">Heading size<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the size of your heading." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                                   <div class="form-check form-check-inline" id="headSize" onchange="generateImgTextCode()">
-                                     <input class="form-check-input" name="headSize" id="headSizeNone" type="radio" value="noH" checked>
-                                     <label class="form-check-label" for="headSizeNone">No heading</label>
-                                   </div>
-                                     <div class="form-check form-check-inline" id="headSize" onchange="generateImgTextCode()">
-                                     <input class="form-check-input" name="headSize" id="headSize2" type="radio" value="h4">
-                                     <label class="form-check-label" for="headSize2"><h4 class="text-bg-info p-2 bg-opacity-25">Sub heading</h4></label>
-                                     </div>
-                                     <div class="form-check form-check-inline" id="headSize" onchange="generateImgTextCode()">
-                                     <input class="form-check-input" name="headSize" id="headSize3" type="radio" value="h2">
-                                     <label class="form-check-label" for="headSize3"><h2 class="text-bg-uq p-2">Main heading</h2></label>
-                                   </div>
+                                <div class="form-check form-check-inline" id="headSize" onchange="generateImgTextCode()">
+                                    <input class="form-check-input" name="headSize" id="headSizeNone" type="radio" value="noH" checked>
+                                    <label class="form-check-label" for="headSizeNone">No heading</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="headSize" onchange="generateImgTextCode()">
+                                    <input class="form-check-input" name="headSize" id="headSize2" type="radio" value="h4">
+                                    <label class="form-check-label" for="headSize2">
+                                        <h4 class="text-bg-info p-2 bg-opacity-25">Sub heading</h4>
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline" id="headSize" onchange="generateImgTextCode()">
+                                    <input class="form-check-input" name="headSize" id="headSize3" type="radio" value="h2">
+                                    <label class="form-check-label" for="headSize3">
+                                        <h2 class="text-bg-uq p-2">Main heading</h2>
+                                    </label>
+                                </div>
                                 <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your image." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea class="border border-dark rounded w-100 tinyMCEtext" onkeyup=generateImgTextCode()></textarea>
                                 <h5 class="font-weight-bold mt-3">Paste your image link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The web link from LearnX to the image you would like to appear in your selected element." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
@@ -393,13 +373,17 @@
                     <div class="col-lg-6">
                         <div class="sticky-top" style="top:1rem;">
                             <h5 class="font-weight-bold">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                            <div id="previewImgFS" class="bg-white">
                             <div id="demo"></div>
-                            <button type="button" class="btn btn-outline-dark border border-dark rounded d-block mx-auto" id="togglePreviewFS" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click to expand the preview to fullscreen. Click again or press Escape to return here to the editing screen."><i class="fa fa-expand-arrows-alt fa-lg" aria-hidden="true"></i></button>
+                            </div>
+                            <div class="text-center mb-2 previewButton"> 
+                            <button type="button" class="btn btn-outline-dark border border-dark rounded d-block mx-auto" id="togglePreviewImgFS" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click to expand the preview to fullscreen. Click again or press Escape to return here to the editing screen."><i class="fa fa-expand-arrows-alt fa-lg" aria-hidden="true"></i></button>
+                            </div>
                             <h5 class="font-weight-bold">Copy code<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click the copy code button below to copy your code, ready to paste into LearnX.">&nbsp;<i class="fa fa-question-circle text-success small" aria-hidden="true"></i></span></h5>
                             <textarea readonly class="rounded p-2 w-100 border border-dark" id="finalCode" cols="70" rows="5" name="Result" placeholder="Code for your element will appear here"></textarea>
                             <input id="copyCodeBtn" class="btn btn-success btn-lg d-block w-100 mt-2" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()">
                             <div class="text-center h5 mt-4">
-                            <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into
+                                <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into
                                 LearnX?</a>-->
                             </div>
                         </div>
@@ -415,43 +399,47 @@
                                 <div class="form-check form-check-inline" id="videoPosition" onchange="generateVidTextCode()">
                                     <input class="form-check-input" name="videoPosition" id="videoPosition2" type="radio" value="left">
                                     <label class="form-check-label" for="videoPosition2">Left</label>
-                                  </div>
-                                  <div class="form-check form-check-inline" id="videoPosition" onchange="generateVidTextCode()">
+                                </div>
+                                <div class="form-check form-check-inline" id="videoPosition" onchange="generateVidTextCode()">
                                     <input class="form-check-input" name="videoPosition" id="videoPosition1" type="radio" value="right" checked>
                                     <label class="form-check-label" for="videoPosition1">Right</label>
-                                  </div>
-                                  <div class="form-check form-check-inline" id="videoPosition" onchange="generateVidTextCode()">
+                                </div>
+                                <div class="form-check form-check-inline" id="videoPosition" onchange="generateVidTextCode()">
                                     <input class="form-check-input" name="videoPosition" id="videoPosition3" type="radio" value="floatRight">
                                     <label class="form-check-label" for="videoPosition3">Float right/text wrap</label>
-                                  </div>
-                                  <h5 class="font-weight-bold mt-3">Video width<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether the video is half (1/2) the width of the screen or a quarter the size (1/4)" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                                  <div class="form-check form-check-inline" id="videoWidth" onchange="generateVidTextCode()">
+                                </div>
+                                <h5 class="font-weight-bold mt-3">Video width<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether the video is half (1/2) the width of the screen or a quarter the size (1/4)" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="form-check form-check-inline" id="videoWidth" onchange="generateVidTextCode()">
                                     <input class="form-check-input" name="videoWidth" id="videoWidth1" type="radio" value="50" checked="">
                                     <label class="form-check-label" for="videoWidth1">50% (1/2)</label>
-                                  </div>
-                                  <div class="form-check form-check-inline" id="videoWidth" onchange="generateVidTextCode()">
+                                </div>
+                                <div class="form-check form-check-inline" id="videoWidth" onchange="generateVidTextCode()">
                                     <input class="form-check-input" name="videoWidth" id="videoWidth2" type="radio" value="33">
                                     <label class="form-check-label" for="videoWidth2">33.3% (1/3)</label>
-                                  </div>
-                                  <div class="form-check form-check-inline" id="videoWidth" onchange="generateVidTextCode()">
+                                </div>
+                                <div class="form-check form-check-inline" id="videoWidth" onchange="generateVidTextCode()">
                                     <input class="form-check-input" name="videoWidth" id="videoWidth3" type="radio" value="25">
                                     <label class="form-check-label" for="videoWidth3">25% (1/4)</label>
-                                  </div>
+                                </div>
                                 <h5 class="font-weight-bold mt-3">Heading - Max 75 Characters<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Optional heading above content. Max 75 characters" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <textarea onchange="generateVidTextCode()" id="vidHeadingText" maxlength="75" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Optional heading above content. Max 75 characters"></textarea>
                                 <h5 class="font-weight-bold mt-3">Heading size<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the size of your heading." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                                   <div class="form-check form-check-inline" id="vidHeadSize" onchange="generateVidTextCode()">
-                                     <input class="form-check-input" name="vidHeadSize" id="vidHeadSizeNone" type="radio" value="noH" checked>
-                                     <label class="form-check-label" for="vidHeadSizeNone">No heading</label>
-                                   </div>
-                                     <div class="form-check form-check-inline" id="vidHeadSize" onchange="generateVidTextCode()">
-                                     <input class="form-check-input" name="vidHeadSize" id="vidHeadSize2" type="radio" value="h4">
-                                     <label class="form-check-label" for="vidHeadSize2"><h4 class="text-bg-info p-2 bg-opacity-25">Sub heading</h4></label>
-                                     </div>
-                                     <div class="form-check form-check-inline" id="vidHeadSize" onchange="generateVidTextCode()">
-                                     <input class="form-check-input" name="vidHeadSize" id="vidHeadSize3" type="radio" value="h2">
-                                     <label class="form-check-label" for="vidHeadSize3"><h2 class="text-bg-uq p-2">Main heading</h2></label>
-                                   </div>
+                                <div class="form-check form-check-inline" id="vidHeadSize" onchange="generateVidTextCode()">
+                                    <input class="form-check-input" name="vidHeadSize" id="vidHeadSizeNone" type="radio" value="noH" checked>
+                                    <label class="form-check-label" for="vidHeadSizeNone">No heading</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="vidHeadSize" onchange="generateVidTextCode()">
+                                    <input class="form-check-input" name="vidHeadSize" id="vidHeadSize2" type="radio" value="h4">
+                                    <label class="form-check-label" for="vidHeadSize2">
+                                        <h4 class="text-bg-info p-2 bg-opacity-25">Sub heading</h4>
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline" id="vidHeadSize" onchange="generateVidTextCode()">
+                                    <input class="form-check-input" name="vidHeadSize" id="vidHeadSize3" type="radio" value="h2">
+                                    <label class="form-check-label" for="vidHeadSize3">
+                                        <h2 class="text-bg-uq p-2">Main heading</h2>
+                                    </label>
+                                </div>
                                 <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your video." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea class="border border-dark rounded w-100 tinyMCEtext" onkeyup=generateVidTextCode()></textarea>
                                 <h5 class="font-weight-bold mt-3">Paste your video link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The web link from the Kaltura/YouTube/Vimeo/mp4 web link from LearnX video you would like to appear in your selected element." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
@@ -467,13 +455,334 @@
                     <div class="col-lg-6">
                         <div class="sticky-top" style="top:1rem;">
                             <h5 class="font-weight-bold">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                            <div id="vidDemo"></div>
-                            <button type="button" class="btn btn-outline-dark border border-dark rounded d-block mx-auto mt-3" id="togglePreviewFS" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click to expand the preview to fullscreen. Click again or press Escape to return here to the editing screen."><i class="fa fa-expand-arrows-alt fa-lg" aria-hidden="true"></i></button>
+                            <div id="previewVidFS" class="bg-white">
+                            <div id="demo"></div>
+                            </div>
+                            <div class="text-center mb-2 previewButton">
+                            <button type="button" class="btn btn-outline-dark border border-dark rounded d-block mx-auto mt-3" id="togglePreviewVidFS" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click to expand the preview to fullscreen. Click again or press Escape to return here to the editing screen."><i class="fa fa-expand-arrows-alt fa-lg" aria-hidden="true"></i></button>
+                            </div>
                             <h5 class="font-weight-bold">Copy code<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click the copy code button below to copy your code, ready to paste into LearnX.">&nbsp;<i class="fa fa-question-circle text-success small" aria-hidden="true"></i></span></h5>
                             <textarea readonly class="rounded p-2 w-100 border border-dark" id="vidFinalCode" cols="70" rows="5" name="Result" placeholder="Code for your element will appear here"></textarea>
                             <input id="copyCodeBtn" class="btn btn-success btn-lg d-block w-100 mt-2" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()">
                             <div class="text-center h5 mt-4">
-                            <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into
+                                <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into
+                                LearnX?</a>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="buildBtnText" role="tabpanel">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="row w-100 mx-auto">
+                            <div class="col-lg">
+                                <h5 class="font-weight-bold">Number of buttons<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose how many buttons you want to make. You can make 1 button, or a group of 2, or 3." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="form-check form-check-inline" id="btnNumber" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnNumber" id="btnNumber2" type="radio" value="1" checked>
+                                    <label class="form-check-label" for="btnNumber2">1</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btnNumber" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnNumber" id="btnNumber1" type="radio" value="2">
+                                    <label class="form-check-label" for="btnNumber1">2</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btnNumber" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnNumber" id="btnNumber3" type="radio" value="3">
+                                    <label class="form-check-label" for="btnNumber3">3</label>
+                                </div>
+                                <div id="btnWidthDiv" class="fade show">
+                                <hr>
+                                <h5 class="font-weight-bold mt-3">Button position<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether your button is left aligned of centred." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="form-check form-check-inline" id="btnPosition" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnPosition" id="btnPosition2" type="radio" value="left" checked>
+                                    <label class="form-check-label" for="btnPosition2">Left</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btnPosition" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnPosition" id="btnPosition1" type="radio" value="centred">
+                                    <label class="form-check-label" for="btnPosition1">Centred</label>
+                                </div> 
+                                <hr>
+                                <h5 class="font-weight-bold mt-3">Button width<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether the button width is natural (defined by the amount of text inside it), 25%, 50%, 75%, or 100% width of the scree" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="form-check form-check-inline" id="btnWidth" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnWidth" id="btnWidth0" type="radio" value="Nat" checked>
+                                    <label class="form-check-label" for="btnWidth0">Natural</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btnWidth" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnWidth" id="btnWidth1" type="radio" value="25">
+                                    <label class="form-check-label" for="btnWidth1">25% (1/4)</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btnWidth" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnWidth" id="btnWidth2" type="radio" value="50">
+                                    <label class="form-check-label" for="btnWidth2">50% (1/2)</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btnWidth" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnWidth" id="btnWidth3" type="radio" value="75">
+                                    <label class="form-check-label" for="btnWidth3">75% (3/4)</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btnWidth" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnWidth" id="btnWidth4" type="radio" value="100">
+                                    <label class="form-check-label" for="btnWidth4">100%</label>
+                                </div>
+                            
+                                <hr>
+                                <h5 class="font-weight-bold mt-3">Open in new or same window?<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="If you are opening to something outside of LearnX always stick with opening in a new window. If it is an internal link to another LearnX page, you can use same." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="form-check form-check-inline" id="sameOrNew" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="sameOrNew" id="same" type="radio" value="top">
+                                    <label class="form-check-label" for="same">Same</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="sameOrNew" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="sameOrNew" id="new" type="radio" value="blank" checked>
+                                    <label class="form-check-label" for="new">New</label>
+                                </div>
+                            </div>
+                                <hr>
+                                <h5 class="font-weight-bold mt-3">Button size<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether your buttons are small, regular or large." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="form-check form-check-inline" id="btnSize" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnSize" id="btnSize1" type="radio" value=" btn-sm">
+                                    <label class="form-check-label" for="btnSize1">Small</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btnSize" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnSize" id="btnSize2" type="radio" value="" checked>
+                                    <label class="form-check-label" for="btnSize2">Regular</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btnSize" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnSize" id="btnSize3" type="radio" value=" btn-lg">
+                                    <label class="form-check-label" for="btnSize3">Large</label>
+                                </div>
+                            
+                                <hr>
+                                <h5 class="font-weight-bold mt-3">Button 1 - Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear on your first button." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea class="border border-dark rounded w-100 p-2" rows="1" id="btnOneText" onkeyup=generateBtnCode() placeholder="Write the text that will appear on button"></textarea>
+                                <h5 class="font-weight-bold mt-3">Button 1 - Select your icon<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Select an icon for your first button." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <div class="form-check form-check-inline" id="btnOneIcon" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnOneIcon" id="noIcon" type="radio" value="noI" checked>
+                                    <label class="form-check-label" for="noIcon">No icon</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btnOneIcon" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnOneIcon" id="btn1Icon1" type="radio" value="1">
+                                    <label class="form-check-label" for="btn1Icon1"><span class="fa fa-external-link-alt fa-2x"></span></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btnOneIcon" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnOneIcon" id="btn1Icon2" type="radio" value="2">
+                                    <label class="form-check-label" for="btn1Icon2"><span class="fa fa-file-arrow-down fa-2x"></span></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btnOneIcon" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnOneIcon" id="btn1Icon3" type="radio" value="3">
+                                    <label class="form-check-label" for="btn1Icon3"><span class="fa-regular fa-hand-point-right fa-2x"></span></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btnOneIcon" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnOneIcon" id="btn1Icon4" type="radio" value="4">
+                                    <label class="form-check-label" for="btn1Icon4"><span class="fa-regular fa-circle-right fa-2x"></span></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btnOneIcon" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnOneIcon" id="btn1Icon5" type="radio" value="5">
+                                    <label class="form-check-label" for="btn1Icon5"><span class="fa-solid fa-arrow-right fa-2x"></span></label>
+                                </div>
+                                <h5 class="font-weight-bold mt-3">Button 1 colour<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the colour of your button" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnColour" id="btn-uq" type="radio" value="uq" checked>
+                                    <label class="form-check-label" for="btn-uq"><a class="btn btn-uq">UQ Purple</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnColour" id="btn-primary" type="radio" value="primary">
+                                    <label class="form-check-label" for="btn-primary"><a class="btn btn-primary">Primary Blue</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnColour" id="btn-secondary" type="radio" value="secondary">
+                                    <label class="form-check-label" for="btn-secondary"><a class="btn btn-secondary">Secondary Grey</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnColour" id="btn-info" type="radio" value="info">
+                                    <label class="form-check-label" for="btn-info"><a class="btn btn-info">Info Blue</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnColour" id="btn-success" type="radio" value="success">
+                                    <label class="form-check-label" for="btn-success"><a class="btn btn-success">Success Green</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnColour" id="btn-warning" type="radio" value="warning">
+                                    <label class="form-check-label" for="btn-warning"><a class="btn btn-warning">Warning Yellow</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnColour" id="btn-danger" type="radio" value="danger">
+                                    <label class="form-check-label" for="btn-danger"><a class="btn btn-danger">Danger Red</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnColour" id="btn-dark" type="radio" value="dark">
+                                    <label class="form-check-label" for="btn-dark"><a class="btn btn-dark">Dark</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btnColour" id="btn-light" type="radio" value="light">
+                                    <label class="form-check-label" for="btn-light"><a class="btn btn-light">Light</a></label>
+                                </div>
+                                <h5 class="font-weight-bold mt-3">Button 1 - Link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Paste a link. Either a LearnX web link or website URL." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea onchange="generateBtnCode()" id="btnLink" class="border border-dark rounded w-100 p-2" rows="1" placeholder="The web link from LearnX if this is a file download OR the website link."></textarea>
+                                <h5 class="font-weight-bold mt-3">Button 1 - Title text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the title you would like to appear above your video." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea onkeyup="generateBtnCode()" id="btnTitleText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your video title text here."></textarea>
+                                <div id="btnTwoDiv" class="fade">
+                                    <hr>
+                                    <h5 class="font-weight-bold mt-3">Button 2 - Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear on your second button." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                    <textarea class="border border-dark rounded w-100 p-2" id="btn2Text" onkeyup=generateBtnCode() placeholder="Write the text that will appear on button 2." rows="1"></textarea>
+                                    <h5 class="font-weight-bold mt-3">Button 2 - Select your icon<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Select an icon for your second button." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                    <div class="form-check form-check-inline" id="btnTwoIcon" onchange="generateBtnCode()">
+                                        <input class="form-check-input" name="btnTwoIcon" id="noIcon2" type="radio" value="noI2" checked>
+                                        <label class="form-check-label" for="noIcon2">No icon</label>
+                                    </div>
+                                    <div class="form-check form-check-inline" id="btnTwoIcon" onchange="generateBtnCode()">
+                                        <input class="form-check-input" name="btnTwoIcon" id="btn2icon1" type="radio" value="1">
+                                        <label class="form-check-label" for="btn2icon1"><span class="fa fa-external-link-alt fa-2x"></span></label>
+                                    </div>
+                                    <div class="form-check form-check-inline" id="btnTwoIcon" onchange="generateBtnCode()">
+                                        <input class="form-check-input" name="btnTwoIcon" id="btn2icon2" type="radio" value="2">
+                                        <label class="form-check-label" for="btn2icon2"><span class="fa fa-file-arrow-down fa-2x"></span></label>
+                                    </div>
+                                    <div class="form-check form-check-inline" id="btnTwoIcon" onchange="generateBtnCode()">
+                                        <input class="form-check-input" name="btnTwoIcon" id="btn2icon3" type="radio" value="3">
+                                        <label class="form-check-label" for="btn2icon3"><span class="fa-regular fa-hand-point-right fa-2x"></span></label>
+                                    </div>
+                                    <div class="form-check form-check-inline" id="btnTwoIcon" onchange="generateBtnCode()">
+                                        <input class="form-check-input" name="btnTwoIcon" id="btn2icon4" type="radio" value="4">
+                                        <label class="form-check-label" for="btn2icon4"><span class="fa-regular fa-circle-right fa-2x"></span></label>
+                                    </div>
+                                    <div class="form-check form-check-inline" id="btnTwoIcon" onchange="generateBtnCode()">
+                                        <input class="form-check-input" name="btnTwoIcon" id="btn2icon5" type="radio" value="5">
+                                        <label class="form-check-label" for="btn2icon5"><span class="fa-solid fa-arrow-right fa-2x"></span></label>
+                                    </div>
+                                    <hr>
+                                    <h5 class="font-weight-bold mt-3">Button 2 colour<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the colour of your button" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="form-check form-check-inline" id="btn2Colour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btn2Colour" id="btn2-uq" type="radio" value="uq" checked>
+                                    <label class="form-check-label" for="btn2-uq"><a class="btn btn-uq">UQ Purple</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btn2Colour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btn2Colour" id="btn2-primary" type="radio" value="primary">
+                                    <label class="form-check-label" for="btn2-primary"><a class="btn btn-primary">Primary Blue</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btn2Colour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btn2Colour" id="btn2-secondary" type="radio" value="secondary">
+                                    <label class="form-check-label" for="btn2-secondary"><a class="btn btn-secondary">Secondary Grey</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btn2Colour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btn2Colour" id="btn2-info" type="radio" value="info">
+                                    <label class="form-check-label" for="btn2-info"><a class="btn btn-info">Info Blue</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btn2Colour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btn2Colour" id="btn2-success" type="radio" value="success">
+                                    <label class="form-check-label" for="btn2-success"><a class="btn btn-success">Success Green</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btn2Colour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btn2Colour" id="btn2-warning" type="radio" value="warning">
+                                    <label class="form-check-label" for="btn2-warning"><a class="btn btn-warning">Warning Yellow</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btn2Colour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btn2Colour" id="btn2-danger" type="radio" value="danger">
+                                    <label class="form-check-label" for="btn2-danger"><a class="btn btn-danger">Danger Red</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btn2Colour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btn2Colour" id="btn2-dark" type="radio" value="dark">
+                                    <label class="form-check-label" for="btn2-dark"><a class="btn btn-dark">Dark</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btn2Colour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btn2Colour" id="btn2-light" type="radio" value="light">
+                                    <label class="form-check-label" for="btn2-light"><a class="btn btn-light">Light</a></label>
+                                </div>
+                                <hr>
+                                    <h5 class="font-weight-bold mt-3">Button 2 - Link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The web link from LearnX if this is a file download OR the website link." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea onchange="generateBtnCode()" id="btn2Link" class="border border-dark rounded w-100 p-2" rows="1" placeholder="The web link from LearnX if this is a file download OR the website link"></textarea>
+                                <h5 class="font-weight-bold mt-3">Button 2 - Title text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="This assists with screenreaders and is an accessibility requirement." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea onkeyup="generateBtnCode()" id="btn2TitleText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your video title text here."></textarea>
+                                </div>
+                                <div id="btnThreeDiv" class="fade">
+                                    <hr>
+                                    <h5 class="font-weight-bold mt-3">Button 3 - Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear on your third button." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                    <textarea class="border border-dark rounded w-100 p-2" rows="1" id="btn3Text" onkeyup=generateBtnCode() placeholder="Write the text that will appear on button 3."></textarea>
+                                    <hr>
+                                    <h5 class="font-weight-bold mt-3">Button 3 - Select your icon<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Select an icon for your third button." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                    <div class="form-check form-check-inline" id="btnThreeIcon" onchange="generateBtnCode()">
+                                        <input class="form-check-input" name="btnThreeIcon" id="noIcon3" type="radio" value="noI3" checked>
+                                        <label class="form-check-label" for="noIcon3">No icon</label>
+                                    </div>
+                                    <div class="form-check form-check-inline" id="btnThreeIcon" onchange="generateBtnCode()">
+                                        <input class="form-check-input" name="btnThreeIcon" id="btn3icon1" type="radio" value="1">
+                                        <label class="form-check-label" for="btn3icon1"><span class="fa fa-external-link-alt fa-2x"></span></label>
+                                    </div>
+                                    <div class="form-check form-check-inline" id="btnThreeIcon" onchange="generateBtnCode()">
+                                        <input class="form-check-input" name="btnThreeIcon" id="btn3icon2" type="radio" value="2">
+                                        <label class="form-check-label" for="btn3icon2"><span class="fa fa-file-arrow-down fa-2x"></span></label>
+                                    </div>
+                                    <div class="form-check form-check-inline" id="btnThreeIcon" onchange="generateBtnCode()">
+                                        <input class="form-check-input" name="btnThreeIcon" id="btn3icon3" type="radio" value="3">
+                                        <label class="form-check-label" for="btn3icon3"><span class="fa-regular fa-hand-point-right fa-2x"></span></label>
+                                    </div>
+                                    <div class="form-check form-check-inline" id="btnThreeIcon" onchange="generateBtnCode()">
+                                        <input class="form-check-input" name="btnThreeIcon" id="btn3icon4" type="radio" value="4">
+                                        <label class="form-check-label" for="btn3icon4"><span class="fa-regular fa-circle-right fa-2x"></span></label>
+                                    </div>
+                                    <div class="form-check form-check-inline" id="btnThreeIcon" onchange="generateBtnCode()">
+                                        <input class="form-check-input" name="btnThreeIcon" id="btn3icon5" type="radio" value="5">
+                                        <label class="form-check-label" for="btn3icon5"><span class="fa-solid fa-arrow-right fa-2x"></span></label>
+                                    </div>
+                                    <hr>
+                                    <h5 class="font-weight-bold mt-3">Button 3 colour<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the colour of your button" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="form-check form-check-inline" id="btn3Colour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btn3Colour" id="btn3-uq" type="radio" value="uq" checked>
+                                    <label class="form-check-label" for="btn3-uq"><a class="btn btn-uq">UQ Purple</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btn3Colour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btn3Colour" id="btn3-primary" type="radio" value="primary">
+                                    <label class="form-check-label" for="btn3-primary"><a class="btn btn-primary">Primary Blue</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btn3Colour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btn3Colour" id="btn3-secondary" type="radio" value="secondary">
+                                    <label class="form-check-label" for="btn3-secondary"><a class="btn btn-secondary">Secondary Grey</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btn3Colour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btn3Colour" id="btn3-info" type="radio" value="info">
+                                    <label class="form-check-label" for="btn3-info"><a class="btn btn-info">Info Blue</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btn3Colour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btn3Colour" id="btn3-success" type="radio" value="success">
+                                    <label class="form-check-label" for="btn3-success"><a class="btn btn-success">Success Green</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btn3Colour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btn3Colour" id="btn3-warning" type="radio" value="warning">
+                                    <label class="form-check-label" for="btn3-warning"><a class="btn btn-warning">Warning Yellow</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btn3Colour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btn3Colour" id="btn3-danger" type="radio" value="danger">
+                                    <label class="form-check-label" for="btn3-danger"><a class="btn btn-danger">Danger Red</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btn3Colour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btn3Colour" id="btn3-dark" type="radio" value="dark">
+                                    <label class="form-check-label" for="btn3-dark"><a class="btn btn-dark">Dark</a></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="btn3Colour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="btn3Colour" id="btn3-light" type="radio" value="light">
+                                    <label class="form-check-label" for="btn3-light"><a class="btn btn-light">Light</a></label>
+                                </div>
+                                    <h5 class="font-weight-bold mt-3">Button 3 - Link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The web link from LearnX if this is a file download OR the website link." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea onchange="generateBtnCode()" id="btn3Link" class="border border-dark rounded w-100 p-2" rows="1" placeholder="The web link from LearnX if this is a file download OR the website link."></textarea>
+                                <h5 class="font-weight-bold mt-3"> Button 3 - Title text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="This assists with screenreaders and is an accessibility requirement." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea onkeyup="generateBtnCode()" id="btn3TitleText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your video title text here."></textarea>
+                                </div>
+                                <hr>         
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="sticky-top" style="top:1rem;">
+                            <h5 class="font-weight-bold">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                            <div id="previewBtnFS" class="bg-white">
+                            <div id="demo"></div>
+                            </div>
+                            <div class="text-center mb-2 previewButton"> 
+                            <button type="button" class="btn btn-outline-dark border border-dark rounded d-block mx-auto mt-3" id="togglePreviewBtnFS" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click to expand the preview to fullscreen. Click again or press Escape to return here to the editing screen."><i class="fa fa-expand-arrows-alt fa-lg" aria-hidden="true"></i></button>
+                            </div>
+                            <h5 class="font-weight-bold">Copy code<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click the copy code button below to copy your code, ready to paste into LearnX.">&nbsp;<i class="fa fa-question-circle text-success small" aria-hidden="true"></i></span></h5>
+                            <textarea readonly class="rounded p-2 w-100 border border-dark" id="btnFinalCode" cols="70" rows="5" name="Result" placeholder="Code for your element will appear here"></textarea>
+                            <input id="copyCodeBtn" class="btn btn-success btn-lg d-block w-100 mt-2" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()">
+                            <div class="text-center h5 mt-4">
+                                <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into
                                 LearnX?</a>-->
                             </div>
                         </div>
@@ -483,7 +792,7 @@
             <div class="tab-pane fade" id="bugOrImprovementForm" role="tabpanel">
                 <div class="ratio ratio-16x9">
                     <iframe src="https://forms.office.com/r/G6NMM65Yxu?embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
-                    </div>
+                </div>
             </div>
         </div>
     </div>
