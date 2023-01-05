@@ -149,11 +149,7 @@
     <!--On page load run functions + build placeholder-->
     <script type="text/javascript">
         window.addEventListener('load', function () {
-            generateImgTextCode();
-            generateVidTextCode();
-            generateBtnCode();
-            generateAlertCode();
-            $('#finalCode').val(placeholderCode);
+            $('#imgFinalCode').val(placeholderCode);
             $('div#demo').html(placeholderCode);
             $('#vidFinalCode').val(vidPlaceholderCode);
             $('div#vidDemo').html(vidPlaceholderCode);
@@ -408,7 +404,7 @@
                             <button type="button" class="btn btn-outline-dark border border-dark rounded d-block mx-auto" id="togglePreviewImgFS" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click to expand the preview to fullscreen. Click again or press Escape to return here to the editing screen."><i class="fa fa-expand-arrows-alt fa-lg" aria-hidden="true"></i></button>
                             </div>
                             <h5 class="font-weight-bold">Copy code<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click the copy code button below to copy your code, ready to paste into LearnX.">&nbsp;<i class="fa fa-question-circle text-success small" aria-hidden="true"></i></span></h5>
-                            <textarea readonly class="rounded p-2 w-100 border border-dark" id="finalCode" cols="70" rows="5" name="Result" placeholder="Code for your element will appear here"></textarea>
+                            <textarea readonly class="rounded p-2 w-100 border border-dark" id="imgFinalCode" cols="70" rows="5" name="Result" placeholder="Code for your element will appear here"></textarea>
                             <input id="copyCodeBtn" class="btn btn-success btn-lg d-block w-100 mt-2" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()">
                             <div class="text-center h5 mt-4">
                                 <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into
@@ -943,7 +939,7 @@
                             <button type="button" class="btn btn-outline-dark border border-dark rounded d-block mx-auto" id="togglePreviewImgFS" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click to expand the preview to fullscreen. Click again or press Escape to return here to the editing screen."><i class="fa fa-expand-arrows-alt fa-lg" aria-hidden="true"></i></button>
                             </div>
                             <h5 class="font-weight-bold">Copy code<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click the copy code button below to copy your code, ready to paste into LearnX.">&nbsp;<i class="fa fa-question-circle text-success small" aria-hidden="true"></i></span></h5>
-                            <textarea readonly class="rounded p-2 w-100 border border-dark" id="finalCode" cols="70" rows="5" name="Result" placeholder="Code for your element will appear here"></textarea>
+                            <textarea readonly class="rounded p-2 w-100 border border-dark" id="alertFinalCode" cols="70" rows="5" name="Result" placeholder="Code for your element will appear here"></textarea>
                             <input id="copyCodeBtn" class="btn btn-success btn-lg d-block w-100 mt-2" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()">
                             <div class="text-center h5 mt-4">
                                 <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into

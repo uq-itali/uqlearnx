@@ -37,47 +37,47 @@ function generateImgTextCode() {
     //Changing code order depending on selections
     if(imgPosition == "left" && imgWidth=="50"){
         var finalCode = resizedHead + rowOpen + colOpen + imgCode + divClose + colOpen + tinyText  + rowClose;
-        $('#finalCode').val(finalCode);
+        $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "right" && imgWidth == "50"){
         var finalCode = resizedHead + rowOpen + colOpen + tinyText + divClose + colOpen + imgCode + rowClose;
-        $('#finalCode').val(finalCode);
+        $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "left" && imgWidth == "33"){
         var finalCode = resizedHead + rowOpen + col4Open + imgCode + divClose + colOpen + tinyText  + rowClose;
-        $('#finalCode').val(finalCode);
+        $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);                
     }
     else if(imgPosition == "left" && imgWidth == "25"){
         var finalCode = resizedHead + rowOpen + col3Open + imgCode + divClose + colOpen + tinyText  + rowClose;
-        $('#finalCode').val(finalCode);
+        $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "right" && imgWidth == "33"){
         var finalCode = resizedHead + rowOpen + colOpen + tinyText + divClose + col4Open + imgCode + rowClose;
-        $('#finalCode').val(finalCode);
+        $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "right" && imgWidth == "25"){
         var finalCode = resizedHead + rowOpen + colOpen + tinyText + divClose + col3Open + imgCode + rowClose;
-        $('#finalCode').val(finalCode);
+        $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "floatRight" && imgWidth =="50"){
         var finalCode = resizedHead + rowOpen + colFloatOpen + imgFloat + divClose + tinyText + rowClose;
-        $('#finalCode').val(finalCode);
+        $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "floatRight" && imgWidth == "33"){
         var finalCode = resizedHead + rowOpen + col4FloatOpen + imgFloat + divClose + tinyText + rowClose;
-        $('#finalCode').val(finalCode);
+        $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "floatRight" && imgWidth == "25"){
         var finalCode = resizedHead + rowOpen + col3FloatOpen + imgFloat + divClose + tinyText + rowClose;
-        $('#finalCode').val(finalCode);
+        $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
 }
@@ -463,12 +463,12 @@ function generateAlertCode() {
         }
         if(alertOrQuote == 'alert'){
             var alertFinalCode = alertOpen + alertColor + ' ' + alertWidth + alertDivClose + resizedAlertHead + tinyText + divClose;
-            $('#finalCode').val(alertFinalCode);
+            $('#alertFinalCode').val(alertFinalCode);
             $('div#demo').html(alertFinalCode);
         }
         else if(alertOrQuote == 'quote'){
             var alertFinalCode = alertOpen + alertColor + ' ' + alertWidth + alertDivClose + quotationsLeft + figOpen + quoteWrapper + fontSize + closeWrapper + tinyText + endQuoteWrapper + figCaptionOpen + citation + figCaptionClose + quotationsRight;
-            $('#finalCode').val(alertFinalCode);
+            $('#alertFinalCode').val(alertFinalCode);
             $('div#demo').html(alertFinalCode);
         }
 }

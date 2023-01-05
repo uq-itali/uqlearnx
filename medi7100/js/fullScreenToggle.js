@@ -1,5 +1,17 @@
 function copyCode() {
-    var selectedCode = $('#finalCode').select();
+    var activeBtn = $('button.active').attr('id')
+    if(activeBtn == 'imgBuilderBtn') {
+        var selectedCode = $('#imgFinalCode').select();
+    }
+    else if(activeBtn == 'vidBuilderBtn') {
+        var selectedCode = $('#vidFinalCode').select();
+    }
+    else if(activeBtn == 'btnBuilderBtn') {
+        var selectedCode = $('#btnFinalCode').select();
+    }
+    else if(activeBtn == 'alertBuilderBtn'){
+        var selectedCode = $('#alertFinalCode').select();
+    }
     try {
         var successful = document.execCommand('copy');
         var msg = successful ? 'successful' : 'unsuccessful';
