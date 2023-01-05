@@ -156,6 +156,7 @@
             fullScreenImgToggle();
             fullScreenVidToggle();
             fullScreenBtnToggle();
+            fullScreenAlertToggle();
             setInterval(function () {
                 $('[data-bs-toggle="tooltip"]').tooltip('hide'); 
             }, 5000);
@@ -947,11 +948,11 @@
                     <div class="col-lg-6">
                         <div class="sticky-top" style="top:1rem;">
                             <h5 class="font-weight-bold">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                            <div id="previewImgFS" class="bg-white">
+                            <div id="previewAlertFS" class="bg-white">
                             <div id="demo"></div>
                             </div>
                             <div class="text-center mb-2 previewButton"> 
-                            <button type="button" class="btn btn-outline-dark border border-dark rounded d-block mx-auto" id="togglePreviewImgFS" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click to expand the preview to fullscreen. Click again or press Escape to return here to the editing screen."><i class="fa fa-expand-arrows-alt fa-lg" aria-hidden="true"></i></button>
+                            <button type="button" class="btn btn-outline-dark border border-dark rounded d-block mx-auto" id="togglePreviewAlertFS" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click to expand the preview to fullscreen. Click again or press Escape to return here to the editing screen."><i class="fa fa-expand-arrows-alt fa-lg" aria-hidden="true"></i></button>
                             </div>
                             <h5 class="font-weight-bold">Copy code<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click the copy code button below to copy your code, ready to paste into LearnX.">&nbsp;<i class="fa fa-question-circle text-success small" aria-hidden="true"></i></span></h5>
                             <textarea readonly class="rounded p-2 w-100 border border-dark" id="alertFinalCode" cols="70" rows="5" name="Result" placeholder="Code for your element will appear here"></textarea>
