@@ -1,3 +1,14 @@
+function copyCode() {
+    var selectedCode = $('#finalCode').select();
+    try {
+        var successful = document.execCommand('copy');
+        var msg = successful ? 'successful' : 'unsuccessful';
+        console.log('Fallback: Copying text command was ' + msg);
+        console.log("@GB: snippet = ", selectedCode.val());
+    } catch (err) {
+        console.error('Fallback: Oops, unable to copy', err);
+    }
+}
 function fullScreenImgToggle() {
     if (document.fullscreenEnabled) {
         var togglePreviewVidFS = document.getElementById("togglePreviewImgFS");

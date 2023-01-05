@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -48,6 +47,7 @@
             margin: auto;
         }
     </style>
+    <!--Dropdowns in the nav open on hover-->
     <script>
         $(document).ready(function () {
             $(".dropdown").hover(function () {
@@ -123,13 +123,21 @@
         var btnPlaceholder = '<a src="'   
         var divClose = '</div>\n';
         var rowClose = '</div>\n</div>';
-        var pClose='</p>'
         var uqh2 = "text-bg-uq p-2";
         var resizedHead = "";
-        var alertOpen = '<div class="alert alert-' + alertColor + '" role="alert">'
+        var alertOpen = '<div class="alert alert-';
+        var alertDivClose = ' d-block mx-auto" role="alert">\n';
+        var quotationsLeft = '<span aria-hidden="true" class="fa fa-quote-left fa-2x"></span>\n';
+        var figOpen = '<figure class="mb-0">\n<blockquote class="blockquote mb-0">';
+        var quoteWrapper = '<div class="'
+        var endQuoteWrapper = '</div>'
+        var closeWrapper = '">'
+        var figCaptionOpen = '<figcaption class="blockquote-footer mb-0 mt-4 text-end fs-6"> Taken from <cite title="Source Title">';
+        var figCaptionClose = '</cite>\n</figcaption>\n</blockquote>\n</figure>';
+        var quotationsRight = '<p class="mb-4"><span aria-hidden="true" class="fa fa-quote-right fa-pull-right fa-2x"></span></p>\n</div>'
         var vidResizedHead = "";
         //Placeholder variables so there is a placeholder preview for the user to see initially
-        var textPlaceholder = '<p>This is placeholder text that will update once you input your own text</p>\n';
+        var textPlaceholder = '<p class="mb-0">This is placeholder text that will update once you input your own text</p>\n';
         var imgPlaceholder = '<figure>\n<img class="img-fluid d-block mx-auto" alt="This is alt text" src="https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png" />\n<figcaption class="text-center mt-2">This is the placeholder image caption</figcaption>\n</figure>\n';
         var imgPlaceholderLink = 'https://uq-itali.github.io/uqlearnx/img/PLACEHOLDER.png';
         var placeholderCode = rowOpen + colOpen + textPlaceholder + divClose + colOpen + imgPlaceholder + rowClose;
@@ -137,13 +145,14 @@
         var vidPlaceholderLink = 'https://www.youtube.com/embed/NpEaa2P7qZI';
         var vidPlaceholderCode = rowOpen + colOpen + textPlaceholder + divClose + colOpen + respVidOpen + vidPlaceholder + rowClose;
         var btnPlaceholderLink = 'https://learnx.uq.edu.au/dashboard';
-        var btnPlaceholderCode = pOpen + pClose
     </script>
     <!--On page load run functions + build placeholder-->
     <script type="text/javascript">
         window.addEventListener('load', function () {
             generateImgTextCode();
             generateVidTextCode();
+            generateBtnCode();
+            generateAlertCode();
             $('#finalCode').val(placeholderCode);
             $('div#demo').html(placeholderCode);
             $('#vidFinalCode').val(vidPlaceholderCode);
@@ -813,57 +822,68 @@
                     <div class="col-lg-6">
                         <div class="row w-100 mx-auto">
                             <div class="col-lg">
-                                <h5 class="font-weight-bold mt-3">Alert width<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether the alert is half (1/2) the width of the screen or a quarter the size (1/4)" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <h5 class="font-weight-bold mt-3">Alert width<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether the alert is 3/4, 1/2 or 1/4 the width of the screen" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="alertWidth" onchange="generateAlertCode()">
-                                    <input class="form-check-input" name="alertWidth" id="alertWidth1" type="radio" value="100" checked>
+                                    <input class="form-check-input" name="alertWidth" id="alertWidth1" type="radio" value="w-100" checked>
                                     <label class="form-check-label" for="alertWidth1">100% (1/2)</label>
                                 </div>
                                 <div class="form-check form-check-inline" id="alertWidth" onchange="generateAlertCode()">
-                                    <input class="form-check-input" name="alertWidth" id="alertWidth2" type="radio" value="75">
-                                    <label class="form-check-label" for="alertWidth1">75% (3/4)</label>
+                                    <input class="form-check-input" name="alertWidth" id="alertWidth2" type="radio" value="w-75">
+                                    <label class="form-check-label" for="alertWidth2">75% (3/4)</label>
                                 </div>
                                 <div class="form-check form-check-inline" id="alertWidth" onchange="generateAlertCode()">
-                                    <input class="form-check-input" name="alertWidth" id="alertWidth3" type="radio" value="50">
-                                    <label class="form-check-label" for="alertWidth2">50% (1/2)</label>
+                                    <input class="form-check-input" name="alertWidth" id="alertWidth3" type="radio" value="w-50">
+                                    <label class="form-check-label" for="alertWidth3">50% (1/2)</label>
                                 </div>
                                 <div class="form-check form-check-inline" id="alertWidth" onchange="generateAlertCode()">
-                                    <input class="form-check-input" name="alertWidth" id="alertWidth4" type="radio" value="25">
-                                    <label class="form-check-label" for="alertWidth3">25% (1/4)</label>
+                                    <input class="form-check-input" name="alertWidth" id="alertWidth4" type="radio" value="w-25">
+                                    <label class="form-check-label" for="alertWidth4">25% (1/4)</label>
                                 </div>
-                                <h5 class="font-weight-bold mt-3">Alert colour<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the colour of your button" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                                <div class="form-check form-check-inline" id="alertColour" onchange="generateBtnCode()">
+                                <hr>
+                                <h5 class="font-weight-bold mt-3">Alert or Quote<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether this will be a standard alert or a quotation." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="form-check form-check-inline" id="alertOrQuote" onchange="generateAlertCode()">
+                                    <input class="form-check-input" name="alertOrQuote" id="alertOrQuote1" type="radio" value="alert" checked>
+                                    <label class="form-check-label" for="alertOrQuote1">Alert</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="alertOrQuote" onchange="generateAlertCode()">
+                                    <input class="form-check-input" name="alertOrQuote" id="alertOrQuote2" type="radio" value="quote">
+                                    <label class="form-check-label" for="alertOrQuote2">Quote</label>
+                                </div>
+                                <hr>
+                                <h5 class="font-weight-bold mt-3">Alert colour<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the colour of your alert." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="form-check form-check-inline" id="alertColour" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertColour" id="alert-uq" type="radio" value="uq" checked>
                                     <label class="form-check-label" for="alert-uq"><div class="alert alert-uq">UQ Purple</div></label>
                                 </div>
-                                <div class="form-check form-check-inline" id="alertColour" onchange="generatealertCode()">
+                                <div class="form-check form-check-inline" id="alertColour" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertColour" id="alert-primary" type="radio" value="primary">
                                     <label class="form-check-label" for="alert-primary"><div class="alert alert-primary">Primary Blue</div></label>
                                 </div>
-                                <div class="form-check form-check-inline" id="alertColour" onchange="generatealertCode()">
+                                <div class="form-check form-check-inline" id="alertColour" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertColour" id="alert-secondary" type="radio" value="secondary">
                                     <label class="form-check-label" for="alert-secondary"><div class="alert alert-secondary">Secondary Grey</div></label>
                                 </div>
-                                <div class="form-check form-check-inline" id="alertColour" onchange="generatealertCode()">
+                                <div class="form-check form-check-inline" id="alertColour" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertColour" id="alert-info" type="radio" value="info">
                                     <label class="form-check-label" for="alert-info"><div class="alert alert-info">Info Blue</div></label>
                                 </div>
-                                <div class="form-check form-check-inline" id="alertColour" onchange="generatealertCode()">
+                                <div class="form-check form-check-inline" id="alertColour" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertColour" id="alert-success" type="radio" value="success">
                                     <label class="form-check-label" for="alert-success"><div class="alert alert-success">Success Green</div></label>
                                 </div>
-                                <div class="form-check form-check-inline" id="alertColour" onchange="generatealertCode()">
+                                <div class="form-check form-check-inline" id="alertColour" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertColour" id="alert-warning" type="radio" value="warning">
                                     <label class="form-check-label" for="alert-warning"><div class="alert alert-warning">Warning Yellow</div></label>
                                 </div>
-                                <div class="form-check form-check-inline" id="alertColour" onchange="generatealertCode()">
+                                <div class="form-check form-check-inline" id="alertColour" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertColour" id="alert-danger" type="radio" value="danger">
                                     <label class="form-check-label" for="alert-danger"><div class="alert alert-danger">Danger Red</div></label>
                                 </div>
-                                <div class="form-check form-check-inline" id="alertColour" onchange="generatealertCode()">
+                                <div class="form-check form-check-inline" id="alertColour" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertColour" id="alert-dark" type="radio" value="dark">
                                     <label class="form-check-label" for="alert-dark"><div class="alert alert-dark">Dark</div></label>
                                 </div>
-                                <div class="form-check form-check-inline" id="alertColour" onchange="generatealertCode()">
+                                <div class="form-check form-check-inline" id="alertColour" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertColour" id="alert-light" type="radio" value="light">
                                     <label class="form-check-label" for="alert-light"><div class="alert alert-light">Light</div></label>
                                 </div>
@@ -882,8 +902,34 @@
                                     <input class="form-check-input" name="alertHeadSize" id="alertHeadSize3" type="radio" value="h2">
                                     <label class="form-check-label" for="alertHeadSize3"><h2 class="m-0">H2 heading</h2></label>
                                 </div>
-                                <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your alert." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                            </hr>
+                                <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your alert or quote." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea class="border border-dark rounded w-100 tinyMCEtext" onkeyup=generateAlertCode()></textarea>
+                                <h5 class="font-weight-bold mt-3">Text size<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the size of your alert/quotation text." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="form-check form-check-inline" id="alertFontSize" onchange="generateAlertCode()">
+                                    <input class="form-check-input" name="alertFontSize" id="alertFontSizeNormal" type="radio" value="" checked>
+                                    <label class="form-check-label" for="alertFontSizeNormal">Normal</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="alertFontSize" onchange="generateAlertCode()">
+                                    <input class="form-check-input" name="alertFontSize" id="alertFontSize5" type="radio" value="fs-5">
+                                    <label class="form-check-label" for="alertFontSize5"><span class="fs-5">Small</span></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="alertFontSize" onchange="generateAlertCode()">
+                                    <input class="form-check-input" name="alertFontSize" id="alertFontSize4" type="radio" value="fs-4">
+                                    <label class="form-check-label" for="alertFontSize4"><span class="fs-4">Medium</span></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="alertFontSize" onchange="generateAlertCode()">
+                                    <input class="form-check-input" name="alertFontSize" id="alertFontSize3" type="radio" value="fs-3">
+                                    <label class="form-check-label" for="alertFontSize3"><span class="fs-3">Large</span></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="alertFontSize" onchange="generateAlertCode()">
+                                    <input class="form-check-input" name="alertFontSize" id="alertFontSize2" type="radio" value="fs-2">
+                                    <label class="form-check-label" for="alertFontSize2"><span class="fs-2">X-Large</span></label>
+                                </div>
+                                <hr>
+                                <h5 class="font-weight-bold mt-3">Write/Paste your citation<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text for the citation." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea class="border border-dark rounded w-100 p-2" rows="3" id="citation" onkeyup=generateAlertCode()></textarea>
+                                <hr>
                             </div>
                         </div>
                     </div>

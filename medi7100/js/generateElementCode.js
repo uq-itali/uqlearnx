@@ -430,15 +430,19 @@ else{
 function generateAlertCode() {
     //Retrive values and text from the user's input
     var alertWidth = $('input[name="alertWidth"]:checked').val();
-    var tinyText = tinymce.activeEditor.getContent() + '\n';
+    var alertColor = $('input[name="alertColour"]:checked').val();
+    var alertOrQuote = $('input[name="alertOrQuote"]:checked').val();
+    var fontSize = $('input[name="alertFontSize"]:checked').val();
+    var citation = $('#citation').val();
     if(tinymce.activeEditor.getContent() !==''){
+        tinyMCE.activeEditor.dom.addClass(tinyMCE.activeEditor.dom.select('p:last-child'), 'mb-0');
+        tinyMCE.activeEditor.dom.addClass(tinyMCE.activeEditor.dom.select('p:last-child'), 'mb-0');
         tinyText = tinymce.activeEditor.getContent() + '\n';
     }
     else{
-        tinyText = textPlaceholder
+        tinyText = textPlaceholder;
     }
-    var alertHeadingText = $('#alertHeadingText').val();
-    if(alertHeadingText !== ''){
+    if($('#alertHeadingText').val() !== ''){
         alertHeadingText = $('#alertHeadingText').val();
     }
     else{
@@ -449,33 +453,22 @@ function generateAlertCode() {
             //Resizing the heading text
             var alertSizes = {
                 "noH": "",
-                "h2": "<h2 class=\"alert-heading\">" + alertHeadingText + "</h2>\n",
-                "h4": "<h4 class=\"alert-heading\">" + alertHeadingText + "</h4>\n"
+                "h2": "<h2 class=\"alert-heading text-center\">" + alertHeadingText + "</h2>\n",
+                "h4": "<h4 class=\"alert-heading text-center\">" + alertHeadingText + "</h4>\n"
             }
             resizedAlertHead = alertSizes[alertHeadSize];
         }
         else {
             resizedAlertHead = "";
-        } 
-        //Changing code order depending on selections
-        if(alertWidth=="100"){
-            var finalCode = resizedHead + rowOpen + colOpen + imgCode + divClose + colOpen + tinyText  + rowClose;
-            $('#finalCode').val(finalCode);
-            $('div#demo').html(finalCode);
         }
-        else if(alertWidth=="75"){
-            var finalCode = resizedHead + rowOpen + colOpen + tinyText + divClose + colOpen + imgCode + rowClose;
-            $('#finalCode').val(finalCode);
-            $('div#demo').html(finalCode);
+        if(alertOrQuote == 'alert'){
+            var alertFinalCode = alertOpen + alertColor + ' ' + alertWidth + alertDivClose + resizedAlertHead + tinyText + divClose;
+            $('#finalCode').val(alertFinalCode);
+            $('div#demo').html(alertFinalCode);
         }
-        else if(alertWidth=="50"){
-            var finalCode = resizedHead + rowOpen + col4Open + imgCode + divClose + colOpen + tinyText  + rowClose;
-            $('#finalCode').val(finalCode);
-            $('div#demo').html(finalCode);                
+        else if(alertOrQuote == 'quote'){
+            var alertFinalCode = alertOpen + alertColor + ' ' + alertWidth + alertDivClose + quotationsLeft + figOpen + quoteWrapper + fontSize + closeWrapper + tinyText + endQuoteWrapper + figCaptionOpen + citation + figCaptionClose + quotationsRight;
+            $('#finalCode').val(alertFinalCode);
+            $('div#demo').html(alertFinalCode);
         }
-        else if(alertWidth=="25"){
-            var finalCode = resizedHead + rowOpen + col3Open + imgCode + divClose + colOpen + tinyText  + rowClose;
-            $('#finalCode').val(finalCode);
-            $('div#demo').html(finalCode);
-        }
-    }
+}
