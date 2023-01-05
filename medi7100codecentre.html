@@ -883,8 +883,11 @@
                                     <input class="form-check-input" name="alertColour" id="alert-light" type="radio" value="light">
                                     <label class="form-check-label" for="alert-light"><div class="alert alert-light">Light</div></label>
                                 </div>
+                                <div id="alertHeadingDiv" class="fade show">
+                                    <hr>
                                 <h5 class="font-weight-bold mt-3">Alert Heading - Max 75 Characters<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Optional heading inside the alert. Max 75 characters." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <textarea onchange="generateAlertCode()" id="alertHeadingText" maxlength="75" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Optional heading inside the alert. Max 75 characters."></textarea>
+                                <hr>
                                 <h5 class="font-weight-bold mt-3">Heading size<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the size of your heading." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="alertHeadSize" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertHeadSize" id="alertHeadSizeNone" type="radio" value="noH" checked>
@@ -898,10 +901,14 @@
                                     <input class="form-check-input" name="alertHeadSize" id="alertHeadSize3" type="radio" value="h2">
                                     <label class="form-check-label" for="alertHeadSize3"><h2 class="m-0">H2 heading</h2></label>
                                 </div>
+                            </div>
                             </hr>
                                 <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your alert or quote." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea class="border border-dark rounded w-100 tinyMCEtext" onkeyup=generateAlertCode()></textarea>
+                                <div id="textSizeDiv" class="fade d-none">
                                 <h5 class="font-weight-bold mt-3">Text size<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the size of your alert/quotation text." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="row mb-2">
+                                    <div class="col-lg d-flex justify-content-between">
                                 <div class="form-check form-check-inline" id="alertFontSize" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertFontSize" id="alertFontSizeNormal" type="radio" value="" checked>
                                     <label class="form-check-label" for="alertFontSizeNormal">Normal</label>
@@ -914,6 +921,10 @@
                                     <input class="form-check-input" name="alertFontSize" id="alertFontSize4" type="radio" value="fs-4">
                                     <label class="form-check-label" for="alertFontSize4"><span class="fs-4">Medium</span></label>
                                 </div>
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg d-flex justify-content-around">
                                 <div class="form-check form-check-inline" id="alertFontSize" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertFontSize" id="alertFontSize3" type="radio" value="fs-3">
                                     <label class="form-check-label" for="alertFontSize3"><span class="fs-3">Large</span></label>
@@ -922,10 +933,14 @@
                                     <input class="form-check-input" name="alertFontSize" id="alertFontSize2" type="radio" value="fs-2">
                                     <label class="form-check-label" for="alertFontSize2"><span class="fs-2">X-Large</span></label>
                                 </div>
+                                </div>
+                                </div>
+                            </div>
                                 <hr>
+                                <div id="citationDiv" class="fade d-none">
                                 <h5 class="font-weight-bold mt-3">Write/Paste your citation<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text for the citation." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea class="border border-dark rounded w-100 p-2" rows="3" id="citation" onkeyup=generateAlertCode()></textarea>
-                                <hr>
+                            </div>
                             </div>
                         </div>
                     </div>

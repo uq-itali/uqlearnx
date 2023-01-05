@@ -467,6 +467,10 @@ function generateAlertCode() {
             $('div#demo').html(alertFinalCode);
         }
         else if(alertOrQuote == 'quote'){
+            $('#citationDiv, #textSizeDiv').removeClass('d-none')
+            setTimeout($('#citationDiv, #textSizeDiv').addClass('show'), 200)
+            $('#alertHeadingDiv').removeClass('show');
+            setTimeout($('#alertHeadingDiv').addClass('d-none'), 200)
             var alertFinalCode = alertOpen + alertColor + ' ' + alertWidth + alertDivClose + quotationsLeft + figOpen + quoteWrapper + fontSize + closeWrapper + tinyText + endQuoteWrapper + figCaptionOpen + citation + figCaptionClose + quotationsRight;
             $('#alertFinalCode').val(alertFinalCode);
             $('div#demo').html(alertFinalCode);
