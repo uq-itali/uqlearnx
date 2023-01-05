@@ -10,6 +10,7 @@ $(function() {
         var btn = $(this);
         var btnHtml = $(this).html();
         var snippet = btn.prev().html();
+        var snippet = snippet.replace(/\s{4,}/g, '');
         console.log("@GB: snippet = ", snippet);
         fallbackCopyTextToClipboard(snippet);
         btn.toggleClass('btn-success btn-primary');

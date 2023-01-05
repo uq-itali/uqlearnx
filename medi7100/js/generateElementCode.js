@@ -427,3 +427,55 @@ else{
             $('div#demo').html(btnFinalCode);
         }
     }
+function generateAlertCode() {
+    //Retrive values and text from the user's input
+    var alertWidth = $('input[name="alertWidth"]:checked').val();
+    var tinyText = tinymce.activeEditor.getContent() + '\n';
+    if(tinymce.activeEditor.getContent() !==''){
+        tinyText = tinymce.activeEditor.getContent() + '\n';
+    }
+    else{
+        tinyText = textPlaceholder
+    }
+    var alertHeadingText = $('#alertHeadingText').val();
+    if(alertHeadingText !== ''){
+        alertHeadingText = $('#alertHeadingText').val();
+    }
+    else{
+        alertHeadingText = '';
+    }
+    var alertHeadSize = $('input[name="alertHeadSize"]:checked').val();        
+    if(alertHeadSize !== "noH"){
+            //Resizing the heading text
+            var alertSizes = {
+                "noH": "",
+                "h2": "<h2 class=\"alert-heading\">" + alertHeadingText + "</h2>\n",
+                "h4": "<h4 class=\"alert-heading\">" + alertHeadingText + "</h4>\n"
+            }
+            resizedAlertHead = alertSizes[alertHeadSize];
+        }
+        else {
+            resizedAlertHead = "";
+        } 
+        //Changing code order depending on selections
+        if(alertWidth=="100"){
+            var finalCode = resizedHead + rowOpen + colOpen + imgCode + divClose + colOpen + tinyText  + rowClose;
+            $('#finalCode').val(finalCode);
+            $('div#demo').html(finalCode);
+        }
+        else if(alertWidth=="75"){
+            var finalCode = resizedHead + rowOpen + colOpen + tinyText + divClose + colOpen + imgCode + rowClose;
+            $('#finalCode').val(finalCode);
+            $('div#demo').html(finalCode);
+        }
+        else if(alertWidth=="50"){
+            var finalCode = resizedHead + rowOpen + col4Open + imgCode + divClose + colOpen + tinyText  + rowClose;
+            $('#finalCode').val(finalCode);
+            $('div#demo').html(finalCode);                
+        }
+        else if(alertWidth=="25"){
+            var finalCode = resizedHead + rowOpen + col3Open + imgCode + divClose + colOpen + tinyText  + rowClose;
+            $('#finalCode').val(finalCode);
+            $('div#demo').html(finalCode);
+        }
+    }

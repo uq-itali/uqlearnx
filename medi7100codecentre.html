@@ -87,14 +87,17 @@
                     var tinyText = tinymce.activeEditor.getContent();
                     var activeBtn = $('button.active').attr('id')
                     console.log('Editor contents was modified. Contents: ' + ed.getContent());
-                    if (activeBtn == 'imgBuilderBtn') {
+                    if(activeBtn == 'imgBuilderBtn') {
                         generateImgTextCode();
                     }
-                    else if (activeBtn == 'vidBuilderBtn') {
+                    else if(activeBtn == 'vidBuilderBtn') {
                         generateVidTextCode();
                     }
-                    else if (activeBtn == 'btnBuilderBtn') {
+                    else if(activeBtn == 'btnBuilderBtn') {
                         generateBtnCode();
+                    }
+                    else if(activeBtn == 'alertBuilderBtn'){
+                        generateAlertCode();
                     }
                 });
             }
@@ -123,6 +126,7 @@
         var pClose='</p>'
         var uqh2 = "text-bg-uq p-2";
         var resizedHead = "";
+        var alertOpen = '<div class="alert alert-' + alertColor + '" role="alert">'
         var vidResizedHead = "";
         //Placeholder variables so there is a placeholder preview for the user to see initially
         var textPlaceholder = '<p>This is placeholder text that will update once you input your own text</p>\n';
@@ -167,6 +171,9 @@
             </li>
             <li class="nav-item" role="presentation">
                 <button onclick="generateBtnCode()" id="btnBuilderBtn" class="nav-link" href="#buildBtnText" data-bs-toggle="tab">Button builder</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button onclick="generateAlertCode()" id="alertBuilderBtn" class="nav-link" href="#buildAlert" data-bs-toggle="tab">Alert/Quote builder</button>
             </li>
             <li class="nav-item" role="presentation">
                 <button id="headingsBtn" class="nav-link" href="#headings" data-bs-toggle="tab">Headings</button>
@@ -792,6 +799,105 @@
                             </div>
                             <h5 class="font-weight-bold">Copy code<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click the copy code button below to copy your code, ready to paste into LearnX.">&nbsp;<i class="fa fa-question-circle text-success small" aria-hidden="true"></i></span></h5>
                             <textarea readonly class="rounded p-2 w-100 border border-dark" id="btnFinalCode" cols="70" rows="5" name="Result" placeholder="Code for your element will appear here"></textarea>
+                            <input id="copyCodeBtn" class="btn btn-success btn-lg d-block w-100 mt-2" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()">
+                            <div class="text-center h5 mt-4">
+                                <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into
+                                LearnX?</a>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="buildAlert" role="tabpanel">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="row w-100 mx-auto">
+                            <div class="col-lg">
+                                <h5 class="font-weight-bold mt-3">Alert width<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether the alert is half (1/2) the width of the screen or a quarter the size (1/4)" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="form-check form-check-inline" id="alertWidth" onchange="generateAlertCode()">
+                                    <input class="form-check-input" name="alertWidth" id="alertWidth1" type="radio" value="100" checked>
+                                    <label class="form-check-label" for="alertWidth1">100% (1/2)</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="alertWidth" onchange="generateAlertCode()">
+                                    <input class="form-check-input" name="alertWidth" id="alertWidth2" type="radio" value="75">
+                                    <label class="form-check-label" for="alertWidth1">75% (3/4)</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="alertWidth" onchange="generateAlertCode()">
+                                    <input class="form-check-input" name="alertWidth" id="alertWidth3" type="radio" value="50">
+                                    <label class="form-check-label" for="alertWidth2">50% (1/2)</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="alertWidth" onchange="generateAlertCode()">
+                                    <input class="form-check-input" name="alertWidth" id="alertWidth4" type="radio" value="25">
+                                    <label class="form-check-label" for="alertWidth3">25% (1/4)</label>
+                                </div>
+                                <h5 class="font-weight-bold mt-3">Alert colour<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the colour of your button" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="form-check form-check-inline" id="alertColour" onchange="generateBtnCode()">
+                                    <input class="form-check-input" name="alertColour" id="alert-uq" type="radio" value="uq" checked>
+                                    <label class="form-check-label" for="alert-uq"><div class="alert alert-uq">UQ Purple</div></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="alertColour" onchange="generatealertCode()">
+                                    <input class="form-check-input" name="alertColour" id="alert-primary" type="radio" value="primary">
+                                    <label class="form-check-label" for="alert-primary"><div class="alert alert-primary">Primary Blue</div></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="alertColour" onchange="generatealertCode()">
+                                    <input class="form-check-input" name="alertColour" id="alert-secondary" type="radio" value="secondary">
+                                    <label class="form-check-label" for="alert-secondary"><div class="alert alert-secondary">Secondary Grey</div></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="alertColour" onchange="generatealertCode()">
+                                    <input class="form-check-input" name="alertColour" id="alert-info" type="radio" value="info">
+                                    <label class="form-check-label" for="alert-info"><div class="alert alert-info">Info Blue</div></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="alertColour" onchange="generatealertCode()">
+                                    <input class="form-check-input" name="alertColour" id="alert-success" type="radio" value="success">
+                                    <label class="form-check-label" for="alert-success"><div class="alert alert-success">Success Green</div></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="alertColour" onchange="generatealertCode()">
+                                    <input class="form-check-input" name="alertColour" id="alert-warning" type="radio" value="warning">
+                                    <label class="form-check-label" for="alert-warning"><div class="alert alert-warning">Warning Yellow</div></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="alertColour" onchange="generatealertCode()">
+                                    <input class="form-check-input" name="alertColour" id="alert-danger" type="radio" value="danger">
+                                    <label class="form-check-label" for="alert-danger"><div class="alert alert-danger">Danger Red</div></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="alertColour" onchange="generatealertCode()">
+                                    <input class="form-check-input" name="alertColour" id="alert-dark" type="radio" value="dark">
+                                    <label class="form-check-label" for="alert-dark"><div class="alert alert-dark">Dark</div></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="alertColour" onchange="generatealertCode()">
+                                    <input class="form-check-input" name="alertColour" id="alert-light" type="radio" value="light">
+                                    <label class="form-check-label" for="alert-light"><div class="alert alert-light">Light</div></label>
+                                </div>
+                                <h5 class="font-weight-bold mt-3">Alert Heading - Max 75 Characters<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Optional heading inside the alert. Max 75 characters." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <textarea onchange="generateAlertCode()" id="alertHeadingText" maxlength="75" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Optional heading inside the alert. Max 75 characters."></textarea>
+                                <h5 class="font-weight-bold mt-3">Heading size<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the size of your heading." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="form-check form-check-inline" id="alertHeadSize" onchange="generateAlertCode()">
+                                    <input class="form-check-input" name="alertHeadSize" id="alertHeadSizeNone" type="radio" value="noH" checked>
+                                    <label class="form-check-label" for="alertHeadSizeNone">No heading</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="alertHeadSize" onchange="generateAlertCode()">
+                                    <input class="form-check-input" name="alertHeadSize" id="alertHeadSize2" type="radio" value="h4">
+                                    <label class="form-check-label" for="alertHeadSize2"><h4 class="m-0">H4 heading</h4></label>
+                                </div>
+                                <div class="form-check form-check-inline" id="alertHeadSize" onchange="generateAlertCode()">
+                                    <input class="form-check-input" name="alertHeadSize" id="alertHeadSize3" type="radio" value="h2">
+                                    <label class="form-check-label" for="alertHeadSize3"><h2 class="m-0">H2 heading</h2></label>
+                                </div>
+                                <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your alert." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea class="border border-dark rounded w-100 tinyMCEtext" onkeyup=generateAlertCode()></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="sticky-top" style="top:1rem;">
+                            <h5 class="font-weight-bold">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                            <div id="previewImgFS" class="bg-white">
+                            <div id="demo"></div>
+                            </div>
+                            <div class="text-center mb-2 previewButton"> 
+                            <button type="button" class="btn btn-outline-dark border border-dark rounded d-block mx-auto" id="togglePreviewImgFS" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click to expand the preview to fullscreen. Click again or press Escape to return here to the editing screen."><i class="fa fa-expand-arrows-alt fa-lg" aria-hidden="true"></i></button>
+                            </div>
+                            <h5 class="font-weight-bold">Copy code<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click the copy code button below to copy your code, ready to paste into LearnX.">&nbsp;<i class="fa fa-question-circle text-success small" aria-hidden="true"></i></span></h5>
+                            <textarea readonly class="rounded p-2 w-100 border border-dark" id="finalCode" cols="70" rows="5" name="Result" placeholder="Code for your element will appear here"></textarea>
                             <input id="copyCodeBtn" class="btn btn-success btn-lg d-block w-100 mt-2" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()">
                             <div class="text-center h5 mt-4">
                                 <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into
