@@ -431,6 +431,7 @@ function generateAlertCode() {
     //Retrive values and text from the user's input
     var alertWidth = $('input[name="alertWidth"]:checked').val();
     var alertColor = $('input[name="alertColour"]:checked').val();
+    $('#alertColourDiv div.alert').css('--bs-alert-margin-bottom', '0px');
     var alertOrQuote = $('input[name="alertOrQuote"]:checked').val();
     var fontSize = $('input[name="alertFontSize"]:checked').val();
     var citation = $('#citation').val();
@@ -462,15 +463,25 @@ function generateAlertCode() {
             resizedAlertHead = "";
         }
         if(alertOrQuote == 'alert'){
+            $('#citationDiv, #textSizeDiv').removeClass('show')
+            setTimeout(function(){
+                $('#citationDiv, #textSizeDiv').addClass('d-none')
+            },200)
+            $('#alertHeadingDiv').removeClass('d-none');
+            setTimeout(function(){$('#alertHeadingDiv').addClass('show')
+            }, 200)
             var alertFinalCode = alertOpen + alertColor + ' ' + alertWidth + alertDivClose + resizedAlertHead + tinyText + divClose;
             $('#alertFinalCode').val(alertFinalCode);
             $('div#demo').html(alertFinalCode);
         }
         else if(alertOrQuote == 'quote'){
             $('#citationDiv, #textSizeDiv').removeClass('d-none')
-            setTimeout($('#citationDiv, #textSizeDiv').addClass('show'), 200)
+            setTimeout(function(){
+                $('#citationDiv, #textSizeDiv').addClass('show')}, 200)
             $('#alertHeadingDiv').removeClass('show');
-            setTimeout($('#alertHeadingDiv').addClass('d-none'), 200)
+            setTimeout(function(){
+                $('#alertHeadingDiv').addClass('d-none')}
+                , 200)
             var alertFinalCode = alertOpen + alertColor + ' ' + alertWidth + alertDivClose + quotationsLeft + figOpen + quoteWrapper + fontSize + closeWrapper + tinyText + endQuoteWrapper + figCaptionOpen + citation + figCaptionClose + quotationsRight;
             $('#alertFinalCode').val(alertFinalCode);
             $('div#demo').html(alertFinalCode);

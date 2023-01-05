@@ -54,6 +54,7 @@
                 var dropdownMenu = $(this).children(".dropdown-menu");
                 if (dropdownMenu.is(":visible")) {
                     dropdownMenu.parent().toggleClass("open");
+                    dropdownMenu.css('z-index','1030');
                 }
             });
         });     
@@ -847,7 +848,10 @@
                                     <label class="form-check-label" for="alertOrQuote2">Quote</label>
                                 </div>
                                 <hr>
+                                <div id="alertColourDiv">
                                 <h5 class="font-weight-bold mt-3">Alert colour<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the colour of your alert." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="row mb-2">
+                                    <div class="col-lg">
                                 <div class="form-check form-check-inline" id="alertColour" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertColour" id="alert-uq" type="radio" value="uq" checked>
                                     <label class="form-check-label" for="alert-uq"><div class="alert alert-uq">UQ Purple</div></label>
@@ -860,6 +864,10 @@
                                     <input class="form-check-input" name="alertColour" id="alert-secondary" type="radio" value="secondary">
                                     <label class="form-check-label" for="alert-secondary"><div class="alert alert-secondary">Secondary Grey</div></label>
                                 </div>
+                            </div>
+                        </div>
+                                <div class="row mb-2">
+                                    <div class="col-lg">
                                 <div class="form-check form-check-inline" id="alertColour" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertColour" id="alert-info" type="radio" value="info">
                                     <label class="form-check-label" for="alert-info"><div class="alert alert-info">Info Blue</div></label>
@@ -872,6 +880,10 @@
                                     <input class="form-check-input" name="alertColour" id="alert-warning" type="radio" value="warning">
                                     <label class="form-check-label" for="alert-warning"><div class="alert alert-warning">Warning Yellow</div></label>
                                 </div>
+                                </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-lg">
                                 <div class="form-check form-check-inline" id="alertColour" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertColour" id="alert-danger" type="radio" value="danger">
                                     <label class="form-check-label" for="alert-danger"><div class="alert alert-danger">Danger Red</div></label>
@@ -884,6 +896,9 @@
                                     <input class="form-check-input" name="alertColour" id="alert-light" type="radio" value="light">
                                     <label class="form-check-label" for="alert-light"><div class="alert alert-light">Light</div></label>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
                                 <div id="alertHeadingDiv" class="fade show">
                                     <hr>
                                 <h5 class="font-weight-bold mt-3">Alert Heading - Max 75 Characters<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Optional heading inside the alert. Max 75 characters." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
@@ -903,13 +918,13 @@
                                     <label class="form-check-label" for="alertHeadSize3"><h2 class="m-0">H2 heading</h2></label>
                                 </div>
                             </div>
-                            </hr>
+                            <hr>
                                 <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your alert or quote." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea class="border border-dark rounded w-100 tinyMCEtext" onkeyup=generateAlertCode()></textarea>
                                 <div id="textSizeDiv" class="fade d-none">
                                 <h5 class="font-weight-bold mt-3">Text size<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the size of your alert/quotation text." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                                <div class="row mb-2">
-                                    <div class="col-lg d-flex justify-content-between">
+                                <div class="row">
+                                    <div class="col-lg">
                                 <div class="form-check form-check-inline" id="alertFontSize" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertFontSize" id="alertFontSizeNormal" type="radio" value="" checked>
                                     <label class="form-check-label" for="alertFontSizeNormal">Normal</label>
@@ -925,7 +940,7 @@
                             </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg d-flex justify-content-around">
+                                <div class="col-lg mt-3">
                                 <div class="form-check form-check-inline" id="alertFontSize" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertFontSize" id="alertFontSize3" type="radio" value="fs-3">
                                     <label class="form-check-label" for="alertFontSize3"><span class="fs-3">Large</span></label>
