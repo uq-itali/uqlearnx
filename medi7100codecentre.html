@@ -64,7 +64,7 @@
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
         tinymce.init({
-            selector: '.tinyMCEtext',
+            selector: '#tinyMCEimg',
             menubar: false,
             height: "350",
             plugins: [
@@ -85,7 +85,117 @@
             },
             setup: function (ed) {
                 ed.on('keyup', function (e) {
-                    var tinyText = tinymce.activeEditor.getContent();
+                    var tinyTextimg = tinymce.get("tinyMCEimg").getContent();
+                    var activeBtn = $('button.active').attr('id')
+                    console.log('Editor contents was modified. Contents: ' + ed.getContent());
+                    if(activeBtn == 'imgBuilderBtn') {
+                        generateImgTextCode();
+                    }
+                    else if(activeBtn == 'vidBuilderBtn') {
+                        generateVidTextCode();
+                    }
+                    else if(activeBtn == 'btnBuilderBtn') {
+                        generateBtnCode();
+                    }
+                    else if(activeBtn == 'alertBuilderBtn'){
+                        generateAlertCode();
+                    }
+                });
+            }
+        });
+        tinymce.init({
+            selector: '#tinyMCEvid',
+            menubar: false,
+            height: "350",
+            plugins: [
+                'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                'insertdatetime', 'media', 'table', 'help', 'wordcount'
+            ],
+            toolbar: 'undo redo blocks bold italic alignleft aligncenter alignright bullist numlist table link code charmap removeformat fullscreen',
+            table_header_type: 'sectionCells',
+            table_default_attributes: { class: 'table table-bordered table-striped table-hover table-responsive' },
+            table_use_colgroups: false,
+            table_default_styles: {},
+            invalid_styles: {
+                'table': 'width height',
+                'tr': 'width height',
+                'th': 'width height',
+                'td': 'width height'
+            },
+            setup: function (ed) {
+                ed.on('keyup', function (e) {
+                    var tinyTextvid = tinymce.get("tinyMCEvid").getContent();
+                    var activeBtn = $('button.active').attr('id')
+                    console.log('Editor contents was modified. Contents: ' + ed.getContent());
+                    if(activeBtn == 'imgBuilderBtn') {
+                        generateImgTextCode();
+                    }
+                    else if(activeBtn == 'vidBuilderBtn') {
+                        generateVidTextCode();
+                    }
+                    else if(activeBtn == 'btnBuilderBtn') {
+                        generateBtnCode();
+                    }
+                    else if(activeBtn == 'alertBuilderBtn'){
+                        generateAlertCode();
+                    }
+                });
+            }
+        });
+        tinymce.init({
+            selector: '#tinyMCEalert',
+            menubar: false,
+            height: "350",
+            plugins: [
+                'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                'insertdatetime', 'media', 'table', 'help', 'wordcount'
+            ],
+            toolbar: 'undo redo blocks bold italic alignleft aligncenter alignright bullist numlist table link code charmap removeformat fullscreen',
+            table_header_type: 'sectionCells',
+            table_default_attributes: { class: 'table table-bordered table-striped table-hover table-responsive' },
+            table_use_colgroups: false,
+            table_default_styles: {},
+            invalid_styles: {
+                'table': 'width height',
+                'tr': 'width height',
+                'th': 'width height',
+                'td': 'width height'
+            },
+            setup: function (ed) {
+                ed.on('keyup', function (e) {
+                    var tinyTextalert = tinymce.get("tinyMCEalert").getContent();
+                    var activeBtn = $('button.active').attr('id')
+                    console.log('Editor contents was modified. Contents: ' + ed.getContent());
+                    if(activeBtn == 'imgBuilderBtn') {
+                        generateImgTextCode();
+                    }
+                    else if(activeBtn == 'vidBuilderBtn') {
+                        generateVidTextCode();
+                    }
+                    else if(activeBtn == 'btnBuilderBtn') {
+                        generateBtnCode();
+                    }
+                    else if(activeBtn == 'alertBuilderBtn'){
+                        generateAlertCode();
+                    }
+                });
+            }
+        });
+        tinymce.init({
+            selector: '#tinyMCEcitation',
+            menubar: false,
+            height: "350",
+            plugins: [
+                'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                'insertdatetime', 'media', 'table', 'help', 'wordcount'
+            ],
+            toolbar: 'undo redo blocks bold italic alignleft aligncenter alignright link code charmap removeformat fullscreen',
+            setup: function (ed) {
+                ed.on('keyup', function (e) {
+                    var tinyTextCitation = tinymce.get("tinyMCEcitation").getContent();
                     var activeBtn = $('button.active').attr('id')
                     console.log('Editor contents was modified. Contents: ' + ed.getContent());
                     if(activeBtn == 'imgBuilderBtn') {
@@ -133,7 +243,7 @@
         var quoteWrapper = '<div class="'
         var endQuoteWrapper = '</div>'
         var closeWrapper = '">'
-        var figCaptionOpen = '<figcaption class="blockquote-footer mb-0 mt-4 text-end fs-6"> Taken from <cite title="Source Title">';
+        var figCaptionOpen = '<figcaption class="blockquote-footer mb-0 mt-4 text-end fs-6">';
         var figCaptionClose = '</cite>\n</figcaption>\n</blockquote>\n</figure>';
         var quotationsRight = '<p class="mb-4"><span aria-hidden="true" class="fa fa-quote-right fa-pull-right fa-2x"></span></p>\n</div>'
         var vidResizedHead = "";
@@ -386,7 +496,7 @@
                                     </label>
                                 </div>
                                 <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your image." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
-                                <textarea class="border border-dark rounded w-100 tinyMCEtext" onkeyup=generateImgTextCode()></textarea>
+                                <textarea class="border border-dark rounded w-100" id="tinyMCEimg" onkeyup=generateImgTextCode()></textarea>
                                 <h5 class="font-weight-bold mt-3">Paste your image link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The web link from LearnX to the image you would like to appear in your selected element." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea onchange="generateImgTextCode()" id="imgLink" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Paste your LearnX web link to your image link here."></textarea>
                                 <h5 class="font-weight-bold mt-3">Type your alt text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The description of your image you would like to appear when a user hovers over the image or uses a screen reader" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
@@ -467,7 +577,7 @@
                                     </label>
                                 </div>
                                 <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your video." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
-                                <textarea class="border border-dark rounded w-100 tinyMCEtext" onkeyup=generateVidTextCode()></textarea>
+                                <textarea class="border border-dark rounded w-100" id="tinyMCEvid" onkeyup=generateVidTextCode()></textarea>
                                 <h5 class="font-weight-bold mt-3">Paste your video link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The web link from the Kaltura/YouTube/Vimeo/mp4 web link from LearnX video you would like to appear in your selected element." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea onchange="generateVidTextCode()" id="vidLink" class="border border-dark rounded w-100 p-2" rows="1" placeholder="This space accepts Kaltura iframes, YouTube, Vimeo, and mp4 web links from LearnX."></textarea>
                                 <!--<h5 class="font-weight-bold mt-3">Type your alt text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The description of your video you would like to appear when a user hovers over the video or uses a screen reader" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
@@ -920,7 +1030,7 @@
                             </div>
                             <hr>
                                 <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your alert or quote." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
-                                <textarea class="border border-dark rounded w-100 tinyMCEtext" onkeyup=generateAlertCode()></textarea>
+                                <textarea class="border border-dark rounded w-100" id="tinyMCEalert" onkeyup=generateAlertCode()></textarea>
                                 <div id="textSizeDiv" class="fade d-none">
                                 <h5 class="font-weight-bold mt-3">Text size<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the size of your alert/quotation text." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="row">
@@ -955,7 +1065,7 @@
                                 <hr>
                                 <div id="citationDiv" class="fade d-none">
                                 <h5 class="font-weight-bold mt-3">Write/Paste your citation<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text for the citation." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
-                                <textarea class="border border-dark rounded w-100 p-2" rows="3" id="citation" onkeyup=generateAlertCode()></textarea>
+                                <textarea class="border border-dark rounded w-100 p-2" rows="3" id="tinyMCEcitation" onkeyup=generateAlertCode() placeholder="Paste/write your citation here. It should be in APA 7th style."></textarea>
                             </div>
                             </div>
                         </div>

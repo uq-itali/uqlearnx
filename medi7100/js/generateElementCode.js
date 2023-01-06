@@ -3,11 +3,11 @@ function generateImgTextCode() {
     var imgPosition = $('input[name="imagePosition"]:checked').val();
     var imgWidth = $('input[name="imageWidth"]:checked').val();
     //var tinyText = tinymce.activeEditor.getContent() + '\n';
-    if(tinymce.activeEditor.getContent() !==''){
-        tinyText = tinymce.activeEditor.getContent() + '\n';
+    if(tinymce.get("tinyMCEimg").getContent() !==''){
+        tinyTextimg = tinymce.get("tinyMCEimg").getContent() + '\n';
     }
     else{
-        tinyText = textPlaceholder
+        tinyTextimg = textPlaceholder
     }
     var headingText = $('#headingText').val();
     var headSize = $('input[name="headSize"]:checked').val();
@@ -36,47 +36,47 @@ function generateImgTextCode() {
     } 
     //Changing code order depending on selections
     if(imgPosition == "left" && imgWidth=="50"){
-        var finalCode = resizedHead + rowOpen + colOpen + imgCode + divClose + colOpen + tinyText  + rowClose;
+        var finalCode = resizedHead + rowOpen + colOpen + imgCode + divClose + colOpen + tinyTextimg  + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "right" && imgWidth == "50"){
-        var finalCode = resizedHead + rowOpen + colOpen + tinyText + divClose + colOpen + imgCode + rowClose;
+        var finalCode = resizedHead + rowOpen + colOpen + tinyTextimg + divClose + colOpen + imgCode + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "left" && imgWidth == "33"){
-        var finalCode = resizedHead + rowOpen + col4Open + imgCode + divClose + colOpen + tinyText  + rowClose;
+        var finalCode = resizedHead + rowOpen + col4Open + imgCode + divClose + colOpen + tinyTextimg  + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);                
     }
     else if(imgPosition == "left" && imgWidth == "25"){
-        var finalCode = resizedHead + rowOpen + col3Open + imgCode + divClose + colOpen + tinyText  + rowClose;
+        var finalCode = resizedHead + rowOpen + col3Open + imgCode + divClose + colOpen + tinyTextimg  + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "right" && imgWidth == "33"){
-        var finalCode = resizedHead + rowOpen + colOpen + tinyText + divClose + col4Open + imgCode + rowClose;
+        var finalCode = resizedHead + rowOpen + colOpen + tinyTextimg + divClose + col4Open + imgCode + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "right" && imgWidth == "25"){
-        var finalCode = resizedHead + rowOpen + colOpen + tinyText + divClose + col3Open + imgCode + rowClose;
+        var finalCode = resizedHead + rowOpen + colOpen + tinyTextimg + divClose + col3Open + imgCode + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "floatRight" && imgWidth =="50"){
-        var finalCode = resizedHead + rowOpen + colFloatOpen + imgFloat + divClose + tinyText + rowClose;
+        var finalCode = resizedHead + rowOpen + colFloatOpen + imgFloat + divClose + tinyTextimg + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "floatRight" && imgWidth == "33"){
-        var finalCode = resizedHead + rowOpen + col4FloatOpen + imgFloat + divClose + tinyText + rowClose;
+        var finalCode = resizedHead + rowOpen + col4FloatOpen + imgFloat + divClose + tinyTextimg + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "floatRight" && imgWidth == "25"){
-        var finalCode = resizedHead + rowOpen + col3FloatOpen + imgFloat + divClose + tinyText + rowClose;
+        var finalCode = resizedHead + rowOpen + col3FloatOpen + imgFloat + divClose + tinyTextimg + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
@@ -85,12 +85,11 @@ function generateVidTextCode() {
     //Retrive values and text from the user's input
     var vidPosition = $('input[name="videoPosition"]:checked').val();
     var vidWidth = $('input[name="videoWidth"]:checked').val();
-    //var tinyText = tinymce.activeEditor.getContent() + '\n';
-    if(tinymce.activeEditor.getContent() !==''){
-        tinyText = tinymce.activeEditor.getContent() + '\n';
+    if(tinymce.get("tinyMCEvid").getContent() !==''){
+        tinyTextvid = tinymce.get("tinyMCEvid").getContent() + '\n';
     }
     else{
-        tinyText = textPlaceholder
+        tinyTextvid = textPlaceholder
     }
     var vidHeadingText = $('#vidHeadingText').val();
     var vidHeadSize = $('input[name="vidHeadSize"]:checked').val();
@@ -101,7 +100,6 @@ function generateVidTextCode() {
     else(
         vidLink = vidPlaceholderLink
         )
-    
         var YTCode = '<iframe src="' + vidLink.replace('watch?v=','embed/') + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>\n</div>';
         var KalturaCode = vidLink + '\n</div>'
         var VimeoCode = '<iframe src="' + vidLink.replace('vimeo.com','player.vimeo.com/video') + '" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>\n</iframe></div>\n<p class="text-center"><a href="' + vidLink + '" target="_blank" title="Watch this video on Vimeo">Watch this video on Vimeo</a></p>\n';
@@ -141,47 +139,47 @@ function generateVidTextCode() {
     } 
     //Changing code order depending on selections
     if(vidPosition == "left" && vidWidth=="50"){
-        var vidFinalCode = vidResizedHead + rowOpen + colOpen + vidTitleText + respVidOpen + vidCode + divClose + colOpen + tinyText  + rowClose;
+        var vidFinalCode = vidResizedHead + rowOpen + colOpen + vidTitleText + respVidOpen + vidCode + divClose + colOpen + tinyTextvid  + rowClose;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "right" && vidWidth == "50"){
-        var vidFinalCode = vidResizedHead + rowOpen + colOpen + tinyText + divClose + colOpen + vidTitleText + respVidOpen + vidCode + divClose + rowClose;
+        var vidFinalCode = vidResizedHead + rowOpen + colOpen + tinyTextvid + divClose + colOpen + vidTitleText + respVidOpen + vidCode + divClose + rowClose;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "left" && vidWidth == "33"){
-        var vidFinalCode = vidResizedHead + rowOpen + col4Open + vidTitleText + respVidOpen + vidCode + divClose + colOpen + tinyText  + rowClose;
+        var vidFinalCode = vidResizedHead + rowOpen + col4Open + vidTitleText + respVidOpen + vidCode + divClose + colOpen + tinyTextvid  + rowClose;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);                
     }
     else if(vidPosition == "left" && vidWidth == "25"){
-        var vidFinalCode = vidResizedHead + rowOpen + col3Open + vidTitleText + respVidOpen + vidCode + divClose + colOpen + tinyText  + rowClose;
+        var vidFinalCode = vidResizedHead + rowOpen + col3Open + vidTitleText + respVidOpen + vidCode + divClose + colOpen + tinyTextvid  + rowClose;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "right" && vidWidth == "33"){
-        var vidFinalCode = vidResizedHead + rowOpen + colOpen + tinyText + divClose + col4Open + vidTitleText + respVidOpen + vidCode + divClose + rowClose;
+        var vidFinalCode = vidResizedHead + rowOpen + colOpen + tinyTextvid + divClose + col4Open + vidTitleText + respVidOpen + vidCode + divClose + rowClose;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "right" && vidWidth == "25"){
-        var vidFinalCode = vidResizedHead + rowOpen + colOpen + tinyText + divClose + col3Open + vidTitleText + respVidOpen + vidCode + divClose + rowClose;
+        var vidFinalCode = vidResizedHead + rowOpen + colOpen + tinyTextvid + divClose + col3Open + vidTitleText + respVidOpen + vidCode + divClose + rowClose;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "floatRight" && vidWidth =="50"){
-        var vidFinalCode = vidResizedHead + rowOpen + colFloatOpen + vidTitleText + respVidOpen + vidCode + divClose + tinyText + rowClose;
+        var vidFinalCode = vidResizedHead + rowOpen + colFloatOpen + vidTitleText + respVidOpen + vidCode + divClose + tinyTextvid + rowClose;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "floatRight" && vidWidth == "33"){
-        var vidFinalCode = vidResizedHead + rowOpen + col4FloatOpen + vidTitleText + respVidOpen + vidCode + divClose + tinyText + rowClose;
+        var vidFinalCode = vidResizedHead + rowOpen + col4FloatOpen + vidTitleText + respVidOpen + vidCode + divClose + tinyTextvid + rowClose;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "floatRight" && vidWidth == "25"){
-        var vidFinalCode = vidResizedHead + rowOpen + col3FloatOpen + vidTitleText + respVidOpen + vidCode + divClose + tinyText + rowClose;
+        var vidFinalCode = vidResizedHead + rowOpen + col3FloatOpen + vidTitleText + respVidOpen + vidCode + divClose + tinyTextvid + rowClose;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
@@ -434,15 +432,23 @@ function generateAlertCode() {
     $('#alertColourDiv div.alert').css('--bs-alert-margin-bottom', '0px');
     var alertOrQuote = $('input[name="alertOrQuote"]:checked').val();
     var fontSize = $('input[name="alertFontSize"]:checked').val();
-    var citation = $('#citation').val();
-    if(tinymce.activeEditor.getContent() !==''){
-        tinyMCE.activeEditor.dom.addClass(tinyMCE.activeEditor.dom.select('p:last-child'), 'mb-0');
-        tinyMCE.activeEditor.dom.addClass(tinyMCE.activeEditor.dom.select('p:last-child'), 'mb-0');
-        tinyText = tinymce.activeEditor.getContent() + '\n';
+    var citationPlaceholder = 'Citation in APA 7th'
+    if(tinymce.get("tinyMCEalert").getContent() !==''){
+        tinymce.get("tinyMCEalert").dom.addClass(tinyMCE.get("tinyMCEalert").dom.select('p:last-child'), 'mb-0');
+        tinymce.get("tinyMCEalert").dom.addClass(tinyMCE.get("tinyMCEalert").dom.select('p:last-child'), 'mb-0');
+        tinyTextalert = tinymce.get("tinyMCEalert").getContent() + '\n';
     }
     else{
-        tinyText = textPlaceholder;
+        tinyTextalert = textPlaceholder;
     }
+    if(tinymce.get("tinyMCEcitation").getContent() !==''){
+        tinymce.get("tinyMCEcitation").dom.addClass(tinyMCE.get("tinyMCEcitation").dom.select('p:first-child'), 'd-inline')
+        tinyTextCitation = tinymce.get("tinyMCEcitation").getContent() + '\n';
+    }
+    else{
+        tinyTextCitation =  citationPlaceholder;
+    }
+
     if($('#alertHeadingText').val() !== ''){
         alertHeadingText = $('#alertHeadingText').val();
     }
@@ -470,7 +476,7 @@ function generateAlertCode() {
             $('#alertHeadingDiv').removeClass('d-none');
             setTimeout(function(){$('#alertHeadingDiv').addClass('show')
             }, 200)
-            var alertFinalCode = alertOpen + alertColor + ' ' + alertWidth + alertDivClose + resizedAlertHead + tinyText + divClose;
+            var alertFinalCode = alertOpen + alertColor + ' ' + alertWidth + alertDivClose + resizedAlertHead + tinyTextalert + divClose;
             $('#alertFinalCode').val(alertFinalCode);
             $('div#demo').html(alertFinalCode);
         }
@@ -482,7 +488,7 @@ function generateAlertCode() {
             setTimeout(function(){
                 $('#alertHeadingDiv').addClass('d-none')}
                 , 200)
-            var alertFinalCode = alertOpen + alertColor + ' ' + alertWidth + alertDivClose + quotationsLeft + figOpen + quoteWrapper + fontSize + closeWrapper + tinyText + endQuoteWrapper + figCaptionOpen + citation + figCaptionClose + quotationsRight;
+            var alertFinalCode = alertOpen + alertColor + ' ' + alertWidth + alertDivClose + quotationsLeft + figOpen + quoteWrapper + fontSize + closeWrapper + tinyTextalert + endQuoteWrapper + figCaptionOpen + tinyTextCitation + figCaptionClose + quotationsRight;
             $('#alertFinalCode').val(alertFinalCode);
             $('div#demo').html(alertFinalCode);
         }
