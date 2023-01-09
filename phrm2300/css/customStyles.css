@@ -8,7 +8,7 @@ margin-bottom: var(--bs-alert-margin-bottom) !important;
 .xmodule_display.xmodule_HtmlBlock .table th{
  background: var(--bs-table-bg) !important;
 }
-.alert p{
+.alert :is(p, ul, ol, div){
   color: inherit !important;
 }
 .five-e{
