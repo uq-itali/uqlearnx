@@ -341,61 +341,61 @@ else{
     
     //Changing code order depending on selections
     if(btnPosition == "left" && btnWidth == "Nat"){
-        var btnOneFinal = '<a src="' + btnLink + '" class="btn btn-' + btnColor + btnSize + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
+        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + btnSize + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
         var btnFinalCode = btnOneFinal
         $('#btnFinalCode').val(btnFinalCode);
         $('div#demo').html(btnFinalCode);
     }
     else if(btnPosition == "left" && btnWidth == "25"){
-        var btnOneFinal = '<a src="' + btnLink + '" class="btn btn-' + btnColor + btnSize + w25 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
+        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + btnSize + w25 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
         var btnFinalCode = btnOneFinal
         $('#btnFinalCode').val(btnFinalCode);
         $('div#demo').html(btnFinalCode);
     }
     else if(btnPosition == "left" && btnWidth == "50"){
-        var btnOneFinal = '<a src="' + btnLink + '" class="btn btn-' + btnColor + btnSize + w50 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
+        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + btnSize + w50 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
         var btnFinalCode = btnOneFinal
         $('#btnFinalCode').val(btnFinalCode);
         $('div#demo').html(btnFinalCode);
     }
     else if(btnPosition == "left" && btnWidth == "75"){
-        var btnOneFinal = '<a src="' + btnLink + '" class="btn btn-' + btnColor + btnSize + w75 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
+        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + btnSize + w75 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
         var btnFinalCode = btnOneFinal
         $('#btnFinalCode').val(btnFinalCode);
         $('div#demo').html(btnFinalCode);
     }
     else if(btnPosition == "left" && btnWidth == "100"){
-        var btnOneFinal = '<a src="' + btnLink + '" class="btn btn-' + btnColor + btnSize + w100 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">'+ btnOneText + btnOneFinalIcon + '</a>';
+        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + btnSize + w100 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">'+ btnOneText + btnOneFinalIcon + '</a>';
         var btnFinalCode = btnOneFinal
         $('#btnFinalCode').val(btnFinalCode);
         $('div#demo').html(btnFinalCode);
     }
     else if(btnPosition == "centred" && btnWidth == "Nat"){
-        var btnOneFinal = '<p class="text-center"><a src="' + btnLink + '" class="btn btn-' + btnColor + btnSize + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a></p>';
+        var btnOneFinal = '<p class="text-center"><a href="' + btnLink + '" class="btn btn-' + btnColor + btnSize + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a></p>';
         var btnFinalCode = btnOneFinal
         $('#btnFinalCode').val(btnFinalCode);
         $('div#demo').html(btnFinalCode);
     }
     else if(btnPosition == "centred" && btnWidth == "25"){
-        var btnOneFinal = '<a src="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + w25 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
+        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + w25 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
         var btnFinalCode = btnOneFinal
         $('#btnFinalCode').val(btnFinalCode);
         $('div#demo').html(btnFinalCode);
     }
     else if(btnPosition == "centred" && btnWidth == "50"){
-        var btnOneFinal = '<a src="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + w50 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
+        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + w50 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
         var btnFinalCode = btnOneFinal
         $('#btnFinalCode').val(btnFinalCode);
         $('div#demo').html(btnFinalCode);
     }
     else if(btnPosition == "centred" && btnWidth == "75"){
-        var btnOneFinal = '<a src="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + w75 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
+        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + w75 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
         var btnFinalCode = btnOneFinal
         $('#btnFinalCode').val(btnFinalCode);
         $('div#demo').html(btnFinalCode);
     }
     else if(btnPosition == "centred" && btnWidth == "100"){
-        var btnOneFinal = '<a src="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
+        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
         var btnFinalCode = btnOneFinal
         $('#btnFinalCode').val(btnFinalCode);
         $('div#demo').html(btnFinalCode);
@@ -405,8 +405,8 @@ else{
         var btnColOpen = '<div class="col-lg">\n'
         var btnColClose = '</div>\n'
         var btnGroupClose = '</div>\n</div>\n'
-        var btnOneFinal = '<a src="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="'+ btnTitleText + '">' + btnOneText + btnOneFinalIcon + '</a>\n';
-        var btnTwoFinal = '<a src="' + btnTwoLink + '" class="btn btn-' + btnTwoColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="' + btnTwoTitleText + '">' + btnTwoText + btnTwoFinalIcon + '</a>\n';
+        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="'+ btnTitleText + '">' + btnOneText + btnOneFinalIcon + '</a>\n';
+        var btnTwoFinal = '<a href="' + btnTwoLink + '" class="btn btn-' + btnTwoColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="' + btnTwoTitleText + '">' + btnTwoText + btnTwoFinalIcon + '</a>\n';
         var btnFinalCode = btnGroupOpen + btnOneFinal + btnColClose + btnColOpen + btnTwoFinal + btnGroupClose;
         $('#btnFinalCode').val(btnFinalCode);
         $('div#demo').html(btnFinalCode);
@@ -416,9 +416,9 @@ else{
             var btnColOpen = '<div class="col-lg">\n'
             var btnColClose = '</div>\n'
             var btnGroupClose = '</div>\n</div>\n'
-            var btnOneFinal = '<a src="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="'+ btnTitleText + '">' + btnOneText + btnOneFinalIcon + '</a>\n';
-            var btnTwoFinal = '<a src="' + btnTwoLink + '" class="btn btn-' + btnTwoColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="' + btnTwoTitleText + '">' + btnTwoText + btnTwoFinalIcon + '</a>\n';
-            var btnThreeFinal = '<a src="' + btnThreeLink + '" class="btn btn-' + btnThreeColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="' + btnThreeTitleText + '">' + btnThreeText + btnThreeFinalIcon + '</a>\n';
+            var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="'+ btnTitleText + '">' + btnOneText + btnOneFinalIcon + '</a>\n';
+            var btnTwoFinal = '<a href="' + btnTwoLink + '" class="btn btn-' + btnTwoColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="' + btnTwoTitleText + '">' + btnTwoText + btnTwoFinalIcon + '</a>\n';
+            var btnThreeFinal = '<a href="' + btnThreeLink + '" class="btn btn-' + btnThreeColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="' + btnThreeTitleText + '">' + btnThreeText + btnThreeFinalIcon + '</a>\n';
             console.log(btnThreeText)
             var btnFinalCode = btnGroupOpen + btnOneFinal + btnColClose + btnColOpen + btnTwoFinal + btnColClose + btnColOpen + btnThreeFinal + btnGroupClose;
             $('#btnFinalCode').val(btnFinalCode);
