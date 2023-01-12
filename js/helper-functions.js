@@ -47,4 +47,18 @@ window.addEventListener('load',function(){
                     console.log('Go to bookmarks already present');
                 }
             });
-        });
+            $('a[data-bs-toggle="collapse"]').on('click', function(){
+                 if($('a[data-bs-toggle="collapse"] i').hasClass('fa-angle-down') || $('a[data-bs-toggle="collapse"] i').hasClass('fa-angle-up') == true){
+                     $(this).children().toggleClass('fa-angle-down fa-angle-up');
+                    }
+                    else if($('a[data-bs-toggle="collapse"] i').hasClass('fa-plus') || $('a[data-bs-toggle="collapse"] i').hasClass('fa-mines') == true){
+                         $(this).children().toggleClass('fa-plus fa-minus');
+                        }
+                        else if($('a[data-bs-toggle="collapse"] i').hasClass('fa-chevron-down') || $('a[data-bs-toggle="collapse"] i').hasClass('fa-chevron-up') == true){
+                             $(this).children().toggleClass('fa-chevron-down fa-chevron-up');
+                            }
+                            else if($('a[data-bs-toggle="collapse"] i').hasClass('fa-caret-down') || $('a[data-bs-toggle="collapse"] i').hasClass('fa-caret-up') == true){
+                                 $(this).children().toggleClass('fa-caret-down fa-caret-up');
+                                }
+                            });
+                        });
