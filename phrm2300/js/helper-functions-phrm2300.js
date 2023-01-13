@@ -27,15 +27,15 @@ window.addEventListener('load',function(){
                     return new bootstrap.Tooltip(tooltipTriggerEl)
                 });
                 var bookmarkCount = $('.bookmark-text').length
-                var formLinkCount = $('.bugOrSuggestion').length
-                if(formLinkCount <= 0){
+                //var formLinkCount = $('.bugOrSuggestion').length
+               /* if(formLinkCount <= 0){
                     var formsLink = 'window.open(\'https://forms.office.com/r/5kNvhxasnB\')';
                 $('.bookmark-button-wrapper').append('<button class="btn btn-link bugOrSuggestion" onclick=""><span class="bookmark-text">Go to bug/suggestion form <span class="fa-solid fa-bug"></span></span></button>')
                 $('.bugOrSuggestion').attr('onclick',formsLink);
                 }
                 else{
                     console.log('Form link already present')
-                }
+                }*/
                 if(bookmarkCount <= 1){
                 var currentLocation = window.location.href;
                 var bookmarkSlice = currentLocation.slice(32,65);
