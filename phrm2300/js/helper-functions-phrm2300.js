@@ -5,11 +5,19 @@ window.addEventListener('load',function(){
                    return new bootstrap.Tooltip(tooltipTriggerEl)                   
                });
     //Add a go to bookmarks link next to the bookmark this page link
-                /*var currentLocation = window.location.href;
+               var bookmarkCount = $('.bookmark-text').length
+               if(bookmarkCount <= 1){
+                var currentLocation = window.location.href;
                 var bookmarkSlice = currentLocation.slice(32,65);
                 var bookmarkURL = 'window.open(\'/courses'+bookmarkSlice+'/bookmarks/\',\'_blank\')';
-                $('.bookmark-button-wrapper').append('<button class="btn btn-link gotobookmarksbtn" onclick=""><span class="bookmark-text">Go to bookmarks <i class="fa-solid fa-external-link-square"></i></button>')
-                $('.gotobookmarksbtn').attr('onclick',bookmarkURL);  
+                $('.bookmark-button-wrapper').append('<button class="btn btn-link gotobookmarksbtn" onclick=""><span class="bookmark-text">Go to bookmarks <span class="fa-solid fa-external-link-square"></span></span></button>')
+                $('.gotobookmarksbtn').attr('onclick',bookmarkURL);
+                }
+                else{
+                    console.log('Go to bookmarks already present');
+                }
+    
+               /*
                 var formLinkCount = $('.bugOrSuggestion').length
                 if(formLinkCount <= 0){
                     var formsLink = 'window.open(\'https://forms.office.com/r/5kNvhxasnB\')';
@@ -46,6 +54,20 @@ window.addEventListener('load',function(){
                 else{
                     console.log('Go to bookmarks already present');
                 }
+                $('a[data-bs-toggle="collapse"]').on('click', function(){
+                    if($('a[data-bs-toggle="collapse"] i').hasClass('fa-angle-down') || $('a[data-bs-toggle="collapse"] i').hasClass('fa-angle-up') == true){
+                        $(this).children().toggleClass('fa-angle-down fa-angle-up');
+                       }
+                       else if($('a[data-bs-toggle="collapse"] i').hasClass('fa-plus') || $('a[data-bs-toggle="collapse"] i').hasClass('fa-mines') == true){
+                            $(this).children().toggleClass('fa-plus fa-minus');
+                           }
+                           else if($('a[data-bs-toggle="collapse"] i').hasClass('fa-chevron-down') || $('a[data-bs-toggle="collapse"] i').hasClass('fa-chevron-up') == true){
+                                $(this).children().toggleClass('fa-chevron-down fa-chevron-up');
+                               }
+                               else if($('a[data-bs-toggle="collapse"] i').hasClass('fa-caret-down') || $('a[data-bs-toggle="collapse"] i').hasClass('fa-caret-up') == true){
+                                    $(this).children().toggleClass('fa-caret-down fa-caret-up');
+                                   }
+                               });
             });
             $('a[data-bs-toggle="collapse"]').on('click', function(){
                  if($('a[data-bs-toggle="collapse"] i').hasClass('fa-angle-down') || $('a[data-bs-toggle="collapse"] i').hasClass('fa-angle-up') == true){
