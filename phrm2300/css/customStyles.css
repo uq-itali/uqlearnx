@@ -119,6 +119,9 @@ border-style: none !important;
 .icon-globe-white{
   background-image: url('/uqlearnx/img/world-white.png')
 }
+.icon-survey-white{
+  background-image: url('/uqlearnx/img/survey-white.png')
+}
 .icon-jigsaw-black{
   background-image: url('/uqlearnx/img/activities-black.png');
 }
