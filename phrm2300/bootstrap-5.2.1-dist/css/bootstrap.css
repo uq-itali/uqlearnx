@@ -6823,7 +6823,7 @@ textarea.form-control-lg {
 
 .text-bg-info {
   color: #000 !important;
-  background-color: RGBA(13, 202, 240, var(--bs-bg-opacity, 1)) !important;
+  background-color: RGBA(226, 243, 254, var(--bs-bg-opacity, 1)) !important;
 }
 
 .text-bg-warning {
