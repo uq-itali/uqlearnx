@@ -2,12 +2,12 @@ document.addEventListener("click", function(event) { /*JS required for the colla
 })
 
 window.addEventListener('load',function(){
-    /*Initialise all tooltips*/
+/*Initialise all tooltips*/
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     });
-    /*Copy email code. Make a bootstrap badge after an email address and give it the copyBadge class for this to function*/
+/*Copy email code. Make a bootstrap badge after an email address and give it the copyBadge class for this to function*/
     var $temp = $('<input>');
     $('.copyBadge').on('click', function () {
         var $copyBadge = $(this);
@@ -22,24 +22,13 @@ window.addEventListener('load',function(){
             copyBadge.html($copyBadgeHTML);
         }, 2000);
     });
-    /*Copy HTML snippets javascript. Requires copying the code you need to copy and putting it in a <template> element after the actual element and giving it the class htmlToCopy in a Text component.*/
-    $('.htmlToCopy').after('<button type="button" class="w-75 d-block mx-auto btn btn-primary copybutton my-3"><span style="color: var(--bs-bg-color) !important" class="fa fa-clipboard" aria-hidden="true"></span>&nbsp;Copy code</button>');
-    $('.copybutton').on('click', function(event) {
-        var btn = $(this);
-        var btnHtml = $(this).html();
-        var snippet = btn.prev().html().slice(11,-12); //this removes the outer div and whitespace the html is wrapped in to leave just the relevant html.
-        console.log("@GB: snippet = ", snippet); 
-        copyTextToClipboard(snippet);
-        btn.html('<span style="color: var(--bs-bg-color) !important" class="fa fa-check"></span> Code copied');
-        window.setTimeout(function() {
-            btn.html(btnHtml);
-        }, 3000);
-    });
+/*Make the go to bookmarks link next to the bookmark this page link*/
     var currentLocation = window.location.href;
         var bookmarkSlice = currentLocation.slice(32,65);
         var bookmarkURL = 'window.open(\'/courses'+bookmarkSlice+'/bookmarks/\',\'_blank\')';
         $('.bookmark-button-wrapper').append('<button class="btn btn-link gotobookmarksbtn" onclick=""><span class="bookmark-text">Go to bookmarks <i class="fa-solid fa-external-link-square"></i></button>')
         $('.gotobookmarksbtn').attr('onclick',bookmarkURL);
+/*Make the bug/suggestion form link next to the go to bookmarks link*/
     var formLinkCount = $('.bugOrSuggestion').length
         if(formLinkCount <= 0){
             var formsLink = 'window.open(\'https://forms.office.com/r/5kNvhxasnB\')';
@@ -49,41 +38,28 @@ window.addEventListener('load',function(){
         else{
             console.log('Form link already present')
         } 
-    $('button.seq_other').on('click', function(event){
-        /*Initialise all tooltips when person goes to next page*/
+        $('a[data-bs-toggle="collapse"]').on('click', function(){
+            if($('a[data-bs-toggle="collapse"] i').hasClass('fa-angle-down') || $('a[data-bs-toggle="collapse"] i').hasClass('fa-angle-up') == true){
+                $(this).children().toggleClass('fa-angle-down fa-angle-up');
+               }
+               else if($('a[data-bs-toggle="collapse"] i').hasClass('fa-plus') || $('a[data-bs-toggle="collapse"] i').hasClass('fa-mines') == true){
+                    $(this).children().toggleClass('fa-plus fa-minus');
+                   }
+                   else if($('a[data-bs-toggle="collapse"] i').hasClass('fa-chevron-down') || $('a[data-bs-toggle="collapse"] i').hasClass('fa-chevron-up') == true){
+                        $(this).children().toggleClass('fa-chevron-down fa-chevron-up');
+                       }
+                       else if($('a[data-bs-toggle="collapse"] i').hasClass('fa-caret-down') || $('a[data-bs-toggle="collapse"] i').hasClass('fa-caret-up') == true){
+                            $(this).children().toggleClass('fa-caret-down fa-caret-up');
+                           }
+                       });
+    $('button.tab').on('click', function(event){
+/*Initialise all tooltips when person goes to next page*/
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
             return new bootstrap.Tooltip(tooltipTriggerEl)
         });
-        /*Copy HTML snippets javascript. Requires copying the code you need to copy and putting it in a <template> element after the actual element and giving it the class htmlToCopy in a Text component.*/
-        $('.htmlToCopy').after('<button type="button" class="w-75 d-block mx-auto btn btn-primary copybutton my-3"><span style="color: var(--bs-bg-color) !important" class="fa fa-clipboard" aria-hidden="true"></span>&nbsp;Copy code</button>');
-        $('.copybutton').on('click', function(event) {
-            var btn = $(this);
-            var btnHtml = $(this).html();
-            var snippet = btn.prev().html().slice(11,-12); //this removes the outer div and whitespace the html is wrapped in to leave just the relevant html.
-            console.log("@GB: snippet = ", snippet); 
-            copyTextToClipboard(snippet);
-            btn.html('<span style="color: var(--bs-bg-color) !important" class="fa fa-check"></span> Code copied');
-            window.setTimeout(function() {
-                btn.html(btnHtml);
-            }, 3000);
-        });
-        /*Make accordion button work + alternate icons after someone has clicked a unit icon*/
-        var coll = $('.coll-btn');
-        var i;
-        for (i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function(){
-                $(this).toggleClass("coll-active");
-                $(this).children().toggleClass('fa-angle-down fa-angle-up');
-                var content = $(this).parent().next();
-                if (content.css('max-height') != '0px'){
-                    content.css('max-height', '0px');
-                } else {
-                    content.css('max-height', '100%');
-                }
-            });
-        };
-        /*Copy email code. Make a bootstrap badge after an email address and give it the copyBadge class for this to function*/
+
+/*Copy email code. Make a bootstrap badge after an email address and give it the copyBadge class for this to function*/
         var $temp = $('<input>');
         $('.copyBadge').on('click', function () {
             var $copyBadge = $(this);
@@ -98,6 +74,7 @@ window.addEventListener('load',function(){
                 $copyBadge.html($copyBadgeHTML);
             }, 2000);
         });
+/*Make the bug/suggestion form link next to the go to bookmarks link*/
         var formLinkCount = $('.bugOrSuggestion').length
         if(formLinkCount <= 0){
             var formsLink = 'window.open(\'https://forms.office.com/r/5kNvhxasnB\')';
@@ -107,6 +84,7 @@ window.addEventListener('load',function(){
         else{
             console.log('Form link already present')
         } 
+/*Make the go to bookmarks link next to the bookmark this page link*/
         var currentLocation = window.location.href;
         var bookmarkSlice = currentLocation.slice(32,65);
         var bookmarkURL = 'window.open(\'/courses'+bookmarkSlice+'/bookmarks/\',\'_blank\')';
@@ -121,7 +99,21 @@ window.addEventListener('load',function(){
             }
             else{
                 console.log('Go to bookmarks already present');
-            }  
+            }
+            $('a[data-bs-toggle="collapse"]').on('click', function(){
+                if($('a[data-bs-toggle="collapse"] i').hasClass('fa-angle-down') || $('a[data-bs-toggle="collapse"] i').hasClass('fa-angle-up') == true){
+                    $(this).children().toggleClass('fa-angle-down fa-angle-up');
+                   }
+                   else if($('a[data-bs-toggle="collapse"] i').hasClass('fa-plus') || $('a[data-bs-toggle="collapse"] i').hasClass('fa-mines') == true){
+                        $(this).children().toggleClass('fa-plus fa-minus');
+                       }
+                       else if($('a[data-bs-toggle="collapse"] i').hasClass('fa-chevron-down') || $('a[data-bs-toggle="collapse"] i').hasClass('fa-chevron-up') == true){
+                            $(this).children().toggleClass('fa-chevron-down fa-chevron-up');
+                           }
+                           else if($('a[data-bs-toggle="collapse"] i').hasClass('fa-caret-down') || $('a[data-bs-toggle="collapse"] i').hasClass('fa-caret-up') == true){
+                                $(this).children().toggleClass('fa-caret-down fa-caret-up');
+                               }
+                           });  
     });
     /*Newer version of copy to clipboard*/
     function copyTextToClipboard(text) {
@@ -150,29 +142,7 @@ window.addEventListener('load',function(){
         }
         document.body.removeChild(textArea);
     }
-    /*Accordion button alternating icons code. Currently not used but useful to keep*/
-    var coll = $('.coll-btn');
-    var i;
-    for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function() {
-            $(this).toggleClass("coll-active");
-            $(this).children().toggleClass('fa-angle-down fa-angle-up');
-            var content = $(this).parent().next();
-            if (content.css('max-height') != '0px'){
-                content.css('max-height', '0px');
-            } else {
-                content.css('max-height', '100%');
-            }
-        });
-    };
-    /*Code to alternate icons on collapse buttons on click
-    $('button[data-bs-toggle="collapse"]').on('click', function(){
-        $(this).children().toggleClass('fa-plus fa-minus');
-        $(this).children().toggleClass('fa-angle-down fa-angle-up');
-        $(this).children().toggleClass('fa-caret-down fa-caret-up');
-        $(this).children().toggleClass('fa-chevron-down fa-chevron-up');
-    });
-    */
+    
     /*Code to close offcanvas jump to menu once a link is clicked*/
     $('.offcanvas-body a').on('click', function() {
         setTimeout(function(){
