@@ -181,6 +181,33 @@ background-image: url('/uqlearnx/img/white_report.png');
 .icon-psw-white{
   background-image: url('/uqlearnx/medi7100/img/psw-white.png')
 }
+.icon-clinical-plenary-white{
+  background-image: url('/uqlearnx/medi7100/img/clinical-plenary-white.png')
+}
+.icon-cpl-white{
+  background-image: url('/uqlearnx/medi7100/img/cpl-white.png')
+}
+.icon-immersion-white{
+  background-image: url('/uqlearnx/medi7100/img/immersion-white.png')
+}
+.icon-lectorial-white{
+  background-image: url('/uqlearnx/medi7100/img/lectorial-white.png')
+}
+.icon-masterclass-white{
+  background-image: url('/uqlearnx/medi7100/img/masterclass-white.png')
+}
+.icon-practical-white{
+  background-image: url('/uqlearnx/medi7100/img/practical-white.png')
+}
+.icon-symposium-white{
+  background-image: url('/uqlearnx/medi7100/img/symposium-white.png')
+}
+.icon-tbl-white{
+  background-image: url('/uqlearnx/medi7100/img/tbl-white.png')
+}
+.icon-workshop-white{
+  background-image: url('/uqlearnx/medi7100/img/workshop-white.png')
+}
 .icon-jigsaw-black{
   background-image: url('/uqlearnx/img/activities-black.png');
 }
