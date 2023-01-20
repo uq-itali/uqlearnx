@@ -208,6 +208,24 @@ background-image: url('/uqlearnx/img/white_report.png');
 .icon-workshop-white{
   background-image: url('/uqlearnx/medi7100/img/workshop-white.png')
 }
+.icon-advocacy-white{
+  background-image: url('/uqlearnx/medi7100/img/advocacy-white.png')
+}
+.icon-ethics-white{
+  background-image: url('/uqlearnx/medi7100/img/ethics-white.png')
+}
+.icon-med-science-white{
+  background-image: url('/uqlearnx/medi7100/img/med-science-white.png')
+}
+.icon-research-epid-white{
+  background-image: url('/uqlearnx/medi7100/img/research-epid-white.png')
+}
+.icon-rrm-white{
+  background-image: url('/uqlearnx/medi7100/img/rrm-white.png')
+}
+.icon-transition-white{
+  background-image: url('/uqlearnx/medi7100/img/transition-white.png')
+}
 .icon-jigsaw-black{
   background-image: url('/uqlearnx/img/activities-black.png');
 }
