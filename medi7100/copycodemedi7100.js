@@ -29,6 +29,7 @@ window.addEventListener('load',function(){
         $('.bookmark-button-wrapper').append('<button class="btn btn-link gotobookmarksbtn" onclick=""><span class="bookmark-text">Go to bookmarks <i class="fa-solid fa-external-link-square"></i></button>')
         $('.gotobookmarksbtn').attr('onclick',bookmarkURL);
 /*Make the bug/suggestion form link next to the go to bookmarks link*/
+if($('span.username').text() == 'uqtscho3' || $('span.username').text() == 'uqhhugo' || $('span.username').text() == 'uqkcosg2' || $('span.username').text() == 'uqkward1' || $('span.username').text() == 'uqcyoun3' || $('span.username').text() == 'uqscoore'){
     var formLinkCount = $('.bugOrSuggestion').length
         if(formLinkCount <= 0){
             var formsLink = 'window.open(\'https://forms.office.com/r/5kNvhxasnB\')';
@@ -38,6 +39,8 @@ window.addEventListener('load',function(){
         else{
             console.log('Form link already present')
         } 
+}
+    
         $('a[data-bs-toggle="collapse"]').on('click', function(){
             if($('a[data-bs-toggle="collapse"] i').hasClass('fa-angle-down') || $('a[data-bs-toggle="collapse"] i').hasClass('fa-angle-up') == true){
                 $(this).children().toggleClass('fa-angle-down fa-angle-up');
@@ -52,7 +55,7 @@ window.addEventListener('load',function(){
                             $(this).children().toggleClass('fa-caret-down fa-caret-up');
                            }
                        });
-    $('button.tab').on('click', function(event){
+                       $('div.sequence-nav, nav.sequence-bottom').on('click', function(event){
 /*Initialise all tooltips when person goes to next page*/
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -75,7 +78,8 @@ window.addEventListener('load',function(){
             }, 2000);
         });
 /*Make the bug/suggestion form link next to the go to bookmarks link*/
-        var formLinkCount = $('.bugOrSuggestion').length
+if($('span.username').text() == 'uqtscho3' || $('span.username').text() == 'uqhhugo' || $('span.username').text() == 'uqkcosg2' || $('span.username').text() == 'uqkward1' || $('span.username').text() == 'uqcyoun3' ||$('span.username').text() == 'uqscoore'){
+    var formLinkCount = $('.bugOrSuggestion').length
         if(formLinkCount <= 0){
             var formsLink = 'window.open(\'https://forms.office.com/r/5kNvhxasnB\')';
             $('.bookmark-button-wrapper').append('<button class="btn btn-link bugOrSuggestion" onclick=""><span class="bookmark-text">Go to bug/suggestion form <span class="fa-solid fa-bug"></span></span></button>')
@@ -84,6 +88,7 @@ window.addEventListener('load',function(){
         else{
             console.log('Form link already present')
         } 
+}
 /*Make the go to bookmarks link next to the bookmark this page link*/
         var currentLocation = window.location.href;
         var bookmarkSlice = currentLocation.slice(32,65);
