@@ -97,12 +97,6 @@ if($('span.username').text() == 'uqtscho3' || $('span.username').text() == 'uqhh
         } 
 }
 /*Make the go to bookmarks link next to the bookmark this page link*/
-        var currentLocation = window.location.href;
-        var bookmarkSlice = currentLocation.slice(32,65);
-        var bookmarkURL = 'window.open(\'/courses'+bookmarkSlice+'/bookmarks/\',\'_blank\')';
-        $('.bookmark-button-wrapper').append('<button class="btn btn-link gotobookmarksbtn" onclick=""><span class="bookmark-text">Go to bookmarks <i class="fa-solid fa-external-link-square"></i></button>')
-        $('.gotobookmarksbtn').attr('onclick',bookmarkURL);
-        var bookmarkCount = $('.gotobookmarksbtn').length
         if(bookmarkCount < 1){
             var currentLocation = window.location.href;
             var bookmarkSlice = currentLocation.slice(32,65);
