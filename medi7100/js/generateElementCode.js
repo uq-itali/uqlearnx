@@ -101,14 +101,13 @@ function generateVidTextCode() {
         vidLink = vidPlaceholderLink
         )
         var YTCode = '<iframe src="' + vidLink.replace('watch?v=','embed/') + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>\n</div>';
-        var KalturaCode = vidlink + '\n</div>'
+        var KalturaCode = vidLink.replace('width="400" height="285" ', '') + '\n</div>'
         var VimeoCode = '<iframe src="' + vidLink.replace('vimeo.com','player.vimeo.com/video') + '" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>\n</iframe></div>\n<p class="text-center"><a href="' + vidLink + '" target="_blank" title="Watch this video on Vimeo">Watch this video on Vimeo</a></p>\n';
     
     if(vidLink.includes('youtu')== true){
         var vidCode = YTCode;
     }
     else if(vidLink.includes('kaltura') == true){
-        vidLink = vidLink.replace('width="400" height="285" ', '')
         var vidCode = KalturaCode;
     }
     else if(vidLink.includes('vimeo')== true){
@@ -131,6 +130,7 @@ function generateVidTextCode() {
         var vidSizes = {
             "noH": "",
             "h2": "<h2 class=\"text-bg-uq p-2\">" + vidHeadingText + "</h2>\n",
+            "h2-w": "<h2 class=\"text-bg-dark p-2\"><span class=\"fa-brands fa-youtube\"></span> Watch: " + vidHeadingText + "</h2>\n",
             "h4": "<h4 class=\"text-bg-info bg-opacity-25 p-2\">" + vidHeadingText + "</h4>\n"
         }
         vidResizedHead = vidSizes[vidHeadSize];
@@ -183,6 +183,15 @@ function generateVidTextCode() {
         var vidFinalCode = vidResizedHead + rowOpen + col3FloatOpen + vidTitleText + respVidOpen + vidCode + divClose + tinyTextvid + rowClose;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
+    }
+    else if(vidWidth == "0"){
+        $('div#vidPosDiv, div#vidTextTiny, div#vidSmallTitle').addClass('d-none');
+        var vidFinalCode = vidResizedHead + vidTitleText + respVidOpen + vidCode + divClose;
+        $('#vidFinalCode').val(vidFinalCode);
+        $('div#demo').html(vidFinalCode);
+    }
+    if(vidWidth != "0"){
+        $('div#vidPosDiv, div#vidTextTiny, div#vidSmallTitle').removeClass('d-none');
     }
 }
 function generateBtnCode() {

@@ -633,6 +633,7 @@
                     <div class="col-lg-6">
                         <div class="row w-100 mx-auto">
                             <div class="col-lg">
+                                <div id="vidPosDiv">
                                 <h5 class="font-weight-bold">Video position<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your video on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="videoPosition" onchange="generateVidTextCode()">
                                     <input class="form-check-input" name="videoPosition" id="videoPosition2" type="radio" value="left">
@@ -646,6 +647,7 @@
                                     <input class="form-check-input" name="videoPosition" id="videoPosition3" type="radio" value="floatRight">
                                     <label class="form-check-label" for="videoPosition3">Float right/text wrap</label>
                                 </div>
+                            </div>
                                 <h5 class="font-weight-bold mt-3">Video width<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether the video is half (1/2) the width of the screen or a quarter the size (1/4)" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="videoWidth" onchange="generateVidTextCode()">
                                     <input class="form-check-input" name="videoWidth" id="videoWidth1" type="radio" value="50" checked="">
@@ -659,11 +661,15 @@
                                     <input class="form-check-input" name="videoWidth" id="videoWidth3" type="radio" value="25">
                                     <label class="form-check-label" for="videoWidth3">25% (1/4)</label>
                                 </div>
+                                <div class="form-check form-check-inline" id="videoWidth" onchange="generateVidTextCode()">
+                                    <input class="form-check-input" name="videoWidth" id="videoWidth0" type="radio" value="0">
+                                    <label class="form-check-label" for="videoWidth0">Video only</label>
+                                </div>
                                 <h5 class="font-weight-bold mt-3">Heading - Max 75 Characters<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Optional heading above content. Max 75 characters" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <textarea onchange="generateVidTextCode()" id="vidHeadingText" maxlength="75" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Optional heading above content. Max 75 characters"></textarea>
                                 <h5 class="font-weight-bold mt-3">Heading size<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the size of your heading." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="vidHeadSize" onchange="generateVidTextCode()">
-                                    <input class="form-check-input" name="vidHeadSize" id="vidHeadSizeNone" type="radio" value="noH" checked>
+                                    <input class="form-check-input" name="vidHeadSize" id="vidHeadSizeNone" type="radio" value="noH">
                                     <label class="form-check-label" for="vidHeadSizeNone">No heading</label>
                                 </div>
                                 <div class="form-check form-check-inline" id="vidHeadSize" onchange="generateVidTextCode()">
@@ -678,15 +684,22 @@
                                         <h2 class="text-bg-uq p-2 m-0">Main heading</h2>
                                     </label>
                                 </div>
+                                <div class="form-check form-check-inline" id="vidHeadSize" onchange="generateVidTextCode()">
+                                    <input class="form-check-input" name="vidHeadSize" id="vidHeadSize4" type="radio" value="h2-w" checked>
+                                    <label class="form-check-label" for="vidHeadSize4">
+                                        <h2 class="text-bg-dark p-2 m-0"><span class="fa-brands fa-youtube"></span> Watch heading</h2>
+                                    </label>
+                                </div>
+                                <div id="vidTextTiny">
                                 <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your video." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea class="border border-dark rounded w-100" id="tinyMCEvid" onkeyup=generateVidTextCode()></textarea>
+                                </div>
                                 <h5 class="font-weight-bold mt-3">Paste your video link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The web link from the Kaltura/YouTube/Vimeo/mp4 web link from LearnX video you would like to appear in your selected element." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea onchange="generateVidTextCode()" id="vidLink" class="border border-dark rounded w-100 p-2" rows="1" placeholder="This space accepts Kaltura iframes, YouTube, Vimeo, and mp4 web links from LearnX."></textarea>
-                                <!--<h5 class="font-weight-bold mt-3">Type your alt text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The description of your video you would like to appear when a user hovers over the video or uses a screen reader" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
-                                <textarea onkeyup="generateVidTextCode()" id="altText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your alt text here."></textarea>
-                                -->
+                                <div id="vidSmallTitle">
                                 <h5 class="font-weight-bold mt-3">Type your video title text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the title you would like to appear above your video." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea onkeyup="generateVidTextCode()" id="vidTitleText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your video title text here."></textarea>
+                            </div>
                             </div>
                         </div>
                     </div>
