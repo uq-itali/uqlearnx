@@ -503,3 +503,18 @@ function generateAlertCode() {
             $('div#demo').html(alertFinalCode);
         }
 }
+function generateTooltipCode(){
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));   
+    var tooltipPosition = $('input[name="tooltipPosition"]:checked').val();
+    var tooltipText = $('#tooltipText').val();
+    if(tooltipText !== ''){
+        tooltipText = tooltipText;
+    }
+    else{
+        tooltipText = tooltipPlaceholderText;
+    }
+    var tooltipFinalCode = '<span class="text-success" data-bs-toggle=\"tooltip\" data-bs-placement=\"' + tooltipPosition + '\" data-bs-title=\"' + tooltipText + '\"><span class=\"fa fa-question-circle\" aria-hidden=\"true\"></span></span\>';
+    $('#tooltipFinalCode').val(tooltipFinalCode);
+    $('div#demo').html(tooltipFinalCode);
+}

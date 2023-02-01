@@ -62,7 +62,7 @@
     <!--Setup tooltips + TinyMCE-->
     <script type="text/javascript">
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));        
         tinymce.init({
             selector: '#tinyMCEimg',
             menubar: false,
@@ -256,10 +256,11 @@
         var vidPlaceholderLink = 'https://www.youtube.com/embed/NpEaa2P7qZI';
         var vidPlaceholderCode = rowOpen + colOpen + textPlaceholder + divClose + colOpen + respVidOpen + vidPlaceholder + rowClose;
         var btnPlaceholderLink = 'https://learnx.uq.edu.au/dashboard';
+        var tooltipPlaceholderText = 'This is a tooltip to help people betterunderstand a term, or provide a reminder of what an acronym stands for.'
     </script>
     <!--On page load run functions + build placeholder-->
     <script type="text/javascript">
-        window.addEventListener('load', function () {
+        window.addEventListener('load', function () {    
             $('#imgFinalCode').val(placeholderCode);
             $('div#demo').html(placeholderCode);
             $('#vidFinalCode').val(vidPlaceholderCode);
@@ -268,9 +269,6 @@
             fullScreenVidToggle();
             fullScreenBtnToggle();
             fullScreenAlertToggle();
-            setInterval(function () {
-                $('[data-bs-toggle="tooltip"]').tooltip('hide'); 
-            }, 5000);
         });
     </script>
 </head>
@@ -291,6 +289,9 @@
             </li>
             <li class="nav-item" role="presentation">
                 <button onclick="generateAlertCode()" id="alertBuilderBtn" class="nav-link" href="#buildAlert" data-bs-toggle="tab">Alert/Quote builder</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button onclick="generateTooltipCode()" id="tooltipBuilderBtn" class="nav-link" href="#buildTooltip" data-bs-toggle="tab">Tooltip builder</button>
             </li>
             <li class="nav-item" role="presentation">
                 <button id="headingsBtn" class="nav-link" href="#headings" data-bs-toggle="tab">Headings</button>
@@ -1193,6 +1194,53 @@
                             </div>
                             <h5 class="font-weight-bold">Copy code<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click the copy code button below to copy your code, ready to paste into LearnX.">&nbsp;<i class="fa fa-question-circle text-success small" aria-hidden="true"></i></span></h5>
                             <textarea readonly class="rounded p-2 w-100 border border-dark" id="alertFinalCode" cols="70" rows="5" name="Result" placeholder="Code for your element will appear here"></textarea>
+                            <input id="copyCodeBtn" class="btn btn-success btn-lg d-block w-100 mt-2" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()">
+                            <div class="text-center h5 mt-4">
+                                <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into
+                                LearnX?</a>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="buildTooltip" role="tabpanel">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="row w-100 mx-auto">
+                            <div class="col-lg">
+                                <h5 class="font-weight-bold">Tooltip position<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the tooltip icon you would like your tooltip to appear." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="form-check form-check-inline" id="tooltipPosition" onchange="generateTooltipCode()">
+                                    <input class="form-check-input" name="tooltipPosition" id="tooltipPosition1" type="radio" value="top">
+                                    <label class="form-check-label" for="tooltipPosition1">Top</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="tooltipPosition" onchange="generateTooltipCode()">
+                                    <input class="form-check-input" name="tooltipPosition" id="tooltipPosition2" type="radio" value="right" checked>
+                                    <label class="form-check-label" for="tooltipPosition2">Right</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="tooltipPosition" onchange="generateTooltipCode()">
+                                    <input class="form-check-input" name="tooltipPosition" id="tooltipPosition3" type="radio" value="bottom">
+                                    <label class="form-check-label" for="tooltipPosition3">Bottom</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="tooltipPosition" onchange="generateTooltipCode()">
+                                    <input class="form-check-input" name="tooltipPosition" id="tooltipPosition4" type="radio" value="left">
+                                    <label class="form-check-label" for="tooltipPosition4">Left</label>
+                                </div>
+                                <h5 class="font-weight-bold mt-3">Write your tooltip text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear when a user hovers over this tooltip icon." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea class="border border-dark rounded w-100" rows="3" maxlength="200" id="tooltipText" onkeyup=generateTooltipCode()></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="sticky-top" style="top:1rem;">
+                            <h5 class="font-weight-bold">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                            <div id="previewTooltipFS" class="bg-white">
+                            <div id="demo"></div>
+                            </div>
+                            <div class="text-center mb-2 previewButton"> 
+                            <button type="button" class="btn btn-outline-dark border border-dark rounded d-block mx-auto" id="togglePreviewImgFS" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click to expand the preview to fullscreen. Click again or press Escape to return here to the editing screen."><i class="fa fa-expand-arrows-alt fa-lg" aria-hidden="true"></i></button>
+                            </div>
+                            <h5 class="font-weight-bold">Copy code<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click the copy code button below to copy your code, ready to paste into LearnX.">&nbsp;<i class="fa fa-question-circle text-success small" aria-hidden="true"></i></span></h5>
+                            <textarea readonly class="rounded p-2 w-100 border border-dark" id="tooltipFinalCode" cols="70" rows="5" name="Result" placeholder="Code for your element will appear here"></textarea>
                             <input id="copyCodeBtn" class="btn btn-success btn-lg d-block w-100 mt-2" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()">
                             <div class="text-center h5 mt-4">
                                 <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into

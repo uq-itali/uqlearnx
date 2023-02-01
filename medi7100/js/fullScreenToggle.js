@@ -12,6 +12,9 @@ function copyCode() {
     else if(activeBtn == 'alertBuilderBtn'){
         var selectedCode = $('#alertFinalCode').select();
     }
+    else if(activeBtn == 'tooltipBuilderBtn'){
+        var selectedCode = $('#tooltipFinalCode').select();
+    }
     try {
         var successful = document.execCommand('copy');
         var msg = successful ? 'successful' : 'unsuccessful';
