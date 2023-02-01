@@ -108,7 +108,9 @@ function generateVidTextCode() {
         var vidCode = YTCode;
     }
     else if(vidLink.includes('kaltura') == true){
+        vidlink.replace('width="400" height="285" ')
         var vidCode = KalturaCode;
+
     }
     else if(vidLink.includes('vimeo')== true){
         var vidCode = VimeoCode;        
