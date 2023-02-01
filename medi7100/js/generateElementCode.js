@@ -101,13 +101,14 @@ function generateVidTextCode() {
         vidLink = vidPlaceholderLink
         )
         var YTCode = '<iframe src="' + vidLink.replace('watch?v=','embed/') + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>\n</div>';
-        var KalturaCode = vidlink.replace('width="400" height="285" ', '') + '\n</div>'
+        var KalturaCode = vidlink + '\n</div>'
         var VimeoCode = '<iframe src="' + vidLink.replace('vimeo.com','player.vimeo.com/video') + '" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>\n</iframe></div>\n<p class="text-center"><a href="' + vidLink + '" target="_blank" title="Watch this video on Vimeo">Watch this video on Vimeo</a></p>\n';
     
     if(vidLink.includes('youtu')== true){
         var vidCode = YTCode;
     }
     else if(vidLink.includes('kaltura') == true){
+        vidLink = vidLink.replace('width="400" height="285" ', '')
         var vidCode = KalturaCode;
     }
     else if(vidLink.includes('vimeo')== true){
