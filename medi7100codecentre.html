@@ -256,11 +256,12 @@
         var vidPlaceholderLink = 'https://www.youtube.com/embed/NpEaa2P7qZI';
         var vidPlaceholderCode = rowOpen + colOpen + textPlaceholder + divClose + colOpen + respVidOpen + vidPlaceholder + rowClose;
         var btnPlaceholderLink = 'https://learnx.uq.edu.au/dashboard';
-        var tooltipPlaceholderText = 'This is a tooltip to help people betterunderstand a term, or provide a reminder of what an acronym stands for.'
+        var tooltipPlaceholderText = 'This is a tooltip to help people betterunderstand a term, or provide a reminder of what an acronym stands for.';
     </script>
     <!--On page load run functions + build placeholder-->
     <script type="text/javascript">
-        window.addEventListener('load', function () {    
+        window.addEventListener('load', function () {
+            $('[data-bs-toggle="tooltip"]').tooltip();
             $('#imgFinalCode').val(placeholderCode);
             $('div#demo').html(placeholderCode);
             $('#vidFinalCode').val(vidPlaceholderCode);
@@ -269,6 +270,7 @@
             fullScreenVidToggle();
             fullScreenBtnToggle();
             fullScreenAlertToggle();
+            fullScreenTooltipToggle();
         });
     </script>
 </head>
@@ -1237,7 +1239,7 @@
                             <div id="demo"></div>
                             </div>
                             <div class="text-center mb-2 previewButton"> 
-                            <button type="button" class="btn btn-outline-dark border border-dark rounded d-block mx-auto" id="togglePreviewImgFS" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click to expand the preview to fullscreen. Click again or press Escape to return here to the editing screen."><i class="fa fa-expand-arrows-alt fa-lg" aria-hidden="true"></i></button>
+                            <button type="button" class="btn btn-outline-dark border border-dark rounded d-block mx-auto" id="togglePreviewTooltipFS" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click to expand the preview to fullscreen. Click again or press Escape to return here to the editing screen."><i class="fa fa-expand-arrows-alt fa-lg" aria-hidden="true"></i></button>
                             </div>
                             <h5 class="font-weight-bold">Copy code<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click the copy code button below to copy your code, ready to paste into LearnX.">&nbsp;<i class="fa fa-question-circle text-success small" aria-hidden="true"></i></span></h5>
                             <textarea readonly class="rounded p-2 w-100 border border-dark" id="tooltipFinalCode" cols="70" rows="5" name="Result" placeholder="Code for your element will appear here"></textarea>

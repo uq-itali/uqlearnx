@@ -19,6 +19,7 @@ div.preview-menu div a.btn {
 }
 body, h1, h2, h3, h4, h5, h6, p, label{
   text-align: unset !important;
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif !important;
 }
 div.alert p, div.alert h1, div.alert h2, div.alert h3, div.alert h4, div.alert h5, div.alert h6{
   color: inherit !important;

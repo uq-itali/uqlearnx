@@ -136,3 +136,31 @@ function fullScreenAlertToggle() {
         });
     }
 }
+function fullScreenAlertToggle() {
+    if (document.fullscreenEnabled) {
+        var togglePreviewTooltipFS = document.getElementById("togglePreviewTooltipFS");
+        togglePreviewTooltipFS.addEventListener("click", function (event) {
+            if (!document.fullscreenElement) {
+                document.querySelector("#previewTooltipFS").requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }, false);
+        document.addEventListener("fullscreenchange", function (event) {
+            console.log(event);
+            if (!document.fullscreenElement) {
+                togglePreviewTooltipFS.innerHTML = "<i class=\"fa fa-expand-arrows-alt fa-lg\"></i>";
+                $('#previewTooltipFS').removeClass('pt-5');
+                $(togglePreviewTooltipFS).appendTo('#previewTooltipFS');
+            } else {
+                togglePreviewTooltipFS.innerHTML = "<i class=\"fa fa-compress-arrows-alt fa-lg\"></i>";
+                $(togglePreviewTooltipFS).appendTo('#previewTooltipFS');
+                $(togglePreviewTooltipFS).addClass('d-block mx-auto mt-3')
+                $('#previewTooltipFS').addClass('pt-5');
+            }
+        });
+        document.addEventListener("fullscreenerror", function (event) {
+            console.log(event);
+        });
+    }
+}
