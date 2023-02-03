@@ -136,7 +136,7 @@ function fullScreenAlertToggle() {
         });
     }
 }
-function fullScreenAlertToggle() {
+function fullScreenTooltipToggle() {
     if (document.fullscreenEnabled) {
         var togglePreviewTooltipFS = document.getElementById("togglePreviewTooltipFS");
         togglePreviewTooltipFS.addEventListener("click", function (event) {
