@@ -8,6 +8,19 @@ margin-bottom: var(--bs-alert-margin-bottom) !important;
 div.accordion h2{
   margin: 0px !important;
 }
+#bttBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 64px;
+  z-index: 99;
+  font-size: 1.5rem;  
+  cursor: pointer;
+  
+}
+#bttBtn.btn, #bttBtn.btn:hover{
+  box-shadow: none !important;
+  }
 a.btn-uq, a.btn-primary, a.btn-secondary, a.btn-success, a.btn-danger, a.btn-dark {
   color: #fff !important;
 }
