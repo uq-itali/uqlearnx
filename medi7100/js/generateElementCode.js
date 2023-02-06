@@ -2,6 +2,8 @@ function generateImgTextCode() {
     //Retrive values and text from the user's input
     var imgPosition = $('input[name="imagePosition"]:checked').val();
     var imgWidth = $('input[name="imageWidth"]:checked').val();
+    var imgVert = $('input[name="alignImgVert"]:checked').val();
+    var txtVert = $('input[name="alignTextVert"]:checked').val();
     //var tinyText = tinymce.activeEditor.getContent() + '\n';
     if(tinymce.get("tinyMCEimg").getContent() !==''){
         tinyTextimg = tinymce.get("tinyMCEimg").getContent() + '\n';
@@ -9,6 +11,10 @@ function generateImgTextCode() {
     else{
         tinyTextimg = textPlaceholder
     }
+    var colImgOpen = '<div class="col-lg' + imgVert + '">\n';
+    var colTxtOpen = '<div class="col-lg' + txtVert + '">\n';
+    var col4ImgOpen = '<div class="col-lg-4' + imgVert + '">\n';
+    var col3ImgOpen = '<div class="col-lg-3' + imgVert + '">\n';
     var headingText = $('#headingText').val();
     var headSize = $('input[name="headSize"]:checked').val();
     var imgLink = $('#imgLink').val();
@@ -36,32 +42,32 @@ function generateImgTextCode() {
     } 
     //Changing code order depending on selections
     if(imgPosition == "left" && imgWidth=="50"){
-        var finalCode = resizedHead + rowOpen + colOpen + imgCode + divClose + colOpen + tinyTextimg  + rowClose;
+        var finalCode = resizedHead + rowOpen + colImgOpen + imgCode + divClose + colTxtOpen + tinyTextimg  + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "right" && imgWidth == "50"){
-        var finalCode = resizedHead + rowOpen + colOpen + tinyTextimg + divClose + colOpen + imgCode + rowClose;
+        var finalCode = resizedHead + rowOpen + colTxtOpen + tinyTextimg + divClose + colImgOpen + imgCode + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "left" && imgWidth == "33"){
-        var finalCode = resizedHead + rowOpen + col4Open + imgCode + divClose + colOpen + tinyTextimg  + rowClose;
+        var finalCode = resizedHead + rowOpen + col4ImgOpen + imgCode + divClose + colTxtOpen + tinyTextimg  + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);                
     }
     else if(imgPosition == "left" && imgWidth == "25"){
-        var finalCode = resizedHead + rowOpen + col3Open + imgCode + divClose + colOpen + tinyTextimg  + rowClose;
+        var finalCode = resizedHead + rowOpen + col3ImgOpen + imgCode + divClose + colTxtOpen + tinyTextimg  + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "right" && imgWidth == "33"){
-        var finalCode = resizedHead + rowOpen + colOpen + tinyTextimg + divClose + col4Open + imgCode + rowClose;
+        var finalCode = resizedHead + rowOpen + colTxtOpen + tinyTextimg + divClose + col4ImgOpen + imgCode + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "right" && imgWidth == "25"){
-        var finalCode = resizedHead + rowOpen + colOpen + tinyTextimg + divClose + col3Open + imgCode + rowClose;
+        var finalCode = resizedHead + rowOpen + colTxtOpen + tinyTextimg + divClose + col3ImgOpen + imgCode + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
