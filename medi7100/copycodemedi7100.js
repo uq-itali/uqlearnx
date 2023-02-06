@@ -7,6 +7,22 @@ window.addEventListener('load',function(){
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     });
+/*Back to top button*/
+    $('body').prepend('<button class="btn btn-dark" onclick="javascript:document.body.scrollTop = 0;document.documentElement.scrollTop = 0;" id="bttBtn" title="Go to top"><span class="fa-solid fa-arrow-up"></span></button>');
+// Get the button
+let mybutton = document.getElementById("bttBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function(){scrollFunction()};
+
+function scrollFunction(){
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
 /*Copy email code. Make a bootstrap badge after an email address and give it the copyBadge class for this to function*/
     var $temp = $('<input>');
     $('.copyBadge').on('click', function () {
@@ -68,6 +84,23 @@ $('div.sequence-nav, nav.sequence-bottom').on('click', function(event){
         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
             return new bootstrap.Tooltip(tooltipTriggerEl)
         });
+
+/*Back to top button*/
+    $('body').prepend('<button class="btn btn-dark" onclick="javascript:document.body.scrollTop = 0;document.documentElement.scrollTop = 0;" id="bttBtn" title="Go to top"><span class="fa-solid fa-arrow-up"></span></button>');
+    // Get the button
+    let mybutton = document.getElementById("bttBtn");
+    
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function(){scrollFunction()};
+    
+    function scrollFunction(){
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+    
 
 /*Copy email code. Make a bootstrap badge after an email address and give it the copyBadge class for this to function*/
         var $temp = $('<input>');
