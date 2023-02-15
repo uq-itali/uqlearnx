@@ -4,6 +4,14 @@ function generateImgTextCode() {
     var imgWidth = $('input[name="imageWidth"]:checked').val();
     var imgVert = $('input[name="alignImgVert"]:checked').val();
     var txtVert = $('input[name="alignTextVert"]:checked').val();
+    var headingIcon = $('input[name="headingIcon"]:checked').val();
+    var iconCode = '<span class="uq-icon icon-' + headingIcon + '-white"></span> ';
+    if(headingIcon != 'noI'){
+        iconCode = iconCode
+    }
+    else{
+        iconCode = '';
+    }
     //var tinyText = tinymce.activeEditor.getContent() + '\n';
     if(tinymce.get("tinyMCEimg").getContent() !==''){
         tinyTextimg = tinymce.get("tinyMCEimg").getContent() + '\n';
@@ -32,7 +40,7 @@ function generateImgTextCode() {
         //Resizing the heading text
         var sizes = {
             "noH": "",
-            "h2": "<h2 class=\"text-bg-uq p-2\">" + headingText + "</h2>\n",
+            "h2": "<h2 class=\"text-bg-uq p-2\">" + iconCode + headingText + "</h2>\n",
             "h4": "<h4 class=\"text-bg-info bg-opacity-25 p-2\">" + headingText + "</h4>\n"
         }
         resizedHead = sizes[headSize];
