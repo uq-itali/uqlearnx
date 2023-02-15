@@ -5,6 +5,7 @@ function generateImgTextCode() {
     var imgVert = $('input[name="alignImgVert"]:checked').val();
     var txtVert = $('input[name="alignTextVert"]:checked').val();
     var headingIcon = $('input[name="headingIcon"]:checked').val();
+    var imgBorder = $('input[name="imgBorder"]:checked').val();
     var iconCode = '<span class="uq-icon icon-' + headingIcon + '-white"></span> ';
     if(headingIcon != 'noI'){
         iconCode = iconCode
@@ -34,7 +35,7 @@ function generateImgTextCode() {
         )
     var altText = $('#altText').val();
     var captionText = tinymce.get("tinyMCEcaption").getContent();
-    var imgCode = '<figure>\n<img class="img-fluid d-block mx-auto" src="' + imgLink + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>\n';
+    var imgCode = '<figure>\n<img class="img-fluid d-block mx-auto' + imgBorder + '" src="' + imgLink + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>\n';
     var imgFloat = '<figure>\n<img class="img-fluid" src="' + imgLink + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>\n';
     if(headSize !== "noH"){
         //Resizing the heading text
