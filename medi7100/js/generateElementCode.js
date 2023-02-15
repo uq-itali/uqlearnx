@@ -99,11 +99,19 @@ function generateVidTextCode() {
     //Retrive values and text from the user's input
     var vidPosition = $('input[name="videoPosition"]:checked').val();
     var vidWidth = $('input[name="videoWidth"]:checked').val();
+    var headingIconVid = $('input[name="headingIconVid"]:checked').val();
+    var iconCodeVid = '<span class="uq-icon icon-' + headingIconVid + '-white"></span> ';
     if(tinymce.get("tinyMCEvid").getContent() !==''){
         tinyTextvid = tinymce.get("tinyMCEvid").getContent() + '\n';
     }
     else{
         tinyTextvid = textPlaceholder
+    }
+    if(headingIconVid != 'noI'){
+        iconCodeVid = iconCodeVid
+    }
+    else{
+        iconCodeVid = '';
     }
     var vidHeadingText = $('#vidHeadingText').val();
     var vidHeadSize = $('input[name="vidHeadSize"]:checked').val();
@@ -143,7 +151,7 @@ function generateVidTextCode() {
         //Resizing the heading text
         var vidSizes = {
             "noH": "",
-            "h2": "<h2 class=\"text-bg-uq p-2\">" + vidHeadingText + "</h2>\n",
+            "h2": "<h2 class=\"text-bg-uq p-2\">" + iconCodeVid + vidHeadingText + "</h2>\n",
             "h2-w": "<h2 class=\"text-bg-dark p-2\"><span class=\"fa-brands fa-youtube\"></span> Watch: " + vidHeadingText + "</h2>\n",
             "h4": "<h4 class=\"text-bg-info bg-opacity-25 p-2\">" + vidHeadingText + "</h4>\n"
         }
