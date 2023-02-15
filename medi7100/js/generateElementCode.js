@@ -33,7 +33,7 @@ function generateImgTextCode() {
         imgLink = imgPlaceholderLink
         )
     var altText = $('#altText').val();
-    var captionText = $('#captionText').val();
+    var captionText = tinymce.get("tinyMCEcaption").getContent();
     var imgCode = '<figure>\n<img class="img-fluid d-block mx-auto" src="' + imgLink + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>\n';
     var imgFloat = '<figure>\n<img class="img-fluid" src="' + imgLink + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>\n';
     if(headSize !== "noH"){

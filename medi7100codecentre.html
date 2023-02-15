@@ -104,6 +104,35 @@
             }
         });
         tinymce.init({
+            selector: '#tinyMCEcaption',
+            menubar: false,
+            height: "150",
+            plugins: [
+                'link',
+                'anchor', 'code', 'insertdatetime', 'help'
+            ],
+            toolbar: 'undo redo blocks bold italic alignleft aligncenter alignright link code charmap removeformat fullscreen',
+            setup: function (ed) {
+                ed.on('keyup', function (e) {
+                    var tinyTextCaption = tinymce.get("tinyMCEcaption").getContent();
+                    var activeBtn = $('button.active').attr('id')
+                    console.log('Editor contents was modified. Contents: ' + ed.getContent());
+                    if(activeBtn == 'imgBuilderBtn') {
+                        generateImgTextCode();
+                    }
+                    else if(activeBtn == 'vidBuilderBtn') {
+                        generateVidTextCode();
+                    }
+                    else if(activeBtn == 'btnBuilderBtn') {
+                        generateBtnCode();
+                    }
+                    else if(activeBtn == 'alertBuilderBtn'){
+                        generateAlertCode();
+                    }
+                });
+            }
+        });
+        tinymce.init({
             selector: '#tinyMCEvid',
             menubar: false,
             height: "350",
@@ -731,7 +760,7 @@
                                 <h5 class="font-weight-bold mt-3">Type your alt text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The description of your image you would like to appear when a user hovers over the image or uses a screen reader" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea onkeyup="generateImgTextCode()" id="altText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your alt text here."></textarea>
                                 <h5 class="font-weight-bold mt-3">Type your caption text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the caption you would like to appear underneath your image." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
-                                <textarea onkeyup="generateImgTextCode()" id="captionText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your alt text here."></textarea>
+                                <textarea onkeyup="generateImgTextCode()" id="tinyMCEcaption" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your caption text here."></textarea>
                             </div>
                         </div>
                     </div>
