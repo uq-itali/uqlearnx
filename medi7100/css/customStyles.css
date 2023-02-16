@@ -16,7 +16,6 @@ div.accordion h2{
   z-index: 99;
   font-size: 1.3rem;  
   cursor: pointer;
-  
 }
 #bttBtn.btn, #bttBtn.btn:hover{
   box-shadow: none !important;
@@ -33,6 +32,9 @@ div.preview-menu div a.btn {
 body, h1, h2, h3, h4, h5, h6, p, label{
   text-align: unset !important;
   font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif !important;
+}
+h2.text-bg-uq, h4.text-bg-info, h2.text-bg-dark{
+  margin-bottom: 1.5rem !important;
 }
 div.alert p, div.alert h1, div.alert h2, div.alert h3, div.alert h4, div.alert h5, div.alert h6{
   color: inherit !important;
