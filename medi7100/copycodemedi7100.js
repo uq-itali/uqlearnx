@@ -30,9 +30,9 @@ function scrollFunction(){
         var $url = $(this).prev().attr('href');
         var $copyBadgeHTML = $(this).html();
         $('body').append($temp);
-        temp.val($url).select();
+        $temp.val($url).select();
         document.execCommand('copy');
-        temp.remove();
+        $temp.remove();
         copyBadge.html('<span style="color: var(--bs-bg-color) !important" class="fa fa-check"></span> Email copied');
         window.setTimeout(function () {
             copyBadge.html($copyBadgeHTML);
