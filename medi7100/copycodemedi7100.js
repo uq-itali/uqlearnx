@@ -33,9 +33,9 @@ function scrollFunction(){
         $temp.val($url).select();
         document.execCommand('copy');
         $temp.remove();
-        copyBadge.html('<span style="color: var(--bs-bg-color) !important" class="fa fa-check"></span> Email copied');
+        this.html('<span style="color: var(--bs-bg-color) !important" class="fa fa-check"></span> Email copied');
         window.setTimeout(function () {
-            copyBadge.html($copyBadgeHTML);
+            this.html($copyBadgeHTML);
         }, 2000);
     });
 /*Make the go to bookmarks link next to the bookmark this page link*/
