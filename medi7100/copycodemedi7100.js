@@ -24,17 +24,16 @@ function scrollFunction(){
 }
 
 /*Copy email code. Make a bootstrap badge after an email address and give it the copyBadge class for this to function*/
-    var $temp = $('<input>');
+var $temp = $('<input>');
     $('.copyBadge').on('click', function () {
         var $url = $(this).prev().attr('href');
-        var $copyBadgeHTML = $(this).html();
         $('body').append($temp);
         $temp.val($url).select();
         document.execCommand('copy');
         $temp.remove();
         $(this).html('<span style="color: var(--bs-bg-color) !important" class="fa fa-check"></span> Email copied');
         window.setTimeout(function () {
-            $(this).html($copyBadgeHTML);
+            $('.copyBadge').text('Click to copy email address');
         }, 2000);
     });
 /*Make the go to bookmarks link next to the bookmark this page link*/
