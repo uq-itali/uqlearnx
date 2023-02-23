@@ -20,6 +20,9 @@ div.accordion h2{
 #bttBtn.btn, #bttBtn.btn:hover{
   box-shadow: none !important;
   }
+.copyBadge{
+  cursor: pointer;
+}  
 a.btn-uq, a.btn-primary, a.btn-secondary, a.btn-success, a.btn-danger, a.btn-dark {
   color: #fff !important;
 }
