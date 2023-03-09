@@ -32,6 +32,9 @@ a.btn-uq:hover, a.btn-primary:hover, a.btn-secondary:hover, a.btn-success:hover,
 a.btn-light, a.btn-warning, a.info {
   color: #000 !important;
 }
+a.btn-light:hover, a.btn-warning:hover, a.info:hover {
+  color: #000 !important;
+}
 div.preview-menu div a.btn {
   color: #fff !important;
 }
