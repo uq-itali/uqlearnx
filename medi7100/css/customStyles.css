@@ -26,6 +26,9 @@ div.accordion h2{
 a.btn-uq, a.btn-primary, a.btn-secondary, a.btn-success, a.btn-danger, a.btn-dark {
   color: #fff !important;
 }
+a.btn-uq:hover, a.btn-primary:hover, a.btn-secondary:hover, a.btn-success:hover, a.btn-danger:hover, a.btn-dark:hover {
+  color: #fff !important;
+}
 a.btn-light, a.btn-warning, a.info {
   color: #000 !important;
 }
