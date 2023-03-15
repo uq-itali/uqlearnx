@@ -540,3 +540,129 @@ function generateTooltipCode(){
         $('#tooltipFinalCode').val(tooltipFinalCode);
         $('div#demo').html(tooltipFinalCode);
     }
+function generateTableCode(){
+    var tableHeadingText = $('#tableHeadingText').val();
+    var tableHeadSize = $('input[name="tableHeadSize"]:checked').val();
+    var theadColour = $('input[name="theadColour"]:checked').val();
+    var tinyMCEtable = tinymce.get("tinyMCEtable").getContent();
+    var tableStripes = $('input[name="tableStripe"]:checked').val();
+    
+    if(tinymce.get("tinyMCEtable").getContent() != ''){
+        var tinyMCEtable = tinyMCEtable;
+        var thCalc = $(tinyMCEtable).find('tbody td').length/$(tinyMCEtable).find('tbody tr').length;
+    }
+    else{
+        var tinyMCEtable = ''
+    }
+    if(theadColour != 'bold'){
+        var theadColourOptions = {
+            "primary" : "table-primary",
+            "secondary" : "table-secondary",
+            "info" : "table-info",
+            "danger" : "table-danger",
+            "warning" : "table-warning",
+            "success" : "table-success",
+            "dark" : "table-dark",
+            "light" : "table-light",
+            "uq" : "bg-uq text-white"
+        }
+        theadRecoloured = theadColourOptions[theadColour];
+        tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('thead'));
+        tinymce.get("tinyMCEtable").dom.addClass(tinyMCE.get("tinyMCEtable").dom.select('thead'), theadRecoloured);       
+    }
+    else{
+        tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('thead'));
+        theadRecoloured = "";
+    }
+    if(tableStripes == "table-striped"){
+        tinymce.get("tinyMCEtable").dom.removeClass(tinyMCE.get("tinyMCEtable").dom.select('table'), 'table-striped-columns');       
+        tinymce.get("tinyMCEtable").dom.addClass(tinyMCE.get("tinyMCEtable").dom.select('table'), 'table-striped');       
+    }
+    else if(tableStripes == "table-striped-columns"){
+        tinymce.get("tinyMCEtable").dom.removeClass(tinyMCE.get("tinyMCEtable").dom.select('table'), 'table-striped');       
+        tinymce.get("tinyMCEtable").dom.addClass(tinyMCE.get("tinyMCEtable").dom.select('table'), 'table-striped-columns'); 
+    }
+    else if(tableStripes == ""){
+        tinymce.get("tinyMCEtable").dom.removeClass(tinyMCE.get("tinyMCEtable").dom.select('table'), 'table-striped');
+        tinymce.get("tinyMCEtable").dom.removeClass(tinyMCE.get("tinyMCEtable").dom.select('table'), 'table-striped-columns');
+    }  
+   
+    if(tableHeadSize !== "noH"){
+        //Resizing the heading text
+        var tableSizes = {
+            "noH": "",
+            "h2": "<h2 class=\"text-bg-uq p-2\">" + tableHeadingText + "</h2>\n",
+            "h4": "<h4 class=\"text-bg-info bg-opacity-25 p-2\">" + tableHeadingText + "</h4>\n"
+        }
+        tableResizedHead = tableSizes[tableHeadSize];
+    }
+    else {
+        tableResizedHead = "";
+    }
+    if($(tinymce.get("tinyMCEtable").getContent()).find('thead').length == 0){
+        var thSingle = '<th></th>\n';
+        var thCalc = $(tinyMCEtable).find('tbody td').length/$(tinyMCEtable).find('tbody tr').length;
+        tinymce.get("tinyMCEtable").setContent(tinyMCEtable.replace('<tbody>', '<thead>\n' + (thSingle.repeat(thCalc)) + '</thead>\n' + '<tbody>\n'))
+    }
+    var tinyMCEtable = tinymce.get("tinyMCEtable").getContent();
+    var tableFinalCode = tableResizedHead + tinyMCEtable;
+    $('#tableFinalCode').val(tableFinalCode);
+    $('div#demo').html(tableFinalCode);
+}   
+function cleanTable() {
+    tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('table'));
+    tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('thead'));
+    tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('tbody'));
+    tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('tr'));
+    tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('th'));
+    tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('td'));
+    tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('div'));
+    tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('p'));
+    tinymce.get("tinyMCEtable").setContent(tinyMCEtable.replace('<table>','<table class="table table-responsive table-hover table-bordered">'));
+    tinymce.get("tinyMCEtable").dom.remove(tinyMCE.get("tinyMCEtable").dom.select('colgroup'));
+    tinymce.get("tinyMCEtable").dom.remove(tinyMCE.get("tinyMCEtable").dom.select('div'));
+    tinymce.get("tinyMCEtable").dom.remove(tinyMCE.get("tinyMCEtable").dom.select('p'));
+    generateTableCode();
+}
+function makeTable(){
+    var tableOpen = '<table class="table table-responsive table-bordered table-hover">\n<thead>\n<tr>\n';
+    var tableClose = '</tbody>\n</table>\n';
+    var tBodyOpen = '</tr>\n</thead>\n<tbody>\n';
+    var trOpen = '<tr>';
+    var trClose = '</tr>\n';     
+    var thSingle = '<th></th>\n';
+    var tdSingle = '<td></td>\n';
+    var rowNumber = $('input#rowNumber').val();
+    var colNumber = $('input#colNumber').val();
+    var rowSingle = trOpen + tdSingle.repeat(colNumber) + trClose
+    tinymce.get("tinyMCEtable").setContent(tableOpen + thSingle.repeat(colNumber) + tBodyOpen + rowSingle.repeat(rowNumber) + tableClose);
+    generateTableCode();
+  }
+  function addRowAfter(){
+    tinymce.get("tinyMCEtable").execCommand('mceTableInsertRowAfter', false);
+    generateTableCode();
+  }
+  function addRowBefore(){
+    tinymce.get("tinyMCEtable").execCommand('mceTableInsertRowBefore', false);
+    generateTableCode();
+  }
+  function addColAfter(){
+    tinymce.get("tinyMCEtable").execCommand('mceTableInsertColAfter', false);
+    generateTableCode();
+  }
+  function addColBefore(){
+    tinymce.get("tinyMCEtable").execCommand('mceTableInsertColBefore', false);
+    generateTableCode();
+  }
+  function removeCol(){
+    tinymce.get("tinyMCEtable").execCommand('mceTableDeleteCol', false);
+    generateTableCode();
+  }
+   function removeRow(){
+    tinymce.get("tinyMCEtable").execCommand('mceTableDeleteRow', false);
+    generateTableCode();
+  }
+  function removeTable(){
+    tinymce.get("tinyMCEtable").execCommand('mceTableDelete', false);
+    generateTableCode();
+  }

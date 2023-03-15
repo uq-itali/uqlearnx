@@ -49,7 +49,7 @@
     </style>
     <!--Dropdowns in the nav open on hover-->
     <script>
-        $(document).ready(function () {
+        window.addEventListener('load', function () {
             $(".dropdown").hover(function () {
                 var dropdownMenu = $(this).children(".dropdown-menu");
                 if (dropdownMenu.is(":visible")) {
@@ -57,7 +57,19 @@
                     dropdownMenu.css('z-index','1030');
                 }
             });
-        });     
+        tinymce.get("tinyMCEtable").setContent('<table class="table table-responsive table-bordered table-hover">\n<thead><th></th>\n<th></th>\n<th></th>\n</thead>\n<tbody>\n<tr>\n<td></td>\n<td></td>\n<td></td>\n</tr>\n<tr>\n<td></td>\n<td></td>\n<td></td>\n</tr>\n<tr>\n<td></td>\n<td></td>\n<td></td>\n</tr>\n</tbody>\n</table>')
+        
+        if(localStorage.getItem("tableAlertIsClosed") !== "true"){
+            //do nothing
+        }    
+        else{
+            $('.tableAlert').remove();
+        }
+        $('#tableAlertClose').on('click',function(){
+            $('.tableAlert').remove();
+            localStorage.setItem("tableAlertIsClosed","true")
+        })   
+    });  
     </script>
     <!--Setup tooltips + TinyMCE-->
     <script type="text/javascript">
@@ -100,6 +112,9 @@
                     else if(activeBtn == 'alertBuilderBtn'){
                         generateAlertCode();
                     }
+					else if(activeBtn == 'tableBuilderBtn'){
+						generateTableCode();
+					}
                 });
             }
         });
@@ -129,6 +144,9 @@
                     else if(activeBtn == 'alertBuilderBtn'){
                         generateAlertCode();
                     }
+					else if(activeBtn == 'tableBuilderBtn'){
+						generateTableCode();
+					}
                 });
             }
         });
@@ -169,6 +187,9 @@
                     else if(activeBtn == 'alertBuilderBtn'){
                         generateAlertCode();
                     }
+					else if(activeBtn == 'tableBuilderBtn'){
+						generateTableCode();
+					}
                 });
             }
         });
@@ -209,6 +230,9 @@
                     else if(activeBtn == 'alertBuilderBtn'){
                         generateAlertCode();
                     }
+					else if(activeBtn == 'tableBuilderBtn'){
+						generateTableCode();
+					}
                 });
             }
         });
@@ -239,7 +263,71 @@
                     else if(activeBtn == 'alertBuilderBtn'){
                         generateAlertCode();
                     }
+					else if(activeBtn == 'tableBuilderBtn'){
+						generateTableCode();
+					}
                 });
+            }
+        });
+		tinymce.init({
+            selector: '#tinyMCEtable',
+            menubar: false,
+            height: "500",
+            plugins: [
+                'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                'insertdatetime', 'media', 'table', 'help', 'wordcount'
+            ],
+            toolbar: 'undo redo blocks bold italic alignleft aligncenter alignright bullist numlist table link code charmap removeformat fullscreen',
+            table_header_type: 'sectionCells',
+            table_default_attributes: { class: 'table table-bordered table-striped table-hover table-responsive' },
+            table_use_colgroups: false,
+            table_default_styles: {},
+            invalid_styles: {
+                'table': 'width height',
+                'tr': 'width height',
+                'th': 'width height',
+                'td': 'width height'
+            },
+            setup: function (ed) {
+                ed.on('keyup', function (e) {
+                    var tinyMCEtable = tinymce.get("tinyMCEtable").getContent();
+                    var activeBtn = $('button.active').attr('id')
+                    console.log('Editor contents was modified. Contents: ' + ed.getContent());
+                    if(activeBtn == 'imgBuilderBtn') {
+                        generateImgTextCode();
+                    }
+                    else if(activeBtn == 'vidBuilderBtn') {
+                        generateVidTextCode();
+                    }
+                    else if(activeBtn == 'btnBuilderBtn') {
+                        generateBtnCode();
+                    }
+                    else if(activeBtn == 'alertBuilderBtn'){
+                        generateAlertCode();
+                    }
+					else if(activeBtn == 'tableBuilderBtn'){
+						generateTableCode();
+					}
+                });
+                ed.on('paste', function(e) {
+                    setTimeout(function(){
+                        tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('table'));
+                        tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('thead'));
+                        tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('tbody'));
+                        tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('tr'));
+                        tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('th'));
+                        tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('td'));
+                        tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('div'));
+                        tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('p'));
+                        tinymce.get("tinyMCEtable").setContent(tinymce.get("tinyMCEtable").getContent().replace('<table>','<table class="table table-responsive table-hover table-bordered">'));
+                        }, 500)
+                    setTimeout(function(){
+                        tinymce.get("tinyMCEtable").dom.remove(tinyMCE.get("tinyMCEtable").dom.select('colgroup'));
+                        tinymce.get("tinyMCEtable").dom.remove(tinyMCE.get("tinyMCEtable").dom.select('div'));
+                        generateTableCode();
+                    }, 750)                   
+                })
             }
         });
     </script>
@@ -295,11 +383,11 @@
             $('div#demo').html(placeholderCode);
             $('#vidFinalCode').val(vidPlaceholderCode);
             $('div#vidDemo').html(vidPlaceholderCode);
-            fullScreenImgToggle();
+            /*fullScreenImgToggle();
             fullScreenVidToggle();
             fullScreenBtnToggle();
             fullScreenAlertToggle();
-            fullScreenTooltipToggle();
+            fullScreenTooltipToggle();*/
         });
     </script>
 </head>
@@ -323,6 +411,9 @@
             </li>
             <li class="nav-item" role="presentation">
                 <button onclick="generateTooltipCode()" id="tooltipBuilderBtn" class="nav-link" href="#buildTooltip" data-bs-toggle="tab">Tooltip builder</button>
+            </li>
+			<li class="nav-item" role="presentation">
+                <button onclick="generateTableCode()" id="tableBuilderBtn" class="nav-link" href="#buildTable" data-bs-toggle="tab">Table builder</button>
             </li>
             <li class="nav-item" role="presentation">
                 <button id="headingsBtn" class="nav-link" href="#headings" data-bs-toggle="tab">Headings</button>
@@ -1507,7 +1598,8 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="buildTable" role="tabpanel">
+			<!--Start table generator-->
+			<div class="tab-pane fade" id="buildTable" role="tabpanel">
                 <div class="row">
                     <div class="col-lg">
                         <div class="alert alert-danger border border-3 border-danger rounded mx-auto d-block tableAlert">
@@ -1668,6 +1760,7 @@
 			</div>
 		</div>
 	</div>
+			<!--End table generator-->
             <div class="tab-pane fade" id="bugOrImprovementForm" role="tabpanel">
                 <div class="ratio ratio-16x9">
                     <iframe src="https://forms.office.com/r/G6NMM65Yxu?embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
@@ -1676,9 +1769,6 @@
         </div>
     </div>
     </div>
-    <script type="text/javascript">
-
-    </script>
 </body>
 
 </html>
