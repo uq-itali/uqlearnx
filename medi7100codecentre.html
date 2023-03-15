@@ -100,6 +100,9 @@
                     else if(activeBtn == 'alertBuilderBtn'){
                         generateAlertCode();
                     }
+                    else if(activeBtn == 'tableBuilderBtn'){
+						generateTableCode();
+					}
                 });
             }
         });
@@ -129,6 +132,9 @@
                     else if(activeBtn == 'alertBuilderBtn'){
                         generateAlertCode();
                     }
+                    else if(activeBtn == 'tableBuilderBtn'){
+						generateTableCode();
+					}
                 });
             }
         });
@@ -169,6 +175,9 @@
                     else if(activeBtn == 'alertBuilderBtn'){
                         generateAlertCode();
                     }
+                    else if(activeBtn == 'tableBuilderBtn'){
+						generateTableCode();
+					}
                 });
             }
         });
@@ -209,6 +218,9 @@
                     else if(activeBtn == 'alertBuilderBtn'){
                         generateAlertCode();
                     }
+                    else if(activeBtn == 'tableBuilderBtn'){
+						generateTableCode();
+					}
                 });
             }
         });
@@ -239,9 +251,73 @@
                     else if(activeBtn == 'alertBuilderBtn'){
                         generateAlertCode();
                     }
+                    else if(activeBtn == 'tableBuilderBtn'){
+						generateTableCode();
+					}
                 });
             }
         });
+        tinymce.init({
+            selector: '#tinyMCEtable',
+            menubar: false,
+            height: "500",
+            plugins: [
+                'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                'insertdatetime', 'media', 'table', 'help', 'wordcount'
+            ],
+            toolbar: 'undo redo blocks bold italic alignleft aligncenter alignright bullist numlist table link code charmap removeformat fullscreen',
+            table_header_type: 'sectionCells',
+            table_default_attributes: { class: 'table table-bordered table-striped table-hover table-responsive' },
+            table_use_colgroups: false,
+            table_default_styles: {},
+            invalid_styles: {
+                'table': 'width height',
+                'tr': 'width height',
+                'th': 'width height',
+                'td': 'width height'
+            },
+            setup: function (ed) {
+                ed.on('keyup', function (e) {
+                    var tinyMCEtable = tinymce.get("tinyMCEtable").getContent();
+                    var activeBtn = $('button.active').attr('id')
+                    console.log('Editor contents was modified. Contents: ' + ed.getContent());
+                    if(activeBtn == 'imgBuilderBtn') {
+                        generateImgTextCode();
+                    }
+                    else if(activeBtn == 'vidBuilderBtn') {
+                        generateVidTextCode();
+                    }
+                    else if(activeBtn == 'btnBuilderBtn') {
+                        generateBtnCode();
+                    }
+                    else if(activeBtn == 'alertBuilderBtn'){
+                        generateAlertCode();
+                    }
+					else if(activeBtn == 'tableBuilderBtn'){
+						generateTableCode();
+					}
+                });
+                ed.on('paste', function(e) {
+                    setTimeout(function(){
+                        tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('table'));
+                        tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('thead'));
+                        tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('tbody'));
+                        tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('tr'));
+                        tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('th'));
+                        tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('td'));
+                        tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('div'));
+                        tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('p'));
+                        tinymce.get("tinyMCEtable").setContent(tinymce.get("tinyMCEtable").getContent().replace('<table>','<table class="table table-responsive table-hover table-bordered">'));
+                        }, 500)
+                    setTimeout(function(){
+                        tinymce.get("tinyMCEtable").dom.remove(tinyMCE.get("tinyMCEtable").dom.select('colgroup'));
+                        tinymce.get("tinyMCEtable").dom.remove(tinyMCE.get("tinyMCEtable").dom.select('div'));
+                        generateTableCode();
+                    }, 750)                   
+                })
+            }
+        })
     </script>
     <!--Setup page variables-->
     <script type="text/javascript">
@@ -323,6 +399,9 @@
             </li>
             <li class="nav-item" role="presentation">
                 <button onclick="generateTooltipCode()" id="tooltipBuilderBtn" class="nav-link" href="#buildTooltip" data-bs-toggle="tab">Tooltip builder</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button onclick="generateTableCode()" id="tableBuilderBtn" class="nav-link" href="#buildTable" data-bs-toggle="tab">Table builder</button>
             </li>
             <li class="nav-item" role="presentation">
                 <button id="headingsBtn" class="nav-link" href="#headings" data-bs-toggle="tab">Headings</button>
