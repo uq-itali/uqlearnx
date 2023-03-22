@@ -46,6 +46,13 @@
             line-height: 1.5rem;
             margin: auto;
         }
+        #iconCol div.row div.col-lg span.htmlToCopy span{
+            padding: 10px 18px;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-position-x: center;
+            cursor: pointer;
+        }
     </style>
     <!--Dropdowns in the nav open on hover-->
     <script>
@@ -658,82 +665,152 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="headings" role="tabpanel">
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2">Purple main heading - Your text here</h2>
+                <div class="row gap-2">
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2">Purple main heading - Your text here</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis mt-3">
+                            <h4 class="text-bg-info p-2 bg-opacity-25">Light blue subheading - Your text here</h4>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis mt-3">
+                            <h2 class="text-bg-dark p-2"><i class="fa-brands fa-youtube"></i> Watch</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg my-auto" id="iconCol">
+                        <h5 class="text-center">Icons - Click to Copy <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click on the icon you want to copy the HTML for that icon. You will see a white tick when the code is copied to your clipboard." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                        <div class="row mx-auto" style="width:90%">
+                            <div class="col-lg bg-uq py-3 text-center rounded-top">
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-psw-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-advocacy-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-ethics-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-med-science-white"></span>&nbsp;</span>
+                            </div>
+                        </div>
+                        <div class="row mx-auto" style="width:90%">
+                            <div class="col-lg bg-uq py-3 text-center">
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-research-epid-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-rrm-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-transition-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-clinical-plenary-white"></span>&nbsp;</span>
+                            </div>
+                        </div>
+                        <div class="row mx-auto" style="width:90%">
+                            <div class="col-lg bg-uq py-3 text-center">
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-cpl-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-immersion-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-lectorial-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-masterclass-white"></span>&nbsp;</span>
+                            </div>
+                        </div>
+                        <div class="row mx-auto" style="width:90%">
+                            <div class="col-lg bg-uq py-3 text-center rounded-bottom">
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-practical-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-symposium-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-tbl-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-workshop-white"></span>&nbsp;</span>
+                             </div>
+                        </div>
+                    </div>
                 </div>
                 <hr>
-                <div class="copythis mt-3">
-                    <h4 class="text-bg-info p-2 bg-opacity-25">Light blue subheading - Your text here</h4>
+                <div class="row gap-2">
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-psw-white"></span> Practical skills heading</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-advocacy-white"></span> Advocacy and Public Health heading</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-ethics-white"></span> Ethics heading</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-med-science-white"></span> Med Sciences heading</h2>
+                        </div>
+                    </div>
                 </div>
                 <hr>
-                <div class="copythis mt-3">
-                    <h2 class="text-bg-dark p-2"><i class="fa-brands fa-youtube"></i> Watch</h2>
+                <div class="row gap-2">
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-research-epid-white"></span> Research and Epidemiology heading</h2>
+                        </div>        
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-rrm-white"></span> Rural and Remote Health heading</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-transition-white"></span> Transition to MD heading</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-clinical-plenary-white"></span> Clinical plenary heading</h2>
+                        </div>
+                    </div>
                 </div>
                 <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-psw-white"></span> Practical skills heading</h2>
+                <div class="row gap-2">
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-cpl-white"></span> Clinical and professional learning heading</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-immersion-white"></span> Immersion heading</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-lectorial-white"></span> Lectorial heading</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-masterclass-white"></span> Masterclass heading</h2>
+                        </div>
+                    </div>
                 </div>
                 <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-advocacy-white"></span> Advocacy and Public Health heading</h2>
+                <div class="row gap-2">
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-practical-white"></span> Practical heading</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-symposium-white"></span> Symposium heading</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-tbl-white"></span> TBL heading</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-workshop-white"></span> Workshop heading</h2>
+                        </div>
+                    </div>
                 </div>
                 <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-ethics-white"></span> Ethics heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-med-science-white"></span> Med Sciences heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-research-epid-white"></span> Research and Epidemiology heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-rrm-white"></span> Rural and Remote Health heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-transition-white"></span> Transition to MD heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-clinical-plenary-white"></span> Clinical plenary heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-cpl-white"></span> Clinical and professional learning heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-immersion-white"></span> Immersion heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-lectorial-white"></span> Lectorial heading</h2>
-                </div>
                 
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-masterclass-white"></span> Masterclass heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-practical-white"></span> Practical heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-symposium-white"></span> Symposium heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-tbl-white"></span> TBL heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-workshop-white"></span> Workshop heading</h2>
-                </div>
                 <!--icons
  <span class="uq-icon icon-psw-white"></span>
 <span class="uq-icon icon-advocacy-white"></span>
@@ -1767,9 +1844,6 @@
         </div>
     </div>
     </div>
-    <script type="text/javascript">
-
-    </script>
 </body>
 
 </html>

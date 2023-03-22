@@ -21,6 +21,23 @@ $(function() {
         }, 3000);
         /* Act on the event */
     });
+    
+    $('.copyicon').on('click', function(event) {
+        /*Copy icon function. This differs by copying an icon when you click on it in the code centre.*/
+        var icon = $(this);
+        var iconHtml = $(this).html();
+        /*var snippet = icon.closest('tr').children('td.htmlToCopy').html(); */
+        var snippet = icon.closest('span.htmlToCopy').html();
+        console.log("@GB: snippet = ", snippet);
+        copyTextToClipboard(snippet);
+        icon.html('<i class="fa fa-check text-white border border-white rounded" style="padding: 11px 10.5px; margin-left: 5px; display: inherit;"></i>');
+        //var toastSpan = iconHtml.replace('<','&lt;');
+        //$('span#iconCode').append(toastSpan);
+        window.setTimeout(function() {
+            icon.html(iconHtml);
+            $('span#iconCode').text('')
+        }, 2000);
+    });
 });
 
 
