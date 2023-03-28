@@ -4459,7 +4459,7 @@ textarea.form-control-lg {
   align-items: center;
   width: 100%; 
   padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
-  font-size: calc(1.275rem + 0.3vw) !important;
+  font-size: calc(1rem + 0.3vw) !important;
   font-weight: normal !important;
   color: var(--bs-white) !important;
   text-align: left;
@@ -4474,10 +4474,10 @@ textarea.form-control-lg {
     transition: none;
   }
 }
-.accordion-button:not(.collapsed) {
+.accordion-button:not(.collapsed), .accordion-button:focus {
   color: var(--bs-white) !important;
   background: var(--bs-uqpurplehover) !important;
-  box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color);
+  box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color) !important;
 }
 .accordion-button:not(.collapsed)::after {
   background-image: var(--bs-accordion-btn-active-icon);
