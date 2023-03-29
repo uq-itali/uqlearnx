@@ -472,6 +472,10 @@
     <!--On page load run functions + build placeholder-->
     <script type="text/javascript">
          window.addEventListener('DOMContentLoaded', function(){
+            $('ul.nav').on('click', function(){
+            var lastTabClicked = $('button.active').attr('id')
+            localStorage.setItem("lastTabClicked", lastTabClicked);
+        });
             var lastTabClickedInStorage = localStorage.getItem("lastTabClicked");
             document.getElementById(lastTabClickedInStorage).click();
             let bttBtn = document.getElementById("bttBtn");
@@ -497,13 +501,15 @@
             fullScreenAlertToggle();
             fullScreenTooltipToggle();
             fullScreenAccToggle();
-            $('ul.nav').on('click', function(){
-            var lastTabClicked = $('button.active').attr('id')
-            localStorage.setItem("lastTabClicked", lastTabClicked);
-        });
+            
     });
-   
-        
+    $(function() {
+        var accNameTxt = $("#accName");
+        var func = function() {
+            accNameTxt.val(accNameTxt.val().replace(/\s/g, ''));
+        }
+        accNameTxt.keyup(func).blur(func);
+    });
     </script>
 </head>
 <body>
