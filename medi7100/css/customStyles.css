@@ -13,13 +13,24 @@ div.accordion h2{
   position: fixed;
   bottom: 50px;
   right: 10px;
-  z-index: 99;
+  z-index: 1020;
   font-size: 1.3rem;  
   cursor: pointer;
 }
 #bttBtn.btn, #bttBtn.btn:hover{
   box-shadow: none !important;
   }
+#reopenCompletionAlerts {
+      position: fixed;
+      bottom: 0px;
+      right: 67px;
+      z-index: 1001;
+      font-size: 1.1rem;
+      cursor: pointer;
+}  
+#reopenCompletionAlerts.btn, #reopenCompletionAlerts.btn:hover{
+  box-shadow: none !important;
+}
 .copyBadge{
   cursor: pointer;
 }  
