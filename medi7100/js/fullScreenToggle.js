@@ -15,6 +15,9 @@ function copyCode() {
     else if(activeBtn == 'tooltipBuilderBtn'){
         var selectedCode = $('#tooltipFinalCode').select();
     }
+    else if(activeBtn == 'accBuilderBtn'){
+        var selectedCode = $('#accFinalCode').select();
+    }
     try {
         var successful = document.execCommand('copy');
         var msg = successful ? 'successful' : 'unsuccessful';
@@ -157,6 +160,34 @@ function fullScreenTooltipToggle() {
                 $(togglePreviewTooltipFS).appendTo('#previewTooltipFS');
                 $(togglePreviewTooltipFS).addClass('d-block mx-auto mt-3')
                 $('#previewTooltipFS').addClass('pt-5');
+            }
+        });
+        document.addEventListener("fullscreenerror", function (event) {
+            console.log(event);
+        });
+    }
+}
+function fullScreenAccToggle() {
+    if (document.fullscreenEnabled) {
+        var togglePreviewAccFS = document.getElementById("togglePreviewAccFS");
+        togglePreviewAccFS.addEventListener("click", function (event) {
+            if (!document.fullscreenElement) {
+                document.querySelector("#previewAccFS").requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }, false);
+        document.addEventListener("fullscreenchange", function (event) {
+            console.log(event);
+            if (!document.fullscreenElement) {
+                togglePreviewAccFS.innerHTML = "<i class=\"fa fa-expand-arrows-alt fa-lg\"></i>";
+                $('#previewAccFS').removeClass('pt-5');
+                $(togglePreviewAccFS).appendTo('#previewAccFS');
+            } else {
+                togglePreviewAccFS.innerHTML = "<i class=\"fa fa-compress-arrows-alt fa-lg\"></i>";
+                $(togglePreviewAccFS).appendTo('#previewAccFS');
+                $(togglePreviewAccFS).addClass('d-block mx-auto mt-3')
+                $('#previewAccFS').addClass('pt-5');
             }
         });
         document.addEventListener("fullscreenerror", function (event) {
