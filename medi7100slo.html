@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UQ MEDI7100 LearnX Custom HTML Components</title>
+    <link rel="icon" href="img/UQfavicon.png" type="image/gif">
+     <!--jQuery version 3.6.0-->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" type="text/css" href="https://uq-itali.github.io/uqlearnx/medi7100/css/customStyles.css" />
+     <link rel="stylesheet" type="text/css" href="https://uq-itali.github.io/fontawesome-v6.1.1-free/css/all.css" />
+     <link rel="stylesheet" type="text/css" href="https://uq-itali.github.io/uqlearnx/medi7100/bootstrap-5.2.1-dist/css/bootstrap.css" />
+ 
+     <!-- Custom JS for copying code + generating elements -->
+     <script src="copyNextDiv.js" crossorigin="anonymous"></script>
+     <script src="medi7100/js/generateElementCode.js" crossorigin="anonymous"></script>
+     <script src="medi7100/js/fullScreenToggle.js" crossorigin="anonymous"></script>
+ 
+     <!--<script src="https://uq-itali.github.io/uqlearnx/medi7100/bootstrap-5.2.1-dist/js/bootstrap.bundle.js" crossorigin="anonymous"></script>
+     <script src="https://uq-itali.github.io/uqlearnx/medi7100/bootstrap-5.2.1-dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>-->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.js"></script>
+ 
+     <!--Customise alerts on the site-->
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+     </head>
+     <body>
+        <div class="m-3">
+<h2>Advocate for Health Improvement:</h2>
+<table class="table table-bordered table-hover table-striped">
+<thead>
+<tr>
+<td>Graduate Attribute</td>
+<td>Learning Outcome</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AHI01 Describes the socio-economic, political, cultural and physical environmental factors that contribute to health outcomes for individuals and communities in metropolitan and rural settings.</strong></td>
+<td>AHI01.A1 Explains the socioeconomic, environmental, political, cultural and commercial determinants of health.</td>
+</tr>
+<tr>
+<td rowspan="3"><strong>AHI02 Cares for individuals from diverse populations and is committed to achieving equity in healthcare outcomes.</strong></td>
+<td>AHI02.B1 Recognises stigma and discrimination targeting a range of populations including people targeted by racism, older people, people with diversity in their sexuality, gender and sex and people living with a disability or mental illness. Demonstrates awareness of the impacts of unconscious biases on health and health care.</td>
+</tr>
+<tr>
+<td>AHI02.C1 Discusses the principles of successful advocacy on behalf of and in collaboration with individuals and communities.</td>
+</tr>
+<tr>
+<td>AHI02.A1 / KCP05.A1 Describes the principles of cultural awareness, competence, proficiency, and humility, and how one’s own background can affect the delivery of healthcare.</td>
+</tr>
+<tr>
+<td rowspan="4"><strong>AHI03 Explains and evaluates public health methods including health screening and prevention approaches and incorporates prevention and early detection equitably into clinical practice.</strong></td>
+<td>AHI03.B1 Describes the elements of an immunisation program and the role of medical practitioners in achieving high immunisation coverage, and the legislative requirements of medical practitioners in relation to health protection.</td>
+</tr>
+<tr>
+<td>AHI03.C1 Defines active case finding (early detection) and describes the evidence about the benefits and costs of early detection for common chronic conditions.</td>
+</tr>
+<tr>
+<td>AHI03.D1 Describes the downstream determinants of health (e.g. smoking, nutrition, alcohol, physical activity, social connections), and the drivers of these health behaviours.</td>
+</tr>
+<tr>
+<td>AHI03.A1 / CTSS03.B1 Defines and describes principles of screening, and measures of performance and effectiveness.</td>
+</tr>
+<tr>
+<td rowspan="2"><strong>AHI04 Demonstrates commitment to healthcare sustainability and advocacy for climate change mitigation and adaptation</strong></td>
+<td>AHI04.A1 Describes the interaction between local and global ecological crises and the health of individuals as well as on the social determinants of health.</td>
+</tr>
+<tr>
+<td>AHI04.B1 Identifies how Indigenous traditional knowledge and voice can inform healthcare practice and promotion of sustainable development in clinical practice.</td>
+</tr>
+<tr>
+<td rowspan="2"><strong>AHI05 Describes the factors that contribute to the health and wellbeing of specific populations including Aboriginal and Torres Strait Islander peoples and other culturally and linguistically diverse groups and approaches to helping to address these factors.</strong></td>
+<td>AHI05.A1 Describes the strengths and resilience of Aboriginal and Torres Strait Islander peoples and other culturally and linguistically diverse populations, and how these attributes can contribute to health and wellbeing.</td>
+</tr>
+<tr>
+<td>AHI05.B1 Explains the contributions of colonisation, individual and systemic racism to the health and wellbeing of populations affected by racism.</td>
+</tr>
+<tr>
+<td rowspan="2"><strong>AHI06 Demonstrates ability to be a steward for the healthcare system through the efficient and equitable class="table table-bordered table-hover table-striped" allocation of finite resources to meet individual community and national health needs.</strong></td>
+<td>AHI06.B1 Describes the importance of responsible testing and use of health resources.</td>
+</tr>
+<tr>
+<td>AHI06.A1 / KCP06.B1 Describes the Australian Health care system, including how the system is funded, the roles of primary, secondary and tertiary care. Contrasts it with health care systems in other high-income country settings.</td>
+</tr>
+<tr>
+<td><strong>AHI07 Describes global health issues and their relevance to healthcare delivery.</strong></td>
+<td>AHI07.A1 Explains the impact of globalisation and the roles of sustainable development goals, vaccination, universal health care and other global initiatives on improving health outcomes and healthcare delivery.</td>
+</tr>
+<tr>
+<td><strong>AHI08 Uses health informatics in an appropriate effective and professional manner and is able to explain how big data can be used to improve health outcomes.</strong></td>
+<td>AHI08.A1 / KCP06.D1 Explains concepts of privacy, data access and ethics in the context of clinical information systems.</td>
+</tr>
+<tr>
+<td rowspan="2"><strong>AHI09 Describes the particular challenges in health and healthcare in rural and remote areas</strong></td>
+<td>AHI09.A1 Identifies how generalist rural and remote medicine provides comprehensive solutions to the need to provide best patient care in those settings.</td>
+</tr>
+<tr>
+<td>AHI09.B1 Describes the strengths of rural and remote communities and how they can contribute to health and wellbeing.</td>
+</tr>
+</tbody>
+</table>
+<h2>Critical Thinker, Scientist and Scholar:</h2>
+<table class="table table-bordered table-hover table-striped">
+<thead>
+<tr>
+<td>Graduate Attribute</td>
+<td>Learning Outcome</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CTSS03 Applies their knowledge and skills appropriately to improve health at individual community and population level.</strong></td>
+<td>CTSS03.A1 Identifies credible literature sources to support clinical practice.</td>
+</tr>
+<tr>
+<td rowspan="4"><strong>CTSS06 Critically appraises interprets and applies evidence from the medical and scientific literature.</strong></td>
+<td>CTSS06.B1 / SEC03.B1 Demonstrates an understanding of issues of error, bias and risk, and their potential impact on clinical decision making.</td>
+</tr>
+<tr>
+<td>CTSS06.A1 Recognises and describes the different types of health research methods, the level of evidence they provide and the appropriate method to answer specific clinical questions.</td>
+</tr>
+<tr>
+<td>CTSS06.C1 Recognises common statistical analysis methods and interpret the results of statistical analysis.</td>
+</tr>
+<tr>
+<td>CTSS06.D1 Describes the concept of external validity/generalisability</td>
+</tr>
+<tr>
+<td><strong>CTSS07 Responsibly utilises health data to support clinical decision making and research</strong></td>
+<td>CTSS07.A1 Demonstrates understanding of the synthesis of research data in the form of narrative and systematic reviews and meta-analyses. Interpret findings from a meta-analysis.</td>
+</tr>
+<tr>
+<td rowspan="2"><strong>CTSS08 Demonstrates the ability to contribute to the generation of new knowledge to improve health outcomes for individuals and communities.</strong></td>
+<td>CTSS08.A1 Explains the research cycle.</td>
+</tr>
+<tr>
+<td>CTSS08.B1 Explains and applies the elements of a clinical research question (PICO).</td>
+</tr>
+<tr>
+<td rowspan="9"><strong>CTSS01 / CTSS02 Applies fundamental concepts of biomedical, clinical, public health, epidemiology, social and behavioural sciences to clinical practice / Demonstrates a critical approach to applying new knowledge base to understanding of disease and clinical practice.</strong></td>
+<td>CTSS01.B1 Describes the fundamental concepts of ‘normal’, variance and pathological.</td>
+</tr>
+<tr>
+<td>CTSS01.C1 Describes the principles of pathological processes and how these may present clinically, with common examples.</td>
+</tr>
+<tr>
+<td>CTSS01.D1 Describes fundamental concepts in pharmacology and drug action.</td>
+</tr>
+<tr>
+<td>CTSS01.G1 Explains how social and behavioural responses may influence structure, function and pathology.</td>
+</tr>
+<tr>
+<td>CTSS01.H1 Describes how the descriptive epidemiology of a disease contributes to the diagnostic process.</td>
+</tr>
+<tr>
+<td>CTSS01.I1 Describes how analytic epidemiology contributes to the understanding of disease causes and outcomes in different populations.</td>
+</tr>
+<tr>
+<td>CTSS01.E1 Applies biomedical knowledge to the interpretation of common clinical investigations used to diagnose disease.</td>
+</tr>
+<tr>
+<td>CTSS01.F1 Critiques the evidence for the some currently accepted concepts in biomedical sciences and the explanation for development and treatments of diseases, recognising key knowledge gaps.</td>
+</tr>
+<tr>
+<td>CTSS01.A1 / SEC06.A1 Incorporates knowledge of biomedical, social and behavioural sciences into the management of clinical problems.</td>
+</tr>
+<tr>
+<td rowspan="2"><strong>CTSS04 / CTSS05 Thinks critically and respectfully challenges beliefs and thinking / Effectively communicates scholarly information through written, verbal and visual presentation.</strong></td>
+<td>CTSS04.A1 / SEC03.C1 Demonstrates an understanding of the concepts of "clinical judgement", prior probability, and dealing with uncertainty.</td>
+</tr>
+<tr>
+<td>CTSS04.B1 / SEC02.C1 Considers the roles of scientific evidence and clinical acumen in the development of clinical reasoning skills.</td>
+</tr>
+</tbody>
+</table>
+<h2>Dynamic Learner and Educator:</h2>
+<table class="table table-bordered table-hover table-striped">
+<thead>
+<tr>
+<td>Graduate Attribute</td>
+<td>Learning Outcome</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="2"><strong>DLE01 Is agile, adaptable class="table table-bordered table-hover table-striped" and open to change.</strong></td>
+<td>DLE01.A1 Questions/challenges own assumptions and reasoning using evidence from a variety of reliable sources.</td>
+</tr>
+<tr>
+<td>DLE01.B1 Demonstrates the ability to engage productively with various types of learning activity.</td>
+</tr>
+<tr>
+<td rowspan="2"><strong>DLE02 Supports and contributes to the learning of others.</strong></td>
+<td>DLE02.B1 / PTP02.D1 Identifies one's strengths and limitations, offers and seeks help when required, and responds constructively to feedback, to ensure collaborative learning and continuous improvement.</td>
+</tr>
+<tr>
+<td>DLE02.A1 Can discern, describe, and values the different contributions, perspectives and abilities of self, peers and teachers in a learning context.</td>
+</tr>
+<tr>
+    <td rowspan="2"><strong>DLE03 Is a self-regulated learner that reflects on their own professional practice seeks input from others and implements actions as part of continuous learning.</strong></td>
+<td>DLE03.B1 / PTP06.A1 Reflects on and engages one’s strengths to model collegial relationships, adapting attitudes and behaviours to contribute to a safe and effective learning environment.</td>
+</tr>
+<tr>
+<td>DLE03.A1 Can articulate the role of feedback in learning; seeks, receives, and responds to, feedback to ensure own learning is optimised.</td>
+</tr>
+<tr>
+<td><strong>DLE04 Demonstrates engagement in learning experiences in the context of life-long learning.</strong></td>
+<td>DLE04.A1 Actively participates in and demonstrates preparedness for learning experiences and engages in new learning opportunities with a positive mindset.</td>
+</tr>
+</tbody>
+</table>
+<h2>Kind and Compassionate Professional:</h2>
+<table class="table table-bordered table-hover table-striped">
+<thead>
+<tr>
+<td>Graduate Attribute</td>
+<td>Learning Outcome</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>KCP01 Communicates with clarity and sensitivity in all interactions</strong></td>
+<td>KCP01.A1 Demonstrates sensitivity, flexibility and attentiveness to patients in order to optimise the therapeutic relationship and develop collaborative care goals.</td>
+</tr>
+<tr>
+<td><strong>KCP02 Demonstrates kindness and compassion to others.</strong></td>
+<td>KCP02.A1 Develops literacy and understanding of values and qualities (e.g., kindness, compassion, empathy) that impact care delivery.</td>
+</tr>
+<tr>
+<td rowspan="2"><strong>KCP03 Takes a whole of person, compassionate approach to clinical care across the life course and in a range of settings.</strong></td>
+<td>KCP03.A1 Describes the multiple dimensions of a patient's wellbeing, and the principles of whole of person care.</td>
+</tr>
+<tr>
+<td>KCP03.B1 / PTP03.D1 Identifies the role of the doctor in partnering with the patient in their healthcare experience, supporting transitions between primary, secondary, and tertiary care.</td>
+</tr>
+<tr>
+<td><strong>KCP04 Empowers patients to manage their own health and wellbeing according to individual preferences and capabilities.</strong></td>
+<td>KCP04.A1 Understands the concept of health literacy including knowledge, skills, attitudes and environments.</td>
+</tr>
+<tr>
+<td rowspan="6"><strong>KCP06 Acts in accordance with the fundamental ethical and legal requirements of health professionals.</strong></td>
+<td>KCP06.A1 Identifies and demonstrates ethical qualities for self and those required for the. practice of medicine.</td>
+</tr>
+<tr>
+<td>KCP06.H1 / SEC06.B1 Demonstrates an understanding of the concept and process of shared decision-making, including consent, freedom from coercion and respect for the patient's right to decline recommended therapy.</td>
+</tr>
+<tr>
+<td>KCP06.L1 / SEC09.B1 Demonstrates understanding of the cycle of grief and loss, including reactions to death and dying.</td>
+</tr>
+<tr>
+<td>KCP06.E1 Demonstrates an understanding of common law duty and the concept of medical negligence and its elements.</td>
+</tr>
+<tr>
+<td>KCP06.G1 Understand the concepts of vicarious liability and medical indemnity; and undertake appropriate personal medical indemnity advice/membership; and review annually.</td>
+</tr>
+<tr>
+<td>KCP06.M1 Demonstrate understanding of the PBS Pharmaceutical Benefit Scheme.</td>
+</tr>
+<tr>
+<td rowspan="3"><strong>KCP07 Demonstrates professionalism and leadership in healthcare.</strong></td>
+<td>KCP07.A1 Identifies styles of leadership, and explores factors affecting effective leadership and team dynamics.</td>
+</tr>
+<tr>
+<td>KCP07.B1 Demonstrates knowledge of professionalism, professional standards in the practice of medicine, structures and governance that support professionalism, and the impact of community expectations on standards of care.</td>
+</tr>
+<tr>
+<td>KCP07.C1 Discusses the impact of stress on communication and behaviour and the relevance of this to clinical and interprofessional relationships.</td>
+</tr>
+<tr>
+<td rowspan="2"><strong>KCP08 Demonstrates a commitment to self-care and to protecting patients and others from any risk posed by their own health.</strong></td>
+<td>KCP08.A1 Develops strategies to optimise one's own health.</td>
+</tr>
+<tr>
+<td>KCP08.B1 Outlines factors that influence one's own performance.</td>
+</tr>
+</tbody>
+</table>
+<h2>Partner and Team Player:</h2>
+<table class="table table-bordered table-hover table-striped">
+<thead>
+<tr>
+<td>Graduate Attribute</td>
+<td>Learning Outcome</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PTP01 Collaborates effectively as a member of the healthcare team in the provision of whole person care, health-related education and research.</strong></td>
+<td>PTP01.A1 Describes the role of the medical student and medical practitioner in medical education, healthcare, and society and how this contributes to achieving whole person care across the life course.</td>
+</tr>
+<tr>
+<td rowspan="3"><strong>PTP02 Works effectively as a member of learning, scholarly and research groups, and healthcare teams.</strong></td>
+<td>PTP02.C1 Works productively with peers to promote understanding, manage differences and address conflict to support a safe and effective collaborative learning culture.</td>
+</tr>
+<tr>
+<td>PTP02.A1 Respectfully contributes to group and team function and applies the principles of time management, teamwork, team dynamics and processes to enable effective collaboration in scholarly and learning teams.</td>
+</tr>
+<tr>
+<td>PTP02.B1 Accepts responsibility in learning groups and teams, demonstrates appropriate leadership and followership, completes delegated tasks and proactively seeks help and support when required.</td>
+</tr>
+<tr>
+<td rowspan="3"><strong>PTP03 Partners effectively with a diverse range of people to achieve a healthcare system which accomplishes whole person care.</strong></td>
+<td>PTP03.B1 Identifies a whole person approach to care and can describe the benefits of this approach for patients, doctors, and society.</td>
+</tr>
+<tr>
+<td>PTP03.C1 Describes the principle of goals of care and frameworks used to guide this and applies these principles to clinical case discussion.</td>
+</tr>
+<tr>
+<td>PTP03.A1 Demonstrates basic clinical handover skills, creates simulated medical record notes and referrals, that are accurate, and understandable to peers, academic staff, and clinical supervisors, using formats used in health care settings.</td>
+</tr>
+<tr>
+<td><strong>PTP04 Relates respectfully to patients, colleagues, healthcare team members and others, is mindful of sociocultural diversity and open to different views and perspectives.</strong></td>
+<td>PTP04.B1 Demonstrates congruent and flexible communication within learning and scholarly teams, carefully considering diverse views and perspectives.</td>
+</tr>
+<tr>
+<td><strong>PTP05 Maintains appropriate student, academic, professional and therapeutic relationships.</strong></td>
+<td>PTP05.A1 Strives to engender rapport and trust in interactions with peers, , academic and professional staff, and develops and maintains professional boundaries, privacy and confidentiality.</td>
+</tr>
+<tr>
+<td><strong>PTP06 Contributes to a positive, supportive and collegiate workplace and team culture.</strong></td>
+<td>PTP06.B1 Describes the professional responsibility of caring for one’s peers and supporting them to experience health and wellbeing.</td>
+</tr>
+</tbody>
+</table>
+<h2>Safe and Effective Clinician:</h2>
+<table class="table table-bordered table-hover table-striped">
+<thead>
+<tr>
+<td>Graduate Attribute</td>
+<td>Learning Outcome</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="2"><strong>SEC01 Communicates effectively and with cultural safety.</strong></td>
+<td>SEC01.A1 Demonstrates understanding of the principles of respectful oral communication in a clinical setting, addressing and engaging with people of different ages or cultural, racial and religious backgrounds.</td>
+</tr>
+<tr>
+<td>SEC01.B1 Demonstrates an understanding of the process and importance of informed consent.</td>
+</tr>
+<tr>
+<td rowspan="2"><strong>SEC02 Integrates information from multiple sources including a physical examination, patient history, and the results of appropriately selected investigations.</strong></td>
+<td>SEC02.A1 Recognises the elements of an accurate and organised medical history and demonstrates medical history taking in a simulated setting.</td>
+</tr>
+<tr>
+<td>SEC02.B1 Demonstrates the ability to appropriately undertake basic physical examination techniques.</td>
+</tr>
+<tr>
+<td><strong>SEC03 Demonstrates sound clinical judgement based on the available evidence and recognises ones own limitations of practice.</strong></td>
+<td>SEC03.A1 Demonstrates an understanding of how to integrate foundational evidence-based clinical and biomedical concepts to support clinical decision making.</td>
+</tr>
+<tr>
+<td><strong>SEC04 Performs a range of procedural skills appropriate to the level of a graduating doctor.</strong></td>
+<td>SEC04.A1 Demonstrates familiarity with procedures commonly performed by junior doctors and practise these in a simulated environment.</td>
+</tr>
+<tr>
+<td><strong>SEC05 Demonstrates ability to prescribe medications and administer other therapeutic agents safely effectively and economically using up to date evidence.</strong></td>
+<td>SEC05.A1 Explains the scientific basis, efficacy and adverse effects of common therapeutic interventions.</td>
+</tr>
+<tr>
+<td rowspan="2"><strong>SEC07 Recognises and assesses deteriorating and critically unwell patients who require immediate care. Implements immediate emergency and life supporting care.</strong></td>
+<td>SEC07.A1 Demonstrates a basic understanding of the clinical approach to a patient with a potentially life-threatening illness.</td>
+</tr>
+<tr>
+<td>SEC07.B1 Demonstrates the principles underlying common procedural skills including basic life support and care of the deteriorating patient.</td>
+</tr>
+<tr>
+<td><strong>SEC08 Able to effectively manage patients with multiple comorbidities.</strong></td>
+<td>SEC08.A1 Demonstrates an understanding of associations between diseases, concept of disease risk factors and social determinants of health and the importance of a multidisciplinary approach to patient care.</td>
+</tr>
+<tr>
+<td><strong>SEC09 Demonstrates understanding of the principles of care for patients at the end of their lives with consideration of physical comfort, psychosocial support for the patient and their care givers including when not to intervene.</strong></td>
+<td>SEC09.A1 Demonstrates an understanding that some self-limiting conditions require no intervention and that interventions can cause harm which may outweigh their benefit.</td>
+</tr>
+<tr>
+<td><strong>SEC10 Contributes to clinical care across the life course.</strong></td>
+<td>SEC10.B1 Demonstrates an understanding of the physical, psychological and emotional changes which occur across the life phases and the effect of the normal aging process on physiological function.</td>
+</tr>
+<tr>
+<td><strong>SEC11 Is clear, accurate and appropriate with respect to written and / or electronic documentation.</strong></td>
+<td>SEC11.A1 Demonstrates an understanding of the importance of and legal implications relating to the medical record and patient privacy.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>
