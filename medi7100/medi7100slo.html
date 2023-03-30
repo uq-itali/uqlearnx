@@ -1,0 +1,276 @@
+<!--6 seconds alert-->
+<div class="alert alert-success sticky read-only-alert">
+    <p><strong>Stay on this page for 6 seconds to receive the completion tick</strong>. This page is considered a read only page (if there is video or activity content it is external to the LearnX platform). To have the page ticked in the navbar at the top of screen, you need to stay present on the page for at least 6 seconds, and then click to the next page and the completion tick will appear.</p>
+    <ul class="mb-0">
+        <li><strong>If this page contains video</strong>, it is embedded via other means than the LearnX video component type, and you can watch as much or as little as you would like, it will not affect the completion tick.</li>
+        <li><strong>If the page contains activities</strong>, they are not native LearnX activities or LTI embedded LearnX activities, completing them is your choice, it will not affect the completion tick.</li>
+    </ul>
+</div>
+<script type="text/javascript">
+    var readOnlyAlert = '<div class="alert alert-success sticky read-only-alert">\n<p><strong>Stay on this page for 6 seconds to receive the completion tick</strong>.</p>\n<p>This page is considered a read only page (if there is video or activity content it is external to the LearnX platform). To have the page ticked in the navbar at the top of screen, you need to stay present on the page for at least 6 seconds, and then click to the next page and the completion tick will appear.</p>\n<ul class="mb-0">\<li><strong>If this page contains video</strong>, it is embedded via other means than the LearnX video component type, and you can watch as much or as little as you would like, it will not affect the completion tick.</li>\n<li><strong>If the page contains activities</strong>, they are not native LearnX activities or LTI embedded LearnX activities, completing them is your choice, it will not affect the completion tick.</li>\n</ul>\n</div>\n';
+    var activitiesAlert = '<div class="alert alert-success sticky activities-alert">\n<p><strong>Complete and submit to all activities on this page to receive the completion tick</strong>.</p>\n<p>This page contains LearnX problems (MCQ, fill in the blank etc.) or H5P material linked via LTI. Complete all the activities and then click to the next page and the completion tick will appear.</p>\n<p class="mb-0"><strong>If this page contains video</strong>, it is embedded via other means than the LearnX video component type, and you can watch as much or as little as you would like, it will not affect the completion tick.</p>\n</div>\n';
+    var videoAlert = '<div class="alert alert-success sticky video-alert">\n<p><strong>For each video on this page you must watch 95% or more of each video on this page to receive the completion tick</strong>.</p>\n<p>This page has a LearnX video component type present. You need to watch 95% of the video, and then click to the next page and the completion tick will appear. Remember you can use the speed control to watch the video at a faster pace than normal. To calculate the time required - (mins x 60 + any secs) x 0.95. E.g. 5mins 32secs = (5 x 60 + 32) x 0.95 = 332 x 0.95 = 315.4 secs / 60 = 5mins 16secs to get to the required 95%. Once this is completed, click to go to the next page and the completion tick will appear.</p>\n<p class="mb-0"><strong>If the page contains activities</strong>, they are not native LearnX activities or LTI embedded LearnX activities, completing them is your choice, it will not affect the completion tick.</p>\n</div>';
+    var videoPlusActivitiesAlert = '<div class="alert alert-success sticky video-plus-activities-alert">\n<p><strong>Complete and submit all activities, <strong>and</strong> watch 95% or more of each video on this page to receive the completion tick</strong>.</p>\n<p class="mb-0">This page contains both videos and activities that are connected to the LearnX platform. Once you have completed all activities and watched 95% or more of each video you can click to go to the next page and the completion tick will appeaar.</p>\n</div>';
+    var videoAlert = $('.video-alert').html();
+    </script>
+<!--End 6 seconds alert-->
+<!--Activities alert-->
+<div class="alert alert-success sticky activities-alert">
+    <p><strong>Complete and submit to all activities on this page to receive the completion tick</strong>. This page contains LearnX problems (MCQ, fill in the blank etc.) or H5P material linked via LTI. Complete all the activities and then click to the next page and the completion tick will appear.</p>
+    <p class="mb-0"><strong>If this page contains video</strong>, it is embedded via other means than the LearnX video component type, and you can watch as much or as little as you would like, it will not affect the completion tick.</p>
+</div>
+<!--End activities alert-->
+<!--Video alert-->
+<div class="alert alert-success sticky video-alert">
+    <p><strong>For each video on this page you must watch 95% or more of each video on this page to receive the completion tick</strong>.</p>
+    <p>This page has a LearnX video component type present. You need to watch 95% of the video, and then click to the next page and the completion tick will appear. Remember you can use the speed control to watch the video at a faster pace than normal. To calculate the time required - (mins x 60 + any secs) x 0.95. E.g. 5mins 32secs = (5 x 60 + 32) x 0.95 = 332 x 0.95 = 315.4 secs / 60 = 5mins 16secs to get to the required 95%. Once this is completed, click to go to the next page and the completion tick will appear.</p>
+    <p class="mb-0"><strong>If the page contains activities</strong>, they are not native LearnX activities or LTI embedded LearnX activities, completing them is your choice, it will not affect the completion tick.</p>
+</div>
+<!--End video alert-->
+<!--Video plus activities alert-->
+<div class="alert alert-success sticky video-plus-activities-alert">
+    <p><strong>Complete and submit all activities, <Strong>and</strong> watch 95% or more of each video on this page to receive the completion tick</strong>.</p>
+    <p class="mb-0">This page contains both videos and activities that are connected to the LearnX platform. Once you have completed all activities and watched 95% or more of each video you can click to go to the next page and the completion tick will appeaar.</p>
+</div>
+<!--End video alert-->
+
+<script>
+// ==UserScript==
+// @name         Test Alerts
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        https://learnx.uq.edu.au/courses/course-v1:UQ+MEDI7100+7320_26088/courseware/19841386de3543db90a000ebf9fba9fd/2233b87f16dc44349ab6f6f8b9a471d0/1?activate_block_id=block-v1%3AUQ%2BMEDI7100%2B7320_26088%2Btype%40vertical%2Bblock%40d6ddbe9b95d54fa08eb9ca160ead04de
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=uq.edu.au
+// @grant        none
+// ==/UserScript==
+
+window.addEventListener('load',function(){
+    /*On initial load, create an empty div for the alerts to sit in.*/
+   $('.sequence-nav').after('<div id="pageStyleAlert"></div>');
+
+   /*HTML for an alert when a page is read-only. That is, it contains no activities or videos.*/
+   var readOnlyAlert = '<div class="alert alert-info border border-3 border-info  rounded read-only-alert">\n<h4 class="alert-heading text-center"><i class="fa-solid fa-book"></i> Read Only Page</h4>\n<p class="text-center"><strong>Stay on this page for 6 seconds to receive the completion tick</strong>.</p>\n<p>This page is considered a read only page (if there is video or activity content it is external to the LearnX platform). To have the page ticked in the navbar at the top of screen, you need to stay present on the page for at least 6 seconds, and then click to the next page and the completion tick will appear.</p>\n<ul class="mb-0">\<li><strong>If this page contains video</strong>, it is embedded via other means than the LearnX video component type, and you can watch as much or as little as you would like, it will not affect the completion tick.</li>\n<li><strong>If the page contains activities</strong>, they are not native LearnX activities or LTI embedded LearnX activities, completing them is your choice, it will not affect the completion tick.</li>\n</ul>\n<div class="row">\n<div class="col-lg">\n<button id="readOnlyAlertClose" class="btn btn-success btn-lg d-block mx-auto w-50">Close this alert</button>\n</div>\n<div class="col-lg">\n<button id="readOnlyAlertCloseForSession" class="btn btn-danger btn-lg d-block mx-auto w-50">Close this alert for this session</button>\n</div>\n</div>\n</div>\n';
+
+   /*HTML for an alert when a page contains activities only.*/
+   var activitiesAlert = '<div class="alert alert-primary border border-3 border-primary rounded activities-alert">\n<h4 class="alert-heading text-center"><i class="fa-solid fa-pen-to-square"></i> Activities/Problems Page</h4>\n<p class="text-center"><strong>Complete and submit to all activities on this page to receive the completion tick</strong>.</p>\n<p>This page contains LearnX problems (MCQ, fill in the blank etc.) or H5P material linked via LTI. Complete all the activities and then click to the next page and the completion tick will appear.</p>\n<p class="mb-0"><strong>If this page contains video</strong>, it is embedded via other means than the LearnX video component type, and you can watch as much or as little as you would like, it will not affect the completion tick.</p>\n<div class="row">\n<div class="col-lg">\n<button id="activitiesAlertClose" class="btn btn-success btn-lg d-block mx-auto w-50">Close this alert</button>\n</div>\n<div class="col-lg">\n<button id="activitiesAlertCloseForSession" class="btn btn-danger btn-lg d-block mx-auto w-50">Close this alert for this session</button>\n</div>\n</div>\n</div>\n\n</div>\n';
+
+   /*HTML for an alert when a page contains videos only.*/
+   var videoAlert = '<div class="alert alert-dark border border-3 border-dark rounded video-alert">\n<h4 class="alert-heading text-center"><i class="fa-solid fa-film"></i> Video Page</h4>\n<p class="text-center"><strong>For each video on this page you must watch 95% or more of each video on this page to receive the completion tick</strong>.</p>\n<p>This page has a LearnX video component type present. You need to watch 95% of the video, and then click to the next page and the completion tick will appear. Remember you can use the speed control to watch the video at a faster pace than normal. To calculate the time required - (mins x 60 + any secs) x 0.95. E.g. 5mins 32secs = (5 x 60 + 32) x 0.95 = 332 x 0.95 = 315.4 secs / 60 = 5mins 16secs to get to the required 95%. Once this is completed, click to go to the next page and the completion tick will appear.</p>\n<p class="mb-0"><strong>If the page contains activities</strong>, they are not native LearnX activities or LTI embedded LearnX activities, completing them is your choice, it will not affect the completion tick.</p>\n\n<div class="row">\n<div class="col-lg">\n<button id="videoAlertClose" class="btn btn-success btn-lg d-block mx-auto w-50">Close this alert</button>\n</div>\n<div class="col-lg">\n<button id="videoAlertCloseForSession" class="btn btn-danger btn-lg d-block mx-auto w-50">Close this alert for this session</button>\n</div>\n</div>\n</div>\n</div>';
+
+   /*HTML for an alert when a page contains both videos and activities.*/
+   var videoPlusActivitiesAlert = '<div class="alert alert-uq border border-3 border-uq rounded video-plus-activities-alert">\n<h4 class="alert-heading text-center"><i class="fa-solid fa-pen-to-square"></i> + <i class="fa-solid fa-film"></i> Problem + Videos Page</h4>\n<p class="text-center"><strong>Complete and submit all activities, </strong>and<strong> watch 95% or more of each video on this page to receive the completion tick</strong>.</p>\n<p class="mb-0">This page contains both videos and activities that are connected to the LearnX platform. Once you have completed all activities and watched 95% or more of each video you can click to go to the next page and the completion tick will appear.</p>\n\n<div class="row">\n<div class="col-lg">\n<button id="videoPlusActivitiesAlertClose" class="btn btn-success btn-lg d-block mx-auto w-50">Close this alert</button>\n</div>\n<div class="col-lg">\n<button id="videoPlusActivitiesAlertCloseForSession" class="btn btn-danger btn-lg d-block mx-auto w-50">Close this alert for this session</button>\n</div>\n</div>\n</div>\n</div>';
+
+   /*Tell me the number of problems, videos and LTI Consumer links that are on the page.*/
+   var problemClass = $('.problem').length;
+   var videoClass = $('.video').length;
+   var ltiClass = $('.lti_consumer').length;
+
+   /*Cater for all combinations of content and display the relative completion alert*/
+   if(videoClass != 0 && problemClass != 0 && ltiClass != 0){
+    alert('videos, problems and LTI present');
+    $('div#pageStyleAlert').html(videoPlusActivitiesAlert);
+}
+else if(videoClass != 0 && problemClass != 0){
+    alert('video and problems present')
+    $('div#pageStyleAlert').html(videoPlusActivitiesAlert)
+}
+else if(videoClass != 0 && ltiClass != 0){
+    alert('videos and LTI present')
+    $('div#pageStyleAlert').html(videoPlusActivitiesAlert)
+}
+else if(ltiClass != 0 && problemClass != 0){
+    alert('lti and problems present')
+    $('div#pageStyleAlert').html(activitiesAlert)
+}
+else if(videoClass != 0){
+    alert('video present')
+    $('div#pageStyleAlert').html(videoAlert)
+}
+else if(problemClass != 0){
+    alert('problem present')
+    $('div#pageStyleAlert').html(activitiesAlert)
+}
+else if(ltiClass != 0){
+    alert('LTI present')
+    $('div#pageStyleAlert').html(activitiesAlert)
+}
+else{
+    alert('read only page')
+    $('div#pageStyleAlert').html(readOnlyAlert)
+}
+
+/*When a user clicks the close button remove the relative alert.*/
+$('#readOnlyAlertClose').on('click',function(){
+    $('.read-only-alert').remove();
+});
+$('#activitiesAlertClose').on('click',function(){
+    $('.activities-alert').remove();
+});
+$('#videoAlertClose').on('click',function(){
+    $('.video-alert').remove();
+});
+$('#videoPlusActivitiesAlertClose').on('click',function(){
+    $('.video-plus-activities-alert').remove();
+});
+
+/*Check to see if a user has clicked the close for session button on any of the alerts.*/
+if(localStorage.getItem("readOnlyAlertCloseForSession") !== "true"){
+    //do nothing
+}
+else{
+    $('.read-only-alert').remove();
+}
+$('#readOnlyAlertCloseForSession').on('click',function(){
+    $('.read-only-alert').remove();
+    localStorage.setItem("readOnlyAlertCloseForSession","true")
+})
+if(localStorage.getItem("activitiesAlertCloseForSession") !== "true"){
+    //do nothing
+}
+else{
+    $('.activities-alert').remove();
+}
+$('#activitiesAlertCloseForSession').on('click',function(){
+    $('.activities-alert').remove();
+    localStorage.setItem("activitiesAlertCloseForSession","true")
+})
+if(localStorage.getItem("videoAlertCloseForSession") !== "true"){
+    //do nothing
+}
+else{
+    $('.video-alert').remove();
+}
+$('#videoAlertCloseForSession').on('click',function(){
+    $('.video-alert').remove();
+    localStorage.setItem("videoAlertCloseForSession","true")
+})
+if(localStorage.getItem("videoPlusActivitiesAlertCloseForSession") !== "true"){
+    //do nothing
+}
+else{
+    $('.video-plus-activities-alert').remove();
+}
+$('#videoPlusActivitiesAlertCloseForSession').on('click',function(){
+    $('.video-plus-activities-alert').remove();
+    localStorage.setItem("videoPlusActivitiesAlertCloseForSession","true")
+})
+/*Redo the function when a user clicks on the sequence nav at the top or bottom of screen.*/
+$('div.sequence-nav, nav.sequence-bottom').on('click', function(event){
+    /*Check to see if the empty div is at the top of screen. If it is there, do nothing, if not, create it.*/
+    if($('.pageStyleAlert').length != 0){
+        $('.sequence-nav').after('<div id="pageStyleAlert"></div>');}
+        else{
+            //do nothing
+        }
+        
+        /*HTML for an alert when a page is read-only. That is, it contains no activities or videos.*/
+        var readOnlyAlert = '<div class="alert alert-info border border-3 border-info  rounded read-only-alert">\n<h4 class="alert-heading text-center"><i class="fa-solid fa-book"></i> Read Only Page</h4>\n<p class="text-center"><strong>Stay on this page for 6 seconds to receive the completion tick</strong>.</p>\n<p>This page is considered a read only page (if there is video or activity content it is external to the LearnX platform). To have the page ticked in the navbar at the top of screen, you need to stay present on the page for at least 6 seconds, and then click to the next page and the completion tick will appear.</p>\n<ul class="mb-0">\<li><strong>If this page contains video</strong>, it is embedded via other means than the LearnX video component type, and you can watch as much or as little as you would like, it will not affect the completion tick.</li>\n<li><strong>If the page contains activities</strong>, they are not native LearnX activities or LTI embedded LearnX activities, completing them is your choice, it will not affect the completion tick.</li>\n</ul>\n<div class="row">\n<div class="col-lg">\n<button id="readOnlyAlertClose" class="btn btn-success btn-lg d-block mx-auto w-50">Close this alert</button>\n</div>\n<div class="col-lg">\n<button id="readOnlyAlertCloseForSession" class="btn btn-danger btn-lg d-block mx-auto w-50">Close this alert for this session</button>\n</div>\n</div>\n</div>\n';
+        
+        /*HTML for an alert when a page contains activities only.*/
+        var activitiesAlert = '<div class="alert alert-primary border border-3 border-primary rounded activities-alert">\n<h4 class="alert-heading text-center"><i class="fa-solid fa-pen-to-square"></i> Activities/Problems Page</h4>\n<p class="text-center"><strong>Complete and submit to all activities on this page to receive the completion tick</strong>.</p>\n<p>This page contains LearnX problems (MCQ, fill in the blank etc.) or H5P material linked via LTI. Complete all the activities and then click to the next page and the completion tick will appear.</p>\n<p class="mb-0"><strong>If this page contains video</strong>, it is embedded via other means than the LearnX video component type, and you can watch as much or as little as you would like, it will not affect the completion tick.</p>\n<div class="row">\n<div class="col-lg">\n<button id="activitiesAlertClose" class="btn btn-success btn-lg d-block mx-auto w-50">Close this alert</button>\n</div>\n<div class="col-lg">\n<button id="activitiesAlertCloseForSession" class="btn btn-danger btn-lg d-block mx-auto w-50">Close this alert for this session</button>\n</div>\n</div>\n</div>\n\n</div>\n';
+        
+        /*HTML for an alert when a page contains videos only.*/
+        var videoAlert = '<div class="alert alert-dark border border-3 border-dark rounded video-alert">\n<h4 class="alert-heading text-center"><i class="fa-solid fa-film"></i> Video Page</h4>\n<p class="text-center"><strong>For each video on this page you must watch 95% or more of each video on this page to receive the completion tick</strong>.</p>\n<p>This page has a LearnX video component type present. You need to watch 95% of the video, and then click to the next page and the completion tick will appear. Remember you can use the speed control to watch the video at a faster pace than normal. To calculate the time required - (mins x 60 + any secs) x 0.95. E.g. 5mins 32secs = (5 x 60 + 32) x 0.95 = 332 x 0.95 = 315.4 secs / 60 = 5mins 16secs to get to the required 95%. Once this is completed, click to go to the next page and the completion tick will appear.</p>\n<p class="mb-0"><strong>If the page contains activities</strong>, they are not native LearnX activities or LTI embedded LearnX activities, completing them is your choice, it will not affect the completion tick.</p>\n\n<div class="row">\n<div class="col-lg">\n<button id="videoAlertClose" class="btn btn-success btn-lg d-block mx-auto w-50">Close this alert</button>\n</div>\n<div class="col-lg">\n<button id="videoAlertCloseForSession" class="btn btn-danger btn-lg d-block mx-auto w-50">Close this alert for this session</button>\n</div>\n</div>\n</div>\n</div>';
+        
+        /*HTML for an alert when a page contains both videos and activities.*/
+        var videoPlusActivitiesAlert = '<div class="alert alert-uq border border-3 border-uq rounded video-plus-activities-alert">\n<h4 class="alert-heading text-center"><i class="fa-solid fa-pen-to-square"></i> + <i class="fa-solid fa-film"></i> Problem + Videos Page</h4>\n<p class="text-center"><strong>Complete and submit all activities, </strong>and<strong> watch 95% or more of each video on this page to receive the completion tick</strong>.</p>\n<p class="mb-0">This page contains both videos and activities that are connected to the LearnX platform. Once you have completed all activities and watched 95% or more of each video you can click to go to the next page and the completion tick will appear.</p>\n\n<div class="row">\n<div class="col-lg">\n<button id="videoPlusActivitiesAlertClose" class="btn btn-success btn-lg d-block mx-auto w-50">Close this alert</button>\n</div>\n<div class="col-lg">\n<button id="videoPlusActivitiesAlertCloseForSession" class="btn btn-danger btn-lg d-block mx-auto w-50">Close this alert for this session</button>\n</div>\n</div>\n</div>\n</div>';
+
+        /*Tell me the number of problems, videos and LTI Consumer links on the page.*/
+        var problemClass = $('.problem').length
+        var videoClass = $('.video').length
+        var ltiClass = $('.lti_consumer').length
+
+        /*Catering for all combinations of content types and injecting the correct alert into the div at the top of screen.*/
+        if(videoClass != 0 && problemClass != 0 && ltiClass != 0){
+            alert('videos, problems and LTI present')
+            $('div#pageStyleAlert').html(videoPlusActivitiesAlert)
+        }
+        else if(videoClass != 0 && problemClass != 0){
+            alert('video and problems present')
+            $('div#pageStyleAlert').html(videoPlusActivitiesAlert)
+        }
+        else if(videoClass != 0 && ltiClass != 0){
+            alert('videos and LTI present')
+            $('div#pageStyleAlert').html(videoPlusActivitiesAlert)
+        }
+        else if(ltiClass != 0 && problemClass != 0){
+            alert('lti and problems present')
+            $('div#pageStyleAlert').html(activitiesAlert)
+        }
+        else if(videoClass != 0){
+            alert('video present')
+            $('div#pageStyleAlert').html(videoAlert)
+        }
+        else if(problemClass != 0){
+            alert('problem present')
+            $('div#pageStyleAlert').html(activitiesAlert)
+        }
+        else if(ltiClass != 0){
+            alert('LTI present')
+            $('div#pageStyleAlert').html(activitiesAlert)
+        }
+        else{
+            alert('read only page')
+            $('div#pageStyleAlert').html(readOnlyAlert)
+        }
+
+        /*When a user clicks the Close button remove the alert.*/
+        $('#readOnlyAlertClose').on('click',function(){
+            $('.read-only-alert').remove();
+        });
+        $('#activitiesAlertClose').on('click',function(){
+            $('.activities-alert').remove();
+        });
+        $('#videoAlertClose').on('click',function(){
+            $('.video-alert').remove();
+        });
+        $('#videoPlusActivitiesAlertClose').on('click',function(){
+            $('.video-plus-activities-alert').remove();
+        });
+
+        /*Check to see if a user has clicked the close for session button on any of the alerts.*/
+        if(localStorage.getItem("readOnlyAlertCloseForSession") !== "true"){
+            //do nothing
+        }
+        else{
+            $('.read-only-alert').remove();
+        }
+        $('#readOnlyAlertCloseForSession').on('click',function(){
+            $('.read-only-alert').remove();
+            localStorage.setItem("readOnlyAlertCloseForSession","true")
+        })
+        if(localStorage.getItem("activitiesAlertCloseForSession") !== "true"){
+            //do nothing
+        }
+        else{
+            $('.activities-alert').remove();
+        }
+        $('#activitiesAlertCloseForSession').on('click',function(){
+            $('.activities-alert').remove();
+            localStorage.setItem("activitiesAlertCloseForSession","true")
+        })
+        if(localStorage.getItem("videoAlertCloseForSession") !== "true"){
+            //do nothing
+        }
+        else{
+            $('.video-alert').remove();
+        }
+        $('#videoAlertCloseForSession').on('click',function(){
+            $('.video-alert').remove();
+            localStorage.setItem("videoAlertCloseForSession","true")
+        })
+        if(localStorage.getItem("videoPlusActivitiesAlertCloseForSession") !== "true"){
+            //do nothing
+        }
+        else{
+            $('.video-plus-activities-alert').remove();
+        }
+        $('#videoPlusActivitiesAlertCloseForSession').on('click',function(){
+            $('.video-plus-activities-alert').remove();
+            localStorage.setItem("videoPlusActivitiesAlertCloseForSession","true")
+        });
+    });
+});   
+</script>
