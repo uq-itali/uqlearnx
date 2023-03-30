@@ -817,22 +817,31 @@ function makeTable(){
             accCode += plusDrawer10 += accClose;
             break;    
         }    
-        $( "#drawerNumber" ).change(function() {
-            var max = parseInt($(this).attr('max'));
-            var min = parseInt($(this).attr('min'));
-            if ($(this).val() > max)
+        $("#drawerNumber").change(function() {
+            minMax();
+        })
+        function minMax(){
+            var max = parseInt($("#drawerNumber").attr('max'));
+            var min = parseInt($("#drawerNumber").attr('min'));
+            if ($("#drawerNumber").val() > max)
             {
-                alert('The maximum number of drawers you can have is 10.')
-                $(this).val(max);
+                Swal.fire({
+                    icon: 'error',
+                    title: '<div class="text-center">Maximum 10 Drawers</div>',
+                    text: 'The maximum number of drawers you can have is 10.'})
+                $("#drawerNumber").val(max);
                 generateAccCode();
             }
-            else if ($(this).val() < min)
+            else if ($("#drawerNumber").val() < min)
             {
-                alert('The minimum number of drawers you can have is 3.')
-                $(this).val(min);
+                Swal.fire({
+                    icon: 'error',
+                    title: '<div class="text-center">Minimum 3 Drawers</div>',
+                    text: 'The minimum number of drawers you can have is 3.'})
+                $("#drawerNumber").val(min);
                 generateAccCode();
             }       
-          }); 
+          }; 
     var accFinalCode = accResizedHead + accCode;
     $('#accFinalCode').val(accFinalCode);
     $('div#demo').html(accFinalCode);
