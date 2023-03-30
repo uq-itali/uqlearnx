@@ -526,20 +526,22 @@ function generateAlertCode() {
             $('div#demo').html(alertFinalCode);
         }
 }
-function generateTooltipCode(){  
+function generateTooltipCode(){
+    setTimeout(function(){
         $('[data-bs-toggle="tooltip"]').tooltip();
-        var tooltipPosition = $('input[name="tooltipPosition"]:checked').val();
-        var tooltipText = $('#tooltipText').val();
-        if(tooltipText !== ''){
-            tooltipText = tooltipText;
-        }
-        else{
-            tooltipText = tooltipPlaceholderText;
-        }
-        var tooltipFinalCode = '<span data-bs-toggle=\"tooltip\" data-bs-placement=\"' + tooltipPosition + '\" data-bs-title=\"' + tooltipText + '\"><i class=\"fa fa-question-circle text-success\" aria-hidden=\"true\"></i></span\>';
-        $('#tooltipFinalCode').val(tooltipFinalCode);
-        $('div#demo').html(tooltipFinalCode);
+    },200)
+    var tooltipPosition = $('input[name="tooltipPosition"]:checked').val();
+    var tooltipText = $('#tooltipText').val();
+    if(tooltipText !== ''){
+        tooltipText = tooltipText;
     }
+    else{
+        tooltipText = tooltipPlaceholderText;
+    }
+    var tooltipFinalCode = '<span data-bs-toggle=\"tooltip\" data-bs-html="true" data-bs-placement=\"' + tooltipPosition + '\" data-bs-title=\"' + tooltipText + '\"><i class=\"fa fa-question-circle text-success\" aria-hidden=\"true\"></i></span\>';
+    $('#tooltipFinalCode').val(tooltipFinalCode);
+    $('div#demo').html(tooltipFinalCode);
+}
 function generateTableCode(){
     var tableHeadingText = $('#tableHeadingText').val();
     var tableHeadSize = $('input[name="tableHeadSize"]:checked').val();

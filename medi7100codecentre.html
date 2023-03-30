@@ -153,23 +153,8 @@
             setup: function (ed) {
                 ed.on('keyup', function (e) {
                     var tinyTextimg = tinymce.get("tinyMCEimg").getContent();
-                    var activeBtn = $('button.active').attr('id')
-                    console.log('Editor contents was modified. Contents: ' + ed.getContent());
-                    if(activeBtn == 'imgBuilderBtn') {
-                        generateImgTextCode();
-                    }
-                    else if(activeBtn == 'vidBuilderBtn') {
-                        generateVidTextCode();
-                    }
-                    else if(activeBtn == 'btnBuilderBtn') {
-                        generateBtnCode();
-                    }
-                    else if(activeBtn == 'alertBuilderBtn'){
-                        generateAlertCode();
-                    }
-                    else if(activeBtn == 'tableBuilderBtn'){
-						generateTableCode();
-					}
+                    activeBtn();
+                    console.log('Editor contents was modified. Contents: ' + ed.getContent());   
                 });
             }
         });
@@ -185,23 +170,8 @@
             setup: function (ed) {
                 ed.on('keyup', function (e) {
                     var tinyTextCaption = tinymce.get("tinyMCEcaption").getContent();
-                    var activeBtn = $('button.active').attr('id')
-                    console.log('Editor contents was modified. Contents: ' + ed.getContent());
-                    if(activeBtn == 'imgBuilderBtn') {
-                        generateImgTextCode();
-                    }
-                    else if(activeBtn == 'vidBuilderBtn') {
-                        generateVidTextCode();
-                    }
-                    else if(activeBtn == 'btnBuilderBtn') {
-                        generateBtnCode();
-                    }
-                    else if(activeBtn == 'alertBuilderBtn'){
-                        generateAlertCode();
-                    }
-                    else if(activeBtn == 'tableBuilderBtn'){
-						generateTableCode();
-					}
+                    activeBtn();
+                    console.log('Editor contents was modified. Contents: ' + ed.getContent());   
                 });
             }
         });
@@ -228,23 +198,8 @@
             setup: function (ed) {
                 ed.on('keyup', function (e) {
                     var tinyTextvid = tinymce.get("tinyMCEvid").getContent();
-                    var activeBtn = $('button.active').attr('id')
-                    console.log('Editor contents was modified. Contents: ' + ed.getContent());
-                    if(activeBtn == 'imgBuilderBtn') {
-                        generateImgTextCode();
-                    }
-                    else if(activeBtn == 'vidBuilderBtn') {
-                        generateVidTextCode();
-                    }
-                    else if(activeBtn == 'btnBuilderBtn') {
-                        generateBtnCode();
-                    }
-                    else if(activeBtn == 'alertBuilderBtn'){
-                        generateAlertCode();
-                    }
-                    else if(activeBtn == 'tableBuilderBtn'){
-						generateTableCode();
-					}
+                    activeBtn();
+                    console.log('Editor contents was modified. Contents: ' + ed.getContent());   
                 });
             }
         });
@@ -271,23 +226,8 @@
             setup: function (ed) {
                 ed.on('keyup', function (e) {
                     var tinyTextalert = tinymce.get("tinyMCEalert").getContent();
-                    var activeBtn = $('button.active').attr('id')
-                    console.log('Editor contents was modified. Contents: ' + ed.getContent());
-                    if(activeBtn == 'imgBuilderBtn') {
-                        generateImgTextCode();
-                    }
-                    else if(activeBtn == 'vidBuilderBtn') {
-                        generateVidTextCode();
-                    }
-                    else if(activeBtn == 'btnBuilderBtn') {
-                        generateBtnCode();
-                    }
-                    else if(activeBtn == 'alertBuilderBtn'){
-                        generateAlertCode();
-                    }
-                    else if(activeBtn == 'tableBuilderBtn'){
-						generateTableCode();
-					}
+                    activeBtn();
+                    console.log('Editor contents was modified. Contents: ' + ed.getContent());   
                 });
             }
         });
@@ -304,23 +244,8 @@
             setup: function (ed) {
                 ed.on('keyup', function (e) {
                     var tinyTextCitation = tinymce.get("tinyMCEcitation").getContent();
-                    var activeBtn = $('button.active').attr('id')
-                    console.log('Editor contents was modified. Contents: ' + ed.getContent());
-                    if(activeBtn == 'imgBuilderBtn') {
-                        generateImgTextCode();
-                    }
-                    else if(activeBtn == 'vidBuilderBtn') {
-                        generateVidTextCode();
-                    }
-                    else if(activeBtn == 'btnBuilderBtn') {
-                        generateBtnCode();
-                    }
-                    else if(activeBtn == 'alertBuilderBtn'){
-                        generateAlertCode();
-                    }
-                    else if(activeBtn == 'tableBuilderBtn'){
-						generateTableCode();
-					}
+                    activeBtn();
+                    console.log('Editor contents was modified. Contents: ' + ed.getContent());   
                 });
             }
         });
@@ -347,23 +272,8 @@
             setup: function (ed) {
                 ed.on('keyup', function (e) {
                     var tinyMCEtable = tinymce.get("tinyMCEtable").getContent();
-                    var activeBtn = $('button.active').attr('id')
+                    activeBtn();
                     console.log('Editor contents was modified. Contents: ' + ed.getContent());
-                    if(activeBtn == 'imgBuilderBtn') {
-                        generateImgTextCode();
-                    }
-                    else if(activeBtn == 'vidBuilderBtn') {
-                        generateVidTextCode();
-                    }
-                    else if(activeBtn == 'btnBuilderBtn') {
-                        generateBtnCode();
-                    }
-                    else if(activeBtn == 'alertBuilderBtn'){
-                        generateAlertCode();
-                    }
-					else if(activeBtn == 'tableBuilderBtn'){
-						generateTableCode();
-					}
                 });
                 ed.on('paste', function(e) {
                     setTimeout(function(){
@@ -407,29 +317,36 @@
             },
             setup: function (ed) {
                 ed.on('keyup', function (e) {
-                    var activeBtn = $('button.active').attr('id')
-                    console.log('Editor contents was modified. Contents: ' + ed.getContent());
-                    if(activeBtn == 'imgBuilderBtn') {
-                        generateImgTextCode();
-                    }
-                    else if(activeBtn == 'vidBuilderBtn') {
-                        generateVidTextCode();
-                    }
-                    else if(activeBtn == 'btnBuilderBtn') {
-                        generateBtnCode();
-                    }
-                    else if(activeBtn == 'alertBuilderBtn'){
-                        generateAlertCode();
-                    }
-					else if(activeBtn == 'tableBuilderBtn'){
-						generateTableCode();
-					}
-                    else if(activeBtn == 'accBuilderBtn'){
-						generateAccCode();
-					}
+                    activeBtn();
+                    console.log('Editor contents was modified. Contents: ' + ed.getContent());       
                 });
             }
         });
+        function activeBtn(){
+            var activeBtn = $('button.active').attr('id')
+            console.log('Editor contents was modified. Contents: ' + ed.getContent());
+            if(activeBtn == 'imgBuilderBtn') {
+                generateImgTextCode();
+            }
+            else if(activeBtn == 'vidBuilderBtn') {
+                generateVidTextCode();
+            }
+            else if(activeBtn == 'btnBuilderBtn') {
+                generateBtnCode();
+            }
+            else if(activeBtn == 'alertBuilderBtn'){
+                generateAlertCode();
+            }
+            else if(activeBtn == 'tooltipBuilderBtn'){
+                generateTooltipCode();
+            }
+            else if(activeBtn == 'tableBuilderBtn'){
+                generateTableCode();
+            }
+            else if(activeBtn == 'accBuilderBtn'){
+                generateAccCode();
+            }
+        }
     </script>
     <!--Setup page variables-->
     <script type="text/javascript">
@@ -1774,7 +1691,7 @@
                                     <label class="form-check-label" for="tooltipPosition4">Left</label>
                                 </div>
                                 <h5 class="font-weight-bold mt-3">Write your tooltip text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear when a user hovers over this tooltip icon." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
-                                <textarea class="border border-dark rounded w-100" rows="3" maxlength="200" id="tooltipText" onkeyup=generateTooltipCode()></textarea>
+                                <textarea class="border border-dark rounded w-100" rows="3" maxlength="200" id="tooltipText" onkeyup="generateTooltipCode()"></textarea>
                             </div>
                         </div>
                     </div>
@@ -1962,7 +1879,7 @@
              <!--Start accordion generator-->
              <div class="tab-pane fade" id="buildAcc" role="tabpanel">
                 <div class="row">
-                    <div class="col-lg">
+                    <div class="col-lg-6">
                         <div class="alert alert-danger border border-3 border-danger rounded mx-auto d-block accAlert">
                             <h3 class="text-center"><i class="fa-solid fa-circle-exclamation"></i> Stop and Read! How and when to use accordions</h3>
                             <p>Accordions <strong>should</strong> be used:</p>
@@ -2078,7 +1995,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="sticky-top" style="top:1rem;">
-                            <h5 class="font-weight-bold">Number of drawers<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Number of accordion drawers. Minimum 3. Maximum 10. Use the plus/minus controls or type a number into the input box.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                            <h5 class="font-weight-bold mt-3">Number of drawers<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Number of accordion drawers. Minimum 3. Maximum 10. Use the plus/minus controls or type a number into the input box.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                             <div class="input-group inline-group mx-auto" style="max-width: 50%">
                                 <div class="input-group-prepend my-auto">
                                   <button onclick="document.getElementById('drawerNumber').stepDown();generateAccCode()" class="btn btn-danger btn-minus" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Min 3">
