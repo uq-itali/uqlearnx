@@ -880,28 +880,36 @@
                                     <input class="form-check-input" name="imagePosition" id="imagePosition3" type="radio" value="floatRight">
                                     <label class="form-check-label" for="imagePosition3">Float right/text wrap</label>
                                 </div>
-                                <hr>
-                                <h5 class="font-weight-bold mt-3">Align text vertically<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your image on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                                <div class="form-check form-check-inline" id="alignTextVert" onchange="generateImgTextCode()">
-                                    <input class="form-check-input" name="alignTextVert" id="alignTextVert1" type="radio" value="" checked>
-                                    <label class="form-check-label" for="alignTextVert1">Top</label>
-                                </div>
-                                <div class="form-check form-check-inline" id="alignTextVert" onchange="generateImgTextCode()">
-                                    <input class="form-check-input" name="alignTextVert" id="alignTextVert2" type="radio" value=" my-auto" >
-                                    <label class="form-check-label" for="alignTextVert2">Centre</label>
+                                <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
+                                    <input class="form-check-input" name="imagePosition" id="imagePosition4" type="radio" value="imgOnly">
+                                    <label class="form-check-label" for="imagePosition4">Image only</label>
                                 </div>
                                 <hr>
-                                <h5 class="font-weight-bold mt-3">Align image vertically<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your image on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                                <div class="form-check form-check-inline" id="alignImgVert" onchange="generateImgTextCode()">
-                                    <input class="form-check-input" name="alignImgVert" id="alignImgVert1" type="radio" value="" checked>
-                                    <label class="form-check-label" for="alignImgVert1">Top</label>
+                                <div id="imgTextAlign" class="fade show">
+                                    <h5 class="font-weight-bold mt-3">Align text vertically<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your image on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                    <div class="form-check form-check-inline" id="alignTextVert" onchange="generateImgTextCode()">
+                                        <input class="form-check-input" name="alignTextVert" id="alignTextVert1" type="radio" value="" checked>
+                                        <label class="form-check-label" for="alignTextVert1">Top</label>
+                                    </div>
+                                    <div class="form-check form-check-inline" id="alignTextVert" onchange="generateImgTextCode()">
+                                        <input class="form-check-input" name="alignTextVert" id="alignTextVert2" type="radio" value=" my-auto" >
+                                        <label class="form-check-label" for="alignTextVert2">Centre</label>
+                                    </div>
+                                    <hr>
                                 </div>
-                                <div class="form-check form-check-inline" id="alignImgVert" onchange="generateImgTextCode()">
-                                    <input class="form-check-input" name="alignImgVert" id="alignImgVert2" type="radio" value=" my-auto">
-                                    <label class="form-check-label" for="alignImgVert2">Centre</label>
-                                </div>
+                                <div id="imgImgAlign" class="fade show">
+                                    <h5 class="font-weight-bold mt-3">Align image vertically<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your image on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                    <div class="form-check form-check-inline" id="alignImgVert" onchange="generateImgTextCode()">
+                                        <input class="form-check-input" name="alignImgVert" id="alignImgVert1" type="radio" value="" checked>
+                                        <label class="form-check-label" for="alignImgVert1">Top</label>
+                                    </div>
+                                    <div class="form-check form-check-inline" id="alignImgVert" onchange="generateImgTextCode()">
+                                        <input class="form-check-input" name="alignImgVert" id="alignImgVert2" type="radio" value=" my-auto">
+                                        <label class="form-check-label" for="alignImgVert2">Centre</label>
+                                    </div>
                                 <hr>
-                                <h5 class="font-weight-bold mt-3">Image border<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether you would like the image to have a border." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                </div>
+                                    <h5 class="font-weight-bold mt-3">Image border<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether you would like the image to have a border." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="imgBorder" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="imgBorder" id="imgBorder1" type="radio" value="" checked>
                                     <label class="form-check-label" for="imgBorder1">No border</label>
@@ -911,6 +919,7 @@
                                     <label class="form-check-label" for="imgBorder2">Border</label>
                                 </div>
                                 <hr>
+                                <div id="imgWidth" class="fade show">
                                 <h5 class="font-weight-bold mt-3">Image width<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether the image is half (1/2) the width of the screen or a quarter the size (1/4)" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="imageWidth" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="imageWidth" id="imageWidth1" type="radio" value="50" checked="">
@@ -925,6 +934,7 @@
                                     <label class="form-check-label" for="imageWidth3">25% (1/4)</label>
                                 </div>
                                 <hr>
+                            </div>
                                 <h5 class="font-weight-bold mt-3">Heading - Max 75 Characters <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Optional heading above content. Max 75 characters" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <textarea onchange="generateImgTextCode()" id="headingText" maxlength="75" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Optional heading above content. Max 75 characters"></textarea>
                                 <hr>
@@ -1000,9 +1010,11 @@
                                     </label>
                                 </div>
                                 <hr>
+                                <div id="imgTinyMCE" class="fade show">
                                 <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your image." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea class="border border-dark rounded w-100" id="tinyMCEimg" onkeyup=generateImgTextCode()></textarea>
                                 <hr>
+                                </div>
                                 <h5 class="font-weight-bold mt-3">Paste your image link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The web link from LearnX to the image you would like to appear in your selected element." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea onchange="generateImgTextCode()" id="imgLink" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Paste your LearnX web link to your image link here."></textarea>
                                 <hr>

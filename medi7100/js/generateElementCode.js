@@ -7,6 +7,18 @@ function generateImgTextCode() {
     var headingIcon = $('input[name="headingIcon"]:checked').val();
     var imgBorder = $('input[name="imgBorder"]:checked').val();
     var iconCode = '<span class="uq-icon icon-' + headingIcon + '-white"></span> ';
+    function toggleImgOnlyOn(){
+        $('#imgTinyMCE, #imgWidth, #imgImgAlign, #imgTextAlign').addClass('d-none');
+            }
+    function toggleImgOnlyOff(){
+        $('#imgTinyMCE, #imgWidth, #imgImgAlign, #imgTextAlign').addClass('show');
+    }
+    function imgOnlyOff(){
+    if($('#imgTinyMCE').hasClass('d-none') == true){
+        $('#imgTinyMCE, #imgWidth, #imgImgAlign, #imgTextAlign').removeClass('d-none');
+        setTimeout(toggleImgOnlyOff, 300)
+    }
+}        
     if(headingIcon != 'noI'){
         iconCode = iconCode
     }
@@ -51,47 +63,63 @@ function generateImgTextCode() {
     } 
     //Changing code order depending on selections
     if(imgPosition == "left" && imgWidth=="50"){
+        imgOnlyOff();
         var finalCode = resizedHead + rowOpen + colImgOpen + imgCode + divClose + colTxtOpen + tinyTextimg  + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "right" && imgWidth == "50"){
+        imgOnlyOff();
         var finalCode = resizedHead + rowOpen + colTxtOpen + tinyTextimg + divClose + colImgOpen + imgCode + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "left" && imgWidth == "33"){
+        imgOnlyOff();
         var finalCode = resizedHead + rowOpen + col4ImgOpen + imgCode + divClose + colTxtOpen + tinyTextimg  + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);                
     }
     else if(imgPosition == "left" && imgWidth == "25"){
+        imgOnlyOff();
         var finalCode = resizedHead + rowOpen + col3ImgOpen + imgCode + divClose + colTxtOpen + tinyTextimg  + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "right" && imgWidth == "33"){
+        imgOnlyOff();
         var finalCode = resizedHead + rowOpen + colTxtOpen + tinyTextimg + divClose + col4ImgOpen + imgCode + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "right" && imgWidth == "25"){
+        imgOnlyOff();
         var finalCode = resizedHead + rowOpen + colTxtOpen + tinyTextimg + divClose + col3ImgOpen + imgCode + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "floatRight" && imgWidth =="50"){
+        imgOnlyOff();
         var finalCode = resizedHead + rowOpen + colFloatOpen + imgFloat + divClose + tinyTextimg + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "floatRight" && imgWidth == "33"){
+        imgOnlyOff();
         var finalCode = resizedHead + rowOpen + col4FloatOpen + imgFloat + divClose + tinyTextimg + rowClose;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
-    else if(imgPosition == "floatRight" && imgWidth == "25"){
+    else if(imgPosition == "floatRight" && imgWidth == "25" ){
+        imgOnlyOff();
         var finalCode = resizedHead + rowOpen + col3FloatOpen + imgFloat + divClose + tinyTextimg + rowClose;
+        $('#imgFinalCode').val(finalCode);
+        $('div#demo').html(finalCode);
+    }
+    else if(imgPosition == "imgOnly"){
+        $('#imgTinyMCE, #imgWidth, #imgImgAlign, #imgTextAlign').removeClass('show');
+        setTimeout(toggleImgOnlyOn, 300)
+        var finalCode = resizedHead + imgCode;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
