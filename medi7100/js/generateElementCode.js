@@ -493,7 +493,7 @@ function generateAlertCode() {
     $('#alertColourDiv div.alert').css('--bs-alert-margin-bottom', '0px');
     var alertOrQuote = $('input[name="alertOrQuote"]:checked').val();
     var fontSize = $('input[name="alertFontSize"]:checked').val();
-    var citationPlaceholder = 'Citation in APA 7th'
+    var citationPlaceholder = 'Citation in APA 7th';
     if(tinymce.get("tinyMCEalert").getContent() !==''){
         tinymce.get("tinyMCEalert").dom.addClass(tinyMCE.get("tinyMCEalert").dom.select('p:last-child'), 'mb-0');
         tinymce.get("tinyMCEalert").dom.addClass(tinyMCE.get("tinyMCEalert").dom.select('p:last-child'), 'mb-0');
@@ -537,7 +537,7 @@ function generateAlertCode() {
             $('#alertHeadingDiv').removeClass('d-none');
             setTimeout(function(){$('#alertHeadingDiv').addClass('show')
             }, 200)
-            var alertFinalCode = alertOpen + alertColor + ' ' + alertWidth + alertDivClose + resizedAlertHead + tinyTextalert + divClose;
+            var alertFinalCode = alertOpen + alertColor + ' ' + 'border border-3 border-' + alertColor + ' ' + alertWidth + alertDivClose + resizedAlertHead + tinyTextalert + divClose;
             $('#alertFinalCode').val(alertFinalCode);
             $('div#demo').html(alertFinalCode);
         }
@@ -549,7 +549,7 @@ function generateAlertCode() {
             setTimeout(function(){
                 $('#alertHeadingDiv').addClass('d-none')}
                 , 200)
-            var alertFinalCode = alertOpen + alertColor + ' ' + alertWidth + alertDivClose + quotationsLeft + figOpen + quoteWrapper + fontSize + closeWrapper + tinyTextalert + endQuoteWrapper + figCaptionOpen + tinyTextCitation + figCaptionClose + quotationsRight;
+            var alertFinalCode = alertOpen + alertColor + ' ' + 'border border-3 border-' + alertColor + ' ' + alertWidth + alertDivClose + quotationsLeft + figOpen + quoteWrapper + fontSize + closeWrapper + tinyTextalert + endQuoteWrapper + figCaptionOpen + tinyTextCitation + figCaptionClose + quotationsRight;
             $('#alertFinalCode').val(alertFinalCode);
             $('div#demo').html(alertFinalCode);
         }
