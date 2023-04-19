@@ -151,7 +151,7 @@ function generateVidTextCode() {
     else(
         vidLink = vidPlaceholderLink
         )
-        var YTCode = '<iframe src="' + vidLink.replace('watch?v=','embed/') + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>\n</div>';
+        var YTCode = '<iframe src="' + vidLink.replace('watch?v=','embed/') + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>\n</div>\n';
         var KalturaCode = vidLink.replace('width="400" height="285" ', '') + '\n</div>'
         var VimeoCode = '<iframe src="' + vidLink.replace('vimeo.com','player.vimeo.com/video') + '" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>\n</iframe></div>\n<p class="text-center"><a href="' + vidLink + '" target="_blank" title="Watch this video on Vimeo">Watch this video on Vimeo</a></p>\n';
     
@@ -548,8 +548,8 @@ function generateAlertCode() {
             setTimeout(function(){
                 $('#citationDiv, #textSizeDiv').addClass('d-none')
             },200)
-            $('#alertHeadingDiv').removeClass('d-none');
-            setTimeout(function(){$('#alertHeadingDiv').addClass('show')
+            $('#alertHeadingDiv, #alertHeadingIcon').removeClass('d-none');
+            setTimeout(function(){$('#alertHeadingDiv, #alertHeadingIcon').addClass('show')
             }, 200)
             var alertFinalCode = alertOpen + alertColor + ' ' + 'border border-3 border-' + alertColor + ' ' + alertWidth + alertDivClose + resizedAlertHead + tinyTextalert + divClose;
             $('#alertFinalCode').val(alertFinalCode);
@@ -559,9 +559,9 @@ function generateAlertCode() {
             $('#citationDiv, #textSizeDiv').removeClass('d-none')
             setTimeout(function(){
                 $('#citationDiv, #textSizeDiv').addClass('show')}, 200)
-            $('#alertHeadingDiv').removeClass('show');
+            $('#alertHeadingDiv, #alertHeadingIcon').removeClass('show');
             setTimeout(function(){
-                $('#alertHeadingDiv').addClass('d-none')}
+                $('#alertHeadingDiv, #alertHeadingIcon').addClass('d-none')}
                 , 200)
             var alertFinalCode = alertOpen + alertColor + ' ' + 'border border-3 border-' + alertColor + ' ' + alertWidth + alertDivClose + quotationsLeft + figOpen + quoteWrapper + fontSize + closeWrapper + tinyTextalert + endQuoteWrapper + figCaptionOpen + tinyTextCitation + figCaptionClose + quotationsRight;
             $('#alertFinalCode').val(alertFinalCode);
