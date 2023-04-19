@@ -493,6 +493,8 @@ function generateAlertCode() {
     $('#alertColourDiv div.alert').css('--bs-alert-margin-bottom', '0px');
     var alertOrQuote = $('input[name="alertOrQuote"]:checked').val();
     var fontSize = $('input[name="alertFontSize"]:checked').val();
+    var alertHeadSize = $('input[name="alertHeadSize"]:checked').val();        
+    var alertHeadIcon =  $('input[name="alertHeadIcon"]:checked').val();
     var citationPlaceholder = 'Citation in APA 7th';
     if(tinymce.get("tinyMCEalert").getContent() !==''){
         tinymce.get("tinyMCEalert").dom.addClass(tinyMCE.get("tinyMCEalert").dom.select('p:last-child'), 'mb-0');
@@ -516,19 +518,31 @@ function generateAlertCode() {
     else{
         alertHeadingText = '';
     }
-    var alertHeadSize = $('input[name="alertHeadSize"]:checked').val();        
+    if (alertHeadIcon !== "noI"){
+        var icons = {
+            "fa-circle-exclamation": "<i class=\"fa-solid fa-circle-exclamation\"></i> ",
+            "fa-note-sticky": "<i class=\"fa-solid fa-note-sticky\"></i> ",
+            "fa-circle-question": "<i class=\"fa-solid fa-circle-question\"></i> "
+        }
+        finalIcon = icons[alertHeadIcon];
+    }
+    else{
+        finalIcon = "";
+    }
+    
     if(alertHeadSize !== "noH"){
             //Resizing the heading text
             var alertSizes = {
                 "noH": "",
-                "h2": "<h2 class=\"alert-heading text-center\">" + alertHeadingText + "</h2>\n",
-                "h4": "<h4 class=\"alert-heading text-center\">" + alertHeadingText + "</h4>\n"
+                "h2": "<h2 class=\"alert-heading text-center\">" + finalIcon + alertHeadingText + "</h2>\n",
+                "h4": "<h4 class=\"alert-heading text-center\">" + finalIcon + alertHeadingText + "</h4>\n"
             }
             resizedAlertHead = alertSizes[alertHeadSize];
         }
         else {
             resizedAlertHead = "";
         }
+        
         if(alertOrQuote == 'alert'){
             $('#citationDiv, #textSizeDiv').removeClass('show')
             setTimeout(function(){

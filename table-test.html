@@ -7,6 +7,11 @@
     <title>UQ MEDI7100 LearnX Custom HTML Components</title>
     <link rel="icon" href="img/UQfavicon.png" type="image/gif">
 
+    <!-- Google fonts to match LearnX look and feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans" rel="stylesheet">
+
     <!-- TinyMCE WYSIWYG editor -->
     <script src="https://cdn.tiny.cloud/1/uo446edaov069auf1b4nxjto1611byt76bdeabca3oo866lh/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
@@ -27,14 +32,15 @@
     <script src="https://uq-itali.github.io/uqlearnx/medi7100/bootstrap-5.2.1-dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.js"></script>
 
-    <!--Custom alerts-->
-    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css">-->
+    <!--Customise alerts on the site-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
     <style>
+        body, h1, h2, h3, h4, h5, h6{
+            font-family: 'Open Sans', sans-serif !important;
+        }
         .dropdown:hover .dropdown-menu {
             display: block;
         }
-
         .dropdown-menu {
             margin-top: 0;
         }
@@ -50,6 +56,13 @@
             line-height: 1.5rem;
             margin: auto;
         }
+        #iconCol div.row div.col-lg span.htmlToCopy span{
+            padding: 10px 18px;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-position-x: center;
+            cursor: pointer;
+        }
         .inline-group {
             max-width: 9rem;
             padding: .5rem;
@@ -64,6 +77,20 @@
         .swal2-styled.swal2-confirm{
             background-color: #51247a !important;
         }
+       li button.nav-link{
+        color: #fff !important;
+       }
+       li.nav-item:hover{
+        background: rgba(150, 42, 139, 1) !important;
+        border-radius: 5px;
+       }
+       li button.nav-link.active{
+        background: rgba(150, 42, 139, 1) !important;
+        color: white !important;
+       }
+       ul.nav li{
+        margin: auto;
+       }
     </style>
     <!--Dropdowns in the nav open on hover-->
     <script>
@@ -117,7 +144,7 @@
                 $('.tableAlert').removeClass('d-none');
                 $('.accAlert').removeClass('d-none');
             }
-        }
+        }     
     </script>
     <!--Setup tooltips + TinyMCE-->
     <script type="text/javascript">
@@ -146,26 +173,8 @@
             setup: function (ed) {
                 ed.on('keyup', function (e) {
                     var tinyTextimg = tinymce.get("tinyMCEimg").getContent();
-                    var activeBtn = $('button.active').attr('id')
-                    console.log('Editor contents was modified. Contents: ' + ed.getContent());
-                    if(activeBtn == 'imgBuilderBtn') {
-                        generateImgTextCode();
-                    }
-                    else if(activeBtn == 'vidBuilderBtn') {
-                        generateVidTextCode();
-                    }
-                    else if(activeBtn == 'btnBuilderBtn') {
-                        generateBtnCode();
-                    }
-                    else if(activeBtn == 'alertBuilderBtn'){
-                        generateAlertCode();
-                    }
-					else if(activeBtn == 'tableBuilderBtn'){
-						generateTableCode();
-					}
-                    else if(activeBtn == 'accBuilderBtn'){
-						generateAccCode();
-					}
+                    activeBtn();
+                    console.log('Editor contents was modified. Contents: ' + ed.getContent());   
                 });
             }
         });
@@ -181,26 +190,8 @@
             setup: function (ed) {
                 ed.on('keyup', function (e) {
                     var tinyTextCaption = tinymce.get("tinyMCEcaption").getContent();
-                    var activeBtn = $('button.active').attr('id')
-                    console.log('Editor contents was modified. Contents: ' + ed.getContent());
-                    if(activeBtn == 'imgBuilderBtn') {
-                        generateImgTextCode();
-                    }
-                    else if(activeBtn == 'vidBuilderBtn') {
-                        generateVidTextCode();
-                    }
-                    else if(activeBtn == 'btnBuilderBtn') {
-                        generateBtnCode();
-                    }
-                    else if(activeBtn == 'alertBuilderBtn'){
-                        generateAlertCode();
-                    }
-					else if(activeBtn == 'tableBuilderBtn'){
-						generateTableCode();
-					}
-                    else if(activeBtn == 'accBuilderBtn'){
-						generateAccCode();
-					}
+                    activeBtn();
+                    console.log('Editor contents was modified. Contents: ' + ed.getContent());   
                 });
             }
         });
@@ -227,26 +218,8 @@
             setup: function (ed) {
                 ed.on('keyup', function (e) {
                     var tinyTextvid = tinymce.get("tinyMCEvid").getContent();
-                    var activeBtn = $('button.active').attr('id')
-                    console.log('Editor contents was modified. Contents: ' + ed.getContent());
-                    if(activeBtn == 'imgBuilderBtn') {
-                        generateImgTextCode();
-                    }
-                    else if(activeBtn == 'vidBuilderBtn') {
-                        generateVidTextCode();
-                    }
-                    else if(activeBtn == 'btnBuilderBtn') {
-                        generateBtnCode();
-                    }
-                    else if(activeBtn == 'alertBuilderBtn'){
-                        generateAlertCode();
-                    }
-					else if(activeBtn == 'tableBuilderBtn'){
-						generateTableCode();
-					}
-                    else if(activeBtn == 'accBuilderBtn'){
-						generateAccCode();
-					}
+                    activeBtn();
+                    console.log('Editor contents was modified. Contents: ' + ed.getContent());   
                 });
             }
         });
@@ -273,26 +246,8 @@
             setup: function (ed) {
                 ed.on('keyup', function (e) {
                     var tinyTextalert = tinymce.get("tinyMCEalert").getContent();
-                    var activeBtn = $('button.active').attr('id')
-                    console.log('Editor contents was modified. Contents: ' + ed.getContent());
-                    if(activeBtn == 'imgBuilderBtn') {
-                        generateImgTextCode();
-                    }
-                    else if(activeBtn == 'vidBuilderBtn') {
-                        generateVidTextCode();
-                    }
-                    else if(activeBtn == 'btnBuilderBtn') {
-                        generateBtnCode();
-                    }
-                    else if(activeBtn == 'alertBuilderBtn'){
-                        generateAlertCode();
-                    }
-					else if(activeBtn == 'tableBuilderBtn'){
-						generateTableCode();
-					}
-                    else if(activeBtn == 'accBuilderBtn'){
-						generateAccCode();
-					}
+                    activeBtn();
+                    console.log('Editor contents was modified. Contents: ' + ed.getContent());   
                 });
             }
         });
@@ -309,30 +264,12 @@
             setup: function (ed) {
                 ed.on('keyup', function (e) {
                     var tinyTextCitation = tinymce.get("tinyMCEcitation").getContent();
-                    var activeBtn = $('button.active').attr('id')
-                    console.log('Editor contents was modified. Contents: ' + ed.getContent());
-                    if(activeBtn == 'imgBuilderBtn') {
-                        generateImgTextCode();
-                    }
-                    else if(activeBtn == 'vidBuilderBtn') {
-                        generateVidTextCode();
-                    }
-                    else if(activeBtn == 'btnBuilderBtn') {
-                        generateBtnCode();
-                    }
-                    else if(activeBtn == 'alertBuilderBtn'){
-                        generateAlertCode();
-                    }
-					else if(activeBtn == 'tableBuilderBtn'){
-						generateTableCode();
-					}
-                    else if(activeBtn == 'accBuilderBtn'){
-						generateAccCode();
-					}
+                    activeBtn();
+                    console.log('Editor contents was modified. Contents: ' + ed.getContent());   
                 });
             }
         });
-		tinymce.init({
+        tinymce.init({
             selector: '#tinyMCEtable',
             menubar: false,
             height: "500",
@@ -355,26 +292,8 @@
             setup: function (ed) {
                 ed.on('keyup', function (e) {
                     var tinyMCEtable = tinymce.get("tinyMCEtable").getContent();
-                    var activeBtn = $('button.active').attr('id')
+                    activeBtn();
                     console.log('Editor contents was modified. Contents: ' + ed.getContent());
-                    if(activeBtn == 'imgBuilderBtn') {
-                        generateImgTextCode();
-                    }
-                    else if(activeBtn == 'vidBuilderBtn') {
-                        generateVidTextCode();
-                    }
-                    else if(activeBtn == 'btnBuilderBtn') {
-                        generateBtnCode();
-                    }
-                    else if(activeBtn == 'alertBuilderBtn'){
-                        generateAlertCode();
-                    }
-					else if(activeBtn == 'tableBuilderBtn'){
-						generateTableCode();
-					}
-                    else if(activeBtn == 'accBuilderBtn'){
-						generateAccCode();
-					}
                 });
                 ed.on('paste', function(e) {
                     setTimeout(function(){
@@ -395,7 +314,7 @@
                     }, 750)                   
                 })
             }
-        });
+        })
         tinymce.init({
             selector: '.tinyMCEacc',
             menubar: false,
@@ -418,29 +337,36 @@
             },
             setup: function (ed) {
                 ed.on('keyup', function (e) {
-                    var activeBtn = $('button.active').attr('id')
-                    console.log('Editor contents was modified. Contents: ' + ed.getContent());
-                    if(activeBtn == 'imgBuilderBtn') {
-                        generateImgTextCode();
-                    }
-                    else if(activeBtn == 'vidBuilderBtn') {
-                        generateVidTextCode();
-                    }
-                    else if(activeBtn == 'btnBuilderBtn') {
-                        generateBtnCode();
-                    }
-                    else if(activeBtn == 'alertBuilderBtn'){
-                        generateAlertCode();
-                    }
-					else if(activeBtn == 'tableBuilderBtn'){
-						generateTableCode();
-					}
-                    else if(activeBtn == 'accBuilderBtn'){
-						generateAccCode();
-					}
+                    activeBtn();
+                    generateAccCode();
+                    console.log('Editor contents was modified. Contents: ' + ed.getContent());       
                 });
             }
         });
+        function activeBtn(){
+            var activeBtn = $('button.active').attr('id')
+            if(activeBtn == 'imgBuilderBtn') {
+                generateImgTextCode();
+            }
+            else if(activeBtn == 'vidBuilderBtn') {
+                generateVidTextCode();
+            }
+            else if(activeBtn == 'btnBuilderBtn') {
+                generateBtnCode();
+            }
+            else if(activeBtn == 'alertBuilderBtn'){
+                generateAlertCode();
+            }
+            else if(activeBtn == 'tooltipBuilderBtn'){
+                generateTooltipCode();
+            }
+            else if(activeBtn == 'tableBuilderBtn'){
+                generateTableCode();
+            }
+            else if(activeBtn == 'accBuilderBtn'){
+                generateAccCode();
+            }
+        }
     </script>
     <!--Setup page variables-->
     <script type="text/javascript">
@@ -484,13 +410,27 @@
         var vidPlaceholderLink = 'https://www.youtube.com/embed/NpEaa2P7qZI';
         var vidPlaceholderCode = rowOpen + colOpen + textPlaceholder + divClose + colOpen + respVidOpen + vidPlaceholder + rowClose;
         var btnPlaceholderLink = 'https://learnx.uq.edu.au/dashboard';
-        var tooltipPlaceholderText = 'This is a tooltip to help people betterunderstand a term, or provide a reminder of what an acronym stands for.';
+        var tooltipPlaceholderText = 'This is a tooltip to help people better understand a term, or provide a reminder of what an acronym stands for.';
     </script>
     <!--On page load run functions + build placeholder-->
     <script type="text/javascript">
-        window.addEventListener('DOMContentLoaded', function(){
+         window.addEventListener('DOMContentLoaded', function(){
+            $('ul.nav').on('click', function(){
+            var lastTabClicked = $('button.active').attr('id')
+            localStorage.setItem("lastTabClicked", lastTabClicked);
+        });
             var lastTabClickedInStorage = localStorage.getItem("lastTabClicked");
-            document.getElementById(lastTabClickedInStorage).click()
+            document.getElementById(lastTabClickedInStorage).click();
+            let bttBtn = document.getElementById("bttBtn");
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function(){scrollFunction()};
+        function scrollFunction(){
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                bttBtn.style.display = "block";
+            } else {
+                bttBtn.style.display = "none";
+            }
+        }
         })
         window.addEventListener('load', function () {
             $('[data-bs-toggle="tooltip"]').tooltip();
@@ -504,46 +444,73 @@
             fullScreenAlertToggle();
             fullScreenTooltipToggle();
             fullScreenAccToggle();
-            $('ul.nav').on('click', function(){
-            var lastTabClicked = $('button.active').attr('id')
-            localStorage.setItem("lastTabClicked", lastTabClicked);
-        });           
-        });
-        
+            
+    });
+    $(function() {
+        var accNameTxt = $("#accName");
+        var func = function() {
+            accNameTxt.val(accNameTxt.val().replace(/\s/g, ''));
+        }
+        accNameTxt.keyup(func).blur(func);
+    });
     </script>
 </head>
 <body>
-    <div class="m-4">
+    <!-- Paste in LearnX Demonstration Modal -->
+<div class="modal fade" id="pasteInLXDemo" tabindex="-1" aria-labelledby="pasteInLXDemoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="pasteInLXDemo">How to paste your code from the code centre in LearnX</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+           <p>The video below is a short demonstration on how to paste the code you generate here into LearnX.</p>
+           <div class="ratio ratio-16x9">
+            <iframe src=""></iframe>
+           </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger d-block mx-auto w-75" data-bs-dismiss="modal">Close this modal</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Paste in LearnX Demonstration Modal -->
+    <div class="p-3 bg-uq fixed-top">
         <ul class="nav nav-pills" id="myTab" role="tablist">
+            <a class="navbar-brand" href="#home">
+                <img src="medi7100\img\uq-logo-badge-white.png" alt="Bootstrap" width="100%" height="auto">
+              </a>
             <li class="nav-item" role="presentation">
                 <button id="homeBtn" class="nav-link active" href="#home" data-bs-toggle="tab">Home</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button onclick="generateImgTextCode()" id="imgBuilderBtn" class="nav-link" href="#buildImgText" data-bs-toggle="tab">Image/text builder</button>
+                <button onclick="generateImgTextCode()" id="imgBuilderBtn" class="nav-link" href="#buildImgText" data-bs-toggle="tab">Image/text</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button onclick="generateVidTextCode()" id="vidBuilderBtn" class="nav-link" href="#buildVidText" data-bs-toggle="tab">Video/text builder</button>
+                <button onclick="generateVidTextCode()" id="vidBuilderBtn" class="nav-link" href="#buildVidText" data-bs-toggle="tab">Video/text</button>
             </li>
             <li class="nav-item" role="presentation">
                 <button onclick="generateBtnCode()" id="btnBuilderBtn" class="nav-link" href="#buildBtnText" data-bs-toggle="tab">Button builder</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button onclick="generateAlertCode()" id="alertBuilderBtn" class="nav-link" href="#buildAlert" data-bs-toggle="tab">Alert/Quote builder</button>
+                <button onclick="generateAlertCode()" id="alertBuilderBtn" class="nav-link" href="#buildAlert" data-bs-toggle="tab">Alert/Quote</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button onclick="generateTooltipCode()" id="tooltipBuilderBtn" class="nav-link" href="#buildTooltip" data-bs-toggle="tab">Tooltip builder</button>
-            </li>
-			<li class="nav-item" role="presentation">
-                <button onclick="generateTableCode()" id="tableBuilderBtn" class="nav-link" href="#buildTable" data-bs-toggle="tab">Table builder</button>
+                <button onclick="generateTooltipCode()" id="tooltipBuilderBtn" class="nav-link" href="#buildTooltip" data-bs-toggle="tab">Tooltip</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button onclick="generateAccCode()" id="accBuilderBtn" class="nav-link" href="#buildAcc" data-bs-toggle="tab">Accordion builder</button>
+                <button onclick="generateTableCode()" id="tableBuilderBtn" class="nav-link" href="#buildTable" data-bs-toggle="tab">Table</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button onclick="generateAccCode()" id="accBuilderBtn" class="nav-link" href="#buildAcc" data-bs-toggle="tab">Accordion</button>
             </li>
             <li class="nav-item" role="presentation">
                 <button id="headingsBtn" class="nav-link" href="#headings" data-bs-toggle="tab">Headings</button>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Image/Video + Text snippets</a>
+                <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Image/Video + Text snippets</a>
                 <ul class="dropdown-menu">
                     <li><button id="imgRightBtn" class="dropdown-item" href="#imgRight" data-bs-toggle="tab">Image/Video right 50%</button></li>
                     <li><button id="imgLeftBtn" class="dropdown-item" href="#imgLeft" data-bs-toggle="tab">Image/Video left 50%</button></li>
@@ -557,43 +524,55 @@
                             side</button></li>
                 </ul>
             </li>
-            <li class="nav-item" role="presentation">
+            <!--<li class="nav-item" role="presentation">
                 <button id="bugOrImprovementFormBtn" class="nav-link" href="#bugOrImprovementForm" data-bs-toggle="tab">Log Bug or Improvement</button>
-            </li>
+            </li>-->
         </ul>
+    </div>
+    <div style="margin-top: 6rem"></div>
+        <div class="m-3">
         <div class="tab-content mt-3">
             <div class="tab-pane fade show active" id="home" role="tabpanel">
-                <h1 class="text-bg-uq p-2">Welcome to your code centre for MEDI7100</h1>
-                <p>This site is dedicated to the editors of MEDI7100 LearnX sites. These sites have Bootstrap (CSS and JS library) and Font Awesome (icons) referenced, and allow for some advanced formatting and icon usage. This can seem tricky and intimidating at first, so this site gives you</p>
+                <h1 class="text-center">Welcome to the Code Centre for new Medicine Postgraduate courses</h1>
+                <p>This site is dedicated to the editors of new postgraduate Medicine program LearnX sites - MEDI7100, MEDI7200, MEDI7300 and MEDI7400. These sites have Bootstrap (CSS and JS library) and Font Awesome (icons) referenced, and allow for some advanced formatting and icon usage. This can seem tricky and intimidating at first, so this site gives you:</p>
                 <ul>
                     <li>an easy to navigate menu at the top of screen to go to the element snippet or builder you require.</li>
-                    <li>a range of <strong>code snippets</strong> (headings, image/text combinations, accordions, quotes, buttons, alerts.</li>
-                    <li><strong>code builders</strong> - these are powerful web applications that allow you to input plain text, rich text and links to achieve your format rather than copying and pasting code and then editing, you build your element, then copy the code created and paste it into LearnX</li>
+                    <li>a range of <strong>code snippets</strong> (headings, image/text combinations, accordions, quotes, buttons, alerts) if you prefer to work from templated HTML rather than build an item from scratch.</li>
+                    <li><strong>code builders</strong> - these are powerful web applications that allow you to make some choices about attributes of your elements, input plain text, rich text and links to achieve your format rather than copying and pasting code and then editing. You build your element, look at a preview as you make changes then copy the code created and paste it into LearnX.</li>
                     <li>Help - if you see green question mark icons like this - <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="I have hidden help you can see when you hover on me" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span> - you can hover over them fo quick guidance on what information is required.</li>
                 </ul>
                 <hr>
                 <div class="row">
                     <div class="col-lg">
+                        <h3 class="text-center">Site Format</h3>
                         <p>The format and intended use of this site is as follows:</p>
                         <ul>
-                            <li>Each page has an example with a copy button located underneath the example. Click the button to copy the HTML required for the element.</li>
-                            <li>Once you paste your code be sure to replace any placeholders for text, images, videos or other elements within the correct HTML tags.</li>
+                            <li>Each page has an example with a copy button located underneath the example. Make your choices, input the required information to create your element and then click the button to copy the HTML required for the element ready to paste in LearnX.</li>
+                            <li>If you use the code snippets, once you paste your code be sure to replace any placeholders for text, images, videos or other elements within the correct HTML tags.</li>
                             <li>If you encounter issues or have a suggestion for improving this page please hit the button to jump out to the Microsoft Form and log a bug/issue/suggestion in the footer of each page.</li>
                         </ul>
                     </div>
                     <div class="col-lg">
+                        <h3 class="text-center">Important information</h3>
                         <p>Some important things to note:</p>
                         <ul>
                             <li>All elements here use colours and formatting that align with the style and approach of the MEDI7100 design team. Deviate from them at your own peril! (Only kidding, just get in touch for support and we will likely add your idea to the bunch here if it is a sound idea).</li>
                             <li>All placeholder images and videos are public links. They will display their content until you delete or replace them.</li>
                             <li>Currently, we do not have a way of pulling existing content into this site and reformmating it. We are working on it, but it is a complex task.</li>
-                            <li>Elements are only placed here if they are tested and work.</li>
+                            <li>Elements are only available here if they are tested and work.</li>
                             <li>The team have only piloted this in Year 1, 2022. They are still learning about how this all interacts on LearnX, so if you use this code and it goes wrong, and you ask for support, be patient! Perfection takes time, focus and diligence.</li>
-                            <li>The format of pages is to show an example with the copy button displayed underneath the example. Click the button to copy the code for the element you want</li>
+                            <li>The table and accordion builders are complex elements. So specific instructions relating to these is in a large red alert at the top of the page. Once you have read the alerts, you can close them and they should not return unless you click the eye icon in the bottom right of screen.</li>
                         </ul>
                     </div>
+                    <div class="col-lg">
+                        <h3 class="text-center"> Make Studio view = Live view</h3>
+                        <p>You can install a user scripts add on to be able to see the Bootstrap design reflected in studio, rather than jumping out to live version. It’s not 100% perfect all the time, but it saves a lot of time with checking whether something is right and skipping back and forth between the studio and live version of your content. Steps for this are:</p>
+                        <ol>
+                            <li>Install Tampermonkey extension on your Chrome/Edge/Firefox browser - <a href="https://www.tampermonkey.net/" target="_blank" title="Tampermonkey">https://www.tampermonkey.net/</a> </li>
+                            <li>Install the BS + FA in studio script - <a href="https://greasyfork.org/en/scripts/456866-bs-fa-in-studio" target="_blank" title="Bootstrap in LearnX Studio UserScript Install">https://greasyfork.org/en/scripts/456866-bs-fa-in-studio</a></li>
+                        </ol>
+                    </div>
                 </div>
-
             </div>
             <div class="tab-pane fade" id="imgRight" role="tabpanel">
                 <h3 class="text-bg-uq p-2">Text left/Image right</h3>
@@ -782,82 +761,152 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="headings" role="tabpanel">
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2">Purple main heading - Your text here</h2>
+                <div class="row gap-2">
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2">Purple main heading - Your text here</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis mt-3">
+                            <h4 class="text-bg-info p-2 bg-opacity-25">Light blue subheading - Your text here</h4>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis mt-3">
+                            <h2 class="text-bg-dark p-2"><i class="fa-brands fa-youtube"></i> Watch</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg my-auto" id="iconCol">
+                        <h5 class="text-center">Icons - Click to Copy <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click on the icon you want to copy the HTML for that icon. You will see a white tick when the code is copied to your clipboard." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                        <div class="row mx-auto" style="width:90%">
+                            <div class="col-lg bg-uq py-3 text-center rounded-top">
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-psw-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-advocacy-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-ethics-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-med-science-white"></span>&nbsp;</span>
+                            </div>
+                        </div>
+                        <div class="row mx-auto" style="width:90%">
+                            <div class="col-lg bg-uq py-3 text-center">
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-research-epid-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-rrm-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-transition-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-clinical-plenary-white"></span>&nbsp;</span>
+                            </div>
+                        </div>
+                        <div class="row mx-auto" style="width:90%">
+                            <div class="col-lg bg-uq py-3 text-center">
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-cpl-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-immersion-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-lectorial-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-masterclass-white"></span>&nbsp;</span>
+                            </div>
+                        </div>
+                        <div class="row mx-auto" style="width:90%">
+                            <div class="col-lg bg-uq py-3 text-center rounded-bottom">
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-practical-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-symposium-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-tbl-white"></span>&nbsp;</span>
+                                <span class="htmlToCopy copyicon"><span class="uq-icon icon-workshop-white"></span>&nbsp;</span>
+                             </div>
+                        </div>
+                    </div>
                 </div>
                 <hr>
-                <div class="copythis mt-3">
-                    <h4 class="text-bg-info p-2 bg-opacity-25">Light blue subheading - Your text here</h4>
+                <div class="row gap-2">
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-psw-white"></span> Practical skills heading</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-advocacy-white"></span> Advocacy and Public Health heading</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-ethics-white"></span> Ethics heading</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-med-science-white"></span> Med Sciences heading</h2>
+                        </div>
+                    </div>
                 </div>
                 <hr>
-                <div class="copythis mt-3">
-                    <h2 class="text-bg-dark p-2"><i class="fa-brands fa-youtube"></i> Watch</h2>
+                <div class="row gap-2">
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-research-epid-white"></span> Research and Epidemiology heading</h2>
+                        </div>        
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-rrm-white"></span> Rural and Remote Health heading</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-transition-white"></span> Transition to MD heading</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-clinical-plenary-white"></span> Clinical plenary heading</h2>
+                        </div>
+                    </div>
                 </div>
                 <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-psw-white"></span> Practical skills heading</h2>
+                <div class="row gap-2">
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-cpl-white"></span> Clinical and professional learning heading</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-immersion-white"></span> Immersion heading</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-lectorial-white"></span> Lectorial heading</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-masterclass-white"></span> Masterclass heading</h2>
+                        </div>
+                    </div>
                 </div>
                 <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-advocacy-white"></span> Advocacy and Public Health heading</h2>
+                <div class="row gap-2">
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-practical-white"></span> Practical heading</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-symposium-white"></span> Symposium heading</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-tbl-white"></span> TBL heading</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg border border-uq rounded p-2 my-auto">
+                        <div class="copythis">
+                            <h2 class="text-bg-uq p-2"><span class="uq-icon icon-workshop-white"></span> Workshop heading</h2>
+                        </div>
+                    </div>
                 </div>
                 <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-ethics-white"></span> Ethics heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-med-science-white"></span> Med Sciences heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-research-epid-white"></span> Research and Epidemiology heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-rrm-white"></span> Rural and Remote Health heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-transition-white"></span> Transition to MD heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-clinical-plenary-white"></span> Clinical plenary heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-cpl-white"></span> Clinical and professional learning heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-immersion-white"></span> Immersion heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-lectorial-white"></span> Lectorial heading</h2>
-                </div>
                 
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-masterclass-white"></span> Masterclass heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-practical-white"></span> Practical heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-symposium-white"></span> Symposium heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-tbl-white"></span> TBL heading</h2>
-                </div>
-                <hr>
-                <div class="copythis">
-                    <h2 class="text-bg-uq p-2"><span class="uq-icon icon-workshop-white"></span> Workshop heading</h2>
-                </div>
                 <!--icons
  <span class="uq-icon icon-psw-white"></span>
 <span class="uq-icon icon-advocacy-white"></span>
@@ -870,11 +919,22 @@
 -->
             </div>
             <div class="tab-pane fade" id="buildImgText" role="tabpanel">
+                <h1 class="text-center">Image builder</h1>
+                <a class="btn btn-primary btn-sm d-block mx-auto text-center w-50 demoToggle" type="button" data-bs-toggle="collapse" data-bs-target="#createImgDemo" aria-expanded="false" aria-controls="createImgDemo">How do I make a responsive image? Click to reveal a video demonstration <i class="fa-solid fa-angle-down"></i></a>
+                <div class="collapse mt-2 w-75 mx-auto" id="createImgDemo">
+                    <div class="card card-body w-50 mx-auto d-block">
+                        <h5 class="text-center">How to create a Responsive Image in the Code Centre</h5>
+                        <p>The video below is a short demonstration on how to create a responsive image in the code centre. Click the button above to collapse this content and continue working.</p>
+                        <div class="ratio ratio-16x9">
+                            <iframe src=""></iframe>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="row w-100 mx-auto">
                             <div class="col-lg">
-                                <h5 class="font-weight-bold">Image position<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your image on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <h5 class="font-weight-bold mt-3">Image position<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your image on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="imagePosition" id="imagePosition2" type="radio" value="left">
                                     <label class="form-check-label" for="imagePosition2">Left</label>
@@ -887,28 +947,36 @@
                                     <input class="form-check-input" name="imagePosition" id="imagePosition3" type="radio" value="floatRight">
                                     <label class="form-check-label" for="imagePosition3">Float right/text wrap</label>
                                 </div>
-                                <hr>
-                                <h5 class="font-weight-bold mt-3">Align text vertically<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your image on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                                <div class="form-check form-check-inline" id="alignTextVert" onchange="generateImgTextCode()">
-                                    <input class="form-check-input" name="alignTextVert" id="alignTextVert1" type="radio" value="" checked>
-                                    <label class="form-check-label" for="alignTextVert1">Top</label>
-                                </div>
-                                <div class="form-check form-check-inline" id="alignTextVert" onchange="generateImgTextCode()">
-                                    <input class="form-check-input" name="alignTextVert" id="alignTextVert2" type="radio" value=" my-auto" >
-                                    <label class="form-check-label" for="alignTextVert2">Centre</label>
+                                <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
+                                    <input class="form-check-input" name="imagePosition" id="imagePosition4" type="radio" value="imgOnly">
+                                    <label class="form-check-label" for="imagePosition4">Image only</label>
                                 </div>
                                 <hr>
-                                <h5 class="font-weight-bold mt-3">Align image vertically<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your image on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                                <div class="form-check form-check-inline" id="alignImgVert" onchange="generateImgTextCode()">
-                                    <input class="form-check-input" name="alignImgVert" id="alignImgVert1" type="radio" value="" checked>
-                                    <label class="form-check-label" for="alignImgVert1">Top</label>
+                                <div id="imgTextAlign" class="fade show">
+                                    <h5 class="font-weight-bold mt-3">Align text vertically<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your image on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                    <div class="form-check form-check-inline" id="alignTextVert" onchange="generateImgTextCode()">
+                                        <input class="form-check-input" name="alignTextVert" id="alignTextVert1" type="radio" value="" checked>
+                                        <label class="form-check-label" for="alignTextVert1">Top</label>
+                                    </div>
+                                    <div class="form-check form-check-inline" id="alignTextVert" onchange="generateImgTextCode()">
+                                        <input class="form-check-input" name="alignTextVert" id="alignTextVert2" type="radio" value=" my-auto" >
+                                        <label class="form-check-label" for="alignTextVert2">Centre</label>
+                                    </div>
+                                    <hr>
                                 </div>
-                                <div class="form-check form-check-inline" id="alignImgVert" onchange="generateImgTextCode()">
-                                    <input class="form-check-input" name="alignImgVert" id="alignImgVert2" type="radio" value=" my-auto">
-                                    <label class="form-check-label" for="alignImgVert2">Centre</label>
-                                </div>
+                                <div id="imgImgAlign" class="fade show">
+                                    <h5 class="font-weight-bold mt-3">Align image vertically<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your image on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                    <div class="form-check form-check-inline" id="alignImgVert" onchange="generateImgTextCode()">
+                                        <input class="form-check-input" name="alignImgVert" id="alignImgVert1" type="radio" value="" checked>
+                                        <label class="form-check-label" for="alignImgVert1">Top</label>
+                                    </div>
+                                    <div class="form-check form-check-inline" id="alignImgVert" onchange="generateImgTextCode()">
+                                        <input class="form-check-input" name="alignImgVert" id="alignImgVert2" type="radio" value=" my-auto">
+                                        <label class="form-check-label" for="alignImgVert2">Centre</label>
+                                    </div>
                                 <hr>
-                                <h5 class="font-weight-bold mt-3">Image border<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether you would like the image to have a border." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                </div>
+                                    <h5 class="font-weight-bold mt-3">Image border<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether you would like the image to have a border." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="imgBorder" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="imgBorder" id="imgBorder1" type="radio" value="" checked>
                                     <label class="form-check-label" for="imgBorder1">No border</label>
@@ -918,6 +986,7 @@
                                     <label class="form-check-label" for="imgBorder2">Border</label>
                                 </div>
                                 <hr>
+                                <div id="imgWidth" class="fade show">
                                 <h5 class="font-weight-bold mt-3">Image width<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether the image is half (1/2) the width of the screen or a quarter the size (1/4)" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="imageWidth" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="imageWidth" id="imageWidth1" type="radio" value="50" checked="">
@@ -932,6 +1001,7 @@
                                     <label class="form-check-label" for="imageWidth3">25% (1/4)</label>
                                 </div>
                                 <hr>
+                            </div>
                                 <h5 class="font-weight-bold mt-3">Heading - Max 75 Characters <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Optional heading above content. Max 75 characters" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <textarea onchange="generateImgTextCode()" id="headingText" maxlength="75" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Optional heading above content. Max 75 characters"></textarea>
                                 <hr>
@@ -1007,9 +1077,11 @@
                                     </label>
                                 </div>
                                 <hr>
+                                <div id="imgTinyMCE" class="fade show">
                                 <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your image." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea class="border border-dark rounded w-100" id="tinyMCEimg" onkeyup=generateImgTextCode()></textarea>
                                 <hr>
+                                </div>
                                 <h5 class="font-weight-bold mt-3">Paste your image link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The web link from LearnX to the image you would like to appear in your selected element." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea onchange="generateImgTextCode()" id="imgLink" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Paste your LearnX web link to your image link here."></textarea>
                                 <hr>
@@ -1022,8 +1094,8 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="sticky-top" style="top:1rem;">
-                            <h5 class="font-weight-bold">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                        <div class="sticky-top" style="top:6rem;">
+                            <h5 class="font-weight-bold mt-3">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                             <div id="previewImgFS" class="bg-white">
                             <div id="demo"></div>
                             </div>
@@ -1042,12 +1114,23 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="buildVidText" role="tabpanel">
+                <h1 class="text-center">Video builder</h1>
+                <a class="btn btn-primary btn-sm d-block mx-auto text-center w-50 demoToggle" type="button" data-bs-toggle="collapse" data-bs-target="#createVidDemo" aria-expanded="false" aria-controls="createVidDemo">How do I make a responsive video? Click to reveal a video demonstration <i class="fa-solid fa-angle-down"></i></a>
+                <div class="collapse mt-2 w-75 mx-auto" id="createVidDemo">
+                    <div class="card card-body w-50 mx-auto d-block">
+                        <h5 class="text-center">How to create a Responsive Video in the Code Centre</h5>
+                        <p>The video below is a short demonstration on how to create a responsive video in the code centre. Click the button above to collapse this content and continue working.</p>
+                        <div class="ratio ratio-16x9">
+                            <iframe src=""></iframe>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="row w-100 mx-auto">
                             <div class="col-lg">
                                 <div id="vidPosDiv">
-                                <h5 class="font-weight-bold">Video position<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your video on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <h5 class="font-weight-bold mt-3">Video position<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your video on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="videoPosition" onchange="generateVidTextCode()">
                                     <input class="form-check-input" name="videoPosition" id="videoPosition2" type="radio" value="left">
                                     <label class="form-check-label" for="videoPosition2">Left</label>
@@ -1177,8 +1260,8 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="sticky-top" style="top:1rem;">
-                            <h5 class="font-weight-bold">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                        <div class="sticky-top" style="top:6rem;">
+                            <h5 class="font-weight-bold mt-3">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                             <div id="previewVidFS" class="bg-white">
                             <div id="demo"></div>
                             </div>
@@ -1197,11 +1280,23 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="buildBtnText" role="tabpanel">
+                <h1 class="text-center">Button builder</h1>
+                <a class="btn btn-primary btn-sm d-block mx-auto text-center w-50 demoToggle" type="button" data-bs-toggle="collapse" data-bs-target="#createBtnDemo" aria-expanded="false" aria-controls="createBtnDemo">How do I make a button? Click to reveal a video demonstration <i class="fa-solid fa-angle-down"></i></a>
+                <div class="collapse mt-2 w-75 mx-auto" id="createBtnDemo">
+                    <div class="card card-body w-50 mx-auto d-block">
+                        <h5 class="text-center">How to create a Button in the Code Centre</h5>
+                        <p>The video below is a short demonstration on how to create a button in the code centre. Click the button above to collapse this content and continue working.</p>
+                        <div class="ratio ratio-16x9">
+                            <iframe src=""></iframe>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="text-center" data-bs-toggle="modal" data-bs-target="#createBtnDemo" role="button"></h3>
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="row w-100 mx-auto">
                             <div class="col-lg">
-                                <h5 class="font-weight-bold">Number of buttons<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose how many buttons you want to make. You can make 1 button, or a group of 2, or 3." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <h5 class="font-weight-bold mt-3">Number of buttons<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose how many buttons you want to make. You can make 1 button, or a group of 2, or 3." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="btnNumber" onchange="generateBtnCode()">
                                     <input class="form-check-input" name="btnNumber" id="btnNumber2" type="radio" value="1" checked>
                                     <label class="form-check-label" for="btnNumber2">1</label>
@@ -1277,6 +1372,7 @@
                                 <hr>
                                 <h5 class="font-weight-bold mt-3">Button 1 - Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear on your first button." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea class="border border-dark rounded w-100 p-2" rows="1" id="btnOneText" onkeyup=generateBtnCode() placeholder="Write the text that will appear on button"></textarea>
+                                <hr>
                                 <h5 class="font-weight-bold mt-3">Button 1 - Select your icon<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Select an icon for your first button." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <div class="form-check form-check-inline" id="btnOneIcon" onchange="generateBtnCode()">
                                     <input class="form-check-input" name="btnOneIcon" id="noIcon" type="radio" value="noI" checked>
@@ -1302,51 +1398,61 @@
                                     <input class="form-check-input" name="btnOneIcon" id="btn1Icon5" type="radio" value="5">
                                     <label class="form-check-label" for="btn1Icon5"><span class="fa-solid fa-arrow-right fa-2x"></span></label>
                                 </div>
-                                <h5 class="font-weight-bold mt-3">Button 1 colour<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the colour of your button" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                                <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
-                                    <input class="form-check-input" name="btnColour" id="btn-uq" type="radio" value="uq" checked>
-                                    <label class="form-check-label" for="btn-uq"><a class="btn btn-uq">UQ Purple</a></label>
+                                <hr>
+                                <h5 class="font-weight-bold mt-3">Button 1 colour<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the colour of your button. The text you see on each colour is the name of the class relating to the colour. E.g. UQ means the button has the classes btn btn-uq, or primary means btn btn-primary." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="row gap-3">
+                                    <div class="col-12">
+                                        <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                                            <input class="form-check-input" name="btnColour" id="btn-uq" type="radio" value="uq" checked>
+                                            <label class="form-check-label" for="btn-uq"><a class="btn btn-uq">UQ</a></label>
+                                        </div>
+                                        <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                                            <input class="form-check-input" name="btnColour" id="btn-primary" type="radio" value="primary">
+                                            <label class="form-check-label" for="btn-primary"><a class="btn btn-primary">Primary</a></label>
+                                        </div>
+                                        <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                                            <input class="form-check-input" name="btnColour" id="btn-secondary" type="radio" value="secondary">
+                                            <label class="form-check-label" for="btn-secondary"><a class="btn btn-secondary">Secondary</a></label>
+                                        </div>
+                                        <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                                            <input class="form-check-input" name="btnColour" id="btn-info" type="radio" value="info">
+                                            <label class="form-check-label" for="btn-info"><a class="btn btn-info">Info</a></label>
+                                        </div>
+                                        <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                                            <input class="form-check-input" name="btnColour" id="btn-success" type="radio" value="success">
+                                            <label class="form-check-label" for="btn-success"><a class="btn btn-success">Success</a></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                                            <input class="form-check-input" name="btnColour" id="btn-warning" type="radio" value="warning">
+                                            <label class="form-check-label" for="btn-warning"><a class="btn btn-warning">Warning</a></label>
+                                        </div>
+                                        <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                                            <input class="form-check-input" name="btnColour" id="btn-danger" type="radio" value="danger">
+                                            <label class="form-check-label" for="btn-danger"><a class="btn btn-danger">Danger</a></label>
+                                        </div>
+                                        <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                                            <input class="form-check-input" name="btnColour" id="btn-dark" type="radio" value="dark">
+                                            <label class="form-check-label" for="btn-dark"><a class="btn btn-dark">Dark</a></label>
+                                        </div>
+                                        <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
+                                            <input class="form-check-input" name="btnColour" id="btn-light" type="radio" value="light">
+                                            <label class="form-check-label" for="btn-light"><a class="btn btn-light">Light</a></label>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
-                                    <input class="form-check-input" name="btnColour" id="btn-primary" type="radio" value="primary">
-                                    <label class="form-check-label" for="btn-primary"><a class="btn btn-primary">Primary Blue</a></label>
-                                </div>
-                                <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
-                                    <input class="form-check-input" name="btnColour" id="btn-secondary" type="radio" value="secondary">
-                                    <label class="form-check-label" for="btn-secondary"><a class="btn btn-secondary">Secondary Grey</a></label>
-                                </div>
-                                <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
-                                    <input class="form-check-input" name="btnColour" id="btn-info" type="radio" value="info">
-                                    <label class="form-check-label" for="btn-info"><a class="btn btn-info">Info Blue</a></label>
-                                </div>
-                                <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
-                                    <input class="form-check-input" name="btnColour" id="btn-success" type="radio" value="success">
-                                    <label class="form-check-label" for="btn-success"><a class="btn btn-success">Success Green</a></label>
-                                </div>
-                                <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
-                                    <input class="form-check-input" name="btnColour" id="btn-warning" type="radio" value="warning">
-                                    <label class="form-check-label" for="btn-warning"><a class="btn btn-warning">Warning Yellow</a></label>
-                                </div>
-                                <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
-                                    <input class="form-check-input" name="btnColour" id="btn-danger" type="radio" value="danger">
-                                    <label class="form-check-label" for="btn-danger"><a class="btn btn-danger">Danger Red</a></label>
-                                </div>
-                                <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
-                                    <input class="form-check-input" name="btnColour" id="btn-dark" type="radio" value="dark">
-                                    <label class="form-check-label" for="btn-dark"><a class="btn btn-dark">Dark</a></label>
-                                </div>
-                                <div class="form-check form-check-inline" id="btnColour" onchange="generateBtnCode()">
-                                    <input class="form-check-input" name="btnColour" id="btn-light" type="radio" value="light">
-                                    <label class="form-check-label" for="btn-light"><a class="btn btn-light">Light</a></label>
-                                </div>
+                                <hr>
                                 <h5 class="font-weight-bold mt-3">Button 1 - Link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Paste a link. Either a LearnX web link or website URL." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea onchange="generateBtnCode()" id="btnLink" class="border border-dark rounded w-100 p-2" rows="1" placeholder="The web link from LearnX if this is a file download OR the website link."></textarea>
+                                <hr>
                                 <h5 class="font-weight-bold mt-3">Button 1 - Title text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the title you would like to appear above your video." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea onkeyup="generateBtnCode()" id="btnTitleText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your video title text here."></textarea>
                                 <div id="btnTwoDiv" class="fade">
                                     <hr>
                                     <h5 class="font-weight-bold mt-3">Button 2 - Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear on your second button." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                     <textarea class="border border-dark rounded w-100 p-2" id="btn2Text" onkeyup=generateBtnCode() placeholder="Write the text that will appear on button 2." rows="1"></textarea>
+                                    <hr>
                                     <h5 class="font-weight-bold mt-3">Button 2 - Select your icon<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Select an icon for your second button." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                     <div class="form-check form-check-inline" id="btnTwoIcon" onchange="generateBtnCode()">
                                         <input class="form-check-input" name="btnTwoIcon" id="noIcon2" type="radio" value="noI2" checked>
@@ -1374,33 +1480,37 @@
                                     </div>
                                     <hr>
                                     <h5 class="font-weight-bold mt-3">Button 2 colour<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the colour of your button" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                    <div class="row gap-3">
+                                        <div class="col-12">
                                 <div class="form-check form-check-inline" id="btn2Colour" onchange="generateBtnCode()">
                                     <input class="form-check-input" name="btn2Colour" id="btn2-uq" type="radio" value="uq" checked>
-                                    <label class="form-check-label" for="btn2-uq"><a class="btn btn-uq">UQ Purple</a></label>
+                                    <label class="form-check-label" for="btn2-uq"><a class="btn btn-uq">UQ</a></label>
                                 </div>
                                 <div class="form-check form-check-inline" id="btn2Colour" onchange="generateBtnCode()">
                                     <input class="form-check-input" name="btn2Colour" id="btn2-primary" type="radio" value="primary">
-                                    <label class="form-check-label" for="btn2-primary"><a class="btn btn-primary">Primary Blue</a></label>
+                                    <label class="form-check-label" for="btn2-primary"><a class="btn btn-primary">Primary</a></label>
                                 </div>
                                 <div class="form-check form-check-inline" id="btn2Colour" onchange="generateBtnCode()">
                                     <input class="form-check-input" name="btn2Colour" id="btn2-secondary" type="radio" value="secondary">
-                                    <label class="form-check-label" for="btn2-secondary"><a class="btn btn-secondary">Secondary Grey</a></label>
+                                    <label class="form-check-label" for="btn2-secondary"><a class="btn btn-secondary">Secondary</a></label>
                                 </div>
                                 <div class="form-check form-check-inline" id="btn2Colour" onchange="generateBtnCode()">
                                     <input class="form-check-input" name="btn2Colour" id="btn2-info" type="radio" value="info">
-                                    <label class="form-check-label" for="btn2-info"><a class="btn btn-info">Info Blue</a></label>
+                                    <label class="form-check-label" for="btn2-info"><a class="btn btn-info">Info</a></label>
                                 </div>
                                 <div class="form-check form-check-inline" id="btn2Colour" onchange="generateBtnCode()">
                                     <input class="form-check-input" name="btn2Colour" id="btn2-success" type="radio" value="success">
-                                    <label class="form-check-label" for="btn2-success"><a class="btn btn-success">Success Green</a></label>
+                                    <label class="form-check-label" for="btn2-success"><a class="btn btn-success">Success</a></label>
                                 </div>
+                                </div>
+                                <div class="col-12">
                                 <div class="form-check form-check-inline" id="btn2Colour" onchange="generateBtnCode()">
                                     <input class="form-check-input" name="btn2Colour" id="btn2-warning" type="radio" value="warning">
-                                    <label class="form-check-label" for="btn2-warning"><a class="btn btn-warning">Warning Yellow</a></label>
+                                    <label class="form-check-label" for="btn2-warning"><a class="btn btn-warning">Warning</a></label>
                                 </div>
                                 <div class="form-check form-check-inline" id="btn2Colour" onchange="generateBtnCode()">
                                     <input class="form-check-input" name="btn2Colour" id="btn2-danger" type="radio" value="danger">
-                                    <label class="form-check-label" for="btn2-danger"><a class="btn btn-danger">Danger Red</a></label>
+                                    <label class="form-check-label" for="btn2-danger"><a class="btn btn-danger">Danger</a></label>
                                 </div>
                                 <div class="form-check form-check-inline" id="btn2Colour" onchange="generateBtnCode()">
                                     <input class="form-check-input" name="btn2Colour" id="btn2-dark" type="radio" value="dark">
@@ -1410,9 +1520,12 @@
                                     <input class="form-check-input" name="btn2Colour" id="btn2-light" type="radio" value="light">
                                     <label class="form-check-label" for="btn2-light"><a class="btn btn-light">Light</a></label>
                                 </div>
+                                </div>
+                                </div>
                                 <hr>
                                     <h5 class="font-weight-bold mt-3">Button 2 - Link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The web link from LearnX if this is a file download OR the website link." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea onchange="generateBtnCode()" id="btn2Link" class="border border-dark rounded w-100 p-2" rows="1" placeholder="The web link from LearnX if this is a file download OR the website link"></textarea>
+                                <hr>
                                 <h5 class="font-weight-bold mt-3">Button 2 - Title text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="This assists with screenreaders and is an accessibility requirement." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea onkeyup="generateBtnCode()" id="btn2TitleText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your video title text here."></textarea>
                                 </div>
@@ -1448,33 +1561,37 @@
                                     </div>
                                     <hr>
                                     <h5 class="font-weight-bold mt-3">Button 3 colour<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the colour of your button" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                    <div class="row gap-3">
+                                        <div class="col-12">
                                 <div class="form-check form-check-inline" id="btn3Colour" onchange="generateBtnCode()">
                                     <input class="form-check-input" name="btn3Colour" id="btn3-uq" type="radio" value="uq" checked>
-                                    <label class="form-check-label" for="btn3-uq"><a class="btn btn-uq">UQ Purple</a></label>
+                                    <label class="form-check-label" for="btn3-uq"><a class="btn btn-uq">UQ</a></label>
                                 </div>
                                 <div class="form-check form-check-inline" id="btn3Colour" onchange="generateBtnCode()">
                                     <input class="form-check-input" name="btn3Colour" id="btn3-primary" type="radio" value="primary">
-                                    <label class="form-check-label" for="btn3-primary"><a class="btn btn-primary">Primary Blue</a></label>
+                                    <label class="form-check-label" for="btn3-primary"><a class="btn btn-primary">Primary</a></label>
                                 </div>
                                 <div class="form-check form-check-inline" id="btn3Colour" onchange="generateBtnCode()">
                                     <input class="form-check-input" name="btn3Colour" id="btn3-secondary" type="radio" value="secondary">
-                                    <label class="form-check-label" for="btn3-secondary"><a class="btn btn-secondary">Secondary Grey</a></label>
+                                    <label class="form-check-label" for="btn3-secondary"><a class="btn btn-secondary">Secondary</a></label>
                                 </div>
                                 <div class="form-check form-check-inline" id="btn3Colour" onchange="generateBtnCode()">
                                     <input class="form-check-input" name="btn3Colour" id="btn3-info" type="radio" value="info">
-                                    <label class="form-check-label" for="btn3-info"><a class="btn btn-info">Info Blue</a></label>
+                                    <label class="form-check-label" for="btn3-info"><a class="btn btn-info">Info</a></label>
                                 </div>
                                 <div class="form-check form-check-inline" id="btn3Colour" onchange="generateBtnCode()">
                                     <input class="form-check-input" name="btn3Colour" id="btn3-success" type="radio" value="success">
-                                    <label class="form-check-label" for="btn3-success"><a class="btn btn-success">Success Green</a></label>
+                                    <label class="form-check-label" for="btn3-success"><a class="btn btn-success">Success</a></label>
                                 </div>
+                                </div>
+                                <div class="col-12">
                                 <div class="form-check form-check-inline" id="btn3Colour" onchange="generateBtnCode()">
                                     <input class="form-check-input" name="btn3Colour" id="btn3-warning" type="radio" value="warning">
-                                    <label class="form-check-label" for="btn3-warning"><a class="btn btn-warning">Warning Yellow</a></label>
+                                    <label class="form-check-label" for="btn3-warning"><a class="btn btn-warning">Warning</a></label>
                                 </div>
                                 <div class="form-check form-check-inline" id="btn3Colour" onchange="generateBtnCode()">
                                     <input class="form-check-input" name="btn3Colour" id="btn3-danger" type="radio" value="danger">
-                                    <label class="form-check-label" for="btn3-danger"><a class="btn btn-danger">Danger Red</a></label>
+                                    <label class="form-check-label" for="btn3-danger"><a class="btn btn-danger">Danger</a></label>
                                 </div>
                                 <div class="form-check form-check-inline" id="btn3Colour" onchange="generateBtnCode()">
                                     <input class="form-check-input" name="btn3Colour" id="btn3-dark" type="radio" value="dark">
@@ -1484,18 +1601,21 @@
                                     <input class="form-check-input" name="btn3Colour" id="btn3-light" type="radio" value="light">
                                     <label class="form-check-label" for="btn3-light"><a class="btn btn-light">Light</a></label>
                                 </div>
+                                </div>
+                                </div>
+                                <hr>
                                     <h5 class="font-weight-bold mt-3">Button 3 - Link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The web link from LearnX if this is a file download OR the website link." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea onchange="generateBtnCode()" id="btn3Link" class="border border-dark rounded w-100 p-2" rows="1" placeholder="The web link from LearnX if this is a file download OR the website link."></textarea>
+                                <hr>
                                 <h5 class="font-weight-bold mt-3"> Button 3 - Title text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="This assists with screenreaders and is an accessibility requirement." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea onkeyup="generateBtnCode()" id="btn3TitleText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your video title text here."></textarea>
-                                </div>
-                                <hr>         
+                                </div>    
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="sticky-top" style="top:1rem;">
-                            <h5 class="font-weight-bold">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                        <div class="sticky-top" style="top:6rem;">
+                            <h5 class="font-weight-bold mt-3">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                             <div id="previewBtnFS" class="bg-white">
                             <div id="demo"></div>
                             </div>
@@ -1514,6 +1634,17 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="buildAlert" role="tabpanel">
+                <h1 class="text-center">Alert builder</h1>
+                <a class="btn btn-primary btn-sm d-block mx-auto text-center w-50 demoToggle" type="button" data-bs-toggle="collapse" data-bs-target="#createAlertDemo" aria-expanded="false" aria-controls="createAlertDemo">How do I make an alert or quote? Click to reveal a video demonstration <i class="fa-solid fa-angle-down"></i></a>
+                <div class="collapse mt-2 w-75 mx-auto" id="createAlertDemo">
+                    <div class="card card-body w-50 mx-auto d-block">
+                        <h5 class="text-center">How to create an Alert or Quote in the Code Centre</h5>
+                        <p>The video below is a short demonstration on how to create an alert or quote in the code centre. Click the button above to collapse this content and continue working.</p>
+                        <div class="ratio ratio-16x9">
+                            <iframe src=""></iframe>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="row w-100 mx-auto">
@@ -1552,15 +1683,15 @@
                                     <div class="col-lg">
                                 <div class="form-check form-check-inline" id="alertColour" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertColour" id="alert-uq" type="radio" value="uq" checked>
-                                    <label class="form-check-label" for="alert-uq"><div class="alert alert-uq">UQ Purple</div></label>
+                                    <label class="form-check-label" for="alert-uq"><div class="alert alert-uq border border-3 border-uq">UQ Purple</div></label>
                                 </div>
                                 <div class="form-check form-check-inline" id="alertColour" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertColour" id="alert-primary" type="radio" value="primary">
-                                    <label class="form-check-label" for="alert-primary"><div class="alert alert-primary">Primary Blue</div></label>
+                                    <label class="form-check-label" for="alert-primary"><div class="alert alert-primary border border-3 border-primary">Primary Blue</div></label>
                                 </div>
                                 <div class="form-check form-check-inline" id="alertColour" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertColour" id="alert-secondary" type="radio" value="secondary">
-                                    <label class="form-check-label" for="alert-secondary"><div class="alert alert-secondary">Secondary Grey</div></label>
+                                    <label class="form-check-label" for="alert-secondary"><div class="alert alert-secondary border border-3 border-secondary">Secondary Grey</div></label>
                                 </div>
                             </div>
                         </div>
@@ -1568,15 +1699,15 @@
                                     <div class="col-lg">
                                 <div class="form-check form-check-inline" id="alertColour" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertColour" id="alert-info" type="radio" value="info">
-                                    <label class="form-check-label" for="alert-info"><div class="alert alert-info">Info Blue</div></label>
+                                    <label class="form-check-label" for="alert-info"><div class="alert alert-info border border-3 border-info">Info Blue</div></label>
                                 </div>
                                 <div class="form-check form-check-inline" id="alertColour" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertColour" id="alert-success" type="radio" value="success">
-                                    <label class="form-check-label" for="alert-success"><div class="alert alert-success">Success Green</div></label>
+                                    <label class="form-check-label" for="alert-success"><div class="alert alert-success border border-3 border-success">Success Green</div></label>
                                 </div>
                                 <div class="form-check form-check-inline" id="alertColour" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertColour" id="alert-warning" type="radio" value="warning">
-                                    <label class="form-check-label" for="alert-warning"><div class="alert alert-warning">Warning Yellow</div></label>
+                                    <label class="form-check-label" for="alert-warning"><div class="alert alert-warning border border-3 border-warning">Warning Yellow</div></label>
                                 </div>
                                 </div>
                                 </div>
@@ -1584,15 +1715,15 @@
                                     <div class="col-lg">
                                 <div class="form-check form-check-inline" id="alertColour" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertColour" id="alert-danger" type="radio" value="danger">
-                                    <label class="form-check-label" for="alert-danger"><div class="alert alert-danger">Danger Red</div></label>
+                                    <label class="form-check-label" for="alert-danger"><div class="alert alert-danger border border-3 border-danger">Danger Red</div></label>
                                 </div>
                                 <div class="form-check form-check-inline" id="alertColour" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertColour" id="alert-dark" type="radio" value="dark">
-                                    <label class="form-check-label" for="alert-dark"><div class="alert alert-dark">Dark</div></label>
+                                    <label class="form-check-label" for="alert-dark"><div class="alert alert-dark border border-3 border-dark">Dark</div></label>
                                 </div>
                                 <div class="form-check form-check-inline" id="alertColour" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertColour" id="alert-light" type="radio" value="light">
-                                    <label class="form-check-label" for="alert-light"><div class="alert alert-light">Light</div></label>
+                                    <label class="form-check-label" for="alert-light"><div class="alert alert-light border border-3 border-light">Light</div></label>
                                 </div>
                             </div>
                         </div>
@@ -1616,6 +1747,26 @@
                                     <label class="form-check-label" for="alertHeadSize3"><h2 class="m-0">H2 heading</h2></label>
                                 </div>
                             </div>
+                            <div id="alertHeadingIcon" class="fade show">
+                                <hr>
+                            <h5 class="font-weight-bold mt-3">Alert Heading Icon<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Optional icon to go with the alert heading." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                            <div class="form-check form-check-inline" id="alertHeadIcon" onchange="generateAlertCode()">
+                                <input class="form-check-input" name="alertHeadIcon" id="alertHeadIconNone" type="radio" value="noI" checked>
+                                <label class="form-check-label" for="alertHeadIconNone">No icon</label>
+                            </div>
+                            <div class="form-check form-check-inline" id="alertHeadIcon" onchange="generateAlertCode()">
+                                <input class="form-check-input" name="alertHeadIcon" id="alertHeadIcon2" type="radio" value="fa-circle-exclamation">
+                                <label class="form-check-label" for="alertHeadIcon2"><i class="fa-solid fa-circle-exclamation fa-2x"></i></label>
+                            </div>
+                            <div class="form-check form-check-inline" id="alertHeadIcon" onchange="generateAlertCode()">
+                                <input class="form-check-input" name="alertHeadIcon" id="alertHeadIcon3" type="radio" value="fa-note-sticky">
+                                <label class="form-check-label" for="alertHeadIcon3"><i class="fa-solid fa-note-sticky fa-2x"></i></label>
+                            </div>
+                            <div class="form-check form-check-inline" id="alertHeadIcon" onchange="generateAlertCode()">
+                                <input class="form-check-input" name="alertHeadIcon" id="alertHeadIcon4" type="radio" value="fa-circle-question">
+                                <label class="form-check-label" for="alertHeadIcon4"><i class="fa-solid fa-circle-question fa-2x"></i></label>
+                            </div>
+                        </div>
                             <hr>
                                 <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your alert or quote." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea class="border border-dark rounded w-100" id="tinyMCEalert" onkeyup=generateAlertCode()></textarea>
@@ -1656,8 +1807,8 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="sticky-top" style="top:1rem;">
-                            <h5 class="font-weight-bold">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                        <div class="sticky-top" style="top:6rem;">
+                            <h5 class="font-weight-bold mt-3">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                             <div id="previewAlertFS" class="bg-white">
                             <div id="demo"></div>
                             </div>
@@ -1676,11 +1827,22 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="buildTooltip" role="tabpanel">
+                <h1 class="text-center">Tooltip builder</h1>
+                <a class="btn btn-primary btn-sm d-block mx-auto text-center w-50 demoToggle" type="button" data-bs-toggle="collapse" data-bs-target="#createTooltipDemo" aria-expanded="false" aria-controls="createTooltipDemo">How do I make a tooltip? Click to reveal a video demonstration <i class="fa-solid fa-angle-down"></i></a>
+                <div class="collapse mt-2 w-75 mx-auto" id="createTooltipDemo">
+                    <div class="card card-body w-50 mx-auto d-block">
+                        <h5 class="text-center">How to create an Tooltip in the Code Centre</h5>
+                        <p>The video below is a short demonstration on how to create a tooltip in the code centre. Click the button above to collapse this content and continue working.</p>
+                        <div class="ratio ratio-16x9">
+                            <iframe src=""></iframe>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="row w-100 mx-auto">
                             <div class="col-lg">
-                                <h5 class="font-weight-bold">Tooltip position<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the tooltip icon you would like your tooltip to appear." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <h5 class="font-weight-bold mt-3">Tooltip position<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the tooltip icon you would like your tooltip to appear." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="tooltipPosition" onchange="generateTooltipCode()">
                                     <input class="form-check-input" name="tooltipPosition" id="tooltipPosition1" type="radio" value="top">
                                     <label class="form-check-label" for="tooltipPosition1">Top</label>
@@ -1698,13 +1860,13 @@
                                     <label class="form-check-label" for="tooltipPosition4">Left</label>
                                 </div>
                                 <h5 class="font-weight-bold mt-3">Write your tooltip text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear when a user hovers over this tooltip icon." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
-                                <textarea class="border border-dark rounded w-100" rows="3" maxlength="200" id="tooltipText" onkeyup=generateTooltipCode()></textarea>
+                                <textarea class="border border-dark rounded w-100" rows="3" maxlength="200" id="tooltipText" onkeyup="generateTooltipCode()"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="sticky-top" style="top:1rem;">
-                            <h5 class="font-weight-bold">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                        <div class="sticky-top" style="top:6rem;">
+                            <h5 class="font-weight-bold mt-3">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                             <div id="previewTooltipFS" class="bg-white">
                             <div id="demo"></div>
                             </div>
@@ -1713,7 +1875,7 @@
                             </div>
                             <h5 class="font-weight-bold">Copy code<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click the copy code button below to copy your code, ready to paste into LearnX.">&nbsp;<i class="fa fa-question-circle text-success small" aria-hidden="true"></i></span></h5>
                             <textarea readonly class="rounded p-2 w-100 border border-dark" id="tooltipFinalCode" cols="70" rows="5" name="Result" placeholder="Code for your element will appear here"></textarea>
-                            <input id="copyCodeBtn" class="btn btn-success btn-lg d-block w-100 mt-2" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()">
+                            <input id="copyCodeBtn" class="btn btn-success btn-lg d-block w-100 mt-2" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()" data-bs-toggle="modal" data-bs-target="#localStorageModalTooltip">
                             <div class="text-center h5 mt-4">
                                 <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into
                                 LearnX?</a>-->
@@ -1722,8 +1884,18 @@
                     </div>
                 </div>
             </div>
-			<!--Start table generator-->
-			<div class="tab-pane fade" id="buildTable" role="tabpanel">
+            <div class="tab-pane fade" id="buildTable" role="tabpanel">
+                <h1 class="text-center">Table builder</h1>
+                <a class="btn btn-primary btn-sm d-block mx-auto text-center w-50 demoToggle" type="button" data-bs-toggle="collapse" data-bs-target="#createTableDemo" aria-expanded="false" aria-controls="createTableDemo">How do I make a table? Click to reveal a video demonstration <i class="fa-solid fa-angle-down"></i></a>
+                <div class="collapse mt-2 w-75 mx-auto" id="createTableDemo">
+                    <div class="card card-body w-50 mx-auto d-block">
+                        <h5 class="text-center">How to create a Table in the Code Centre</h5>
+                        <p>The video below is a short demonstration on how to create a table in the code centre. Click the button above to collapse this content and continue working.</p>
+                        <div class="ratio ratio-16x9">
+                            <iframe src=""></iframe>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-lg">
                         <div class="alert alert-danger border border-3 border-danger rounded mx-auto d-block tableAlert">
@@ -1865,8 +2037,8 @@
                                 <textarea class="border border-dark rounded w-100 mt-3" id="tinyMCEtable" onkeyup=generateTableCode()></textarea>
 			</div>
 			<div class="col-lg-6">
-				<div class="sticky-top" style="top:1rem;">
-					<h5 class="font-weight-bold">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+				<div class="sticky-top" style="top:6rem;">
+					<h5 class="font-weight-bold mt-3">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
 					<div id="previewTableFS" class="bg-white">
 					<div id="demo"></div>
 					</div>
@@ -1883,12 +2055,22 @@
 				</div>
 			</div>
 		</div>
-	</div>
-			<!--End table generator-->
-            <!--Start accordion generator-->
-            <div class="tab-pane fade" id="buildAcc" role="tabpanel">
-                <div class="row">
-                    <div class="col-lg">
+	        </div>
+             <!--Start accordion generator-->
+             <div class="tab-pane fade" id="buildAcc" role="tabpanel">
+                <h1 class="text-center">Accordion builder</h1>
+                <a class="btn btn-primary btn-sm d-block mx-auto text-center w-50 demoToggle" type="button" data-bs-toggle="collapse" data-bs-target="#createAccDemo" aria-expanded="false" aria-controls="createAccDemo">How do I make a table? Click to reveal a video demonstration <i class="fa-solid fa-angle-down"></i></a>
+                <div class="collapse mt-2 w-75 mx-auto" id="createAccDemo">
+                    <div class="card card-body w-50 mx-auto d-block">
+                        <h5 class="text-center">How to create an Accordion in the Code Centre</h5>
+                        <p>The video below is a short demonstration on how to create an accordion in the code centre. Click the button above to collapse this content and continue working.</p>
+                        <div class="ratio ratio-16x9">
+                            <iframe src=""></iframe>
+                        </div>
+                    </div>
+                </div> 
+                <div class="row w-75 mx-auto mt-2">
+                    <div class="col">
                         <div class="alert alert-danger border border-3 border-danger rounded mx-auto d-block accAlert">
                             <h3 class="text-center"><i class="fa-solid fa-circle-exclamation"></i> Stop and Read! How and when to use accordions</h3>
                             <p>Accordions <strong>should</strong> be used:</p>
@@ -1943,7 +2125,7 @@
                 <div id="drawer1">
                 <h6>Drawer 1 Heading + Content<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Create the headings for your accordion drawers and content for your accordions." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h6>
                 <textarea onchange="generateAccCode()" id="acc1Btn" maxlength="75" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Heading on the accordion button. Max 75 characters"></textarea>
-                <textarea onchange="generateAccCode()" id="acc1Content" class="tinyMCEacc border border-dark rounded w-100 p-2" rows="5" placeholder="Content that will display on clicking the relative accordion button."></textarea>
+                <textarea onkeyup="generateAccCode()" id="acc1Content" class="tinyMCEacc border border-dark rounded w-100 p-2" rows="5" placeholder="Content that will display on clicking the relative accordion button."></textarea>
             </div>
                 <hr>
                 <div id="drawer2">
@@ -2003,7 +2185,8 @@
         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="sticky-top" style="top:1rem;">
+                        <div class="sticky-top" style="top:6rem;">
+                            <h5 class="font-weight-bold mt-3">Number of drawers<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Number of accordion drawers. Minimum 3. Maximum 10. Use the plus/minus controls or type a number into the input box.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                             <div class="input-group inline-group mx-auto" style="max-width: 50%">
                                 <div class="input-group-prepend my-auto">
                                   <button onclick="document.getElementById('drawerNumber').stepDown();generateAccCode()" class="btn btn-danger btn-minus" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Min 3">
@@ -2037,14 +2220,28 @@
                 </div>
             </div>
             <!--End accordion generator-->
-            <div class="tab-pane fade" id="bugOrImprovementForm" role="tabpanel">
-                <div class="ratio ratio-16x9">
-                    <iframe src="https://forms.office.com/r/G6NMM65Yxu?embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
-                </div>
-            </div>
         </div>
     </div>
     </div>
-    <button id="closeAlertsBtn" class="position-absolute top-0 end-0 btn btn-success p-1 px-2 rounded m-2" onclick="closeAlerts()" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Hide/show explanatory alerts on the table and accordion pages"><i class="fa-solid fa-eye"></i></button>
+   <!-- <button id="closeAlertsBtn" class="position-absolute top-0 end-0 btn btn-success p-1 px-2 rounded mx-2 fs-4" style="margin-top: 6rem; z-index: 1020" onclick="closeAlerts()" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Hide/show explanatory alerts on the table and accordion pages"><i class="fa-solid fa-eye"></i></button>-->
+    <button id="bttBtn" class="btn btn-dark p-1 px-2 rounded mx-2 my-4 fs-4" onclick="javascript:document.body.scrollTop = 0;document.documentElement.scrollTop = 0;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+    <div style="margin-top: 6.5rem"></div>
+    <div class="bg-uq fixed-bottom">
+    <nav class="navbar mx-3 float-end">
+        <ul class="nav nav-pills">
+            <li class="nav-item" role="presentation">
+                <a id="bugOrImprovementFormBtn" class="nav-link text-white" href="https://forms.office.com/r/G6NMM65Yxu" target="_blank">Log Bug or Improvement</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button id="closeAlertsBtn" class="nav-link text-white" onclick="closeAlerts()" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Hide/show explanatory alerts on the table and accordion pages"><i class="fa-solid fa-eye"></i></button>
+            </li>
+        </ul>
+      </nav>
+    </div>
+    <script>
+       $('.demoToggle').click(function(){
+        $('i', this).toggleClass('fa-angle-down fa-angle-up');
+       });
+    </script>
 </body>
 </html>
