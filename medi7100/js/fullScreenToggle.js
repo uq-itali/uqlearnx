@@ -198,3 +198,31 @@ function fullScreenAccToggle() {
         });
     }
 }
+function fullScreenTableToggle() {
+    if (document.fullscreenEnabled) {
+        var togglePreviewTableFS = document.getElementById("togglePreviewTableFS");
+        togglePreviewTableFS.addEventListener("click", function (event) {
+            if (!document.fullscreenElement) {
+                document.querySelector("#previewTableFS").requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }, false);
+        document.addEventListener("fullscreenchange", function (event) {
+            console.log(event);
+            if (!document.fullscreenElement) {
+                togglePreviewTableFS.innerHTML = "<i class=\"fa fa-expand-arrows-alt fa-lg\"></i>";
+                $('#previewTableFS').removeClass('pt-5');
+                $(togglePreviewTableFS).appendTo('#previewTableFS');
+            } else {
+                togglePreviewTableFS.innerHTML = "<i class=\"fa fa-compress-arrows-alt fa-lg\"></i>";
+                $(togglePreviewTableFS).appendTo('#previewTableFS');
+                $(togglePreviewTableFS).addClass('d-block mx-auto mt-3')
+                $('#previewTableFS').addClass('pt-5');
+            }
+        });
+        document.addEventListener("fullscreenerror", function (event) {
+            console.log(event);
+        });
+    }
+}
