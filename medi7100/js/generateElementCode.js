@@ -1,3 +1,5 @@
+var sComm = "<!-- Start Code Centre Element-->\n";
+var eComm = "<!-- End Code Centre Element-->\n";
 function generateImgTextCode() {
     //Retrive values and text from the user's input
     var imgPosition = $('input[name="imagePosition"]:checked').val();
@@ -64,62 +66,62 @@ function generateImgTextCode() {
     //Changing code order depending on selections
     if(imgPosition == "left" && imgWidth=="50"){
         imgOnlyOff();
-        var finalCode = resizedHead + rowOpen + colImgOpen + imgCode + divClose + colTxtOpen + tinyTextimg  + rowClose;
+        var finalCode = sComm + resizedHead + rowOpen + colImgOpen + imgCode + divClose + colTxtOpen + tinyTextimg  + rowClose + eComm;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "right" && imgWidth == "50"){
         imgOnlyOff();
-        var finalCode = resizedHead + rowOpen + colTxtOpen + tinyTextimg + divClose + colImgOpen + imgCode + rowClose;
+        var finalCode = sComm + resizedHead + rowOpen + colTxtOpen + tinyTextimg + divClose + colImgOpen + imgCode + rowClose + eComm;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "left" && imgWidth == "33"){
         imgOnlyOff();
-        var finalCode = resizedHead + rowOpen + col4ImgOpen + imgCode + divClose + colTxtOpen + tinyTextimg  + rowClose;
+        var finalCode = sComm + resizedHead + rowOpen + col4ImgOpen + imgCode + divClose + colTxtOpen + tinyTextimg  + rowClose + eComm;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);                
     }
     else if(imgPosition == "left" && imgWidth == "25"){
         imgOnlyOff();
-        var finalCode = resizedHead + rowOpen + col3ImgOpen + imgCode + divClose + colTxtOpen + tinyTextimg  + rowClose;
+        var finalCode = sComm + resizedHead + rowOpen + col3ImgOpen + imgCode + divClose + colTxtOpen + tinyTextimg  + rowClose + eComm;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "right" && imgWidth == "33"){
         imgOnlyOff();
-        var finalCode = resizedHead + rowOpen + colTxtOpen + tinyTextimg + divClose + col4ImgOpen + imgCode + rowClose;
+        var finalCode = sComm + resizedHead + rowOpen + colTxtOpen + tinyTextimg + divClose + col4ImgOpen + imgCode + rowClose + eComm;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "right" && imgWidth == "25"){
         imgOnlyOff();
-        var finalCode = resizedHead + rowOpen + colTxtOpen + tinyTextimg + divClose + col3ImgOpen + imgCode + rowClose;
+        var finalCode = sComm + resizedHead + rowOpen + colTxtOpen + tinyTextimg + divClose + col3ImgOpen + imgCode + rowClose + eComm;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "floatRight" && imgWidth =="50"){
         imgOnlyOff();
-        var finalCode = resizedHead + rowOpen + colFloatOpen + imgFloat + divClose + tinyTextimg + rowClose;
+        var finalCode = sComm + resizedHead + rowOpen + colFloatOpen + imgFloat + divClose + tinyTextimg + rowClose + eComm;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "floatRight" && imgWidth == "33"){
         imgOnlyOff();
-        var finalCode = resizedHead + rowOpen + col4FloatOpen + imgFloat + divClose + tinyTextimg + rowClose;
+        var finalCode = sComm + resizedHead + rowOpen + col4FloatOpen + imgFloat + divClose + tinyTextimg + rowClose + eComm;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "floatRight" && imgWidth == "25" ){
         imgOnlyOff();
-        var finalCode = resizedHead + rowOpen + col3FloatOpen + imgFloat + divClose + tinyTextimg + rowClose;
+        var finalCode = sComm + resizedHead + rowOpen + col3FloatOpen + imgFloat + divClose + tinyTextimg + rowClose + eComm;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
     else if(imgPosition == "imgOnly"){
         $('#imgTinyMCE, #imgWidth, #imgImgAlign, #imgTextAlign').removeClass('show');
         setTimeout(toggleImgOnlyOn, 300)
-        var finalCode = resizedHead + imgCode;
+        var finalCode = sComm + resizedHead + imgCode + eComm;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
@@ -191,53 +193,53 @@ function generateVidTextCode() {
     } 
     //Changing code order depending on selections
     if(vidPosition == "left" && vidWidth=="50"){
-        var vidFinalCode = vidResizedHead + rowOpen + colOpen + vidTitleText + respVidOpen + vidCode + divClose + colOpen + tinyTextvid  + rowClose;
+        var vidFinalCode = sComm + vidResizedHead + rowOpen + colOpen + vidTitleText + respVidOpen + vidCode + divClose + colOpen + tinyTextvid  + rowClose + eComm;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "right" && vidWidth == "50"){
-        var vidFinalCode = vidResizedHead + rowOpen + colOpen + tinyTextvid + divClose + colOpen + vidTitleText + respVidOpen + vidCode + divClose + rowClose;
+        var vidFinalCode = sComm + vidResizedHead + rowOpen + colOpen + tinyTextvid + divClose + colOpen + vidTitleText + respVidOpen + vidCode + divClose + rowClose + eComm;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "left" && vidWidth == "33"){
-        var vidFinalCode = vidResizedHead + rowOpen + col4Open + vidTitleText + respVidOpen + vidCode + divClose + colOpen + tinyTextvid  + rowClose;
+        var vidFinalCode = sComm + vidResizedHead + rowOpen + col4Open + vidTitleText + respVidOpen + vidCode + divClose + colOpen + tinyTextvid  + rowClose + eComm;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);                
     }
     else if(vidPosition == "left" && vidWidth == "25"){
-        var vidFinalCode = vidResizedHead + rowOpen + col3Open + vidTitleText + respVidOpen + vidCode + divClose + colOpen + tinyTextvid  + rowClose;
+        var vidFinalCode = sComm + vidResizedHead + rowOpen + col3Open + vidTitleText + respVidOpen + vidCode + divClose + colOpen + tinyTextvid  + rowClose + eComm;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "right" && vidWidth == "33"){
-        var vidFinalCode = vidResizedHead + rowOpen + colOpen + tinyTextvid + divClose + col4Open + vidTitleText + respVidOpen + vidCode + divClose + rowClose;
+        var vidFinalCode = sComm + vidResizedHead + rowOpen + colOpen + tinyTextvid + divClose + col4Open + vidTitleText + respVidOpen + vidCode + divClose + rowClose + eComm;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "right" && vidWidth == "25"){
-        var vidFinalCode = vidResizedHead + rowOpen + colOpen + tinyTextvid + divClose + col3Open + vidTitleText + respVidOpen + vidCode + divClose + rowClose;
+        var vidFinalCode = sComm + vidResizedHead + rowOpen + colOpen + tinyTextvid + divClose + col3Open + vidTitleText + respVidOpen + vidCode + divClose + rowClose + eComm;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "floatRight" && vidWidth =="50"){
-        var vidFinalCode = vidResizedHead + rowOpen + colFloatOpen + vidTitleText + respVidOpen + vidCode + divClose + tinyTextvid + rowClose;
+        var vidFinalCode = sComm + vidResizedHead + rowOpen + colFloatOpen + vidTitleText + respVidOpen + vidCode + divClose + tinyTextvid + rowClose + eComm;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "floatRight" && vidWidth == "33"){
-        var vidFinalCode = vidResizedHead + rowOpen + col4FloatOpen + vidTitleText + respVidOpen + vidCode + divClose + tinyTextvid + rowClose;
+        var vidFinalCode = sComm + vidResizedHead + rowOpen + col4FloatOpen + vidTitleText + respVidOpen + vidCode + divClose + tinyTextvid + rowClose + eComm;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "floatRight" && vidWidth == "25"){
-        var vidFinalCode = vidResizedHead + rowOpen + col3FloatOpen + vidTitleText + respVidOpen + vidCode + divClose + tinyTextvid + rowClose;
+        var vidFinalCode = sComm + vidResizedHead + rowOpen + col3FloatOpen + vidTitleText + respVidOpen + vidCode + divClose + tinyTextvid + rowClose + eComm;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidWidth == "0"){
         $('div#vidPosDiv, div#vidTextTiny, div#vidSmallTitle').addClass('d-none');
-        var vidFinalCode = vidResizedHead + vidTitleText + respVidOpen + vidCode + divClose;
+        var vidFinalCode = sComm + vidResizedHead + vidTitleText + respVidOpen + vidCode + divClose + eComm;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
@@ -402,62 +404,62 @@ else{
     
     //Changing code order depending on selections
     if(btnPosition == "left" && btnWidth == "Nat"){
-        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + btnSize + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
-        var btnFinalCode = btnOneFinal
+        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + btnSize + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>\n';
+        var btnFinalCode = sComm + btnOneFinal + eComm;
         $('#btnFinalCode').val(btnFinalCode);
         $('div#demo').html(btnFinalCode);
     }
     else if(btnPosition == "left" && btnWidth == "25"){
-        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + btnSize + w25 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
-        var btnFinalCode = btnOneFinal
+        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + btnSize + w25 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>\n';
+        var btnFinalCode = sComm + btnOneFinal + eComm;
         $('#btnFinalCode').val(btnFinalCode);
         $('div#demo').html(btnFinalCode);
     }
     else if(btnPosition == "left" && btnWidth == "50"){
-        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + btnSize + w50 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
-        var btnFinalCode = btnOneFinal
+        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + btnSize + w50 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>\n';
+        var btnFinalCode = sComm + btnOneFinal + eComm;
         $('#btnFinalCode').val(btnFinalCode);
         $('div#demo').html(btnFinalCode);
     }
     else if(btnPosition == "left" && btnWidth == "75"){
-        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + btnSize + w75 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
-        var btnFinalCode = btnOneFinal
+        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + btnSize + w75 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>\n';
+        var btnFinalCode = sComm + btnOneFinal + eComm;
         $('#btnFinalCode').val(btnFinalCode);
         $('div#demo').html(btnFinalCode);
     }
     else if(btnPosition == "left" && btnWidth == "100"){
-        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + btnSize + w100 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">'+ btnOneText + btnOneFinalIcon + '</a>';
-        var btnFinalCode = btnOneFinal
+        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + btnSize + w100 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">'+ btnOneText + btnOneFinalIcon + '</a>\n';
+        var btnFinalCode = sComm + btnOneFinal + eComm;
         $('#btnFinalCode').val(btnFinalCode);
         $('div#demo').html(btnFinalCode);
     }
     else if(btnPosition == "centred" && btnWidth == "Nat"){
-        var btnOneFinal = '<p class="text-center"><a href="' + btnLink + '" class="btn btn-' + btnColor + btnSize + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a></p>';
-        var btnFinalCode = btnOneFinal
+        var btnOneFinal = '<p class="text-center"><a href="' + btnLink + '" class="btn btn-' + btnColor + btnSize + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a></p>\n';
+        var btnFinalCode = sComm + btnOneFinal + eComm;
         $('#btnFinalCode').val(btnFinalCode);
         $('div#demo').html(btnFinalCode);
     }
     else if(btnPosition == "centred" && btnWidth == "25"){
-        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + w25 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
-        var btnFinalCode = btnOneFinal
+        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + w25 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>\n';
+        var btnFinalCode = sComm + btnOneFinal + eComm;
         $('#btnFinalCode').val(btnFinalCode);
         $('div#demo').html(btnFinalCode);
     }
     else if(btnPosition == "centred" && btnWidth == "50"){
-        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + w50 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
-        var btnFinalCode = btnOneFinal
+        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + w50 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>\n';
+        var btnFinalCode = sComm + btnOneFinal + eComm;
         $('#btnFinalCode').val(btnFinalCode);
         $('div#demo').html(btnFinalCode);
     }
     else if(btnPosition == "centred" && btnWidth == "75"){
-        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + w75 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
-        var btnFinalCode = btnOneFinal
+        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + w75 + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>\n';
+        var btnFinalCode = sComm + btnOneFinal + eComm;
         $('#btnFinalCode').val(btnFinalCode);
         $('div#demo').html(btnFinalCode);
     }
     else if(btnPosition == "centred" && btnWidth == "100"){
-        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>';
-        var btnFinalCode = btnOneFinal
+        var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="'+btnTitleText+'">' + btnOneText + btnOneFinalIcon + '</a>\n';
+        var btnFinalCode = sComm + btnOneFinal + eComm;
         $('#btnFinalCode').val(btnFinalCode);
         $('div#demo').html(btnFinalCode);
     }
@@ -468,7 +470,7 @@ else{
         var btnGroupClose = '</div>\n</div>\n'
         var btnOneFinal = '<a href="' + btnLink + '" class="btn btn-' + btnColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="'+ btnTitleText + '">' + btnOneText + btnOneFinalIcon + '</a>\n';
         var btnTwoFinal = '<a href="' + btnTwoLink + '" class="btn btn-' + btnTwoColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="' + btnTwoTitleText + '">' + btnTwoText + btnTwoFinalIcon + '</a>\n';
-        var btnFinalCode = btnGroupOpen + btnOneFinal + btnColClose + btnColOpen + btnTwoFinal + btnGroupClose;
+        var btnFinalCode = sComm + btnGroupOpen + btnOneFinal + btnColClose + btnColOpen + btnTwoFinal + btnGroupClose + eComm;
         $('#btnFinalCode').val(btnFinalCode);
         $('div#demo').html(btnFinalCode);
     }
@@ -481,7 +483,7 @@ else{
             var btnTwoFinal = '<a href="' + btnTwoLink + '" class="btn btn-' + btnTwoColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="' + btnTwoTitleText + '">' + btnTwoText + btnTwoFinalIcon + '</a>\n';
             var btnThreeFinal = '<a href="' + btnThreeLink + '" class="btn btn-' + btnThreeColor + ctrBtn + btnSize + '" target="_' + sameOrNew + '" title="' + btnThreeTitleText + '">' + btnThreeText + btnThreeFinalIcon + '</a>\n';
             console.log(btnThreeText)
-            var btnFinalCode = btnGroupOpen + btnOneFinal + btnColClose + btnColOpen + btnTwoFinal + btnColClose + btnColOpen + btnThreeFinal + btnGroupClose;
+            var btnFinalCode = sComm + btnGroupOpen + btnOneFinal + btnColClose + btnColOpen + btnTwoFinal + btnColClose + btnColOpen + btnThreeFinal + btnGroupClose + eComm;
             $('#btnFinalCode').val(btnFinalCode);
             $('div#demo').html(btnFinalCode);
         }
@@ -551,7 +553,7 @@ function generateAlertCode() {
             $('#alertHeadingDiv, #alertHeadingIcon').removeClass('d-none');
             setTimeout(function(){$('#alertHeadingDiv, #alertHeadingIcon').addClass('show')
             }, 200)
-            var alertFinalCode = alertOpen + alertColor + ' ' + 'border border-3 border-' + alertColor + ' ' + alertWidth + alertDivClose + resizedAlertHead + tinyTextalert + divClose;
+            var alertFinalCode = sComm + alertOpen + alertColor + ' ' + 'border border-3 border-' + alertColor + ' ' + alertWidth + alertDivClose + resizedAlertHead + tinyTextalert + divClose + eComm;
             $('#alertFinalCode').val(alertFinalCode);
             $('div#demo').html(alertFinalCode);
         }
@@ -563,7 +565,7 @@ function generateAlertCode() {
             setTimeout(function(){
                 $('#alertHeadingDiv, #alertHeadingIcon').addClass('d-none')}
                 , 200)
-            var alertFinalCode = alertOpen + alertColor + ' ' + 'border border-3 border-' + alertColor + ' ' + alertWidth + alertDivClose + quotationsLeft + figOpen + quoteWrapper + fontSize + closeWrapper + tinyTextalert + endQuoteWrapper + figCaptionOpen + tinyTextCitation + figCaptionClose + quotationsRight;
+            var alertFinalCode = sComm + alertOpen + alertColor + ' ' + 'border border-3 border-' + alertColor + ' ' + alertWidth + alertDivClose + quotationsLeft + figOpen + quoteWrapper + fontSize + closeWrapper + tinyTextalert + endQuoteWrapper + figCaptionOpen + tinyTextCitation + figCaptionClose + quotationsRight + '\n' + eComm;
             $('#alertFinalCode').val(alertFinalCode);
             $('div#demo').html(alertFinalCode);
         }
@@ -649,7 +651,7 @@ function generateTableCode(){
         tinymce.get("tinyMCEtable").setContent(tinyMCEtable.replace('<tbody>', '<thead>\n' + (thSingle.repeat(thCalc)) + '</thead>\n' + '<tbody>\n'))
     }
     var tinyMCEtable = tinymce.get("tinyMCEtable").getContent();
-    var tableFinalCode = tableResizedHead + tinyMCEtable;
+    var tableFinalCode = sComm + tableResizedHead + tinyMCEtable + '\n' + eComm;
     $('#tableFinalCode').val(tableFinalCode);
     $('div#demo').html(tableFinalCode);
 }   
@@ -886,7 +888,7 @@ function makeTable(){
                 generateAccCode();
             }       
           }; 
-    var accFinalCode = accResizedHead + accCode;
+    var accFinalCode = sComm + accResizedHead + accCode + '\n' + eComm;
     $('#accFinalCode').val(accFinalCode);
     $('div#demo').html(accFinalCode);
     $('h2.accordion-header').on('click',function(){
