@@ -21,6 +21,9 @@ function copyCode() {
     else if(activeBtn == 'accBuilderBtn'){
         var selectedCode = $('#accFinalCode').select();
     }
+    else if(activeBtn == 'readmoreBuilderBtn'){
+        var selectedCode = $('#readmoreFinalCode').select();
+    }
     try {
         var successful = document.execCommand('copy');
         var msg = successful ? 'successful' : 'unsuccessful';
@@ -219,6 +222,34 @@ function fullScreenTableToggle() {
                 $(togglePreviewTableFS).appendTo('#previewTableFS');
                 $(togglePreviewTableFS).addClass('d-block mx-auto mt-3')
                 $('#previewTableFS').addClass('pt-5');
+            }
+        });
+        document.addEventListener("fullscreenerror", function (event) {
+            console.log(event);
+        });
+    }
+}
+function fullScreenReadmoreToggle() {
+    if (document.fullscreenEnabled) {
+        var togglePreviewReadmoreFS = document.getElementById("togglePreviewReadmoreFS");
+        togglePreviewReadmoreFS.addEventListener("click", function (event) {
+            if (!document.fullscreenElement) {
+                document.querySelector("#previewReadmoreFS").requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }, false);
+        document.addEventListener("fullscreenchange", function (event) {
+            console.log(event);
+            if (!document.fullscreenElement) {
+                togglePreviewReadmoreFS.innerHTML = "<i class=\"fa fa-expand-arrows-alt fa-lg\"></i>";
+                $('#previewReadmoreFS').removeClass('pt-5');
+                $(togglePreviewReadmoreFS).appendTo('#previewReadmoreFS');
+            } else {
+                togglePreviewReadmoreFS.innerHTML = "<i class=\"fa fa-compress-arrows-alt fa-lg\"></i>";
+                $(togglePreviewReadmoreFS).appendTo('#previewReadmoreFS');
+                $(togglePreviewReadmoreFS).addClass('d-block mx-auto mt-3')
+                $('#previewReadmoreFS').addClass('pt-5');
             }
         });
         document.addEventListener("fullscreenerror", function (event) {

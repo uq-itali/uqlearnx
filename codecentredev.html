@@ -343,6 +343,42 @@
                     });
                 }
             });
+            tinymce.init({
+                selector: '#tinyMCEreadmorePreBtn',
+                menubar: false,
+                height: "200",
+                plugins: [
+                    'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                    'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                    'insertdatetime', 'media', 'table', 'help', 'wordcount'
+                ],
+                toolbar: 'undo redo blocks bold italic alignleft aligncenter alignright link code charmap removeformat fullscreen',
+                setup: function (ed) {
+                    ed.on('keyup', function (e) {
+                        var tinyReadmorePreBtn = tinymce.get("tinyMCEreadmorePreBtn").getContent();
+                        activeBtn();
+                        console.log('Editor contents was modified. Contents: ' + ed.getContent());   
+                    });
+                }
+            });
+            tinymce.init({
+                selector: '#tinyMCEreadmorePostBtn',
+                menubar: false,
+                height: "200",
+                plugins: [
+                    'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                    'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                    'insertdatetime', 'media', 'table', 'help', 'wordcount'
+                ],
+                toolbar: 'undo redo blocks bold italic alignleft aligncenter alignright link code charmap removeformat fullscreen',
+                setup: function (ed) {
+                    ed.on('keyup', function (e) {
+                        var tinyReadmorePostBtn = tinymce.get("tinyMCEreadmorePostBtn").getContent();
+                        activeBtn();
+                        console.log('Editor contents was modified. Contents: ' + ed.getContent());   
+                    });
+                }
+            });
             function activeBtn(){
                 var activeBtn = $('button.active').attr('id')
                 if(activeBtn == 'imgBuilderBtn') {
@@ -366,7 +402,11 @@
                 else if(activeBtn == 'accBuilderBtn'){
                     generateAccCode();
                 }
+                else if(activeBtn == 'readmoreBuilderBtn'){
+                    generateReadmoreCode();
+                }
             }
+
         </script>
         <!--Setup page variables-->
         <script type="text/javascript">
@@ -504,6 +544,9 @@
             </li>
             <li class="nav-item" role="presentation">
                 <button onclick="generateAccCode()" id="accBuilderBtn" class="nav-link" href="#buildAcc" data-bs-toggle="tab">Accordion</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button onclick="generateReadmoreCode()" id="readmoreBuilderBtn" class="nav-link" href="#buildReadmore" data-bs-toggle="tab">Read more</button>
             </li>
             <li class="nav-item" role="presentation">
                 <button id="headingsBtn" class="nav-link" href="#headings" data-bs-toggle="tab">Headings</button>
@@ -2178,6 +2221,66 @@
             </div>
         </div>
         <!--End accordion generator-->
+        <!--Read more button generator-->
+        <div class="tab-pane fade" id="buildReadmore" role="tabpanel">
+            <h1 class="text-center">Read More builder</h1>
+            <a class="btn btn-primary btn-sm d-block mx-auto text-center w-50 demoToggle" type="button" data-bs-toggle="collapse" data-bs-target="#createReadmoreDemo" aria-expanded="false" aria-controls="createReadmoreDemo">How do I make a table? Click to reveal a video demonstration <i class="fa-solid fa-angle-down"></i></a>
+            <div class="collapse mt-2 w-75 mx-auto" id="createReadmoreDemo">
+                <div class="card card-body w-50 mx-auto d-block">
+                    <h5 class="text-center">How to create a Read More button in the Code Centre</h5>
+                    <p>The video below is a short demonstration on how to create a Read More button in the code centre. Click the button above to collapse this content and continue working.</p>
+                    <div class="ratio ratio-16x9">
+                        <iframe src=""></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h5 class="font-weight-bold mt-3">Read More Button Name - Required - Numbers and Letters Only, No Spaces - Max 20 Characters<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Each read more button you create needs a unique name. If it shares the same name as another read more button on the same page neither read more button will work correctly. You can use letters and numbers, no special characters or spaces." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                    <textarea onchange="generateReadmoreCode()" id="readmoreName" maxlength="20" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Required name. Max 20 characters."></textarea>
+                        <hr>
+                    <h5 class="font-weight-bold mt-3">Read More Heading - Optional - Max 75 Characters<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Optional heading above the read more button. Max 75 characters." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                        <textarea onchange="generateReadmoreCode()" id="readmoreHeadingText" maxlength="75" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Optional heading above the read more button. Max 75 characters."></textarea>
+                        <hr>
+                        <h5 class="font-weight-bold mt-3">Heading size<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the size of your heading." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                        <div class="form-check form-check-inline" id="readmoreHeadSize" onchange="generateReadmoreCode()">
+                            <input class="form-check-input" name="readmoreHeadSize" id="readmoreHeadSizeNone" type="radio" value="noH" checked>
+                            <label class="form-check-label" for="readmoreHeadSizeNone">No heading</label>
+                        </div>
+                        <div class="form-check form-check-inline" id="readmoreHeadSize" onchange="generateReadmoreCode()">
+                            <input class="form-check-input" name="readmoreHeadSize" id="readmoreHeadSize2" type="radio" value="h4">
+                            <label class="form-check-label" for="readmoreHeadSize2"><h4 class="m-0">H4 heading</h4></label>
+                        </div>
+                        <div class="form-check form-check-inline" id="readmoreHeadSize" onchange="generateReadmoreCode()">
+                            <input class="form-check-input" name="readmoreHeadSize" id="readmoreHeadSize3" type="radio" value="h2">
+                            <label class="form-check-label" for="readmoreHeadSize3"><h2 class="m-0">H2 heading</h2></label>
+                        </div>
+                        <hr>
+                        <h5 class="font-weight-bold mt-3">Write Pre button text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear before the read more button." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                        <textarea class="border border-dark rounded w-100" rows="3" id="tinyMCEreadmorePreBtn" onkeyup="generateReadmoreCode()"></textarea>
+                        <hr>
+                        <h5 class="font-weight-bold mt-3">Write Post button text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear after the read more button is clicked." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                        <textarea class="border border-dark rounded w-100" rows="3" id="tinyMCEreadmorePostBtn" onkeyup="generateReadmoreCode()"></textarea>
+                        <hr>
+                </div>
+                <div class="col-lg-6">
+                    <div class="sticky-top" style="top:6rem;">
+                        <h5 class="font-weight-bold mt-3">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                        <div id="previewReadmoreFS" class="bg-white">
+                            <div id="demo"></div>
+                        </div>
+                        <div class="text-center my-2 previewButton"> 
+                            <button type="button" class="btn btn-outline-dark border border-dark rounded d-block mx-auto" id="togglePreviewReadmoreFS" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click to expand the preview to fullscreen. Click again or press Escape to return here to the editing screen."><i class="fa fa-expand-arrows-alt fa-lg" aria-hidden="true"></i></button>
+                        </div>
+                        <h5 class="font-weight-bold">Copy code<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click the copy code button below to copy your code, ready to paste into LearnX.">&nbsp;<i class="fa fa-question-circle text-success small" aria-hidden="true"></i></span></h5>
+                        <textarea readonly class="rounded p-2 w-100 border border-dark" id="readmoreFinalCode" cols="70" rows="5" name="Result" placeholder="Code for your element will appear here"></textarea>
+                        <input id="copyCodeBtn" class="btn btn-success btn-lg d-block w-100 mt-2" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()">
+                        <div class="text-center h5 mt-4">
+                            <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into LearnX?</a>-->
+                        </div>
+                    </div>
+                </div>   
+        </div>
     </div>
 </div>
 <!-- <button id="closeAlertsBtn" class="position-absolute top-0 end-0 btn btn-success p-1 px-2 rounded mx-2 fs-4" style="margin-top: 6rem; z-index: 1020" onclick="closeAlerts()" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Hide/show explanatory alerts on the table and accordion pages"><i class="fa-solid fa-eye"></i></button>-->
@@ -2196,9 +2299,14 @@
     </nav>
 </div>
 <script>
+    window.addEventListener('load',function(){
     $('.demoToggle').click(function(){
         $('i', this).toggleClass('fa-angle-down fa-angle-up');
     });
+    $('.readmoreToggle').click(function(){
+        $('i', this).toggleClass('fa-angle-down fa-angle-up');
+    });
+})
 </script>
 </body>
 </html>

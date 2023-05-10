@@ -896,3 +896,44 @@ function makeTable(){
         console.log('function run');
     });
 } 
+function generateReadmoreCode(){
+    var readmorePreBtnPlaceholder = '<p>This is where the pre button text will appear.</p>\n';
+    var readmorePostBtnPlaceholder = '<p>This is where the post button text will appear.</p>\n';
+    var readmoreHeadingText = $('#readmoreHeadingText').val();
+    var readmoreHeadSize = $('input[name="readmoreHeadSize"]:checked').val();
+    var readmoreName = $('#readmoreName').val();
+    var tinyReadmorePreBtn = tinymce.get("tinyMCEreadmorePreBtn").getContent();
+    var readmoreBtnOpen = '<p class=\"mt-2\"><a class=\"btn btn-uq d-block mx-auto w-75 readmoreToggle\" data-bs-toggle=\"collapse\" href=\"#' + readmoreName + '\" role="button" aria-expanded="false" aria-controls=\"' + readmoreName + '\">Read more <i class=\"fa-solid fa-angle-down\"></i></a></p>\n';
+    var textAfterOpen = '<div class="collapse mt-2" id=\"' + readmoreName + '">\n';
+    var tinyReadmorePostBtn = tinymce.get("tinyMCEreadmorePostBtn").getContent();
+    var textAfterClose = '</div>\n';
+    var iconToggleScript = "<script type=\"text/javascript\">\n$('a[href=\"#" + readmoreName + "\"]').click(function(){\n$('i', this).toggleClass('fa-angle-down fa-angle-up');});\n</script>\n"
+    $('a[href="https://google.com"]');
+    if(tinymce.get("tinyMCEreadmorePreBtn").getContent() != ""){
+        var tinyReadmorePreBtn = tinymce.get("tinyMCEreadmorePreBtn").getContent();
+    }
+    else{
+        var tinyReadmorePreBtn = readmorePreBtnPlaceholder
+    }
+    if(tinymce.get("tinyMCEreadmorePostBtn").getContent() != ""){
+        var tinyReadmorePostBtn = tinymce.get("tinyMCEreadmorePostBtn").getContent();
+    }
+    else{
+        var tinyReadmorePostBtn = readmorePostBtnPlaceholder
+    }
+    if(readmoreHeadSize !== "noH"){
+        //Resizing the heading text
+        var readmoreHeadSizes = {
+            "noH": "",
+            "h2": "<h2 class=\"text-bg-uq p-2\">" + readmoreHeadingText + "</h2>\n",
+            "h4": "<h4 class=\"text-bg-info bg-opacity-25 p-2\">" + readmoreHeadingText + "</h4>\n"
+        }
+        readmoreResizedHead = readmoreHeadSizes[readmoreHeadSize];
+    }
+    else {
+        readmoreResizedHead = "";
+    }
+    var finalReadmoreCode = readmoreResizedHead + tinyReadmorePreBtn + textAfterOpen + tinyReadmorePostBtn + textAfterClose + readmoreBtnOpen + iconToggleScript;
+    $('#readmoreFinalCode').val(finalReadmoreCode);
+    $('div#demo').html(finalReadmoreCode);
+}
