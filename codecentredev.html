@@ -516,6 +516,7 @@
         </div>
     </div>
     <!-- End Paste in LearnX Demonstration Modal -->
+    <!-- Begin nav for site -->
     <div class="p-3 bg-uq fixed-top">
         <ul class="nav nav-pills" id="myTab" role="tablist">
             <a class="navbar-brand" href="#home">
@@ -564,9 +565,13 @@
             </li>-->
         </ul>
     </div>
+    <!-- End nav -->
+    <!-- Margin to ensure menu is always visible -->
     <div style="margin-top: 6rem"></div>
+    <!-- Begin body of site -->
     <div class="m-3">
         <div class="tab-content mt-3">
+            <!-- Home tab -->
             <div class="tab-pane fade show active" id="home" role="tabpanel">
                 <h1 class="text-center">Welcome to the Code Centre for new Medicine Postgraduate courses</h1>
                 <p>This site is dedicated to the editors of new postgraduate Medicine program LearnX sites - MEDI7100, MEDI7200, MEDI7300 and MEDI7400. These sites have Bootstrap (CSS and JS library) and Font Awesome (icons) referenced, and allow for some advanced formatting and icon usage. This can seem tricky and intimidating at first, so this site gives you:</p>
@@ -609,7 +614,8 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="imgRight" role="tabpanel">
+            <!-- img snippets currently not in use -->
+            <!--<div class="tab-pane fade" id="imgRight" role="tabpanel">
                 <h3 class="text-bg-uq p-2">Text left/Image right</h3>
                 <div class="copythis">
                     <div class="row">
@@ -776,7 +782,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <div class="tab-pane fade" id="headings" role="tabpanel">
                 <div class="row gap-2">
                     <div class="col-lg border border-uq rounded p-2 my-auto">
@@ -949,6 +955,31 @@
                     <div class="col-lg-6">
                         <div class="row w-100 mx-auto">
                             <div class="col-lg">
+                                <h5 class="font-weight-bold mt-3">Paste your image link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The web link from LearnX to the image you would like to appear in your selected element." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea onchange="generateImgTextCode()" id="imgLink" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Paste your LearnX web link to your image link here."></textarea>
+                                <hr>
+                                <h5 class="font-weight-bold mt-3">Type your alt text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The description of your image you would like to appear when a user hovers over the image or uses a screen reader" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea onkeyup="generateImgTextCode()" id="altText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your alt text here."></textarea>
+                                <hr>
+                                <h5 class="font-weight-bold mt-3">Type your caption text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the caption you would like to appear underneath your image." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea onkeyup="generateImgTextCode()" id="tinyMCEcaption" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your caption text here."></textarea>
+                                <hr>
+                                <div id="secondImageOptions">
+                                <h5 class="font-weight-bold mt-3">Paste your 2nd image link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The second web link from LearnX to the image you would like to appear in your selected element." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea onchange="generateImgTextCode()" id="imgLink" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Paste your second LearnX image web link here."></textarea>
+                                <hr>
+                                <h5 class="font-weight-bold mt-3">2nd image alt text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The description of your image you would like to appear when a user hovers over the image or uses a screen reader" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea onkeyup="generateImgTextCode()" id="altText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your alt text here."></textarea>
+                                <hr>
+                                <h5 class="font-weight-bold mt-3">2nd image caption text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the caption you would like to appear underneath your image." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea onkeyup="generateImgTextCode()" id="tinyMCEcaption2" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your caption text here."></textarea>
+                                <hr>
+                            </div>
+                                <div id="imgTinyMCE" class="fade show">
+                                    <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your image." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                    <textarea class="border border-dark rounded w-100" id="tinyMCEimg" onkeyup=generateImgTextCode()></textarea>
+                                    <hr>
+                                </div>
                                 <h5 class="font-weight-bold mt-3">Image position<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your image on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="imagePosition" id="imagePosition2" type="radio" value="left">
@@ -965,6 +996,10 @@
                                 <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="imagePosition" id="imagePosition4" type="radio" value="imgOnly">
                                     <label class="form-check-label" for="imagePosition4">Image only</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
+                                    <input class="form-check-input" name="imagePosition" id="imagePosition5" type="radio" value="imgSbS">
+                                    <label class="form-check-label" for="imagePosition5">2 images side by side</label>
                                 </div>
                                 <hr>
                                 <div id="imgTextAlign" class="fade show">
@@ -1024,7 +1059,7 @@
                                 <div class="row bg-uq p-4 rounded-top">
                                     <div class="col-lg d-flex justify-content-around">
                                         <div class="form-check form-check-inline" id="headingIcon" onchange="generateImgTextCode()">
-                                            <input class="form-check-input" name="headingIcon" id="noI" type="radio" value="noI" checked="""">
+                                            <input class="form-check-input" name="headingIcon" id="noI" type="radio" value="noI" checked="">
                                             <label class="form-check-label text-white" for="noI">No icon</label>
                                         </div>
                                         <div class="form-check form-check-inline" id="headingIcon" onchange="generateImgTextCode()">
@@ -1091,20 +1126,6 @@
                                         <h2 class="text-bg-uq p-2 m-0">Main heading</h2>
                                     </label>
                                 </div>
-                                <hr>
-                                <div id="imgTinyMCE" class="fade show">
-                                    <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your image." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
-                                    <textarea class="border border-dark rounded w-100" id="tinyMCEimg" onkeyup=generateImgTextCode()></textarea>
-                                    <hr>
-                                </div>
-                                <h5 class="font-weight-bold mt-3">Paste your image link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The web link from LearnX to the image you would like to appear in your selected element." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
-                                <textarea onchange="generateImgTextCode()" id="imgLink" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Paste your LearnX web link to your image link here."></textarea>
-                                <hr>
-                                <h5 class="font-weight-bold mt-3">Type your alt text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The description of your image you would like to appear when a user hovers over the image or uses a screen reader" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
-                                <textarea onkeyup="generateImgTextCode()" id="altText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your alt text here."></textarea>
-                                <hr>
-                                <h5 class="font-weight-bold mt-3">Type your caption text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the caption you would like to appear underneath your image." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
-                                <textarea onkeyup="generateImgTextCode()" id="tinyMCEcaption" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your caption text here."></textarea>
                             </div>
                         </div>
                     </div>
