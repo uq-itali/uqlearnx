@@ -7,6 +7,10 @@ window.addEventListener('load',function(){
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     });
+/*Stop sidescrolling on all echo embed codes*/
+    var echoIframe = "https://echo360.net.au";
+    var $echoIframeSrc = $('iframe[src*="' + echoIframe + '"]');
+    $echoIframeSrc.attr('scrolling', 'no');    
 /*Back to top button*/
     $('body').prepend('<button class="btn btn-dark" onclick="javascript:document.body.scrollTop = 0;document.documentElement.scrollTop = 0;" id="bttBtn" title="Go to top"><span class="fa-solid fa-arrow-up"></span></button>');
 // Get the button

@@ -783,6 +783,7 @@
                     </div>
                 </div>
             </div>-->
+            <!-- Tab page - Headings -->
             <div class="tab-pane fade" id="headings" role="tabpanel">
                 <div class="row gap-2">
                     <div class="col-lg border border-uq rounded p-2 my-auto">
@@ -938,7 +939,9 @@
                     <span class="uq-icon icon-rrm-white"></span>
                     <span class="uq-icon icon-transition-white"></span>
                 -->
+                <!-- End heading tab pane -->
             </div>
+            <!-- Image builder tab pane -->
             <div class="tab-pane fade" id="buildImgText" role="tabpanel">
                 <h1 class="text-center">Image builder</h1>
                 <a class="btn btn-primary btn-sm d-block mx-auto text-center w-50 demoToggle" type="button" data-bs-toggle="collapse" data-bs-target="#createImgDemo" aria-expanded="false" aria-controls="createImgDemo">How do I make a responsive image? Click to reveal a video demonstration <i class="fa-solid fa-angle-down"></i></a>
@@ -955,6 +958,28 @@
                     <div class="col-lg-6">
                         <div class="row w-100 mx-auto">
                             <div class="col-lg">
+                                <h5 class="font-weight-bold mt-3">Image position<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your image on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
+                                <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
+                                    <input class="form-check-input" name="imagePosition" id="imagePosition2" type="radio" value="left">
+                                    <label class="form-check-label" for="imagePosition2">Left</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
+                                    <input class="form-check-input" name="imagePosition" id="imagePosition1" type="radio" value="right" checked>
+                                    <label class="form-check-label" for="imagePosition1">Right</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
+                                    <input class="form-check-input" name="imagePosition" id="imagePosition3" type="radio" value="floatRight">
+                                    <label class="form-check-label" for="imagePosition3">Float right/text wrap</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
+                                    <input class="form-check-input" name="imagePosition" id="imagePosition4" type="radio" value="imgOnly">
+                                    <label class="form-check-label" for="imagePosition4">Image only</label>
+                                </div>
+                                <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
+                                    <input class="form-check-input" name="imagePosition" id="imagePosition5" type="radio" value="imgSbS">
+                                    <label class="form-check-label" for="imagePosition5">2 images side by side</label>
+                                </div>
+                                <hr>hjkhjkhjkhhh
                                 <h5 class="font-weight-bold mt-3">Paste your image link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The web link from LearnX to the image you would like to appear in your selected element." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea onchange="generateImgTextCode()" id="imgLink" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Paste your LearnX web link to your image link here."></textarea>
                                 <hr>
@@ -980,28 +1005,6 @@
                                     <textarea class="border border-dark rounded w-100" id="tinyMCEimg" onkeyup=generateImgTextCode()></textarea>
                                     <hr>
                                 </div>
-                                <h5 class="font-weight-bold mt-3">Image position<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your image on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                                <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
-                                    <input class="form-check-input" name="imagePosition" id="imagePosition2" type="radio" value="left">
-                                    <label class="form-check-label" for="imagePosition2">Left</label>
-                                </div>
-                                <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
-                                    <input class="form-check-input" name="imagePosition" id="imagePosition1" type="radio" value="right" checked>
-                                    <label class="form-check-label" for="imagePosition1">Right</label>
-                                </div>
-                                <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
-                                    <input class="form-check-input" name="imagePosition" id="imagePosition3" type="radio" value="floatRight">
-                                    <label class="form-check-label" for="imagePosition3">Float right/text wrap</label>
-                                </div>
-                                <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
-                                    <input class="form-check-input" name="imagePosition" id="imagePosition4" type="radio" value="imgOnly">
-                                    <label class="form-check-label" for="imagePosition4">Image only</label>
-                                </div>
-                                <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
-                                    <input class="form-check-input" name="imagePosition" id="imagePosition5" type="radio" value="imgSbS">
-                                    <label class="form-check-label" for="imagePosition5">2 images side by side</label>
-                                </div>
-                                <hr>
                                 <div id="imgTextAlign" class="fade show">
                                     <h5 class="font-weight-bold mt-3">Align text vertically<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your image on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                     <div class="form-check form-check-inline" id="alignTextVert" onchange="generateImgTextCode()">
@@ -1148,6 +1151,8 @@
                     </div>
                 </div>
             </div>
+            <!-- End image builder -->
+            <!-- Video builder tab pane -->
             <div class="tab-pane fade" id="buildVidText" role="tabpanel">
                 <h1 class="text-center">Video builder</h1>
                 <a class="btn btn-primary btn-sm d-block mx-auto text-center w-50 demoToggle" type="button" data-bs-toggle="collapse" data-bs-target="#createVidDemo" aria-expanded="false" aria-controls="createVidDemo">How do I make a responsive video? Click to reveal a video demonstration <i class="fa-solid fa-angle-down"></i></a>
