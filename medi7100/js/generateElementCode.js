@@ -16,11 +16,24 @@ function generateImgTextCode() {
         $('#imgTinyMCE, #imgWidth, #imgImgAlign, #imgTextAlign').addClass('show');
     }
     function imgOnlyOff(){
-    if($('#imgTinyMCE').hasClass('d-none') == true){
-        $('#imgTinyMCE, #imgWidth, #imgImgAlign, #imgTextAlign').removeClass('d-none');
-        setTimeout(toggleImgOnlyOff, 300)
+        if($('#imgTinyMCE').hasClass('d-none') == true){
+            $('#imgTinyMCE, #imgWidth, #imgImgAlign, #imgTextAlign').removeClass('d-none');
+            setTimeout(toggleImgOnlyOff, 300);
+            secondImageOff();
+        }
     }
-}        
+    function secondImageOn(){
+        $('#secondImageOptions').removeClass('d-none');
+        setTimeout(function(){
+        $('#secondImageOptions').addClass('show');
+        },300)
+    }
+    function secondImageOff(){
+        $('#secondImageOptions').removeClass('show');
+        setTimeout(function(){
+        $('#secondImageOptions').addClass('d-none');
+        },300)
+    }        
     if(headingIcon != 'noI'){
         iconCode = iconCode
     }
@@ -41,15 +54,25 @@ function generateImgTextCode() {
     var headingText = $('#headingText').val();
     var headSize = $('input[name="headSize"]:checked').val();
     var imgLink = $('#imgLink').val();
+    var imgLink2 = $('#imgLink2').val();
     if(imgLink !== ''){
         imgLink = imgLink;
     }
-    else(
+    else{
         imgLink = imgPlaceholderLink
-        )
+    }
+    if(imgLink2 !== ''){
+        imgLink2 = imgLink2;
+    }
+    else{
+        imgLink2 = imgPlaceholderLink
+    }    
     var altText = $('#altText').val();
+    var altText2 = $('#altText2').val();
     var captionText = tinymce.get("tinyMCEcaption").getContent();
+    var captionText2 = tinymce.get("tinyMCEcaption2").getContent();
     var imgCode = '<figure>\n<img class="img-fluid d-block mx-auto' + imgBorder + '" src="' + imgLink + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>\n';
+    var imgCode2 = '<figure>\n<img class="img-fluid d-block mx-auto' + imgBorder + '" src="' + imgLink2 + '" alt="' + altText2 + '" />\n<figcaption class="text-center mt-2">' + captionText2 + '</figcaption>\n</figure>\n';
     var imgFloat = '<figure>\n<img class="img-fluid" src="' + imgLink + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>\n';
     if(headSize !== "noH"){
         //Resizing the heading text
@@ -120,8 +143,17 @@ function generateImgTextCode() {
     }
     else if(imgPosition == "imgOnly"){
         $('#imgTinyMCE, #imgWidth, #imgImgAlign, #imgTextAlign').removeClass('show');
-        setTimeout(toggleImgOnlyOn, 300)
+        setTimeout(toggleImgOnlyOn, 300);
+        secondImageOff();
         var finalCode = sComm + resizedHead + imgCode + eComm;
+        $('#imgFinalCode').val(finalCode);
+        $('div#demo').html(finalCode);
+    }
+    else if (imgPosition == "imgSbS"){
+        $('#imgTinyMCE, #imgWidth, #imgImgAlign, #imgTextAlign').removeClass('show');
+        setTimeout(toggleImgOnlyOn, 300);
+        secondImageOn();
+        var finalCode = sComm + resizedHead + rowOpen + colOpen + imgCode + divClose + colOpen + imgCode2 + rowClose + eComm;
         $('#imgFinalCode').val(finalCode);
         $('div#demo').html(finalCode);
     }
