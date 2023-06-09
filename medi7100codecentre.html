@@ -1219,6 +1219,10 @@
                                     <input class="form-check-input" name="videoWidth" id="videoWidth0" type="radio" value="0">
                                     <label class="form-check-label" for="videoWidth0">Video only</label>
                                 </div>
+                                <div class="form-check form-check-inline" id="videoWidth" onchange="generateVidTextCode()">
+                                    <input class="form-check-input" name="videoWidth" id="2vids" type="radio" value="2">
+                                    <label class="form-check-label" for="2vids">2 Videos side by side</label>
+                                </div>
                                 <hr>
                                 <h5 class="font-weight-bold mt-3">Heading - Max 75 Characters<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Optional heading above content. Max 75 characters" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <textarea onchange="generateVidTextCode()" id="vidHeadingText" maxlength="75" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Optional heading above content. Max 75 characters"></textarea>
@@ -1301,17 +1305,26 @@
                                     </label>
                                 </div>
                                 <hr>
-                                <div id="vidTextTiny">
+                                <div id="vidTextTiny" class="fade show">
                                     <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your video." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                     <textarea class="border border-dark rounded w-100" id="tinyMCEvid" onkeyup=generateVidTextCode()></textarea>
+                                    <hr>
                                 </div>
-                                <hr>
-                                <h5 class="font-weight-bold mt-3">Paste your video link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The web link from the Kaltura/YouTube/Vimeo/mp4 web link from LearnX video you would like to appear in your selected element." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                
+                                <h5 class="font-weight-bold mt-3">Paste your video link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The web link for the Echo/YouTube/Vimeo/TED/Kaltura/mp4 web link from LearnX video you would like to appear in your selected element." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea onchange="generateVidTextCode()" id="vidLink" class="border border-dark rounded w-100 p-2" rows="1" placeholder="This space accepts Kaltura iframes, YouTube, Vimeo, and mp4 web links from LearnX."></textarea>
                                 <hr>
                                 <div id="vidSmallTitle">
                                     <h5 class="font-weight-bold mt-3">Type your video title text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the title you would like to appear above your video." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                     <textarea onkeyup="generateVidTextCode()" id="vidTitleText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your video title text here."></textarea>
+                                    <hr>
+                                </div>
+                                <div id="vid2" class="d-none fade">
+                                    <h5 class="font-weight-bold mt-3">Paste your 2nd video link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The web link for the 2nd Echo/YouTube/Vimeo/TED/Kaltura/mp4 web link from LearnX video you would like to appear in your selected element." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                    <textarea onchange="generateVidTextCode()" id="vidLink2" class="border border-dark rounded w-100 p-2" rows="1" placeholder="This space accepts Kaltura iframes, YouTube, Vimeo, and mp4 web links from LearnX."></textarea>
+                                    <hr>
+                                    <h5 class="font-weight-bold mt-3">Type your 2nd video title text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the title you would like to appear above your video." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                    <textarea onkeyup="generateVidTextCode()" id="vidTitleText2" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your video title text here."></textarea>
                                 </div>
                             </div>
                         </div>

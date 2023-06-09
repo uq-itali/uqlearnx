@@ -164,6 +164,23 @@ function generateVidTextCode() {
     var vidWidth = $('input[name="videoWidth"]:checked').val();
     var headingIconVid = $('input[name="headingIconVid"]:checked').val();
     var iconCodeVid = '<span class="uq-icon icon-' + headingIconVid + '-white"></span> ';
+    //var copyButtonVid = document.getElementById('copyCodeBtn');
+    // Get references to the textarea and button elements
+    
+
+    /*function toggleBtnFunction(){
+    // Add an event listener to the textarea to check for input
+    tinyTextvid.addEventListener('input', function() {
+      // Check if the textarea has a value
+      if (tinyTextvid.value.trim().length > 0) {
+        // Enable the button if the textarea has a value
+        copyButtonVid.disabled = false;
+      } else {
+        // Disable the button if the textarea is empty
+        copyButtonVid.disabled = true;
+      }
+    });
+   }*/
     if(tinymce.get("tinyMCEvid").getContent() !==''){
         tinyTextvid = tinymce.get("tinyMCEvid").getContent() + '\n';
     }
@@ -178,35 +195,94 @@ function generateVidTextCode() {
     }
     var vidHeadingText = $('#vidHeadingText').val();
     var vidHeadSize = $('input[name="vidHeadSize"]:checked').val();
+    if(vidHeadingText != "" && vidHeadSize == "h2-w"){
+        vidHeadingText = ": " + vidHeadingText;
+    }
+    else{
+        vidHeadingText = $('#vidHeadingText').val();
+    }
     var vidLink = $('#vidLink').val();
+    var vidLink2 = $('#vidLink2').val();
     if(vidLink !== ''){
         vidLink = vidLink;
     }
-    else(
+    else{
         vidLink = vidPlaceholderLink
-        )
+    }
+    //Change embed sources for video link 1
         var YTCode = '<iframe src="' + vidLink.replace('watch?v=','embed/') + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>\n</div>\n';
+        var YTCodeB = '<iframe src="' + vidLink.replace('youtu.be','youtube.com/embed') + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>\n</div>\n';
         var KalturaCode = vidLink.replace('width="400" height="285" ', '') + '\n</div>'
         var VimeoCode = '<iframe src="' + vidLink.replace('vimeo.com','player.vimeo.com/video') + '" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>\n</iframe></div>\n<p class="text-center"><a href="' + vidLink + '" target="_blank" title="Watch this video on Vimeo">Watch this video on Vimeo</a></p>\n';
-    
-    if(vidLink.includes('youtu')== true){
+        var EchoCode = '<iframe allowfullscreen frameborder=0 src="' + vidLink + '?autoplay="false&automute=false"></iframe>\n';
+        var TEDCode = '<iframe src="' + vidLink.replace('www.ted.com/talks/','embed.ted.com/talks/lang/en/') + '" frameborder="0" scrolling="no" allowfullscreen></iframe>';
+
+    //Change embed sources for video link 2    
+        var YTCode2 = '<iframe src="' + vidLink2.replace('watch?v=','embed/') + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>\n</div>\n';
+        var YTCodeB2 = '<iframe src="' + vidLink2.replace('youtu.be','youtube.com/embed') + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>\n</div>\n';
+        var KalturaCode2 = vidLink2.replace('width="400" height="285" ', '') + '\n</div>'
+        var VimeoCode2 = '<iframe src="' + vidLink2.replace('vimeo.com','player.vimeo.com/video') + '" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>\n</iframe></div>\n<p class="text-center"><a href="' + vidLink2 + '" target="_blank" title="Watch this video on Vimeo">Watch this video on Vimeo</a></p>\n';
+        var EchoCode2 = '<iframe allowfullscreen frameborder=0 src="' + vidLink2 + '?autoplay="false&automute=false"></iframe>\n</div>\n';
+        var TEDCode2 = '<iframe src="' + vidLink2.replace('www.ted.com/talks/','embed.ted.com/talks/lang/en/') + '" frameborder="0" scrolling="no" allowfullscreen></iframe></div>\n';
+
+        //Find video source for  video link 1
+    if(vidLink.includes('youtube') == true){
         var vidCode = YTCode;
+    }
+    else if(vidLink.includes('youtu.be') == true){
+        var vidCode = YTCodeB;
     }
     else if(vidLink.includes('kaltura') == true){
         var vidCode = KalturaCode;
     }
-    else if(vidLink.includes('vimeo')== true){
+    else if(vidLink.includes('vimeo') == true){
         var vidCode = VimeoCode;        
     }
+    else if(vidLink.includes('echo360') == true){
+        var vidCode = EchoCode;
+    }
+    else if(vidLink.includes('ted.com') == true){
+        var vidCode = TEDCode;
+    }
     else if(vidLink == ''){
-        var vidCode = vidPlaceholder
+        var vidCode = vidPlaceholder;
+    }
+
+    //Find video source for  video link 2
+    if(vidLink2.includes('youtube')== true){
+        var vidCode2 = YTCode2;
+    }
+    else if(vidLink2.includes('youtu.be') == true){
+        var vidCode = YTCodeB2;
+    }
+    else if(vidLink2.includes('kaltura') == true){
+        var vidCode2 = KalturaCode2;
+    }
+    else if(vidLink2.includes('vimeo') == true){
+        var vidCode2 = VimeoCode2;        
+    }
+    else if(vidLink2.includes('echo360') == true){
+        var vidCode2 = EchoCode2;
+    }
+    else if(vidLink2.includes('ted.com') == true){
+        var vidCode2 = TEDCode2;
+    }
+    else if(vidLink2 == ''){
+        var vidCode2 = vidPlaceholder;
     }
     
+    
     if ($('#vidTitleText').val() !== ''){
-        var vidTitleText =  "<h5 class=\"text-center\">" + $('#vidTitleText').val() + "</h5>\n";
+        var vidTitleText =  "<h4 class=\"text-bg-info p-2 bg-opacity-25 m-0 text-center\">" + $('#vidTitleText').val() + "</h4>";
     }
     else{
         var vidTitleText = '';
+    }
+    if ($('#vidTitleText2').val() !== ''){
+        var vidTitleText2 =  "<h4 class=\"text-bg-info p-2 bg-opacity-25 m-0 text-center\">" + $('#vidTitleText2').val() + "</h4>";
+    }
+    else{
+        var vidTitleText2 = '';
     }
     
     //var vidFloat = '<figure>\n<img class="img-fluid" src="' + imgLink + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>\n';
@@ -215,68 +291,121 @@ function generateVidTextCode() {
         var vidSizes = {
             "noH": "",
             "h2": "<h2 class=\"text-bg-uq p-2\">" + iconCodeVid + vidHeadingText + "</h2>\n",
-            "h2-w": "<h2 class=\"text-bg-dark p-2\"><span class=\"fa-brands fa-youtube\"></span> Watch: " + vidHeadingText + "</h2>\n",
+            "h2-w": "<h2 class=\"text-bg-dark p-2\"><span class=\"fa-brands fa-youtube\"></span> Watch" + vidHeadingText + "</h2>\n",
             "h4": "<h4 class=\"text-bg-info bg-opacity-25 p-2\">" + vidHeadingText + "</h4>\n"
         }
         vidResizedHead = vidSizes[vidHeadSize];
     }
     else {
         vidResizedHead = "";
-    } 
+    }
+    
+    function vidOnly(){
+        $('div#vidPosDiv, div#vidTextTiny, div#vidSmallTitle').removeClass('show');
+        setTimeout(function(){
+            $('div#vidPosDiv, div#vidTextTiny, div#vidSmallTitle').addClass('d-none');
+        }, 200)
+    }
+    function notVidOnly(){
+        $('div#vidPosDiv, div#vidTextTiny, div#vidSmallTitle').removeClass('d-none');
+        setTimeout(function(){
+            $('div#vidPosDiv, div#vidTextTiny, div#vidSmallTitle').addClass('show');
+        }, 200)
+    }
+    function show2Vids(){
+        $('#vid2').removeClass('d-none');
+        setTimeout(function(){
+            $('#vid2').addClass('show');
+        }, 200)
+    }
+    function hide2Vids(){
+        $('#vid2').removeClass('show');
+        setTimeout(function(){
+            $('#vid2').addClass('d-none');
+        }, 200)        
+    }
     //Changing code order depending on selections
     if(vidPosition == "left" && vidWidth=="50"){
+        notVidOnly();
+        
         var vidFinalCode = sComm + vidResizedHead + rowOpen + colOpen + vidTitleText + respVidOpen + vidCode + divClose + colOpen + tinyTextvid  + rowClose + eComm;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "right" && vidWidth == "50"){
+        notVidOnly();
+        
         var vidFinalCode = sComm + vidResizedHead + rowOpen + colOpen + tinyTextvid + divClose + colOpen + vidTitleText + respVidOpen + vidCode + divClose + rowClose + eComm;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "left" && vidWidth == "33"){
+        notVidOnly();
+        
         var vidFinalCode = sComm + vidResizedHead + rowOpen + col4Open + vidTitleText + respVidOpen + vidCode + divClose + colOpen + tinyTextvid  + rowClose + eComm;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);                
     }
     else if(vidPosition == "left" && vidWidth == "25"){
+        notVidOnly();
+        
         var vidFinalCode = sComm + vidResizedHead + rowOpen + col3Open + vidTitleText + respVidOpen + vidCode + divClose + colOpen + tinyTextvid  + rowClose + eComm;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "right" && vidWidth == "33"){
+        notVidOnly();
+        
         var vidFinalCode = sComm + vidResizedHead + rowOpen + colOpen + tinyTextvid + divClose + col4Open + vidTitleText + respVidOpen + vidCode + divClose + rowClose + eComm;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "right" && vidWidth == "25"){
+        notVidOnly();
+        
         var vidFinalCode = sComm + vidResizedHead + rowOpen + colOpen + tinyTextvid + divClose + col3Open + vidTitleText + respVidOpen + vidCode + divClose + rowClose + eComm;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "floatRight" && vidWidth =="50"){
+        notVidOnly();
+        
         var vidFinalCode = sComm + vidResizedHead + rowOpen + colFloatOpen + vidTitleText + respVidOpen + vidCode + divClose + tinyTextvid + rowClose + eComm;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "floatRight" && vidWidth == "33"){
+        notVidOnly();
+        
         var vidFinalCode = sComm + vidResizedHead + rowOpen + col4FloatOpen + vidTitleText + respVidOpen + vidCode + divClose + tinyTextvid + rowClose + eComm;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidPosition == "floatRight" && vidWidth == "25"){
+        notVidOnly();
+        
         var vidFinalCode = sComm + vidResizedHead + rowOpen + col3FloatOpen + vidTitleText + respVidOpen + vidCode + divClose + tinyTextvid + rowClose + eComm;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
     else if(vidWidth == "0"){
-        $('div#vidPosDiv, div#vidTextTiny, div#vidSmallTitle').addClass('d-none');
+        vidOnly();
         var vidFinalCode = sComm + vidResizedHead + vidTitleText + respVidOpen + vidCode + divClose + eComm;
         $('#vidFinalCode').val(vidFinalCode);
         $('div#demo').html(vidFinalCode);
     }
-    if(vidWidth != "0"){
-        $('div#vidPosDiv, div#vidTextTiny, div#vidSmallTitle').removeClass('d-none');
+    else if(vidWidth == "2"){
+        $('div#vidPosDiv, div#vidTextTiny').removeClass('show');
+        setTimeout(function(){
+            $('div#vidPosDiv, div#vidTextTiny').addClass('d-none');
+        }, 200)
+        show2Vids();
+        var vidFinalCode = sComm + vidResizedHead + rowOpen + colOpen + vidTitleText + respVidOpen + vidCode + divClose + colOpen + vidTitleText2 + respVidOpen + vidCode2 + rowClose + eComm;
+        $('#vidFinalCode').val(vidFinalCode);
+        $('div#demo').html(vidFinalCode);
+    }
+    if(vidWidth != "2"){
+        hide2Vids();
     }
 }
 function generateBtnCode() {
