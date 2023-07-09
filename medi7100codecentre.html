@@ -1348,6 +1348,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Button builder tab pane -->
             <div class="tab-pane fade" id="buildBtnText" role="tabpanel">
                 <h1 class="text-center">Button builder</h1>
                 <a class="btn btn-primary btn-sm d-block mx-auto text-center w-50 demoToggle" type="button" data-bs-toggle="collapse" data-bs-target="#createBtnDemo" aria-expanded="false" aria-controls="createBtnDemo">How do I make a button? Click to reveal a video demonstration <i class="fa-solid fa-angle-down"></i></a>
@@ -1699,6 +1700,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Alert builder tab pane -->
             <div class="tab-pane fade" id="buildAlert" role="tabpanel">
                 <h1 class="text-center">Alert builder</h1>
                 <a class="btn btn-primary btn-sm d-block mx-auto text-center w-50 demoToggle" type="button" data-bs-toggle="collapse" data-bs-target="#createAlertDemo" aria-expanded="false" aria-controls="createAlertDemo">How do I make an alert or quote? Click to reveal a video demonstration <i class="fa-solid fa-angle-down"></i></a>
@@ -1920,8 +1922,12 @@
                                     <input class="form-check-input" name="tooltipPosition" id="tooltipPosition4" type="radio" value="left">
                                     <label class="form-check-label" for="tooltipPosition4">Left</label>
                                 </div>
+                                <hr>
+                                <h5 class="font-weight-bold mt-3">Write the word your tooltip will attach to<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the word/text your tooltip attaches to." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea class="border border-dark rounded w-100 p-2" rows="3" maxlength="200" id="tooltipTerm" onkeyup="generateTooltipCode()"></textarea>
+                                <hr>
                                 <h5 class="font-weight-bold mt-3">Write your tooltip text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear when a user hovers over this tooltip icon." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
-                                <textarea class="border border-dark rounded w-100" rows="3" maxlength="200" id="tooltipText" onkeyup="generateTooltipCode()"></textarea>
+                                <textarea class="border border-dark rounded w-100 p-2" rows="3" maxlength="200" id="tooltipText" onkeyup="generateTooltipCode()"></textarea>
                             </div>
                         </div>
                     </div>
