@@ -774,14 +774,21 @@ function generateTooltipCode(){
         $('[data-bs-toggle="tooltip"]').tooltip();
     },200)
     var tooltipPosition = $('input[name="tooltipPosition"]:checked').val();
+    var tooltipTerm = $('#tooltipTerm').val();
     var tooltipText = $('#tooltipText').val();
     if(tooltipText !== ''){
         tooltipText = tooltipText;
     }
     else{
-        tooltipText = tooltipPlaceholderText;
+        tooltipText = 'A tooltip is a brief explanation that appears on hover. Or you can use a tooltip to have the full title of an abbreviation.';
     }
-    var tooltipFinalCode = '<span data-bs-toggle=\"tooltip\" data-bs-html="true" data-bs-placement=\"' + tooltipPosition + '\" data-bs-title=\"' + tooltipText + '\"><i class=\"fa fa-question-circle text-success\" aria-hidden=\"true\"></i></span\>';
+    if(tooltipTerm !== ''){
+        tooltipTerm = tooltipTerm
+    }
+    else{
+        tooltipTerm = 'What is a tooltip?'
+    }
+    var tooltipFinalCode = '<span data-bs-toggle=\"tooltip\" data-bs-html="true" data-bs-placement=\"' + tooltipPosition + '\" data-bs-title=\"' + tooltipText + '\">'+ tooltipTerm +' <i class=\"fa fa-question-circle text-success\" aria-hidden=\"true\"></i></span\>';
     $('#tooltipFinalCode').val(tooltipFinalCode);
     $('div#demo').html(tooltipFinalCode);
 }
