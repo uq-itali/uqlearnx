@@ -44,9 +44,13 @@ function generateImgTextCode() {
     if(tinymce.get("tinyMCEimg").getContent() !==''){
         tinyTextimg = tinymce.get("tinyMCEimg").getContent() + '\n';
     }
+    else if(imgPosition == 'floatRight' && tinymce.get("tinyMCEimg").getContent() ==''){
+        tinyTextimg = '<p>This is a large amount of placeholder text that we have put in place to show you how the float right/text wrapping works.</p><p>You can see how once the length of the text down the page goes longer than the image on the right, the text will wrap around underneath the image.</p><p>If you only choose to have the image left or right, the text will not wrap around underneath the image. This is not to say that this is the best experience for every outcome. Sometimes using the vertical align for text or for the image is a better option (Align text or image vertically slightly further down the page on the left). So try out different combinations to see what works best for your context.</p><p>Also, if you click the full screen button below, this text may no longer wrap around. This is something to be aware of, that a lot of text is needed to exceed the length of an image and for wrapping to be a possible consideration for your context. The amount of text may not stretch past the image once in full screen mode with much more space for the text and the image.</p>'
+    }
     else{
         tinyTextimg = textPlaceholder
     }
+    
     var colImgOpen = '<div class="col-lg' + imgVert + '">\n';
     var colTxtOpen = '<div class="col-lg' + txtVert + '">\n';
     var col4ImgOpen = '<div class="col-lg-4' + imgVert + '">\n';
@@ -56,13 +60,33 @@ function generateImgTextCode() {
     var imgLink = $('#imgLink').val();
     var imgLink2 = $('#imgLink2').val();
     if(imgLink !== ''){
-        imgLink = imgLink;
+        if(imgLink.includes('/static')){
+            alert('You have used the studio link which will work with the code, and in Extend, but will not display here. If you want to see a genuine preview, go back to Extend and copy the Web link to the image')
+        }
+        else if(imgLink.includes('extend.uq.edu.au')){
+            var findLastBackslash = imgLink.lastIndexOf('@');
+            var result = imgLink.substring(findLastBackslash + 1);
+            var result = '/static/' + result;
+        }
+        else{
+            imgLink = imgLink;
+        }
     }
     else{
         imgLink = imgPlaceholderLink
     }
     if(imgLink2 !== ''){
-        imgLink2 = imgLink2;
+        if(imgLink2.includes('/static')){
+            alert('You have used the studio link which will work with the code, and in Extend, but will not display here. If you want to see a genuine preview, go back to Extend and copy the Web link to the image')
+        }
+        else if(imgLink2.includes('extend.uq.edu.au')){
+            var findLastBackslash2 = imgLink2.lastIndexOf('@');
+            var result2 = imgLink2.substring(findLastBackslash2 + 1);
+            var result2 = '/static/' + result2;
+        }
+        else{
+            imgLink2 = imgLink2;
+        }
     }
     else{
         imgLink2 = imgPlaceholderLink
@@ -71,9 +95,12 @@ function generateImgTextCode() {
     var altText2 = $('#altText2').val();
     var captionText = tinymce.get("tinyMCEcaption").getContent();
     var captionText2 = tinymce.get("tinyMCEcaption2").getContent();
-    var imgCode = '<figure>\n<img class="img-fluid d-block mx-auto' + imgBorder + '" src="' + imgLink + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>\n';
-    var imgCode2 = '<figure>\n<img class="img-fluid d-block mx-auto' + imgBorder + '" src="' + imgLink2 + '" alt="' + altText2 + '" />\n<figcaption class="text-center mt-2">' + captionText2 + '</figcaption>\n</figure>\n';
-    var imgFloat = '<figure>\n<img class="img-fluid" src="' + imgLink + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>\n';
+    var imgPreviewCode = '<figure>\n<img class="img-fluid d-block mx-auto' + imgBorder + '" src="' + imgLink + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>\n';
+    var imgCode = '<figure>\n<img class="img-fluid d-block mx-auto' + imgBorder + '" src="' + result + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>\n';
+    var imgPreviewCode2 = '<figure>\n<img class="img-fluid d-block mx-auto' + imgBorder + '" src="' + imgLink2 + '" alt="' + altText2 + '" />\n<figcaption class="text-center mt-2">' + captionText2 + '</figcaption>\n</figure>\n';
+    var imgCode2 = '<figure>\n<img class="img-fluid d-block mx-auto' + imgBorder + '" src="' + result2 + '" alt="' + altText2 + '" />\n<figcaption class="text-center mt-2">' + captionText2 + '</figcaption>\n</figure>\n';
+    var imgPreviewFloat = '<figure>\n<img class="img-fluid" src="' + imgLink + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>\n';
+    var imgFloat = '<figure>\n<img class="img-fluid" src="' + result + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>\n';
     if(headSize !== "noH"){
         //Resizing the heading text
         var sizes = {
@@ -90,72 +117,83 @@ function generateImgTextCode() {
     if(imgPosition == "left" && imgWidth=="50"){
         imgOnlyOff();
         var finalCode = sComm + resizedHead + rowOpen + colImgOpen + imgCode + divClose + colTxtOpen + tinyTextimg  + rowClose + eComm;
+        var previewCode = sComm + resizedHead + rowOpen + colImgOpen + imgPreviewCode + divClose + colTxtOpen + tinyTextimg  + rowClose + eComm;
         $('#imgFinalCode').val(finalCode);
-        $('div#demo').html(finalCode);
+        $('div#demo').html(previewCode);
     }
     else if(imgPosition == "right" && imgWidth == "50"){
         imgOnlyOff();
         var finalCode = sComm + resizedHead + rowOpen + colTxtOpen + tinyTextimg + divClose + colImgOpen + imgCode + rowClose + eComm;
+        var previewCode = sComm + resizedHead + rowOpen + colTxtOpen + tinyTextimg + divClose + colImgOpen + imgPreviewCode + rowClose + eComm;
         $('#imgFinalCode').val(finalCode);
-        $('div#demo').html(finalCode);
+        $('div#demo').html(previewCode);
     }
     else if(imgPosition == "left" && imgWidth == "33"){
         imgOnlyOff();
         var finalCode = sComm + resizedHead + rowOpen + col4ImgOpen + imgCode + divClose + colTxtOpen + tinyTextimg  + rowClose + eComm;
+        var previewCode = sComm + resizedHead + rowOpen + col4ImgOpen + imgPreviewCode + divClose + colTxtOpen + tinyTextimg  + rowClose + eComm;
         $('#imgFinalCode').val(finalCode);
-        $('div#demo').html(finalCode);                
+        $('div#demo').html(previewCode);                
     }
     else if(imgPosition == "left" && imgWidth == "25"){
         imgOnlyOff();
         var finalCode = sComm + resizedHead + rowOpen + col3ImgOpen + imgCode + divClose + colTxtOpen + tinyTextimg  + rowClose + eComm;
+        var previewCode = sComm + resizedHead + rowOpen + col3ImgOpen + imgPreviewCode + divClose + colTxtOpen + tinyTextimg  + rowClose + eComm;
         $('#imgFinalCode').val(finalCode);
-        $('div#demo').html(finalCode);
+        $('div#demo').html(previewCode);
     }
     else if(imgPosition == "right" && imgWidth == "33"){
         imgOnlyOff();
         var finalCode = sComm + resizedHead + rowOpen + colTxtOpen + tinyTextimg + divClose + col4ImgOpen + imgCode + rowClose + eComm;
+        var previewCode = sComm + resizedHead + rowOpen + colTxtOpen + tinyTextimg + divClose + col4ImgOpen + imgPreviewCode + rowClose + eComm;
         $('#imgFinalCode').val(finalCode);
-        $('div#demo').html(finalCode);
+        $('div#demo').html(previewCode);
     }
     else if(imgPosition == "right" && imgWidth == "25"){
         imgOnlyOff();
         var finalCode = sComm + resizedHead + rowOpen + colTxtOpen + tinyTextimg + divClose + col3ImgOpen + imgCode + rowClose + eComm;
+        var previewCode = sComm + resizedHead + rowOpen + colTxtOpen + tinyTextimg + divClose + col3ImgOpen + imgPreviewCode + rowClose + eComm;
         $('#imgFinalCode').val(finalCode);
-        $('div#demo').html(finalCode);
+        $('div#demo').html(previewCode);
     }
     else if(imgPosition == "floatRight" && imgWidth =="50"){
         imgOnlyOff();
         var finalCode = sComm + resizedHead + rowOpen + colFloatOpen + imgFloat + divClose + tinyTextimg + rowClose + eComm;
+        var previewCode = sComm + resizedHead + rowOpen + colFloatOpen + imgPreviewFloat + divClose + tinyTextimg + rowClose + eComm;
         $('#imgFinalCode').val(finalCode);
-        $('div#demo').html(finalCode);
+        $('div#demo').html(previewCode);
     }
     else if(imgPosition == "floatRight" && imgWidth == "33"){
         imgOnlyOff();
         var finalCode = sComm + resizedHead + rowOpen + col4FloatOpen + imgFloat + divClose + tinyTextimg + rowClose + eComm;
+        var previewCode = sComm + resizedHead + rowOpen + col4FloatOpen + imgPreviewFloat + divClose + tinyTextimg + rowClose + eComm;
         $('#imgFinalCode').val(finalCode);
-        $('div#demo').html(finalCode);
+        $('div#demo').html(previewCode);
     }
     else if(imgPosition == "floatRight" && imgWidth == "25" ){
         imgOnlyOff();
         var finalCode = sComm + resizedHead + rowOpen + col3FloatOpen + imgFloat + divClose + tinyTextimg + rowClose + eComm;
+        var previewCode = sComm + resizedHead + rowOpen + col3FloatOpen + imgPreviewFloat + divClose + tinyTextimg + rowClose + eComm;
         $('#imgFinalCode').val(finalCode);
-        $('div#demo').html(finalCode);
+        $('div#demo').html(previewCode);
     }
     else if(imgPosition == "imgOnly"){
         $('#imgTinyMCE, #imgWidth, #imgImgAlign, #imgTextAlign').removeClass('show');
         setTimeout(toggleImgOnlyOn, 300);
         secondImageOff();
         var finalCode = sComm + resizedHead + imgCode + eComm;
+        var previewCode = sComm + resizedHead + imgPreviewCode + eComm;
         $('#imgFinalCode').val(finalCode);
-        $('div#demo').html(finalCode);
+        $('div#demo').html(previewCode);
     }
     else if (imgPosition == "imgSbS"){
         $('#imgTinyMCE, #imgWidth, #imgImgAlign, #imgTextAlign').removeClass('show');
         setTimeout(toggleImgOnlyOn, 300);
         secondImageOn();
         var finalCode = sComm + resizedHead + rowOpen + colOpen + imgCode + divClose + colOpen + imgCode2 + rowClose + eComm;
+        var previewCode = sComm + resizedHead + rowOpen + colOpen + imgPreviewCode + divClose + colOpen + imgPreviewCode2 + rowClose + eComm;
         $('#imgFinalCode').val(finalCode);
-        $('div#demo').html(finalCode);
+        $('div#demo').html(previewCode);
     }
 }
 function generateVidTextCode() {
