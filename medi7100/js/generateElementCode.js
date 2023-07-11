@@ -90,7 +90,18 @@ function generateImgTextCode() {
     }
     else{
         imgLink2 = imgPlaceholderLink
-    }    
+    }  
+    $('#headingText').on('input', function() {
+        // Check if the textarea contains text
+        if ($(this).val().trim() !== '') {
+          // Set the radio button with value 'h2' to checked
+          $('input[type="radio"][value="h2"]').prop('checked', true);
+        }
+         else {
+          // Set the radio button with value 'noH' to checked
+          $('input[type="radio"][value="noH"]').prop('checked', true);
+        }
+      });  
     var altText = $('#altText').val();
     var altText2 = $('#altText2').val();
     var captionText = tinymce.get("tinyMCEcaption").getContent();
@@ -205,20 +216,6 @@ function generateVidTextCode() {
     //var copyButtonVid = document.getElementById('copyCodeBtn');
     // Get references to the textarea and button elements
     
-
-    /*function toggleBtnFunction(){
-    // Add an event listener to the textarea to check for input
-    tinyTextvid.addEventListener('input', function() {
-      // Check if the textarea has a value
-      if (tinyTextvid.value.trim().length > 0) {
-        // Enable the button if the textarea has a value
-        copyButtonVid.disabled = false;
-      } else {
-        // Disable the button if the textarea is empty
-        copyButtonVid.disabled = true;
-      }
-    });
-   }*/
     if(tinymce.get("tinyMCEvid").getContent() !==''){
         tinyTextvid = tinymce.get("tinyMCEvid").getContent() + '\n';
     }
@@ -712,13 +709,25 @@ function generateAlertCode() {
     else{
         tinyTextCitation =  citationPlaceholder;
     }
-
-    if($('#alertHeadingText').val() !== ''){
-        alertHeadingText = $('#alertHeadingText').val();
+    
+    var alertHeadingText = $('#alertHeadingText').val()
+    if($(alertHeadingText) !== ''){
+        alertHeadingText = alertHeadingText
     }
     else{
         alertHeadingText = '';
     }
+    $('#alertHeadingText').on('input', function() {
+        // Check if the textarea contains text
+        if ($(this).val().trim() !== '') {
+          // Set the radio button with value 'h2' to checked
+          $('input[type="radio"][value="h4"]').prop('checked', true);
+        }
+         else {
+          // Set the radio button with value 'noH' to checked
+          $('input[type="radio"][value="noH"]').prop('checked', true);
+        }
+      });
     if (alertHeadIcon !== "noI"){
         var icons = {
             "fa-circle-exclamation": "<i class=\"fa-solid fa-circle-exclamation\"></i> ",
@@ -798,7 +807,17 @@ function generateTableCode(){
     var theadColour = $('input[name="theadColour"]:checked').val();
     var tinyMCEtable = tinymce.get("tinyMCEtable").getContent();
     var tableStripes = $('input[name="tableStripe"]:checked').val();
-    
+    $('#tableHeadingText').on('input', function() {
+        // Check if the textarea contains text
+        if ($(this).val().trim() !== '') {
+          // Set the radio button with value 'h2' to checked
+          $('input[type="radio"][value="h4"]').prop('checked', true);
+        }
+         else {
+          // Set the radio button with value 'noH' to checked
+          $('input[type="radio"][value="noH"]').prop('checked', true);
+        }
+      });
     if(tinymce.get("tinyMCEtable").getContent() != ''){
         var tinyMCEtable = tinyMCEtable;
         var thCalc = $(tinyMCEtable).find('tbody td').length/$(tinyMCEtable).find('tbody tr').length;
@@ -967,6 +986,17 @@ function makeTable(){
     var content9Open = '<div id=\"collapse9\" class=\"accordion-collapse collapse\" aria-labelledby=\"heading9\" data-bs-parent=\"#accordion' + accName + '\">\n<div class=\"accordion-body\">' + content9Body + '</div>\n';
     var accDrawer10 = '<div class=\"accordion-item\">\n<h2 class="accordion-header\" id=\"heading10\">\n<button class=\"accordion-button collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#collapse10\" aria-expanded=\"true\" aria-controls=\"collapse10\">' + drawer10Title + '</button>\n</h2>\n';
     var content10Open = '<div id=\"collapse10\" class=\"accordion-collapse collapse\" aria-labelledby=\"heading10\" data-bs-parent=\"#accordion' + accName + '\">\n<div class=\"accordion-body\">' + content10Body + '</div>\n';
+    $('#accHeadingText').on('input', function() {
+        // Check if the textarea contains text
+        if ($(this).val().trim() !== '') {
+          // Set the radio button with value 'h2' to checked
+          $('input[type="radio"][value="h2"]').prop('checked', true);
+        }
+         else {
+          // Set the radio button with value 'noH' to checked
+          $('input[type="radio"][value="noH"]').prop('checked', true);
+        }
+      });
     if(accHeadSize !== "noH"){
         //Resizing the heading text
         var accHeadSizes = {

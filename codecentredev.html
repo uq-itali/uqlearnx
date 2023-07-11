@@ -31,6 +31,10 @@
         <!--<script src="https://uq-itali.github.io/uqlearnx/medi7100/bootstrap-5.2.1-dist/js/bootstrap.bundle.js" crossorigin="anonymous"></script>
         <script src="https://uq-itali.github.io/uqlearnx/medi7100/bootstrap-5.2.1-dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.js"></script>
+
+        <!-- Shepherd User Tours -->
+        <script src="https://cdn.jsdelivr.net/npm/shepherd.js@10.0.1/dist/js/shepherd.min.js"></script>
+        <script src="js/ccUserTours.js"></script>
         
         <!--Customise alerts on the site-->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
@@ -146,6 +150,7 @@
                 }
             }     
         </script>
+        <!--User tour-->
         <!--Setup tooltips + TinyMCE-->
         <script type="text/javascript">
             const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
@@ -510,6 +515,201 @@
                 accNameTxt.keyup(func).blur(func);
             });
         </script>
+        <script type="text/javascript">
+            document.getElementById('imgBuilderBtn').addEventListener('click', function() {
+                imgBuilderTour.start();
+            });
+        </script>
+        <!--Style for shepherd user tour-->
+        <style>
+            /*.shepherd-button{
+                background:#3288e6;
+                border:0;
+                border-radius:3px;
+                color:hsla(0,0%,100%,.75);
+                cursor:pointer;
+                margin-right:.5rem;
+                padding:.5rem 1.5rem;
+                transition:all .5s ease
+            }
+            .shepherd-button:not(:disabled):hover{
+                background:#196fcc;
+                color:hsla(0,0%,100%,.75)
+            }
+            .shepherd-button.shepherd-button-secondary{
+                background:#f1f2f3;
+                color:rgba(0,0,0,.75)
+            }
+            .shepherd-button.shepherd-button-secondary:not(:disabled):hover{
+                background:#d6d9db;
+                color:rgba(0,0,0,.75)
+            }
+            .shepherd-button:disabled{
+                cursor:not-allowed
+            }*/
+            .shepherd-button{
+                margin-right:.5rem;
+            }
+            .shepherd-footer{
+                border-bottom-left-radius:5px;
+                border-bottom-right-radius:5px;
+                display:flex;
+                justify-content:space-evenly;
+                padding:0 .75rem .75rem
+            }
+            .shepherd-footer .shepherd-button:last-child{
+                margin-right:0
+            }
+            .shepherd-cancel-icon{
+                background:transparent;
+                border:none;
+                color:hsla(0,0%,50%,.75);
+                cursor:pointer;
+                font-size:2em;
+                font-weight:400;
+                margin:0;
+                padding:0;
+                transition:color .5s ease
+            }
+            .shepherd-cancel-icon:hover{
+                color:rgba(0,0,0,.75)
+            }
+            .shepherd-has-title .shepherd-content .shepherd-cancel-icon{
+                color:hsla(0,0%,50%,.75)
+            }
+            .shepherd-has-title .shepherd-content .shepherd-cancel-icon:hover{
+                color:rgba(0,0,0,.75)
+            }
+            .shepherd-title{
+                color:rgba(0,0,0,.75);
+                display:flex;
+                flex:1 0 auto;
+                font-size:1rem;
+                font-weight:400;
+                margin:0 !important;
+                padding:0 !important;
+                padding-bottom: 0.3rem !important;
+                text-align: center !important;
+                display: block;
+                color: white;
+                font-size: 1.25rem !important;
+            }
+            .shepherd-header{
+                align-items:center;
+                display:flex;
+                justify-content:flex-end;
+                line-height:2em;
+                padding:.3rem !important;
+                background: #000 !important;
+            }
+            .shepherd-has-title .shepherd-content .shepherd-header{
+                background:#e6e6e6;padding:1em
+            }
+            .shepherd-text{
+                color:rgba(0,0,0,.75);
+                font-size:1rem;
+                line-height:1.3em;
+                padding:.75em
+            }
+            .shepherd-text p{
+                margin-top:0
+            }
+            .shepherd-text p:last-child{
+                margin-bottom:0
+            }
+            .shepherd-content{
+                border-radius:5px;
+                outline:none;
+                padding:0
+            }
+            .shepherd-element{
+                background:#fff;
+                border-radius:5px;
+                border: 3px solid black;
+                box-shadow:0 1px 4px rgba(0,0,0,.2);
+                max-width:400px;
+                opacity:0;
+                outline:none;
+                transition:opacity .3s,visibility .3s;
+                visibility:hidden;
+                width:100%;
+                z-index:9999
+            }
+            .shepherd-enabled.shepherd-element{
+                opacity:1;
+                visibility:visible;
+            }
+            .shepherd-element[data-popper-reference-hidden]:not(.shepherd-centered){
+                opacity:0;
+                pointer-events:none;
+                visibility:hidden
+            }
+            .shepherd-element,.shepherd-element *,.shepherd-element :after,.shepherd-element :before{
+                box-sizing:border-box
+            }
+            .shepherd-arrow,.shepherd-arrow:before{
+                height:16px;
+                position:absolute;
+                width:16px;
+                z-index:-1;
+            }
+            
+            .shepherd-arrow:before{
+                background:#fff;
+                /*content:"";*/
+                transform:rotate(45deg);
+            }
+            .shepherd-element[data-popper-placement^=top]>.shepherd-arrow{
+                bottom:-8px
+            }
+            .shepherd-element[data-popper-placement^=bottom]>.shepherd-arrow{
+                top:-8px
+            }
+            .shepherd-element[data-popper-placement^=left]>.shepherd-arrow{
+                right: -20px;
+                border-top: 16px solid transparent;
+                border-right: 0px solid transparent;
+                border-bottom: 16px solid transparent;
+                border-left: 20px solid black;
+            }
+            .shepherd-element[data-popper-placement^=right]>.shepherd-arrow{
+                left: -20px;
+                border-top: 16px solid transparent;
+                border-right: 20px solid black;
+                border-bottom: 16px solid transparent;
+                border-left: 0px solid transparent;
+            }
+            .shepherd-element.shepherd-centered>.shepherd-arrow{
+                opacity:0
+            }
+            .shepherd-element.shepherd-has-title[data-popper-placement^=bottom]>.shepherd-arrow:before{
+                background-color:#e6e6e6
+            }
+            .shepherd-target-click-disabled.shepherd-enabled.shepherd-target,.shepherd-target-click-disabled.shepherd-enabled.shepherd-target *{
+                pointer-events:none;
+            }
+            .shepherd-modal-overlay-container{
+                height:0;
+                left:0;
+                opacity:0;
+                overflow:hidden;
+                pointer-events:none;
+                position:fixed;
+                top:0;
+                transition:all .3s ease-out,height 0ms .3s,opacity .3s 0ms;
+                width:100vw;
+                z-index:9997
+            }
+            .shepherd-modal-overlay-container.shepherd-modal-is-visible{
+                height:100vh;
+                opacity:.5;
+                transform:translateZ(0);
+                transition:all .3s ease-out,height 0s 0s,opacity .3s 0s
+            }
+            .shepherd-modal-overlay-container.shepherd-modal-is-visible path{
+                pointer-events:all
+            }
+        </style>
     </head>
 <body>
     <!-- Paste in LearnX Demonstration Modal -->
@@ -958,7 +1158,7 @@
                 -->
                 <!-- End heading tab pane -->
             </div>
-            <!-- Image builder tab pane -->
+            <!--Start image builder-->
             <div class="tab-pane fade" id="buildImgText" role="tabpanel">
                 <h1 class="text-center">Image builder</h1>
                 <a class="btn btn-primary btn-sm d-block mx-auto text-center w-50 demoToggle" type="button" data-bs-toggle="collapse" data-bs-target="#createImgDemo" aria-expanded="false" aria-controls="createImgDemo">How do I make a responsive image? Click to reveal a video demonstration <i class="fa-solid fa-angle-down"></i></a>
@@ -975,6 +1175,7 @@
                     <div class="col-lg-6">
                         <div class="row w-100 mx-auto">
                             <div class="col-lg">
+                                <div id="imgStep1">
                                 <h5 class="font-weight-bold mt-3">Image position<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your image on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="imagePosition" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="imagePosition" id="imagePosition2" type="radio" value="left">
@@ -996,15 +1197,22 @@
                                     <input class="form-check-input" name="imagePosition" id="imagePosition5" type="radio" value="imgSbS">
                                     <label class="form-check-label" for="imagePosition5">2 images side by side</label>
                                 </div>
+                            </div>
                                 <hr>
+                                <div id="imgStep2">
                                 <h5 class="font-weight-bold mt-3">Paste your image link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The web link from LearnX to the image you would like to appear in your selected element." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea onchange="generateImgTextCode()" id="imgLink" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Paste your LearnX web link to your image link here."></textarea>
+                            </div>
                                 <hr>
+                                <div id="imgStep3">
                                 <h5 class="font-weight-bold mt-3">Type your alt text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The description of your image you would like to appear when a user hovers over the image or uses a screen reader" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea onkeyup="generateImgTextCode()" id="altText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your alt text here."></textarea>
+                            </div>
                                 <hr>
+                                <div id="imgStep4">
                                 <h5 class="font-weight-bold mt-3">Type your caption text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the caption you would like to appear underneath your image." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea onkeyup="generateImgTextCode()" id="tinyMCEcaption" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your caption text here."></textarea>
+                                </div>
                                 <hr>
                                 <div id="secondImageOptions" class="fade d-none">
                                 <h5 class="font-weight-bold mt-3">Paste your 2nd image link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The second web link from LearnX to the image you would like to appear in your selected element." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
@@ -1018,10 +1226,13 @@
                                 <hr>
                             </div>
                                 <div id="imgTinyMCE" class="fade show">
+                                    <div id="imgStep5">
                                     <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your image." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                     <textarea class="border border-dark rounded w-100" id="tinyMCEimg" onkeyup=generateImgTextCode()></textarea>
+                                    </div>
                                     <hr>
                                 </div>
+                                <div id="imgStep6">
                                 <div id="imgTextAlign" class="fade show">
                                     <h5 class="font-weight-bold mt-3">Align text vertically<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your image on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                     <div class="form-check form-check-inline" id="alignTextVert" onchange="generateImgTextCode()">
@@ -1032,7 +1243,7 @@
                                         <input class="form-check-input" name="alignTextVert" id="alignTextVert2" type="radio" value=" my-auto" >
                                         <label class="form-check-label" for="alignTextVert2">Centre</label>
                                     </div>
-                                    <hr>
+                                <hr>
                                 </div>
                                 <div id="imgImgAlign" class="fade show">
                                     <h5 class="font-weight-bold mt-3">Align image vertically<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the screen you would like your image on." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
@@ -1046,6 +1257,8 @@
                                     </div>
                                     <hr>
                                 </div>
+                            </div>
+                                <div id="imgStep7">
                                 <h5 class="font-weight-bold mt-3">Image border<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether you would like the image to have a border." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="imgBorder" onchange="generateImgTextCode()">
                                     <input class="form-check-input" name="imgBorder" id="imgBorder1" type="radio" value="" checked>
@@ -1055,8 +1268,10 @@
                                     <input class="form-check-input" name="imgBorder" id="imgBorder2" type="radio" value=" img-thumbnail">
                                     <label class="form-check-label" for="imgBorder2">Border</label>
                                 </div>
+                                </div>
                                 <hr>
                                 <div id="imgWidth" class="fade show">
+                                    <div id="imgStep8">
                                     <h5 class="font-weight-bold mt-3">Image width<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether the image is half (1/2) the width of the screen or a quarter the size (1/4)" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                     <div class="form-check form-check-inline" id="imageWidth" onchange="generateImgTextCode()">
                                         <input class="form-check-input" name="imageWidth" id="imageWidth1" type="radio" value="50" checked="">
@@ -1070,10 +1285,12 @@
                                         <input class="form-check-input" name="imageWidth" id="imageWidth3" type="radio" value="25">
                                         <label class="form-check-label" for="imageWidth3">25% (1/4)</label>
                                     </div>
+                                    </div>
                                     <hr>
                                 </div>
+                                <div id="imgStep9">
                                 <h5 class="font-weight-bold mt-3">Heading - Max 75 Characters <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Optional heading above content. Max 75 characters" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
-                                <textarea onchange="generateImgTextCode()" id="headingText" maxlength="75" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Optional heading above content. Max 75 characters"></textarea>
+                                <textarea onchange="generateImgTextCode()" id="headingText" maxlength="75" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Optional heading above content. Max 75 characters"></textarea>            
                                 <hr>
                                 <h5 class="font-weight-bold mt-3">Heading Icon <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Include an icon if it relates to a specific structured learning experience." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="row bg-uq p-4 rounded-top">
@@ -1146,11 +1363,13 @@
                                         <h2 class="text-bg-uq p-2 m-0">Main heading</h2>
                                     </label>
                                 </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="sticky-top" style="top:6rem;">
+                            <div id="imgStep10">
                             <h5 class="font-weight-bold mt-3">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                             <div id="previewImgFS" class="bg-white">
                                 <div id="demo"></div>
@@ -1161,6 +1380,7 @@
                             <h5 class="font-weight-bold">Copy code<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Click the copy code button below to copy your code, ready to paste into LearnX.">&nbsp;<i class="fa fa-question-circle text-success small" aria-hidden="true"></i></span></h5>
                             <textarea readonly class="rounded p-2 w-100 border border-dark" id="imgFinalCode" cols="70" rows="5" name="Result" placeholder="Code for your element will appear here"></textarea>
                             <input id="copyCodeBtn" class="btn btn-success btn-lg d-block w-100 mt-2" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()">
+                            </div>
                             <div class="text-center h5 mt-4">
                                 <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into LearnX?</a>-->
                             </div>
@@ -1168,8 +1388,7 @@
                     </div>
                 </div>
             </div>
-            <!-- End image builder -->
-            <!-- Video builder tab pane -->
+            <!--Start video builder tab pane-->
             <div class="tab-pane fade" id="buildVidText" role="tabpanel">
                 <h1 class="text-center">Video builder</h1>
                 <a class="btn btn-primary btn-sm d-block mx-auto text-center w-50 demoToggle" type="button" data-bs-toggle="collapse" data-bs-target="#createVidDemo" aria-expanded="false" aria-controls="createVidDemo">How do I make a responsive video? Click to reveal a video demonstration <i class="fa-solid fa-angle-down"></i></a>
@@ -1202,6 +1421,7 @@
                                     </div>
                                 </div>
                                 <hr>
+                                <div id="vidStep2">
                                 <h5 class="font-weight-bold mt-3">Video width<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether the video is half (1/2) the width of the screen or a quarter the size (1/4)" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="videoWidth" onchange="generateVidTextCode()">
                                     <input class="form-check-input" name="videoWidth" id="videoWidth1" type="radio" value="50" checked="">
@@ -1223,10 +1443,14 @@
                                     <input class="form-check-input" name="videoWidth" id="2vids" type="radio" value="2">
                                     <label class="form-check-label" for="2vids">2 Videos side by side</label>
                                 </div>
+                            </div>
                                 <hr>
+                                <div id="vidStep3">
                                 <h5 class="font-weight-bold mt-3">Heading - Max 75 Characters<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Optional heading above content. Max 75 characters" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <textarea onchange="generateVidTextCode()" id="vidHeadingText" maxlength="75" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Optional heading above content. Max 75 characters"></textarea>
+                            </div>
                                 <hr>
+                                <div id="vidStep4">
                                 <h5 class="font-weight-bold mt-3">Heading Icon <span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Include an icon if it relates to a specific structured learning experience." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="row bg-uq p-4 rounded-top">
                                     <div class="col-lg d-flex justify-content-around">
@@ -1280,7 +1504,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                </div>
                                 <hr>
+                                <div id="vidStep5">
                                 <h5 class="font-weight-bold mt-3">Heading size<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the size of your heading." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="vidHeadSize" onchange="generateVidTextCode()">
                                     <input class="form-check-input" name="vidHeadSize" id="vidHeadSizeNone" type="radio" value="noH">
@@ -1304,19 +1530,26 @@
                                         <h2 class="text-bg-dark p-2 m-0"><span class="fa-brands fa-youtube"></span> Watch heading</h2>
                                     </label>
                                 </div>
+                                </div>
                                 <hr>
+                                
                                 <div id="vidTextTiny" class="fade show">
+                                    <div id="vidStep6">
                                     <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your video." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                     <textarea class="border border-dark rounded w-100" id="tinyMCEvid" onkeyup=generateVidTextCode()></textarea>
+                                    </div>
                                     <hr>
                                 </div>
-                                
+                                <div id="vidStep7">
                                 <h5 class="font-weight-bold mt-3">Paste your video link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="The web link for the Echo/YouTube/Vimeo/TED/Kaltura/mp4 web link from LearnX video you would like to appear in your selected element." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea onchange="generateVidTextCode()" id="vidLink" class="border border-dark rounded w-100 p-2" rows="1" placeholder="This space accepts Kaltura iframes, YouTube, Vimeo, and mp4 web links from LearnX."></textarea>
+                                </div>
                                 <hr>
                                 <div id="vidSmallTitle">
+                                    <div id="vidStep8">
                                     <h5 class="font-weight-bold mt-3">Type your video title text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the title you would like to appear above your video." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                     <textarea onkeyup="generateVidTextCode()" id="vidTitleText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your video title text here."></textarea>
+                                    </div>
                                     <hr>
                                 </div>
                                 <div id="vid2" class="d-none fade">
@@ -1331,6 +1564,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="sticky-top" style="top:6rem;">
+                            <div id="vidStep9">
                             <h5 class="font-weight-bold mt-3">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                             <div id="previewVidFS" class="bg-white">
                                 <div id="demo"></div>
@@ -1344,10 +1578,12 @@
                             <div class="text-center h5 mt-4">
                                 <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into LearnX?</a>-->
                             </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!--Start button builder-->
             <div class="tab-pane fade" id="buildBtnText" role="tabpanel">
                 <h1 class="text-center">Button builder</h1>
                 <a class="btn btn-primary btn-sm d-block mx-auto text-center w-50 demoToggle" type="button" data-bs-toggle="collapse" data-bs-target="#createBtnDemo" aria-expanded="false" aria-controls="createBtnDemo">How do I make a button? Click to reveal a video demonstration <i class="fa-solid fa-angle-down"></i></a>
@@ -1365,6 +1601,7 @@
                     <div class="col-lg-6">
                         <div class="row w-100 mx-auto">
                             <div class="col-lg">
+                                <div id="btnStep1">
                                 <h5 class="font-weight-bold mt-3">Number of buttons<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose how many buttons you want to make. You can make 1 button, or a group of 2, or 3." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="btnNumber" onchange="generateBtnCode()">
                                     <input class="form-check-input" name="btnNumber" id="btnNumber2" type="radio" value="1" checked>
@@ -1378,8 +1615,10 @@
                                     <input class="form-check-input" name="btnNumber" id="btnNumber3" type="radio" value="3">
                                     <label class="form-check-label" for="btnNumber3">3</label>
                                 </div>
+                                </div>
                                 <div id="btnWidthDiv" class="fade show">
                                     <hr>
+                                    <div id="btnStep2">
                                     <h5 class="font-weight-bold mt-3">Button position<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether your button is left aligned of centred." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                     <div class="form-check form-check-inline" id="btnPosition" onchange="generateBtnCode()">
                                         <input class="form-check-input" name="btnPosition" id="btnPosition2" type="radio" value="left" checked>
@@ -1389,7 +1628,9 @@
                                         <input class="form-check-input" name="btnPosition" id="btnPosition1" type="radio" value="centred">
                                         <label class="form-check-label" for="btnPosition1">Centred</label>
                                     </div> 
+                                    </div>
                                     <hr>
+                                    <div id="btnStep3">
                                     <h5 class="font-weight-bold mt-3">Button width<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether the button width is natural (defined by the amount of text inside it), 25%, 50%, 75%, or 100% width of the scree" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                     <div class="form-check form-check-inline" id="btnWidth" onchange="generateBtnCode()">
                                         <input class="form-check-input" name="btnWidth" id="btnWidth0" type="radio" value="Nat" checked>
@@ -1411,7 +1652,9 @@
                                         <input class="form-check-input" name="btnWidth" id="btnWidth4" type="radio" value="100">
                                         <label class="form-check-label" for="btnWidth4">100%</label>
                                     </div>
+                                    </div>
                                     <hr>
+                                    <div id="btnStep4">
                                     <h5 class="font-weight-bold mt-3">Open in new or same window?<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="If you are opening to something outside of LearnX always stick with opening in a new window. If it is an internal link to another LearnX page, you can use same." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                     <div class="form-check form-check-inline" id="sameOrNew" onchange="generateBtnCode()">
                                         <input class="form-check-input" name="sameOrNew" id="same" type="radio" value="top">
@@ -1421,8 +1664,10 @@
                                         <input class="form-check-input" name="sameOrNew" id="new" type="radio" value="blank" checked>
                                         <label class="form-check-label" for="new">New</label>
                                     </div>
+                                    </div>
                                 </div>
                                 <hr>
+                                <div id="btnStep5">
                                 <h5 class="font-weight-bold mt-3">Button size<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether your buttons are small, regular or large." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="btnSize" onchange="generateBtnCode()">
                                     <input class="form-check-input" name="btnSize" id="btnSize1" type="radio" value=" btn-sm">
@@ -1436,10 +1681,14 @@
                                     <input class="form-check-input" name="btnSize" id="btnSize3" type="radio" value=" btn-lg">
                                     <label class="form-check-label" for="btnSize3">Large</label>
                                 </div>
+                                </div>
                                 <hr>
+                                <div id="btnStep6">
                                 <h5 class="font-weight-bold mt-3">Button 1 - Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear on your first button." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea class="border border-dark rounded w-100 p-2" rows="1" id="btnOneText" onkeyup=generateBtnCode() placeholder="Write the text that will appear on button"></textarea>
+                                </div>
                                 <hr>
+                                <div id="btnStep7">
                                 <h5 class="font-weight-bold mt-3">Button 1 - Select your icon<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Select an icon for your first button." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <div class="form-check form-check-inline" id="btnOneIcon" onchange="generateBtnCode()">
                                     <input class="form-check-input" name="btnOneIcon" id="noIcon" type="radio" value="noI" checked>
@@ -1465,7 +1714,9 @@
                                     <input class="form-check-input" name="btnOneIcon" id="btn1Icon5" type="radio" value="5">
                                     <label class="form-check-label" for="btn1Icon5"><span class="fa-solid fa-arrow-right fa-2x"></span></label>
                                 </div>
+                                </div>
                                 <hr>
+                                <div id="btnStep8">
                                 <h5 class="font-weight-bold mt-3">Button 1 colour<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the colour of your button. The text you see on each colour is the name of the class relating to the colour. E.g. UQ means the button has the classes btn btn-uq, or primary means btn btn-primary." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="row gap-3">
                                     <div class="col-12">
@@ -1509,12 +1760,17 @@
                                         </div>
                                     </div>
                                 </div>
+                                </div>
                                 <hr>
+                                <div id="btnStep9">
                                 <h5 class="font-weight-bold mt-3">Button 1 - Link<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Paste a link. Either a LearnX web link or website URL." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea onchange="generateBtnCode()" id="btnLink" class="border border-dark rounded w-100 p-2" rows="1" placeholder="The web link from LearnX if this is a file download OR the website link."></textarea>
+                                </div>
                                 <hr>
+                                <div id="btnStep10">
                                 <h5 class="font-weight-bold mt-3">Button 1 - Title text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the title you would like to appear above your video." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea onkeyup="generateBtnCode()" id="btnTitleText" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Type your video title text here."></textarea>
+                                </div>
                                 <div id="btnTwoDiv" class="fade">
                                     <hr>
                                     <h5 class="font-weight-bold mt-3">Button 2 - Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear on your second button." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
@@ -1682,6 +1938,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="sticky-top" style="top:6rem;">
+                            <div id="btnStep11">
                             <h5 class="font-weight-bold mt-3">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                             <div id="previewBtnFS" class="bg-white">
                                 <div id="demo"></div>
@@ -1695,10 +1952,12 @@
                             <div class="text-center h5 mt-4">
                                 <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into LearnX?</a>-->
                             </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!--Start alert builder-->
             <div class="tab-pane fade" id="buildAlert" role="tabpanel">
                 <h1 class="text-center">Alert builder</h1>
                 <a class="btn btn-primary btn-sm d-block mx-auto text-center w-50 demoToggle" type="button" data-bs-toggle="collapse" data-bs-target="#createAlertDemo" aria-expanded="false" aria-controls="createAlertDemo">How do I make an alert or quote? Click to reveal a video demonstration <i class="fa-solid fa-angle-down"></i></a>
@@ -1715,6 +1974,7 @@
                     <div class="col-lg-6">
                         <div class="row w-100 mx-auto">
                             <div class="col-lg">
+                                <div id="alertStep1">
                                 <h5 class="font-weight-bold mt-3">Alert width<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether the alert is 3/4, 1/2 or 1/4 the width of the screen" class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="alertWidth" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertWidth" id="alertWidth1" type="radio" value="w-100" checked>
@@ -1732,7 +1992,9 @@
                                     <input class="form-check-input" name="alertWidth" id="alertWidth4" type="radio" value="w-25">
                                     <label class="form-check-label" for="alertWidth4">25% (1/4)</label>
                                 </div>
+                                </div>
                                 <hr>
+                                <div id="alertStep2">
                                 <h5 class="font-weight-bold mt-3">Alert or Quote<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether this will be a standard alert or a quotation." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="alertOrQuote" onchange="generateAlertCode()">
                                     <input class="form-check-input" name="alertOrQuote" id="alertOrQuote1" type="radio" value="alert" checked>
@@ -1742,8 +2004,10 @@
                                     <input class="form-check-input" name="alertOrQuote" id="alertOrQuote2" type="radio" value="quote">
                                     <label class="form-check-label" for="alertOrQuote2">Quote</label>
                                 </div>
+                                </div>
                                 <hr>
                                 <div id="alertColourDiv">
+                                    <div id="alertStep3">
                                     <h5 class="font-weight-bold mt-3">Alert colour<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the colour of your alert." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                     <div class="row mb-2">
                                         <div class="col-lg">
@@ -1794,11 +2058,15 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                                 <div id="alertHeadingDiv" class="fade show">
                                     <hr>
+                                    <div id="alertStep4">
                                     <h5 class="font-weight-bold mt-3">Alert Heading - Max 75 Characters<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Optional heading inside the alert. Max 75 characters." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                     <textarea onchange="generateAlertCode()" id="alertHeadingText" maxlength="75" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Optional heading inside the alert. Max 75 characters."></textarea>
+                                    </div>
                                     <hr>
+                                    <div id="alertStep5">
                                     <h5 class="font-weight-bold mt-3">Heading size<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the size of your heading." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                     <div class="form-check form-check-inline" id="alertHeadSize" onchange="generateAlertCode()">
                                         <input class="form-check-input" name="alertHeadSize" id="alertHeadSizeNone" type="radio" value="noH" checked>
@@ -1813,8 +2081,10 @@
                                         <label class="form-check-label" for="alertHeadSize3"><h2 class="m-0">H2 heading</h2></label>
                                     </div>
                                 </div>
+                            </div>
                                 <div id="alertHeadingIcon" class="fade show">
                                     <hr>
+                                    <div id="alertStep6">
                                     <h5 class="font-weight-bold mt-3">Alert Heading Icon<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Optional icon to go with the alert heading." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                     <div class="form-check form-check-inline" id="alertHeadIcon" onchange="generateAlertCode()">
                                         <input class="form-check-input" name="alertHeadIcon" id="alertHeadIconNone" type="radio" value="noI" checked>
@@ -1833,11 +2103,15 @@
                                         <label class="form-check-label" for="alertHeadIcon4"><i class="fa-solid fa-circle-question fa-2x"></i></label>
                                     </div>
                                 </div>
+                            </div>
                                 <hr>
+                                <div id="alertStep7">
                                 <h5 class="font-weight-bold mt-3">Write your text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear with your alert or quote." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                 <textarea class="border border-dark rounded w-100" id="tinyMCEalert" onkeyup=generateAlertCode()></textarea>
+                                </div>
                                 <div id="textSizeDiv" class="fade d-none">
                                     <hr>
+                                    <div id="alertStep8">
                                     <h5 class="font-weight-bold mt-3">Text size<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the size of your alert/quotation text." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                     <div class="row">
                                         <div class="col-lg">
@@ -1860,16 +2134,20 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                                 <div id="citationDiv" class="fade d-none">
                                     <hr>
+                                    <div id="alertStep9">
                                     <h5 class="font-weight-bold mt-3">Write/Paste your citation<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text for the citation." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                                     <textarea class="border border-dark rounded w-100 p-2" rows="3" id="tinyMCEcitation" onkeyup=generateAlertCode() placeholder="Paste/write your citation here. It should be in APA 7th style."></textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    </div>
                     <div class="col-lg-6">
                         <div class="sticky-top" style="top:6rem;">
+                            <div id="alertStep10">
                             <h5 class="font-weight-bold mt-3">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                             <div id="previewAlertFS" class="bg-white">
                                 <div id="demo"></div>
@@ -1883,10 +2161,12 @@
                             <div class="text-center h5 mt-4">
                                 <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into LearnX?</a>-->
                             </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!--Start tooltip builder-->
             <div class="tab-pane fade" id="buildTooltip" role="tabpanel">
                 <h1 class="text-center">Tooltip builder</h1>
                 <a class="btn btn-primary btn-sm d-block mx-auto text-center w-50 demoToggle" type="button" data-bs-toggle="collapse" data-bs-target="#createTooltipDemo" aria-expanded="false" aria-controls="createTooltipDemo">How do I make a tooltip? Click to reveal a video demonstration <i class="fa-solid fa-angle-down"></i></a>
@@ -1903,6 +2183,7 @@
                     <div class="col-lg-6">
                         <div class="row w-100 mx-auto">
                             <div class="col-lg">
+                                <div id="tooltipStep1">
                                 <h5 class="font-weight-bold mt-3">Tooltip position<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose which side of the tooltip icon you would like your tooltip to appear." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                                 <div class="form-check form-check-inline" id="tooltipPosition" onchange="generateTooltipCode()">
                                     <input class="form-check-input" name="tooltipPosition" id="tooltipPosition1" type="radio" value="top">
@@ -1920,13 +2201,23 @@
                                     <input class="form-check-input" name="tooltipPosition" id="tooltipPosition4" type="radio" value="left">
                                     <label class="form-check-label" for="tooltipPosition4">Left</label>
                                 </div>
+                                </div>
+                                <hr>
+                                <div id="tooltipStep2">
+                                <h5 class="font-weight-bold mt-3">Write the word your tooltip will attach to<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the word/text your tooltip attaches to." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
+                                <textarea class="border border-dark rounded w-100 p-2" rows="3" maxlength="200" id="tooltipTerm" onkeyup="generateTooltipCode()"></textarea>
+                                </div>
+                                <hr>
+                                <div id="tooltipStep3">
                                 <h5 class="font-weight-bold mt-3">Write your tooltip text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear when a user hovers over this tooltip icon." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
-                                <textarea class="border border-dark rounded w-100" rows="3" maxlength="200" id="tooltipText" onkeyup="generateTooltipCode()"></textarea>
+                                <textarea class="border border-dark rounded w-100 p-2" rows="3" maxlength="200" id="tooltipText" onkeyup="generateTooltipCode()"></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="sticky-top" style="top:6rem;">
+                            <div id="tooltipStep4">
                             <h5 class="font-weight-bold mt-3">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                             <div id="previewTooltipFS" class="bg-white">
                                 <div id="demo"></div>
@@ -1940,10 +2231,12 @@
                             <div class="text-center h5 mt-4">
                                 <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into LearnX?</a>-->
                             </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!--Start table builder-->
             <div class="tab-pane fade" id="buildTable" role="tabpanel">
                 <h1 class="text-center">Table builder</h1>
                 <a class="btn btn-primary btn-sm d-block mx-auto text-center w-50 demoToggle" type="button" data-bs-toggle="collapse" data-bs-target="#createTableDemo" aria-expanded="false" aria-controls="createTableDemo">How do I make a table? Click to reveal a video demonstration <i class="fa-solid fa-angle-down"></i></a>
@@ -1974,9 +2267,12 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
+                        <div id="tableStep1">
                         <h5 class="font-weight-bold mt-3">Table Heading - Max 75 Characters<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Optional heading above the table. Max 75 characters." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                         <textarea onchange="generateTableCode()" id="tableHeadingText" maxlength="75" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Optional heading above the table. Max 75 characters."></textarea>
+                        </div>
                         <hr>
+                        <div id="tableStep2">
                         <h5 class="font-weight-bold mt-3">Heading size<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the size of your heading." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                         <div class="form-check form-check-inline" id="tableHeadSize" onchange="generateTableCode()">
                             <input class="form-check-input" name="tableHeadSize" id="tableHeadSizeNone" type="radio" value="noH" checked>
@@ -1984,14 +2280,16 @@
                         </div>
                         <div class="form-check form-check-inline" id="tableHeadSize" onchange="generateTableCode()">
                             <input class="form-check-input" name="tableHeadSize" id="tableHeadSize2" type="radio" value="h4">
-                            <label class="form-check-label" for="tableHeadSize2"><h4 class="m-0">H4 heading</h4></label>
+                            <label class="form-check-label bg-info bg-opacity-25 p-2" for="tableHeadSize2"><h4 class="m-0">H4 heading</h4></label>
                         </div>
                         <div class="form-check form-check-inline" id="tableHeadSize" onchange="generateTableCode()">
                             <input class="form-check-input" name="tableHeadSize" id="tableHeadSize3" type="radio" value="h2">
-                            <label class="form-check-label" for="tableHeadSize3"><h2 class="m-0">H2 heading</h2></label>
+                            <label class="form-check-label bg-uq text-white p-2" for="tableHeadSize3"><h2 class="m-0">H2 heading</h2></label>
+                        </div>
                         </div>
                         <hr>
                         <div id="tableHeadColourDiv">
+                            <div id="tableStep3">
                             <h5 class="font-weight-bold mt-3">First row colour<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the colour of your first row." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                             <div class="row mb-2">
                                 <div class="col-lg">
@@ -2046,8 +2344,10 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
                         <hr>
                         <div id="stripedColOrRow">
+                            <div id="tableStep4">
                             <h5 class="font-weight-bold mt-3">Add striped columns or rows<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose whether to add stripes to the columns or rows. This alternates the colours with light shading on alternate columns or rows." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                             <div class="row mb-2">
                                 <div class="col-lg">
@@ -2066,7 +2366,9 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
                         <hr>
+                        <div id="tableStep5">
                         <h5 class="font-weight-bold mt-3">Create your table<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Paste your table here OR use the table tool to create a table from scratch." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                         <div class="row mt-3">
                             <div class="col-lg">
@@ -2095,9 +2397,11 @@
                         </div>
                         <div class="mt-3"></div>
                         <textarea class="border border-dark rounded w-100 mt-3" id="tinyMCEtable" onkeyup=generateTableCode()></textarea>
+                        </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="sticky-top" style="top:6rem;">
+                            <div id="tableStep6">
                             <h5 class="font-weight-bold mt-3">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                             <div id="previewTableFS" class="bg-white">
                                 <div id="demo"></div>
@@ -2111,11 +2415,12 @@
                             <div class="text-center h5 mt-4">
                                 <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into LearnX?</a>-->
                             </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--Start accordion generator-->
+            <!--Start accordion builder-->
             <div class="tab-pane fade" id="buildAcc" role="tabpanel">
                 <h1 class="text-center">Accordion builder</h1>
                 <a class="btn btn-primary btn-sm d-block mx-auto text-center w-50 demoToggle" type="button" data-bs-toggle="collapse" data-bs-target="#createAccDemo" aria-expanded="false" aria-controls="createAccDemo">How do I make a table? Click to reveal a video demonstration <i class="fa-solid fa-angle-down"></i></a>
@@ -2149,12 +2454,17 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
+                        <div id="accStep1">
                         <h5 class="font-weight-bold mt-3">Accordion Name - Required - Numbers and Letters Only, No Spaces - Max 20 Characters<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Each accordion you create needs a unique name. If it shares the same name as another accordion on the same page neither accordion will work correctly. You can use letters and numbers, no special characters or spaces." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                         <textarea onchange="generateAccCode()" id="accName" maxlength="20" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Required name. Max 20 characters."></textarea>
+                        </div>
                         <hr>
+                        <div id="accStep2">
                         <h5 class="font-weight-bold mt-3">Accordion Heading - Optional - Max 75 Characters<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Optional heading above the accordion. Max 75 characters." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                         <textarea onchange="generateAccCode()" id="accHeadingText" maxlength="75" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Optional heading above the accordion. Max 75 characters."></textarea>
+                        </div>
                         <hr>
+                        <div id="accStep3">
                         <h5 class="font-weight-bold mt-3">Heading size<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the size of your heading." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                         <div class="form-check form-check-inline" id="accHeadSize" onchange="generateAccCode()">
                             <input class="form-check-input" name="accHeadSize" id="accHeadSizeNone" type="radio" value="noH" checked>
@@ -2162,13 +2472,15 @@
                         </div>
                         <div class="form-check form-check-inline" id="accHeadSize" onchange="generateAccCode()">
                             <input class="form-check-input" name="accHeadSize" id="accHeadSize2" type="radio" value="h4">
-                            <label class="form-check-label" for="accHeadSize2"><h4 class="m-0">H4 heading</h4></label>
+                            <label class="form-check-label bg-info bg-opacity-25 p-2" for="accHeadSize2"><h4 class="m-0">H4 heading</h4></label>
                         </div>
                         <div class="form-check form-check-inline" id="accHeadSize" onchange="generateAccCode()">
                             <input class="form-check-input" name="accHeadSize" id="accHeadSize3" type="radio" value="h2">
-                            <label class="form-check-label" for="accHeadSize3"><h2 class="m-0">H2 heading</h2></label>
+                            <label class="form-check-label bg-uq text-white p-2" for="accHeadSize3"><h2 class="m-0">H2 heading</h2></label>
+                        </div>
                         </div>
                         <hr>
+                        <div id="accStep4">
                         <h5 class="font-weight-bold mt-3">First draw open/closed<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose if the first draw of the accordion is open (default) or closed." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                         <div class="form-check form-check-inline" id="accFirstOpen" onchange="generateAccCode()">
                             <input class="form-check-input" name="accFirstOpen" id="firstOpen" type="radio" value=" show" checked>
@@ -2178,13 +2490,16 @@
                             <input class="form-check-input" name="accFirstOpen" id="firstClosed" type="radio" value="">
                             <label class="form-check-label" for="firstClosed">First draw closed</label>
                         </div>
+                        </div>
                         <hr>
                         <div id="accDrawerContent">
+                            <div id="accStep5">
                             <h5 class="font-weight-bold mt-3">Drawer headings/Content<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Create the headings for your accordion drawers and content for your accordions." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                             <div id="drawer1">
                                 <h6>Drawer 1 Heading + Content<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Create the headings for your accordion drawers and content for your accordions." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h6>
                                 <textarea onchange="generateAccCode()" id="acc1Btn" maxlength="75" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Heading on the accordion button. Max 75 characters"></textarea>
                                 <textarea onkeyup="generateAccCode()" id="acc1Content" class="tinyMCEacc border border-dark rounded w-100 p-2" rows="5" placeholder="Content that will display on clicking the relative accordion button."></textarea>
+                            </div>
                             </div>
                             <hr>
                             <div id="drawer2">
@@ -2244,6 +2559,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="sticky-top" style="top:6rem;">
+                        <div id="accStep6">
                         <h5 class="font-weight-bold mt-3">Number of drawers<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Number of accordion drawers. Minimum 3. Maximum 10. Use the plus/minus controls or type a number into the input box.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                         <div class="input-group inline-group mx-auto" style="max-width: 50%">
                             <div class="input-group-prepend my-auto">
@@ -2258,6 +2574,9 @@
                                 </button>
                             </div>
                         </div>
+                        </div>
+                        <hr>
+                        <div id="accStep7">
                         <h5 class="font-weight-bold">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                         <div id="previewAccFS" class="bg-white">
                             <div id="demo"></div>
@@ -2272,12 +2591,12 @@
                         <div class="text-center h5 mt-4">
                             <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into LearnX?</a>-->
                         </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--End accordion generator-->
-        <!--Read more button generator-->
+        <!--Read more builder-->
         <div class="tab-pane fade" id="buildReadmore" role="tabpanel">
             <h1 class="text-center">Read More builder</h1>
             <a class="btn btn-primary btn-sm d-block mx-auto text-center w-50 demoToggle" type="button" data-bs-toggle="collapse" data-bs-target="#createReadmoreDemo" aria-expanded="false" aria-controls="createReadmoreDemo">How do I make a table? Click to reveal a video demonstration <i class="fa-solid fa-angle-down"></i></a>
@@ -2292,12 +2611,17 @@
             </div>
             <div class="row">
                 <div class="col-lg-6">
+                    <div id="readmoreStep1">
                     <h5 class="font-weight-bold mt-3">Read More Button Name - Required - Numbers and Letters Only, No Spaces - Max 20 Characters<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Each read more button you create needs a unique name. If it shares the same name as another read more button on the same page neither read more button will work correctly. You can use letters and numbers, no special characters or spaces." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                     <textarea onchange="generateReadmoreCode()" id="readmoreName" maxlength="20" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Required name. Max 20 characters."></textarea>
+                    </div>
                         <hr>
+                        <div id="readmoreStep2">
                     <h5 class="font-weight-bold mt-3">Read More Heading - Optional - Max 75 Characters<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Optional heading above the read more button. Max 75 characters." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                         <textarea onchange="generateReadmoreCode()" id="readmoreHeadingText" maxlength="75" class="border border-dark rounded w-100 p-2" rows="1" placeholder="Optional heading above the read more button. Max 75 characters."></textarea>
+                        </div>
                         <hr>
+                        <div id="readmoreStep3">
                         <h5 class="font-weight-bold mt-3">Heading size<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Choose the size of your heading." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                         <div class="form-check form-check-inline" id="readmoreHeadSize" onchange="generateReadmoreCode()">
                             <input class="form-check-input" name="readmoreHeadSize" id="readmoreHeadSizeNone" type="radio" value="noH" checked>
@@ -2311,16 +2635,22 @@
                             <input class="form-check-input" name="readmoreHeadSize" id="readmoreHeadSize3" type="radio" value="h2">
                             <label class="form-check-label" for="readmoreHeadSize3"><h2 class="m-0">H2 heading</h2></label>
                         </div>
+                        </div>
                         <hr>
+                        <div id="readmoreStep4">
                         <h5 class="font-weight-bold mt-3">Write Pre button text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear before the read more button." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                         <textarea class="border border-dark rounded w-100" rows="3" id="tinyMCEreadmorePreBtn" onkeyup="generateReadmoreCode()"></textarea>
+                        </div>
                         <hr>
+                        <div id="readmoreStep5">
                         <h5 class="font-weight-bold mt-3">Write Post button text<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Type in the text you would like to appear after the read more button is clicked." class="hideableinstruct text-success small">&nbsp;<i class="fa fa-question-circle"></i></span></h5>
                         <textarea class="border border-dark rounded w-100" rows="3" id="tinyMCEreadmorePostBtn" onkeyup="generateReadmoreCode()"></textarea>
+                        </div>
                         <hr>
                 </div>
                 <div class="col-lg-6">
                     <div class="sticky-top" style="top:6rem;">
+                        <div id="readmoreStep6">
                         <h5 class="font-weight-bold mt-3">Preview<span class="hideableinstruct text-success small" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="A preview of your element will appear below as you update the fields on the left.">&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></span></h5>
                         <div id="previewReadmoreFS" class="bg-white">
                             <div id="demo"></div>
@@ -2333,6 +2663,7 @@
                         <input id="copyCodeBtn" class="btn btn-success btn-lg d-block w-100 mt-2" name="GenerateWrap" value="Copy your code </>" onclick="copyCode()">
                         <div class="text-center h5 mt-4">
                             <!--<a data-toggle="modal" data-target=".html-paste-modal" href="#">How do I paste this into LearnX?</a>-->
+                        </div>
                         </div>
                     </div>
                 </div>   
@@ -2348,6 +2679,21 @@
             <li class="nav-item" role="presentation">
                 <a id="bugOrImprovementFormBtn" class="nav-link text-white" href="https://forms.office.com/r/G6NMM65Yxu" target="_blank">Log Bug or Improvement</a>
             </li>
+            <div class="btn-group dropup" id="userTourMenu">
+                <button type="button" class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="userTours">
+                  User tours
+                </button>
+                    <ul class="dropdown-menu p-2 bg-uq">
+                        <li class="nav-item" role="presentation"><button id="imgBuilderTourRestart" class="nav-link w-100" data-bs-toggle="tab">Image/text</button></li>
+                        <li class="nav-item mt-2" role="presentation"><button id="vidBuilderTourRestart" class="nav-link w-100" data-bs-toggle="tab">Video builder</button></li>
+                        <li class="nav-item mt-2" role="presentation"><button id="btnBuilderTourRestart" class="nav-link w-100" data-bs-toggle="tab">Button builder</button></li>
+                        <li class="nav-item mt-2" role="presentation"><button id="alertBuilderTourRestart" class="nav-link w-100" data-bs-toggle="tab">Alert/Quote builder</button></li>
+                        <li class="nav-item mt-2" role="presentation"><button id="tooltipBuilderTourRestart" class="nav-link w-100" data-bs-toggle="tab">Tooltip builder</button></li>
+                        <li class="nav-item mt-2" role="presentation"><button id="tableBuilderTourRestart" class="nav-link w-100" data-bs-toggle="tab">Table builder</button></li>
+                        <li class="nav-item mt-2" role="presentation"><button id="accBuilderTourRestart" class="nav-link w-100" data-bs-toggle="tab">Accordion builder</button></li>
+                        <li class="nav-item mt-2" role="presentation"><button id="readmoreBuilderTourRestart" class="nav-link w-100" data-bs-toggle="tab">Read more builder</button></li>
+                    </ul>
+              </div>
             <li class="nav-item" role="presentation">
                 <button id="closeAlertsBtn" class="nav-link text-white" onclick="closeAlerts()" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Hide/show explanatory alerts on the table and accordion pages"><i class="fa-solid fa-eye"></i></button>
             </li>
@@ -2355,14 +2701,20 @@
     </nav>
 </div>
 <script>
-    window.addEventListener('load',function(){
-    $('.demoToggle').click(function(){
-        $('i', this).toggleClass('fa-angle-down fa-angle-up');
-    });
-    $('.readmoreToggle').click(function(){
-        $('i', this).toggleClass('fa-angle-down fa-angle-up');
-    });
-})
+   window.addEventListener('load', function(){
+    $('div.fixed-bottom').append('<button class="btn btn-dark mx-auto" id="cancelTours">Cancel Tours</button>')
+    cancelTours = $('button#cancelTours')
+    cancelTours.on('click', function () {
+    localStorage.setItem(imgBuilderTourCompletionKey, 'true');
+    localStorage.setItem(vidBuilderTourCompletionKey, 'true');
+    localStorage.setItem(btnBuilderTourCompletionKey, 'true');
+    localStorage.setItem(alertBuilderTourCompletionKey, 'true');
+    localStorage.setItem(tooltipBuilderTourCompletionKey, 'true');
+    localStorage.setItem(readmoreBuilderTourCompletionKey, 'true');
+    localStorage.setItem(tableBuilderTourCompletionKey, 'true');
+    localStorage.setItem(accBuilderTourCompletionKey, 'true');
+  });
+   })
 </script>
 </body>
 </html>
