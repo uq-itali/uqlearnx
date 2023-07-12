@@ -37,7 +37,7 @@
         <script src="js/ccUserTours.js"></script>
         
         <!--Customise alerts on the site-->
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.16/dist/sweetalert2.all.min.js"></script>
         <style>
             body, h1, h2, h3, h4, h5, h6{
                 font-family: 'Open Sans', sans-serif !important;
@@ -2676,13 +2676,12 @@
 <div class="bg-uq fixed-bottom">
     <nav class="navbar mx-3 float-end">
         <ul class="nav nav-pills">
+            <li class="nav-item" role="presentation"><a role="button" class="nav-link text-white" id="cancelTours">Close User Tours</a></li>
             <li class="nav-item" role="presentation">
                 <a id="bugOrImprovementFormBtn" class="nav-link text-white" href="https://forms.office.com/r/G6NMM65Yxu" target="_blank">Log Bug or Improvement</a>
             </li>
-            <div class="btn-group dropup" id="userTourMenu">
-                <button type="button" class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="userTours">
-                  User tours
-                </button>
+            <li class="nav-item btn-group dropup" id="userTourMenu">
+                <button type="button" class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="userTours">User tours</button>
                     <ul class="dropdown-menu p-2 bg-uq">
                         <li class="nav-item" role="presentation"><button id="imgBuilderTourRestart" class="nav-link w-100" data-bs-toggle="tab">Image/text</button></li>
                         <li class="nav-item mt-2" role="presentation"><button id="vidBuilderTourRestart" class="nav-link w-100" data-bs-toggle="tab">Video builder</button></li>
@@ -2693,12 +2692,109 @@
                         <li class="nav-item mt-2" role="presentation"><button id="accBuilderTourRestart" class="nav-link w-100" data-bs-toggle="tab">Accordion builder</button></li>
                         <li class="nav-item mt-2" role="presentation"><button id="readmoreBuilderTourRestart" class="nav-link w-100" data-bs-toggle="tab">Read more builder</button></li>
                     </ul>
-              </div>
+                </li>
             <li class="nav-item" role="presentation">
                 <button id="closeAlertsBtn" class="nav-link text-white" onclick="closeAlerts()" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Hide/show explanatory alerts on the table and accordion pages"><i class="fa-solid fa-eye"></i></button>
             </li>
         </ul>
     </nav>
 </div>
+<script>
+    window.addEventListener('load', function(){
+     cancelTours = $('a#cancelTours')
+     cancelTours.on('click', function () {
+     localStorage.setItem(imgBuilderTourCompletionKey, 'true');
+     localStorage.setItem(vidBuilderTourCompletionKey, 'true');
+     localStorage.setItem(btnBuilderTourCompletionKey, 'true');
+     localStorage.setItem(alertBuilderTourCompletionKey, 'true');
+     localStorage.setItem(tooltipBuilderTourCompletionKey, 'true');
+     localStorage.setItem(readmoreBuilderTourCompletionKey, 'true');
+     localStorage.setItem(tableBuilderTourCompletionKey, 'true');
+     localStorage.setItem(accBuilderTourCompletionKey, 'true');
+     Swal.fire({
+        title: '<span class="fs-5 d-block mx-auto text-center">All user tours switched off. To switch them back on, select the user tour you want from the User Tours menu</span>',
+        icon: 'success',
+        showCancelButton: false,
+        confirmButtonText: 'Okay',
+        didOpen: () => {
+    const userTourMenuElement = document.getElementById('userTourMenu');
+    const arrow = document.createElement('div');
+    arrow.className = 'arrow animated';
+    document.body.appendChild(arrow);
+
+    // Position the arrow to point at the userTourMenu element
+    const userTourMenuElementRect = userTourMenuElement.getBoundingClientRect();
+    const arrowLeft = userTourMenuElementRect.left + userTourMenuElementRect.width / 2;
+    const arrowTop = userTourMenuElementRect.top - 25; // Adjust the top position as needed
+    arrow.style.left = `${arrowLeft - 25}px`;
+    arrow.style.top = `${arrowTop}px`;
+
+    const arrowStem = document.createElement('div');
+    arrowStem.className = 'arrow-stem';
+    document.body.appendChild(arrowStem);
+
+    // Position the arrow stem
+    arrowStem.style.left = `${arrowLeft}px`;
+    arrowStem.style.top = `${arrowTop + 10}px`;
+  },
+  willClose: () => {
+    const arrow = document.querySelector('.arrow');
+    if (arrow) {
+      arrow.remove();
+    }
+    const arrowStem = document.querySelector('.arrow-stem');
+    if (arrowStem) {
+      arrowStem.remove();
+    }
+  }
+    }).then((result) => {
+        // Code to be executed after the "Okay" button is clicked
+        // You can add your custom logic here
+    });
+});
+})
+ </script>
+ <style>
+    .arrow {
+        position: absolute;
+  bottom: calc(100% - 10px);
+  left: 40%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 30px solid green;
+  z-index: 10001;
+}
+
+.arrow::before {
+    content: "";
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 100px;
+  background-color: green;
+}
+@keyframes arrowAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.arrow.animated {
+  animation-name: arrowAnimation;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+ </style>
 </body>
 </html>
