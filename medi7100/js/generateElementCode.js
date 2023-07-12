@@ -91,15 +91,17 @@ function generateImgTextCode() {
     else{
         imgLink2 = imgPlaceholderLink
     }  
-    $('#headingText').on('input', function() {
+    //If a person types in a heading, change the heading size to make it appear
         // Check if the textarea contains text
-        if ($(this).val().trim() !== '') {
+        $('#headingText').on('keyup', function() {
+            // Check if the textarea contains text
+            if ($(this).val().trim() !== '') {
           // Set the radio button with value 'h2' to checked
-          $('input[type="radio"][value="h2"]').prop('checked', true);
+          $('input[type="radio"][value="img-h2"]').prop('checked', true);
         }
          else {
           // Set the radio button with value 'noH' to checked
-          $('input[type="radio"][value="noH"]').prop('checked', true);
+          $('input[type="radio"][value="img-noH"]').prop('checked', true);
         }
       });  
     var altText = $('#altText').val();
@@ -112,12 +114,12 @@ function generateImgTextCode() {
     var imgCode2 = '<figure>\n<img class="img-fluid d-block mx-auto' + imgBorder + '" src="' + result2 + '" alt="' + altText2 + '" />\n<figcaption class="text-center mt-2">' + captionText2 + '</figcaption>\n</figure>\n';
     var imgPreviewFloat = '<figure>\n<img class="img-fluid" src="' + imgLink + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>\n';
     var imgFloat = '<figure>\n<img class="img-fluid" src="' + result + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>\n';
-    if(headSize !== "noH"){
+    if(headSize !== "img-noH"){
         //Resizing the heading text
         var sizes = {
-            "noH": "",
-            "h2": "<h2 class=\"text-bg-uq p-2\">" + iconCode + headingText + "</h2>\n",
-            "h4": "<h4 class=\"text-bg-info bg-opacity-25 p-2\">" + headingText + "</h4>\n"
+            "img-noH": "",
+            "img-h2": "<h2 class=\"text-bg-uq p-2\">" + iconCode + headingText + "</h2>\n",
+            "img-h4": "<h4 class=\"text-bg-info bg-opacity-25 p-2\">" + headingText + "</h4>\n"
         }
         resizedHead = sizes[headSize];
     }
@@ -230,7 +232,7 @@ function generateVidTextCode() {
     }
     var vidHeadingText = $('#vidHeadingText').val();
     var vidHeadSize = $('input[name="vidHeadSize"]:checked').val();
-    if(vidHeadingText != "" && vidHeadSize == "h2-w"){
+    if(vidHeadingText != "" && vidHeadSize == "vid-h2-w"){
         vidHeadingText = ": " + vidHeadingText;
     }
     else{
@@ -319,15 +321,14 @@ function generateVidTextCode() {
     else{
         var vidTitleText2 = '';
     }
-    
-    //var vidFloat = '<figure>\n<img class="img-fluid" src="' + imgLink + '" alt="' + altText + '" />\n<figcaption class="text-center mt-2">' + captionText + '</figcaption>\n</figure>\n';
-    if(vidHeadSize !== "noH"){
+  
+    if(vidHeadSize !== "vid-noH"){
         //Resizing the heading text
         var vidSizes = {
-            "noH": "",
-            "h2": "<h2 class=\"text-bg-uq p-2\">" + iconCodeVid + vidHeadingText + "</h2>\n",
-            "h2-w": "<h2 class=\"text-bg-dark p-2\"><span class=\"fa-brands fa-youtube\"></span> Watch" + vidHeadingText + "</h2>\n",
-            "h4": "<h4 class=\"text-bg-info bg-opacity-25 p-2\">" + vidHeadingText + "</h4>\n"
+            "vid-noH": "",
+            "vid-h2": "<h2 class=\"text-bg-uq p-2\">" + iconCodeVid + vidHeadingText + "</h2>\n",
+            "vid-h2-w": "<h2 class=\"text-bg-dark p-2\"><span class=\"fa-brands fa-youtube\"></span> Watch" + vidHeadingText + "</h2>\n",
+            "vid-h4": "<h4 class=\"text-bg-info bg-opacity-25 p-2\">" + vidHeadingText + "</h4>\n"
         }
         vidResizedHead = vidSizes[vidHeadSize];
     }
@@ -717,15 +718,15 @@ function generateAlertCode() {
     else{
         alertHeadingText = '';
     }
-    $('#alertHeadingText').on('input', function() {
+    $('#alertHeadingText').on('keyup', function() {
         // Check if the textarea contains text
         if ($(this).val().trim() !== '') {
           // Set the radio button with value 'h2' to checked
-          $('input[type="radio"][value="h4"]').prop('checked', true);
+          $('input[type="radio"][value="alert-h4"]').prop('checked', true);
         }
          else {
           // Set the radio button with value 'noH' to checked
-          $('input[type="radio"][value="noH"]').prop('checked', true);
+          $('input[type="radio"][value="alert-noH"]').prop('checked', true);
         }
       });
     if (alertHeadIcon !== "noI"){
@@ -740,12 +741,12 @@ function generateAlertCode() {
         finalIcon = "";
     }
     
-    if(alertHeadSize !== "noH"){
+    if(alertHeadSize !== "alert-noH"){
             //Resizing the heading text
             var alertSizes = {
-                "noH": "",
-                "h2": "<h2 class=\"alert-heading text-center\">" + finalIcon + alertHeadingText + "</h2>\n",
-                "h4": "<h4 class=\"alert-heading text-center\">" + finalIcon + alertHeadingText + "</h4>\n"
+                "alert-noH": "",
+                "alert-h2": "<h2 class=\"alert-heading text-center\">" + finalIcon + alertHeadingText + "</h2>\n",
+                "alert-h4": "<h4 class=\"alert-heading text-center\">" + finalIcon + alertHeadingText + "</h4>\n"
             }
             resizedAlertHead = alertSizes[alertHeadSize];
         }
@@ -807,15 +808,15 @@ function generateTableCode(){
     var theadColour = $('input[name="theadColour"]:checked').val();
     var tinyMCEtable = tinymce.get("tinyMCEtable").getContent();
     var tableStripes = $('input[name="tableStripe"]:checked').val();
-    $('#tableHeadingText').on('input', function() {
+    $('#tableHeadingText').on('keyup', function() {
         // Check if the textarea contains text
         if ($(this).val().trim() !== '') {
           // Set the radio button with value 'h2' to checked
-          $('input[type="radio"][value="h4"]').prop('checked', true);
+          $('input[type="radio"][value="table-h4"]').prop('checked', true);
         }
          else {
           // Set the radio button with value 'noH' to checked
-          $('input[type="radio"][value="noH"]').prop('checked', true);
+          $('input[type="radio"][value="table-noH"]').prop('checked', true);
         }
       });
     if(tinymce.get("tinyMCEtable").getContent() != ''){
@@ -858,12 +859,12 @@ function generateTableCode(){
         tinymce.get("tinyMCEtable").dom.removeClass(tinyMCE.get("tinyMCEtable").dom.select('table'), 'table-striped-columns');
     }  
    
-    if(tableHeadSize !== "noH"){
+    if(tableHeadSize !== "table-noH"){
         //Resizing the heading text
         var tableSizes = {
-            "noH": "",
-            "h2": "<h2 class=\"text-bg-uq p-2\">" + tableHeadingText + "</h2>\n",
-            "h4": "<h4 class=\"text-bg-info bg-opacity-25 p-2\">" + tableHeadingText + "</h4>\n"
+            "table-noH": "",
+            "table-h2": "<h2 class=\"text-bg-uq p-2\">" + tableHeadingText + "</h2>\n",
+            "table-h4": "<h4 class=\"text-bg-info bg-opacity-25 p-2\">" + tableHeadingText + "</h4>\n"
         }
         tableResizedHead = tableSizes[tableHeadSize];
     }
@@ -986,23 +987,23 @@ function makeTable(){
     var content9Open = '<div id=\"collapse9\" class=\"accordion-collapse collapse\" aria-labelledby=\"heading9\" data-bs-parent=\"#accordion' + accName + '\">\n<div class=\"accordion-body\">' + content9Body + '</div>\n';
     var accDrawer10 = '<div class=\"accordion-item\">\n<h2 class="accordion-header\" id=\"heading10\">\n<button class=\"accordion-button collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#collapse10\" aria-expanded=\"true\" aria-controls=\"collapse10\">' + drawer10Title + '</button>\n</h2>\n';
     var content10Open = '<div id=\"collapse10\" class=\"accordion-collapse collapse\" aria-labelledby=\"heading10\" data-bs-parent=\"#accordion' + accName + '\">\n<div class=\"accordion-body\">' + content10Body + '</div>\n';
-    $('#accHeadingText').on('input', function() {
+    $('#accHeadingText').on('keyup', function() {
         // Check if the textarea contains text
         if ($(this).val().trim() !== '') {
           // Set the radio button with value 'h2' to checked
-          $('input[type="radio"][value="h2"]').prop('checked', true);
+          $('input[type="radio"][value="acc-h2"]').prop('checked', true);
         }
          else {
           // Set the radio button with value 'noH' to checked
-          $('input[type="radio"][value="noH"]').prop('checked', true);
+          $('input[type="radio"][value="acc-noH"]').prop('checked', true);
         }
       });
-    if(accHeadSize !== "noH"){
+    if(accHeadSize !== "acc-noH"){
         //Resizing the heading text
         var accHeadSizes = {
-            "noH": "",
-            "h2": "<h2 class=\"text-bg-uq p-2\">" + accHeadingText + "</h2>\n",
-            "h4": "<h4 class=\"text-bg-info bg-opacity-25 p-2\">" + accHeadingText + "</h4>\n"
+            "acc-noH": "",
+            "acc-h2": "<h2 class=\"text-bg-uq p-2\">" + accHeadingText + "</h2>\n",
+            "acc-h4": "<h4 class=\"text-bg-info bg-opacity-25 p-2\">" + accHeadingText + "</h4>\n"
         }
         accResizedHead = accHeadSizes[accHeadSize];
     }
@@ -1145,6 +1146,17 @@ function generateReadmoreCode(){
     var textAfterClose = '</div>\n';
     var iconToggleScript = "<script type=\"text/javascript\">\n$('a[href=\"#" + readmoreName + "\"]').click(function(){\n$('i', this).toggleClass('fa-angle-down fa-angle-up');});\n</script>\n"
     $('a[href="https://google.com"]');
+    $('#readmoreHeadingText').on('keyup', function() {
+        // Check if the textarea contains text
+        if ($(this).val().trim() !== '') {
+          // Set the radio button with value 'h2' to checked
+          $('input[type="radio"][value="readmore-h4"]').prop('checked', true);
+        }
+         else {
+          // Set the radio button with value 'noH' to checked
+          $('input[type="radio"][value="readmore-noH"]').prop('checked', true);
+        }
+      });
     if(tinymce.get("tinyMCEreadmorePreBtn").getContent() != ""){
         var tinyReadmorePreBtn = tinymce.get("tinyMCEreadmorePreBtn").getContent();
     }
@@ -1157,12 +1169,13 @@ function generateReadmoreCode(){
     else{
         var tinyReadmorePostBtn = readmorePostBtnPlaceholder
     }
-    if(readmoreHeadSize !== "noH"){
+    
+    if(readmoreHeadSize !== "readmore-noH"){
         //Resizing the heading text
         var readmoreHeadSizes = {
-            "noH": "",
-            "h2": "<h2 class=\"text-bg-uq p-2\">" + readmoreHeadingText + "</h2>\n",
-            "h4": "<h4 class=\"text-bg-info bg-opacity-25 p-2\">" + readmoreHeadingText + "</h4>\n"
+            "readmore-noH": "",
+            "readmore-h2": "<h2 class=\"text-bg-uq p-2\">" + readmoreHeadingText + "</h2>\n",
+            "readmore-h4": "<h4 class=\"text-bg-info bg-opacity-25 p-2\">" + readmoreHeadingText + "</h4>\n"
         }
         readmoreResizedHead = readmoreHeadSizes[readmoreHeadSize];
     }
