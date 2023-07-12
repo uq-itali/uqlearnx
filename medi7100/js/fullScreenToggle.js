@@ -32,6 +32,12 @@ function copyCode() {
     } catch (err) {
         console.error('Fallback: Oops, unable to copy', err);
     }
+    Swal.fire({
+        title: '<span class="fs-5 d-block mx-auto text-center">Code copied</span>',
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 1000 // Duration in milliseconds
+      });
 }
 function fullScreenImgToggle() {
     if (document.fullscreenEnabled) {
