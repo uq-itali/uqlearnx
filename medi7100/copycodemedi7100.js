@@ -2,9 +2,9 @@ document.addEventListener("click", function(event) { /*JS required for the colla
 })
 
 window.addEventListener('load',function(){
-  function alertUser(){
+    $('.alertUserPD').click(function(){
     alert("This is an external JavaScript alert triggered by a button click.");
-  }
+  })
 /*Initialise all tooltips*/
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
