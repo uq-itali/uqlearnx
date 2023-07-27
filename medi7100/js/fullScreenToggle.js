@@ -16,6 +16,7 @@ function copyCode() {
         var selectedCode = $('#tooltipFinalCode').select();
     }
     else if(activeBtn == 'tableBuilderBtn'){
+        generateTableCode();
         var selectedCode = $('#tableFinalCode').select();
     }
     else if(activeBtn == 'accBuilderBtn'){

@@ -808,6 +808,7 @@ function generateTableCode(){
     var theadColour = $('input[name="theadColour"]:checked').val();
     var tinyMCEtable = tinymce.get("tinyMCEtable").getContent();
     var tableStripes = $('input[name="tableStripe"]:checked').val();
+    var tablePlaceholder = '<table class=\"table table-responsive table-hover table-bordered\">\n<thead>\n<tr>\n<th></th>\n<th>Table heading 1</th>\n<th>Table heading 2</th>\n<th>Table heading 3</th>\n<th>Table heading 4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Row 1</td>\n<td>Row 1</td>\n<td>Row 1</td>\n<td>Row 1</td>\n<td>Row 1</td>\n</tr>\n<tr>\n<td>Row 2</td>\n<td>Row 2</td>\n<td>Row 2</td>\n<td>Row 2</td>\n<td>Row 2</td>\n</tr>\n<tr>\n<td>Row 3</td>\n<td>Row 3</td>\n<td>Row 3</td>\n<td>Row 3</td>\n<td>Row 3</td>\n</tr>\n<tr>\n<td>Row 4</td>\n<td>Row 4</td>\n<td>Row 4</td>\n<td>Row 4</td>\n<td>Row 4</td>\n</tr>\n</tbody>\n</table>\n';
     $('#tableHeadingText').on('keyup', function() {
         // Check if the textarea contains text
         if ($(this).val().trim() !== '') {
@@ -824,10 +825,10 @@ function generateTableCode(){
         var thCalc = $(tinyMCEtable).find('tbody td').length/$(tinyMCEtable).find('tbody tr').length;
     }
     else{
-        var tinyMCEtable = ''
     }
-    if(theadColour != 'bold'){
+    if(theadColour != 'noF'){
         var theadColourOptions = {
+            "bold" : "thead",
             "primary" : "table-primary",
             "secondary" : "table-secondary",
             "info" : "table-info",
@@ -838,13 +839,13 @@ function generateTableCode(){
             "light" : "table-light",
             "uq" : "bg-uq text-white"
         }
+        boldHeader()
         theadRecoloured = theadColourOptions[theadColour];
         tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('thead'));
         tinymce.get("tinyMCEtable").dom.addClass(tinyMCE.get("tinyMCEtable").dom.select('thead'), theadRecoloured);       
     }
     else{
-        tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('thead'));
-        theadRecoloured = "";
+        normalHeader()
     }
     if(tableStripes == "table-striped"){
         tinymce.get("tinyMCEtable").dom.removeClass(tinyMCE.get("tinyMCEtable").dom.select('table'), 'table-striped-columns');       
@@ -871,11 +872,6 @@ function generateTableCode(){
     else {
         tableResizedHead = "";
     }
-    if($(tinymce.get("tinyMCEtable").getContent()).find('thead').length == 0){
-        var thSingle = '<th></th>\n';
-        var thCalc = $(tinyMCEtable).find('tbody td').length/$(tinyMCEtable).find('tbody tr').length;
-        tinymce.get("tinyMCEtable").setContent(tinyMCEtable.replace('<tbody>', '<thead>\n' + (thSingle.repeat(thCalc)) + '</thead>\n' + '<tbody>\n'))
-    }
     var tinyMCEtable = tinymce.get("tinyMCEtable").getContent();
     var tableFinalCode = sComm + tableResizedHead + tinyMCEtable + '\n' + eComm;
     $('#tableFinalCode').val(tableFinalCode);
@@ -897,9 +893,10 @@ function cleanTable() {
     generateTableCode();
 }
 function makeTable(){
-    var tableOpen = '<table class="table table-responsive table-bordered table-hover">\n<thead>\n<tr>\n';
+    var tableOpen = '<table class="table table-responsive table-bordered table-hover">';
+    //\n<thead>\n<tr>\n || </tr>\n</thead>\n
     var tableClose = '</tbody>\n</table>\n';
-    var tBodyOpen = '</tr>\n</thead>\n<tbody>\n';
+    var tBodyOpen = '<tbody>\n';
     var trOpen = '<tr>';
     var trClose = '</tr>\n';     
     var thSingle = '<th></th>\n';
@@ -937,6 +934,18 @@ function makeTable(){
   function removeTable(){
     tinymce.get("tinyMCEtable").execCommand('mceTableDelete', false);
     generateTableCode();
+  }
+  function boldHeader(){
+    tinymce.activeEditor.getBody();
+    tinymce.get("tinyMCEtable").selection.setCursorLocation();
+    tinymce.get("tinyMCEtable").execCommand('mceTableRowType', false, { type: 'header' });
+    tinymce.activeEditor.focus();
+  }
+  function normalHeader(){
+    tinymce.activeEditor.getBody();
+    tinymce.get("tinyMCEtable").selection.setCursorLocation();
+    tinymce.get("tinyMCEtable").execCommand('mceTableRowType', false, { type: 'body' });
+    tinymce.activeEditor.focus();
   }
   function generateAccCode(){
     var accName = $('#accName').val();

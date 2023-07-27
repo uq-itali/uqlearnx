@@ -10,7 +10,7 @@
         <!-- Google fonts to match LearnX look and feel -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
         
         <!-- TinyMCE WYSIWYG editor -->
         <script src="https://cdn.tiny.cloud/1/uo446edaov069auf1b4nxjto1611byt76bdeabca3oo866lh/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
@@ -106,7 +106,6 @@
                         dropdownMenu.css('z-index','1030');
                     }
                 });
-                tinymce.get("tinyMCEtable").setContent('<table class="table table-responsive table-bordered table-hover">\n<thead><th></th>\n<th></th>\n<th></th>\n</thead>\n<tbody>\n<tr>\n<td></td>\n<td></td>\n<td></td>\n</tr>\n<tr>\n<td></td>\n<td></td>\n<td></td>\n</tr>\n<tr>\n<td></td>\n<td></td>\n<td></td>\n</tr>\n</tbody>\n</table>')
             });
             window.addEventListener('DOMContentLoaded',function(){
                 if(localStorage.getItem("tableAlertIsClosed") !== "true"){
@@ -312,11 +311,6 @@
                     'td': 'width height'
                 },
                 setup: function (ed) {
-                    ed.on('keyup', function (e) {
-                        var tinyMCEtable = tinymce.get("tinyMCEtable").getContent();
-                        activeBtn();
-                        console.log('Editor contents was modified. Contents: ' + ed.getContent());
-                    });
                     ed.on('paste', function(e) {
                         setTimeout(function(){
                             tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('table'));
@@ -327,13 +321,16 @@
                             tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('td'));
                             tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('div'));
                             tinymce.get("tinyMCEtable").dom.removeAllAttribs(tinyMCE.get("tinyMCEtable").dom.select('p'));
-                            tinymce.get("tinyMCEtable").setContent(tinymce.get("tinyMCEtable").getContent().replace('<table>','<table class="table table-responsive table-hover table-bordered">'));
+                            tinymce.get("tinyMCEtable").setContent(tinymce.get("tinyMCEtable").getContent().replace('<table>','<table class="table table-responsive table-hover table-bordered">'));   
                             }, 500)
                         setTimeout(function(){
                             tinymce.get("tinyMCEtable").dom.remove(tinyMCE.get("tinyMCEtable").dom.select('colgroup'));
                             tinymce.get("tinyMCEtable").dom.remove(tinyMCE.get("tinyMCEtable").dom.select('div'));
+                            let nodeTBody = tinymce.activeEditor.dom.select('tr');
+                            tinymce.activeEditor.selection.setCursorLocation(nodeTBody[0].firstChild);
+                            tinymce.activeEditor.execCommand('mceTableRowType', false, { type: 'header' }); 
                             generateTableCode();
-                        }, 750)                   
+                        }, 750)                        
                     })
                 }
             })
@@ -513,11 +510,6 @@
                     accNameTxt.val(accNameTxt.val().replace(/\s/g, ''));
                 }
                 accNameTxt.keyup(func).blur(func);
-            });
-        </script>
-        <script type="text/javascript">
-            document.getElementById('imgBuilderBtn').addEventListener('click', function() {
-                imgBuilderTour.start();
             });
         </script>
         <!--Style for shepherd user tour-->
@@ -2294,8 +2286,12 @@
                             <div class="row mb-2">
                                 <div class="col-lg">
                                     <div class="form-check form-check-inline" id="theadColour" onchange="generateTableCode()">
-                                        <input class="form-check-input" name="theadColour" id="boldOnly" type="radio" value="bold" checked>
-                                        <label class="form-check-label" for="boldOnly"><table class="table"><thead><tr><th>Bold only</th></tr></thead></table></label>
+                                        <input class="form-check-input" name="theadColour" id="noF" type="radio" value="noF" checked>
+                                        <label class="form-check-label" for="noF"><table class="table"><tbody><tr><td>No formatting</td></tr></tbody></table></label>
+                                    </div>
+                                    <div class="form-check form-check-inline" id="theadColour" onchange="generateTableCode()">
+                                        <input class="form-check-input" name="theadColour" id="boldOnly" type="radio" value="bold">
+                                        <label class="form-check-label" for="boldOnly"><table class="table"><thead><tr><th><strong>Bold only</strong></th></tr></thead></table></label>
                                     </div>		
                                     <div class="form-check form-check-inline" id="theadColour" onchange="generateTableCode()">
                                         <input class="form-check-input" name="theadColour" id="bg-uq" type="radio" value='uq'>
@@ -2381,7 +2377,7 @@
                             </div>
                             <div class="col-lg">
                                 <h5 class="font-weight-bold mt-3 text-center">Generate table</h5>
-                                <button class="btn btn-success d-block mx-auto" onclick="makeTable()">Generate Table</button>
+                                <button class="btn btn-dark d-block mx-auto" onclick="makeTable()">Generate Table</button>
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -2395,8 +2391,8 @@
                             <div class="col-lg"><button class="btn btn-danger btn-sm d-block mx-auto" onclick="removeCol()">Remove Selected Column <i class="fa-solid fa-arrows-up-down"></i></button></div> 
                             <div class="col-lg"><button class="btn btn-danger btn-sm d-block mx-auto" onclick="removeTable()">Remove Table <i class="fa-solid fa-trash-can"></i></button></div>
                         </div>
-                        <div class="mt-3"></div>
-                        <textarea class="border border-dark rounded w-100 mt-3" id="tinyMCEtable" onkeyup=generateTableCode()></textarea>
+                        <button id="tableCodeUpdate" onclick="generateTableCode()" class="btn btn-success btn-lg d-block mx-auto my-2 w-100" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="After you have completed any edits in the text area below, click this button to update the preview of your table, and the code to be copied." class="hideableinstruct text-success small">Update Preview and Code <i class="fa-solid fa-rotate"></i></button>
+                        <textarea class="border border-dark rounded w-100 mt-3" id="tinyMCEtable"></textarea>
                         </div>
                     </div>
                     <div class="col-lg-6">
