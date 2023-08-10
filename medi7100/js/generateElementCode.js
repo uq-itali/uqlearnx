@@ -522,8 +522,8 @@ function generateBtnCode() {
         //change out values for font-awesome classes
     var iconNames = {
         "noI": "",
-        "1": " <span class=\"fa fa-external-link-alt\"></span>",
-        "2": " <span class=\"fa fa-file-arrow-down\"></span>",
+        "1": " <span class=\"fa-solid fa-external-link-alt\"></span>",
+        "2": " <span class=\"fa-solid fa-file-arrow-down\"></span>",
         "3": " <span class=\"fa-regular fa-hand-point-right\"></span>",
         "4": " <span class=\"fa-regular fa-circle-right\"></span>",
         "5": " <span class=\"fa-solid fa-arrow-right\"></span>"
@@ -536,8 +536,8 @@ else{
 if(btnTwoIcon !=="noI2"){
     var icon2Names = {
         "noI2": "",
-        "1": " <span class=\"fa fa-external-link-alt\"></span>",
-        "2": " <span class=\"fa fa-file-arrow-down\"></span>",
+        "1": " <span class=\"fa-solid fa-external-link-alt\"></span>",
+        "2": " <span class=\"fa-solid fa-file-arrow-down\"></span>",
         "3": " <span class=\"fa-regular fa-hand-point-right\"></span>",
         "4": " <span class=\"fa-regular fa-circle-right\"></span>",
         "5": " <span class=\"fa-solid fa-arrow-right\"></span>"
@@ -550,8 +550,8 @@ else{
 if(btnThreeIcon !=="noI3"){
     var icon3Names = {
         "noI3": "",
-        "1": " <span class=\"fa fa-external-link-alt\"></span>",
-        "2": " <span class=\"fa fa-file-arrow-down\"></span>",
+        "1": " <span class=\"fa-solid fa-external-link-alt\"></span>",
+        "2": " <span class=\"fa-solid fa-file-arrow-down\"></span>",
         "3": " <span class=\"fa-regular fa-hand-point-right\"></span>",
         "4": " <span class=\"fa-regular fa-circle-right\"></span>",
         "5": " <span class=\"fa-solid fa-arrow-right\"></span>"
