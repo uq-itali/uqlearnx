@@ -138,6 +138,9 @@ border-style: none !important;
 .icon-anatomy-white{
   background-image: url('/uqlearnx/img/white_anatomy.png');
 }
+.icon-cbl-white{
+  background-image: url('/uqlearnx/img/cbl-white.png');
+}
 .icon-epi-white{
   background-image: url('/uqlearnx/img/white_epi.png');
 }
