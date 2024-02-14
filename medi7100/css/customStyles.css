@@ -31,6 +31,15 @@ div.accordion h2{
 #reopenCompletionAlerts.btn, #reopenCompletionAlerts.btn:hover{
   box-shadow: none !important;
 }
+.hero-img:after {
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background:rgba(0,0,0,0.4);
+}
 .copyBadge{
   cursor: pointer;
 }  
